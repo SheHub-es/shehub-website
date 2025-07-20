@@ -1,15 +1,15 @@
 "use client";
 
-import Link from "next/link";
 import ModeToggle from "@/components/ui/mode-toggle";
 import {
   NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuTrigger,
   NavigationMenuContent,
+  NavigationMenuItem,
   NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
