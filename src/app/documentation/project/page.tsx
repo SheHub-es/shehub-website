@@ -101,7 +101,8 @@ export default function ProjectDocsPage() {
         <div className="rounded-xl border border-border bg-card text-card-foreground p-6 shadow-sm">
           <h2 className="text-2xl font-semibold mb-4">💬 What is shadcn?</h2>
           <p className="text-sm leading-relaxed mb-2">
-            Shadcn is an internal AI assistant that helps developers by generating code, writing documentation, and speeding up repetitive tasks. It integrates into the dev flow of this Design System for faster delivery.
+            shadcn/ui is a modern UI component library built for React applications using Tailwind CSS and Radix UI under the hood.
+            It provides accessible, unstyled, and fully customizable components that let you build your own design system with full control over styles and behavior.
           </p>
           <a
             href="https://ui.shadcn.com/"
