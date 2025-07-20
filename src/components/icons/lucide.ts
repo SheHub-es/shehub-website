@@ -1,7 +1,7 @@
 import {
-  User,
-  Linkedin,
   Instagram,
+  Linkedin,
+  User,
 } from "lucide-react";
 
 export const Icons = {
