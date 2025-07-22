@@ -1,9 +1,9 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
 import { AppProviders } from "@/lib/providers";
-
-import Navbar from "@/components/layout/navbar";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shehub.es"),
@@ -36,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AppProviders>
           <Navbar />
           {children}
+          <Footer/>
         </AppProviders>
       </body>
     </html>

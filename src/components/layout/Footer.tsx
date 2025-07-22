@@ -1,12 +1,12 @@
 import SectionWrapper from "@/components/layout/SectionWrapper/SectionWrapper"
 
-export const Navbar = () =>  {
+export const Footer = () =>  {
   return (
     <SectionWrapper>
-        <div>Navbar</div>
+        <div>Footer</div>
     </SectionWrapper>
     
   )
 }
 
-export default Navbar
+export default Footer
