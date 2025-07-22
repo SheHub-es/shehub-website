@@ -3,12 +3,13 @@ import React from 'react'
 
 type SectionWrapperProps = {
   children: React.ReactNode
+  className?: string
 }
  
-export const SectionWrapper = ({ children }: SectionWrapperProps) => {
+export const SectionWrapper = ({ children, className }: SectionWrapperProps) => {
    return (
      <div
-      className={styles.base}
+      className={`${styles.base} ${className ?? ''}`}
      >
       {children}
      </div>
