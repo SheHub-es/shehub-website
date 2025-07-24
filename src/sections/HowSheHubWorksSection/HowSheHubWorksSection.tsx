@@ -1,9 +1,8 @@
 import SectionWrapper from '@/components/layout/SectionWrapper/SectionWrapper'
-import { HowSheHubWorksContainerStyles as styles } from '@/sections/HowSheHubWorksSection/styles'
 
 export const HowSheHubWorksSection = () => {
   return (
-    <SectionWrapper className={styles.container}>
+    <SectionWrapper className='gap-20 grid min-h-[756px]'>
         <div>HowSheHubWorksSection</div>
     </SectionWrapper>
   )

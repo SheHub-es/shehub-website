@@ -1,9 +1,8 @@
 import SectionWrapper from '@/components/layout/SectionWrapper/SectionWrapper'
-import { CTASectionStyles as styles } from '@/sections/CTASection/styles'
 
 export const CTASection = () => {
   return (
-    <SectionWrapper className={styles.container}>
+    <SectionWrapper className='gap-12 grid min-h-[376px]'>
         <div>CTASection</div>
     </SectionWrapper>
   )

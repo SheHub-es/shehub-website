@@ -1,9 +1,8 @@
 import SectionWrapper from '@/components/layout/SectionWrapper/SectionWrapper'
-import { HeroSectionStyles as styles } from '@/sections/HeroSection/styles'
 
 export const HeroSection = () => {
   return (
-    <SectionWrapper className={styles.container}>
+    <SectionWrapper className='gap-20 grid min-h-[962px] bg-gray-100'>
         <div>HeroSection</div>
     </SectionWrapper>
   )

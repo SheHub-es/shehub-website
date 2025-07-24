@@ -1,9 +1,8 @@
 import SectionWrapper from '@/components/layout/SectionWrapper/SectionWrapper'
-import { CollaboratorsStyles as styles } from '@/sections/CollaboratorsSection/styles'
 
 export const CollaboratorsSection = () => {
   return (
-    <SectionWrapper className={styles.container}>
+    <SectionWrapper className='gap-20 grid min-h-[716px] bg-gray-100'>
         <div>CollaboratorsSection</div>
     </SectionWrapper>
   )

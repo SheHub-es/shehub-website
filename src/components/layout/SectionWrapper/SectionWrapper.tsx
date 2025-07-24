@@ -1,4 +1,3 @@
-import { sectionWrapperStyles as styles } from '@/components/layout/SectionWrapper/styles'
 import React from 'react'
 
 type SectionWrapperProps = {
@@ -9,7 +8,7 @@ type SectionWrapperProps = {
 export const SectionWrapper = ({ children, className }: SectionWrapperProps) => {
    return (
      <div
-      className={`${styles.base} ${className ?? ''}`}
+      className={`'w-full py-10 px-24 w-[1440px] mx-auto' ${className ?? ''}`}
      >
       {children}
      </div>

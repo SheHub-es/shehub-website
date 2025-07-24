@@ -1,9 +1,8 @@
 import SectionWrapper from '@/components/layout/SectionWrapper/SectionWrapper'
-import { PartnersSectionStyles as styles } from '@/sections/PartnersSection/styles'
 
 export const PartnersSection = () => {
   return (
-    <SectionWrapper className={styles.container}>
+    <SectionWrapper className='gap-12 grid min-h-[622px]'>
         <div>PartnersSection
         
         </div>
