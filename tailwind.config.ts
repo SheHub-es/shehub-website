@@ -147,20 +147,132 @@ const config: Config = {
         "button-secondary-secondary-text": "#0e0e0e",
         "button-secondary-secondary-border": "#f83c85",
 
-        "button-primary-tertiary-bg-default": "#f76702",
-        "button-primary-tertiary-bg-hover": "#ffecd0",
-        "button-primary-tertiary-bg-focus": "#f76702",
-        "button-primary-tertiary-text": "#0e0e0e",
+        "button-primary-tertairy-bg-default": "#f76702",
+        "button-primary-tertairy-bg-hover": "#ffecd0",
+        "button-primary-tertairy-bg-focus": "#f76702",
+        "button-primary-tertairy-text": "#0e0e0e",
 
-        "button-secondary-tertiary-bg-default": "#fefefe",
-        "button-secondary-tertiary-bg-hover": "#ffecd0",
-        "button-secondary-tertiary-bg-focus": "#fefefe",
-        "button-secondary-tertiary-text": "#0e0e0e",
-        "button-secondary-tertiary-border": "#f76702",
+        "button-secondary-tertairy-bg-default": "#fefefe",
+        "button-secondary-tertairy-bg-hover": "#ffecd0",
+        "button-secondary-tertairy-bg-focus": "#fefefe",
+        "button-secondary-tertairy-text": "#0e0e0e",
+        "button-secondary-tertairy-border": "#f76702",
 
         "button-disabled-bg": "#d1d1d1",
         "button-disabled-text": "#6b6b6b",
         "button-disabled-border": "#d1d1d1",
+
+        //Toggle
+        "toggle-bg-default": "#f5f5f5",
+        "toggle-bg-hover": "#e9e8ff",
+        "toggle-bg-active": "#7858ff",
+        "toggle-bg-disabled": "#d1d1d1",
+
+        "toggle-text-default": "#0e0e0e",
+        "toggle-text-active": "#ffffff",
+        "toggle-text-disabled": "#6b6b6b",
+
+        "toggle-border-default": "#d1d1d1",
+        "toggle-border-active": "#7858ff",
+        "toggle-border-focus": "#7858ff",
+
+        //Navigation Menu
+        "navigationmenu-label": "#0e0e0e",
+        "navigationmenu-hover": "#7858ff",
+        "navigationmenu-current-underline": "#0e0e0e",
+        "navigationmenu-focus-outline": "#b9b1ff",
+        "navigationmenu-container-bg": "transparent",
+
+        //Header
+        "header-bg": "#fefefe",
+        "header-shadow": "0px 4px 16px rgba(0, 0, 0, 0.08)",
+
+        //Avatar 
+        "avatar-default-bg": "#7858ff",
+        "avatar-default-disabled": "#6d6d6d",
+        "avatar-default-text": "#ffffff",
+        "avatar-default-border-focus": "#b9b1ff",
+
+        "avatar-primary-variant-bg": "#e9e8ff",
+        "avatar-primary-variant-border-focus": "#b9b1ff",
+
+        "avatar-secondary-variant-bg": "#fee5f0",
+        "avatar-secondary-border-focus": "#ffa2cb",
+
+        "avatar-tertairy-variant-bg": "#ffecd0",
+        "avatar-tertairy-variant-border-focus": "#feb565",
+
+        "avatar-variant-text": "#0e0e0e",
+        "avatar-variant-disabled": "#e7e7e7",
+
+        //Card
+        "card-white-bg-default": "#ffffff",
+        "card-white-bg-hover": "#fefefe",
+        "card-white-icon": "#7858ff",
+        "card-white-title": "#0e0e0e",
+        "card-white-text": "#6d6d6d",
+
+        "card-clickable-purple-bg-default": "#b9b1ff",
+        "card-clickable-purple-bg-hover": "#d6d4ff",
+
+        "card-non-clickable-purple-bg": "#7858ff",
+        "card-non-clickable-purple-text": "#ffffff",
+        "card-non-clickable-purple-icon": "#0e0e0e",
+
+        "card-non-clickable-light-purple-bg": "#d6d4ff",
+        "card-non-clickable-light-purple-text": "#0e0e0e",
+        "card-non-clickable-light-purple-icon": "#7858ff",
+
+        "card-bg-disabled": "#e7e7e7",
+
+        "card-shadow-default": "0px 4px 16px rgba(0, 0, 0, 0.08)",
+        "card-shadow-hover": "0px 4px 16px rgba(0, 0, 0, 0.16)",
+
+        //Image Placeholder
+        "image-container-bg": "#d6d4ff",
+        "image-stroke-icon": "#6230f7",
+
+        //Footer
+        "footer-bg": "#e9e8ff",
+
+        //Text Link
+        "textlink-default": "#7858ff",
+        "textlink-hover": "#4618bf",
+        "textlink-hover-underline": "#4618bf",
+        "textlink-focus": "#7858ff",
+        "textlink-focus-outline": "#b9b1ff",
+        "textlink-active": "#0e0e0e",
+        "textlink-visited": "#220b6a",
+
+        //Icons
+        "icon-default": "#292929",
+        "icon-hover": "#e9e8ff",
+
+        // Accordion
+        "accordion-bg-default": "#ffffff",
+        "accordion-text": "#0e0e0e",
+        "accordion-header-border-default": "#d1d1d1",
+        "accordion-focus-area": "#b9b1ff",
+
+        // Timeline
+        "timeline-line": "#d1d1d1",
+        "timeline-dot": "#7858ff",
+        "timeline-heading-text": "#0e0e0e",
+        "timeline-day-label-text": "#6d6d6d",
+        "timeline-description-text": "#0e0e0e",
+
+        // Carousel
+        "carousel-bg": "#ffffff",
+        "carousel-text-main": "#6d6d6d",
+        "carousel-text-sub": "#0e0e0e", 
+        "carousel-text-highlight": "#7858ff",
+      
+        "carousel-dot-default": "rgba(14, 14, 14, 0.2)",
+        "carousel-dot-active": "#0e0e0e",
+
+        "carousel-arrow-default": "#0e0e0e", 
+        "carousel-arrow-disabled": "#e7e7e7"
+
       },
 
       fontFamily: {
