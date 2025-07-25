@@ -32,6 +32,9 @@ const TestSection = () => {
           </SelectContent>
         </Select>
       </div>
+      <div>
+            <button className="bg-purple-500 p-1 ml-2"> Esto es un botón de prueba </button>
+          </div>
     </section>
   );
 };

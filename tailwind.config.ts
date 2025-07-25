@@ -1,13 +1,14 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  presets: [],
   content: [
     "./src/**/*.{ts,tsx,js,jsx,mdx}"],
   darkMode: "class",
   theme: {
     extend: {
       colors: {
-        // PRIMITIVE TOKENS
+         // PRIMITIVE TOKENS
         purple: {
           50: "#f4f2ff",
           100: "#e9e8ff",

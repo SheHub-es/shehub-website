@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap');
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
@@ -120,4 +120,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
+} */

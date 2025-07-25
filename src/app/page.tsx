@@ -1,5 +1,6 @@
 "use client";
 
+import TestSection from "@/components/sections/TestSection";
 import CollaboratorsSection from "@/sections/CollaboratorsSection/CollaboratorsSection";
 import CTASection from "@/sections/CTASection/CTASection";
 import FAQsSection from "@/sections/FAQsSection/FAQsSection";
@@ -14,6 +15,7 @@ import ValuePropositionSection from "@/sections/ValuePropositionSection/ValuePro
 export const Home = () => {
   return (
     <>
+      <TestSection/>
       <HeroSection/>
       <ValuePropositionSection/>
       <CollaboratorsSection/>
