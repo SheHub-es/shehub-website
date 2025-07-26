@@ -91,6 +91,8 @@
   --color-white: #ffffff;
   --color-black: #0e0e0e;
 
+  --color-gradient-brand: linear-gradient(90deg, #f76702 0%, #f83c85 50%, #7858ff 100%);
+
   /* Semantic Tokens */
 
   --color-background-light: #fefefe;
@@ -157,6 +159,8 @@
   --color-button-disabled-bg: #d1d1d1;
   --color-button-disabled-text: #6b6b6b;
   --color-button-disabled-border: #d1d1d1;
+
+  --color-button-bg-gradient: var(--color-gradient-brand); /* To use it for example in the navbar button (which is the case for now) this is the way to apply it in the className "bg-[image:var(--color-button-bg-gradient)]"
 
   /* Toggle */
   --color-toggle-bg-default: #f5f5f5;
@@ -269,3 +273,9 @@
   --carousel-arrow-default: #0e0e0e;
   --carousel-arrow-disabled: #e7e7e7;
 }
+
+.btn-gradient {
+  background-image: var(--button-primary-bg-gradient);
+}
+
+
