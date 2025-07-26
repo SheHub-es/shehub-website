@@ -32,6 +32,9 @@ const TestSection = () => {
           </SelectContent>
         </Select>
       </div>
+      <div>
+            <button className="bg-[image:var(--color-button-bg-gradient)] text-button-primary-primary-text hover:bg-button-primary-primary-bg-hover focus:bg-button-primary-primary-bg-focus hover:text-button-primary-primary-text-hover p-1 ml-2"> Esto es un botón de prueba </button>
+          </div>
     </section>
   );
 };
