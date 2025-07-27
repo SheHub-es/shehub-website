@@ -15,6 +15,7 @@ import ValuePropositionSection from "@/sections/ValuePropositionSection/ValuePro
 export const Home = () => {
   return (
     <>
+      <TestSection/>
       <HeroSection/>
       <ValuePropositionSection/>
       <CollaboratorsSection/>

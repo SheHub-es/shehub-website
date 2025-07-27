@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Toggle } from "@/components/ui/toggle";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { Language } from "@/translations/types";
@@ -33,8 +34,20 @@ const TestSection = () => {
         </Select>
       </div>
       <div>
-            <button className="bg-[image:var(--color-button-bg-gradient)] text-button-primary-primary-text hover:bg-button-primary-primary-bg-hover focus:bg-button-primary-primary-bg-focus hover:text-button-primary-primary-text-hover p-1 ml-2"> Esto es un botón de prueba </button>
-          </div>
+        <button className="bg-[image:var(--color-button-bg-gradient)] text-button-primary-primary-text hover:bg-button-primary-primary-bg-hover focus:bg-button-primary-primary-bg-focus hover:text-button-primary-primary-text-hover p-1 ml-2"> Esto es un botón de prueba </button>
+      </div>
+      <div className="flex justify-center">
+        <Toggle
+          options={[
+            { label: "ES", value: "es" },
+            { label: "EN", value: "en" },
+            { label: "CA", value: "ca" },
+          ]}
+          selected={language}
+          onChange={(value: string) => setLanguage(value as Language)}
+        />
+      </div>
+
     </section>
   );
 };
