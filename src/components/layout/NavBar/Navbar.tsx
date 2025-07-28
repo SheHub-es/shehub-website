@@ -1,9 +1,10 @@
 import SectionWrapper from "@/components/layout/SectionWrapper/SectionWrapper"
+import { NavigationMenu } from "@/components/ui/navigation-menu"
 
 export const Navbar = () =>  {
   return (
     <SectionWrapper>
-        <div>Navbar</div>
+        <NavigationMenu/>
     </SectionWrapper>
     
   )
