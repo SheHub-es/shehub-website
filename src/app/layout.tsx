@@ -1,9 +1,20 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-
 import Footer from "@/components/layout/Footer/Footer";
-import Navbar from "@/components/layout/NavBar/Navbar";
 import { AppProviders } from "@/lib/providers";
+import { Ubuntu, Nunito } from "next/font/google";
+
+const ubuntu = Ubuntu({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-primary",
+});
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-secondary",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shehub.es"),
@@ -31,10 +42,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${ubuntu.variable} ${nunito.variable}`} suppressHydrationWarning>
       <body>
         <AppProviders>
-          <Navbar />
           {children}
           <Footer/>
         </AppProviders>
