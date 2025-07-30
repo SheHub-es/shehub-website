@@ -29,7 +29,7 @@ export const Toggle = ({ options, selected, onChange, disabled }: ToggleProps) =
             disabled={disabled}
             className={`
               flex items-center justify-center text-xs
-              h-[24px] w-[33px] gap-[10px] rounded-full
+              h-[24px] w-[35px] gap-[10px] rounded-full
               border ${isSelected ? 'border-[#FEFEFE]' : 'border-transparent'}
               ${isSelected ? 'bg-toggle-bg-active text-toggle-text-active' : 'text-toggle-text-default'}
               ${disabled 

@@ -6,11 +6,11 @@ export const NavigationMenu = () => {
 
   return (
     <div className="flex gap-[32px]">
-      <div className="flex-1 whitespace-nowrap">{t("menu.item-1")}</div>
-      <div className="flex-1 whitespace-nowrap">{t("menu.item-2")}</div>
-      <div className="flex-1 whitespace-nowrap">{t("menu.item-3")}</div>
-      <div className="flex-1 whitespace-nowrap">{t("menu.item-4")}</div>
-      <div className="flex-1 whitespace-nowrap">{t("menu.item-5")}</div>
+      <div className="flex-1 whitespace-nowrap cursor-pointer">{t("menu.item-1")}</div>
+      <div className="flex-1 whitespace-nowrap cursor-pointer">{t("menu.item-2")}</div>
+      <div className="flex-1 whitespace-nowrap cursor-pointer">{t("menu.item-3")}</div>
+      <div className="flex-1 whitespace-nowrap cursor-pointer">{t("menu.item-4")}</div>
+      <div className="flex-1 whitespace-nowrap cursor-pointer">{t("menu.item-5")}</div>
     </div>
   )
 }

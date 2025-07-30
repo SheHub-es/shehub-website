@@ -44,7 +44,7 @@ disabled:
     "bg-[var(--color-button-disabled-bg)] text-[var(--color-button-disabled-text)] border border-[var(--color-button-disabled-border)] cursor-not-allowed opacity-50",
 
   gradient:
-    "bg-[image:var(--color-button-bg-gradient)] text-white hover:opacity-90 focus:ring-[var(--color-button-primary-primary-bg-focus)]",
+    "bg-[image:var(--color-button-bg-gradient)] !text-white hover:opacity-90 focus:ring-[var(--color-button-primary-primary-bg-focus)]",
 };
 
 // Define the sizes and shapes for the button
@@ -73,7 +73,7 @@ export const Button: React.FC<ButtonProps> = ({
     
     <button
       className={cn(
-        "inline-flex items-center justify-center font-alt transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2",
+        "inline-flex items-center justify-center font-alt transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer",
         variants[variant],
         sizes[size],
         shapes[shape],
