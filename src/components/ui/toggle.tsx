@@ -23,7 +23,7 @@ export const Toggle = ({ options, selected, onChange, disabled }: ToggleProps) =
                         key={opt.value}
                         onClick={() => onChange(opt.value)}
                         disabled={disabled}
-                        className={`w-auto h-8 rounded-full flex items-center justify-center text-size-100 p-line-height-label-4 font-secondary font-heavy ${isSelected ? 'bg-toggle-bg-active text-toggle-text-active border-2 ' : 'text-toggle-text-default'} ${disabled ? 'bg-toggle-bg-disabled text-toggle-text-disabled cursor-not-allowed' : 'hover:bg-toggle-bg-hover hover:text-toggle-text-default'} focus:outline-4 focus:outline-toggle-border-focus transition-all `}
+                        className={`rounded-[50px] flex flex-col items-center justify-center text-size-100 py-1 px-2 gap-2.5 leading-line-height-label-3 font-secondary font-heavy ${isSelected ? 'bg-toggle-bg-active border border-background-light text-toggle-text-active' : 'text-toggle-text-default'} ${disabled ? 'bg-toggle-bg-disabled text-toggle-text-disabled cursor-not-allowed' : 'hover:bg-toggle-bg-hover hover:text-toggle-text-default'} focus:ring-4 focus:ring-toggle-border-focus transition-all `}
                         role="radio"
                         aria-checked={isSelected}
                     >
