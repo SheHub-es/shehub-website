@@ -23,7 +23,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const variants = {
 
   "primary-primary":
-    "bg-[var(--color-button-primary-primary-bg-default)] text-[var(--color-button-primary-primary-text)] hover:bg-[var(--color-button-primary-primary-bg-hover)] hover:text-[var(--color-black-text-hover)] focus:ring-[var(--color-button-primary-primary-bg-focus)] ",
+    "bg-[var(--color-button-primary-primary-bg-default)] !text-[var(--color-button-primary-primary-text)] hover:bg-[var(--color-button-primary-primary-bg-hover)] hover:!text-[var(--color-black-text-hover)] focus:ring-[var(--color-button-primary-primary-bg-focus)] ",
 
   "secondary-primary":
     "bg-[var(--color-button-secondary-primary-bg-default)] text-[var(--color-button-secondary-primary-text)] border border-[var(--color-button-secondary-primary-border)] hover:bg-[var(--color-button-secondary-primary-bg-hover)] focus:ring-[var(--color-button-secondary-primary-bg-focus)]",

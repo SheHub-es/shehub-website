@@ -30,8 +30,10 @@ export const Toggle = ({ options, selected, onChange, disabled }: ToggleProps) =
             className={`
               flex items-center justify-center text-xs
               h-[24px] w-[35px] gap-[10px] rounded-full
-              border ${isSelected ? 'border-[#FEFEFE]' : 'border-transparent'}
-              ${isSelected ? 'bg-toggle-bg-active text-toggle-text-active' : 'text-toggle-text-default'}
+              border
+              ${isSelected 
+                ? 'border-[var(--color-toggle-border-active)] bg-[var(--color-toggle-bg-active)] text-toggle-text-active' 
+                : 'border-transparent text-toggle-text-default'}
               ${disabled 
                 ? 'bg-toggle-bg-disabled text-toggle-text-disabled cursor-not-allowed' 
                 : 'hover:bg-toggle-bg-hover hover:text-toggle-text-default'}

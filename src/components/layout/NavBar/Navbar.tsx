@@ -6,7 +6,6 @@ import { Toggle } from "@/components/ui/toggle";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Language } from "@/translations";
-import { SearchIcon } from "lucide-react";
 
 export const Navbar = () =>  {
   
@@ -26,13 +25,13 @@ export const Navbar = () =>  {
         <SheHubLogo/>
         <NavigationMenu/>
         <div className="flex items-center gap-[24px]">
-          <SearchIcon/>
+          {/* <SearchIcon/> */}
           <Toggle
             options={languageOptions}
             selected={language}
             onChange={(value: string) => setLanguage(value as Language)}
           />
-          <Button variant="gradient" size="sm" shape="rounded" className="rounded-full min-w-[180px]">
+          <Button variant="primary-primary" size="sm" shape="rounded" className="rounded-full min-w-[180px]">
             {t("menu_button.button")}
           </Button>
         </div>
