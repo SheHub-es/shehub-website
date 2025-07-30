@@ -136,7 +136,7 @@
   --color-button-secondary-primary-border: #7858ff;
 
   --color-button-primary-secondary-bg-default: #f83c85;
-  --color-button-primary-secondary-bg-hover: #e9e8ff;
+  --color-button-primary-secondary-bg-hover: #fee5f0;
   --color-button-primary-secondary-bg-focus: #7858ff;
   --color-button-primary-secondary-text: #0e0e0e;
 
@@ -157,8 +157,8 @@
   --color-button-secondary-tertairy-text: #0e0e0e;
   --color-button-secondary-tertairy-border: #f76702;
 
-  --color-button-disabled-bg: #d1d1d1;
-  --color-button-disabled-text: #6b6b6b;
+  --color-button-disabled-bg: #e7e7e7;
+  --color-button-disabled-text: #6d6d6d;
   --color-button-disabled-border: #d1d1d1;
 
   --color-button-bg-gradient: var(--color-gradient-brand);
@@ -276,7 +276,7 @@
   --carousel-arrow-disabled: #e7e7e7;
 
   --font-sans: 'Ubuntu', sans-serif;
-  --font-alt: 'Nunito', sans-serif;
+  --font-alt: 'Nunito', sans-serif; 
 
     /*Font Size*/
   --text-size-1000: 60px;
