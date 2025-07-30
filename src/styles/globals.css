@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Nunito:wght@400;500;700&display=swap');
-
 
 @theme {
   /* Primitive Tokens*/
@@ -176,7 +174,7 @@
 
   --color-toggle-border-default: #d1d1d1;
   --color-toggle-border-active: #7858ff;
-  --color-toggle-border-focus: #7858ff;
+  --color-toggle-border-focus: #b9b1ff;
 
   /* Navigation menu */
   --color-navigationmenu-label: #0e0e0e;
@@ -275,8 +273,9 @@
   --carousel-arrow-default: #0e0e0e;
   --carousel-arrow-disabled: #e7e7e7;
 
-  --font-sans: 'Ubuntu', sans-serif;
-  --font-alt: 'Nunito', sans-serif; 
+  /*Font Family*/
+  --font-primary: 'Ubuntu', sans-serif;
+  --font-secondary: 'Nunito', sans-serif; 
 
     /*Font Size*/
   --text-size-1000: 60px;
@@ -312,4 +311,10 @@
   --font-weight-medium: 500;
   --font-weight-heavy: 700;
 
+}
+
+@layer base {
+  body {
+    @apply font-primary;
+  }
 }
