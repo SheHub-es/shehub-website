@@ -12,40 +12,24 @@ type ToggleProps = {
 };
 
 export const Toggle = ({ options, selected, onChange, disabled }: ToggleProps) => {
-  return (
-    <div
-      className={`
-        inline-flex border border-toggle-border-default rounded-full 
-        w-[97px] h-[26px] items-center
-      `}
-    >
-      {options.map((opt) => {
-        const isSelected = selected === opt.value;
+    return (
+        <div className="bg-toggle-bg-default outline-2 outline-toggle-border-default rounded-full inline-flex ">
+            {options.map((opt) => {
+                const isSelected = selected === opt.value;
 
-        return (
-          <button
-            key={opt.value}
-            onClick={() => onChange(opt.value)}
-            disabled={disabled}
-            className={`
-              flex items-center justify-center text-xs
-              h-[24px] w-[35px] gap-[10px] rounded-full
-              border
-              ${isSelected 
-                ? 'border-[var(--color-toggle-border-active)] bg-[var(--color-toggle-bg-active)] text-toggle-text-active' 
-                : 'border-transparent text-toggle-text-default'}
-              ${disabled 
-                ? 'bg-toggle-bg-disabled text-toggle-text-disabled cursor-not-allowed' 
-                : 'hover:bg-toggle-bg-hover hover:text-toggle-text-default'}
-            `}
-            role="radio"
-            aria-checked={isSelected}
-          >
-            {opt.label}
-          </button>
-        );
-      })}
-    </div>
-  );
+                return (
+                    <button
+                        key={opt.value}
+                        onClick={() => onChange(opt.value)}
+                        disabled={disabled}
+                        className={`rounded-[50px] flex flex-col items-center justify-center text-size-100 py-1 px-2 gap-2.5 leading-line-height-label-3 font-secondary font-heavy ${isSelected ? 'bg-toggle-bg-active border border-background-light text-toggle-text-active' : 'text-toggle-text-default'} ${disabled ? 'bg-toggle-bg-disabled text-toggle-text-disabled cursor-not-allowed' : 'hover:bg-toggle-bg-hover hover:text-toggle-text-default'} focus:ring-4 focus:ring-toggle-border-focus transition-all `}
+                        role="radio"
+                        aria-checked={isSelected}
+                    >
+                        {opt.label}
+                    </button>
+                );
+            })}
+        </div>
+    );
 };
-
