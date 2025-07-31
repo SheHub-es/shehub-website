@@ -225,8 +225,10 @@
 
   --color-card-bg-disabled: #e7e7e7;
 
-  --color-card-shadow-default: 0px 4px 16px rgba(0, 0, 0, 0.08);
-  --color-card-shadow-hover: 0px 4px 16px rgba(0, 0, 0, 0.16);
+  --color-card-focus: #b9b1ff;
+
+  --color-card-shadow-default: 0px 4px 16px rgba(14, 14, 14, 0.08);
+  --color-card-shadow-hover: 0px 4px 16px rgba(14, 14, 14, 0.16);
 
   /* Image Placeholder */
   --color-image-container-bg: #d6d4ff;

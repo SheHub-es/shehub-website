@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/layout/NavBar/Navbar";
+import TestSection from "@/components/sections/TestSection";
 import CollaboratorsSection from "@/sections/CollaboratorsSection/CollaboratorsSection";
 import CTASection from "@/sections/CTASection/CTASection";
 import FAQsSection from "@/sections/FAQsSection/FAQsSection";
@@ -16,7 +17,7 @@ export const Home = () => {
   return (
     <>
       <Navbar/>
-      {/* <TestSection/> */}
+      <TestSection/>
       <HeroSection/>
       <ValuePropositionSection/>
       <CollaboratorsSection/>

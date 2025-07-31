@@ -1,5 +1,7 @@
 "use client";
+import { Heart } from 'lucide-react'
 
+import { Card } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -47,7 +49,14 @@ const TestSection = () => {
           onChange={(value: string) => setLanguage(value as Language)}
         />
       </div>
-
+        <Card
+        icon={<Heart />}
+        title="Card Morado"
+        description="No es clickeable"
+        type="nonClickable"
+        color="white"
+        radius="lg"
+      />
     </section>
   );
 };
