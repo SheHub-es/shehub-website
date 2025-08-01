@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Nunito:wght@400;500;700&display=swap');
+
 
 @theme {
   /* Primitive Tokens*/
@@ -174,7 +176,7 @@
 
   --color-toggle-border-default: #d1d1d1;
   --color-toggle-border-active: #7858ff;
-  --color-toggle-border-focus: #b9b1ff;
+  --color-toggle-border-focus: #7858ff;
 
   /* Navigation menu */
   --color-navigationmenu-label: #0e0e0e;
@@ -273,9 +275,8 @@
   --carousel-arrow-default: #0e0e0e;
   --carousel-arrow-disabled: #e7e7e7;
 
-  /*Font Family*/
-  --font-primary: 'Ubuntu', sans-serif;
-  --font-secondary: 'Nunito', sans-serif; 
+  --font-sans: 'Ubuntu', sans-serif;
+  --font-alt: 'Nunito', sans-serif; 
 
     /*Font Size*/
   --text-size-1000: 60px;
@@ -313,8 +314,22 @@
 
 }
 
-@layer base {
-  body {
-    @apply font-primary;
+/* styling for CTA links  */
+
+ @layer components {
+  .link-inline {
+    @apply text-[var(--color-purple-500)] underline underline-offset-2 decoration-1
+           hover:text-[var(--color-purple-600)]
+           focus:outline focus:outline-2 focus:outline-[var(--color-purple-200)] focus:outline-offset-2
+           active:text-[var(--color-neutral-900)] visited:text-[var(--color-purple-700)]
+           transition-colors duration-200 px-1 py-2 inline-block;
+  }
+
+  .link-standalone {
+    @apply text-[var(--color-purple-500)]
+           hover:underline hover:text-[var(--color-purple-600)]
+           focus:outline focus:outline-2 focus:outline-[var(--color-purple-200)] focus:outline-offset-2
+           active:text-[var(--color-neutral-900)] visited:text-[var(--color-purple-950)]
+           transition-colors duration-200 inline-flex items-center justify-center gap-1 min-h-[44px] px-2;
   }
 }
