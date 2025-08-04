@@ -100,7 +100,7 @@ const cardVariants = cva(
     }
 );
 
-const cardIconVariants = cva('', {
+const cardIconVariants = cva('w-[44px]', {
     variants: {
         color: {
             white: 'text-[var(--color-card-white-icon)]',
@@ -142,7 +142,7 @@ const cardTitleVariants = cva('font-heavy', {
     variants: {
         type: {
             clickable: 'text-size-500',
-            nonClickable: 'text-size- font-primary',
+            nonClickable: 'text-size-900 font-primary',
             nonClickableWithIcon: 'text-size-500 font-secondary'
         },
         color: {
