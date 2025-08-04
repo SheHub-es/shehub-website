@@ -52,7 +52,8 @@ const cardVariants = cva(
                 class: [
                     'bg-[var(--color-card-white-bg-default)]',
                     'text-[var(--color-card-white-text)]',
-                    'hover:bg-[var(--color-card-white-bg-hover)]'
+                    'hover:bg-[var(--color-card-white-bg-hover)]',
+                    'hover:shadow-[var(--color-card-shadow-hover)]' 
                 ].join(' ')
             },
 
@@ -62,7 +63,8 @@ const cardVariants = cva(
                 class: [
                     'bg-[var(--color-card-clickable-purple-bg-default)]',
                     'text-white',
-                    'hover:bg-[var(--color-card-clickable-purple-bg-hover)]'
+                    'hover:bg-[var(--color-card-clickable-purple-bg-hover)]',
+                    'hover:shadow-[var(--color-card-shadow-hover)]' 
                 ].join(' ')
             },
 

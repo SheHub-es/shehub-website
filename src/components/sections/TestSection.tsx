@@ -42,7 +42,7 @@ const TestSection = () => {
         title="Card"
         description="No es clickeable"
         type="nonClickable"
-        color="white"
+        color="purple"
         radius="sm"
       />
     </section>
