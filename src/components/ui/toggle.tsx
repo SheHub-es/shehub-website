@@ -11,7 +11,7 @@ type ToggleProps = {
     disabled?: boolean;
 };
 
-export const Toggle = ({ options, selected, onChange, disabled }: ToggleProps) => {
+const Toggle = ({ options, selected, onChange, disabled }: ToggleProps) => {
     return (
         <div className="bg-toggle-bg-default outline-2 outline-toggle-border-default rounded-full inline-flex ">
             {options.map((opt) => {
@@ -33,3 +33,5 @@ export const Toggle = ({ options, selected, onChange, disabled }: ToggleProps) =
         </div>
     );
 };
+
+export default Toggle;

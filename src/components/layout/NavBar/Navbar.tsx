@@ -1,8 +1,8 @@
 import { SheHubLogo } from "@/components/icons/custom/SheHubLogo";
 import SectionWrapper from "@/components/layout/SectionWrapper/SectionWrapper";
-import { Button } from "@/components/ui/button";
-import { NavigationMenu } from "@/components/ui/navigation-menu";
-import { Toggle } from "@/components/ui/toggle";
+import Button from "@/components/ui/button";
+import NavigationMenu from "@/components/ui/navigation-menu";
+import Toggle from "@/components/ui/toggle";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Language } from "@/translations";
