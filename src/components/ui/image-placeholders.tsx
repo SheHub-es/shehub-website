@@ -46,7 +46,7 @@ const iconSizes: Record<ImageSize, string> = {
     lg: 'w-[120px] h-[120px]'
 }
 
-export const ImagePlaceholder = ({
+const ImagePlaceholder = ({
     size,
     corner,
     imageUrl,
@@ -82,3 +82,4 @@ return (
     )
 }
 
+export default ImagePlaceholder;
