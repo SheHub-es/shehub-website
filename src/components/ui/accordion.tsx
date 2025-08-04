@@ -36,19 +36,21 @@ AccordionItem.displayName = "AccordionItem"
 export const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+>(({ children, ...props }, ref) => (
   <AccordionPrimitive.Header>
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "text-[20px] leading-[24px] tracking-[0] flex justify-between items-start font-bold transition-all [&[data-state=open]>svg]:rotate-180 pt-[20px] pb-[20px]",
-        className
+        "w-full text-[20px] leading-[24px] tracking-[0] font-bold transition-all [&[data-state=open]>svg]:rotate-180 pt-[20px] pb-[20px]"
       )}
       {...props}
     >
-      <span className="text-left flex-1 break-words whitespace-normal items-start">{children}</span>
+    <div className="flex w-full justify-between items-start gap-4">
+      <span className="text-left break-words whitespace-normal">
+        {children}
+      </span>
       <svg
-        className="w-[22px] h-[22px] transition-transform duration-200"
+        className="w-[22px] h-[22px] shrink-0 transition-transform duration-200 mt-1"
         fill="none"
       >
         <path
@@ -59,8 +61,10 @@ export const AccordionTrigger = React.forwardRef<
           strokeLinejoin="round"
         />
       </svg>
-    </AccordionPrimitive.Trigger>
-  </AccordionPrimitive.Header>
+    </div>
+  </AccordionPrimitive.Trigger>
+</AccordionPrimitive.Header>
+
 ))
 AccordionTrigger.displayName = "AccordionTrigger"
 

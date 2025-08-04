@@ -1,6 +1,6 @@
 import { useTranslation } from '@/hooks/useTranslation';
 
-export const NavigationMenu = () => {
+const NavigationMenu = () => {
 
   const { t } = useTranslation();
 
@@ -14,4 +14,6 @@ export const NavigationMenu = () => {
     </div>
   )
 }
+
+export default NavigationMenu;
 

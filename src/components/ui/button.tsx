@@ -61,7 +61,7 @@ const shapes = {
 
 // Button component definition
 
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   className,
   variant = "primary-primary",
   size = "lg",
@@ -83,4 +83,6 @@ export const Button: React.FC<ButtonProps> = ({
       {...props}
     />
   );
-};
+}
+
+export default Button;
