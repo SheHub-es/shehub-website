@@ -210,23 +210,27 @@
   --color-card-white-bg-hover: #fefefe;
   --color-card-white-icon: #7858ff;
   --color-card-white-title: #0e0e0e;
-  --color-card-white-text: #6d6d6d;
+  --color-card-white-description: #6d6d6d;
 
   --color-card-clickable-purple-bg-default: #b9b1ff;
   --color-card-clickable-purple-bg-hover: #d6d4ff;
 
   --color-card-non-clickable-purple-bg: #7858ff;
-  --color-card-non-clickable-purple-text: #ffffff;
+  --color-card-non-clickable-purple-title: #ffffff;
+  --color-card-non-clickable-purple-description: #ffffff;
   --color-card-non-clickable-purple-icon: #0e0e0e;
 
   --color-card-non-clickable-light-purple-bg: #d6d4ff;
-  --color-card-non-clickable-light-purple-text: #0e0e0e;
+  --color-card-non-clickable-light-purple-title: #0e0e0e;
+  --color-card-non-clickable-light-purple-description: #0e0e0e;
   --color-card-non-clickable-light-purple-icon: #7858ff;
 
   --color-card-bg-disabled: #e7e7e7;
 
-  --color-card-shadow-default: 0px 4px 16px rgba(0, 0, 0, 0.08);
-  --color-card-shadow-hover: 0px 4px 16px rgba(0, 0, 0, 0.16);
+  --color-card-focus: #b9b1ff;
+
+  --color-card-shadow-default: 0px 4px 16px rgba(14, 14, 14, 0.08);
+  --color-card-shadow-hover: 0px 4px 16px rgba(14, 14, 14, 0.16);
 
   /* Image Placeholder */
   --color-image-container-bg: #d6d4ff;

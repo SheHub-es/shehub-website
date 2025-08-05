@@ -1,5 +1,7 @@
 "use client";
+import { Heart } from 'lucide-react'
 
+import { Card } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -7,10 +9,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Toggle } from "@/components/ui/toggle";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { Language } from "@/translations/types";
+import Toggle from '@/components/ui/toggle';
 
 const TestSection = () => {
   const { t } = useTranslation();
@@ -33,21 +35,16 @@ const TestSection = () => {
           </SelectContent>
         </Select>
       </div>
-      <div>
-        <button className="bg-[image:var(--color-button-bg-gradient)] text-button-primary-primary-text hover:bg-button-primary-primary-bg-hover focus:bg-button-primary-primary-bg-focus hover:text-button-primary-primary-text-hover p-1 ml-2"> Esto es un botón de prueba </button>
-      </div>
       <div className="flex justify-center">
-        <Toggle
-          options={[
-            { label: "ES", value: "es" },
-            { label: "EN", value: "en" },
-            { label: "CA", value: "ca" },
-          ]}
-          selected={language}
-          onChange={(value: string) => setLanguage(value as Language)}
-        />
       </div>
-
+        <Card
+        /*icon={<Heart size={44}/>}*/
+        title="Card"
+        description="No es clickeable"
+        type="nonClickable"
+        color="purple"
+        radius="sm"
+      />
     </section>
   );
 };
