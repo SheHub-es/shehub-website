@@ -1,9 +1,9 @@
-import SectionWrapper from '@/components/layout/SectionWrapper/SectionWrapper'
+import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper'
 
 export const ValuePropositionSection = () => {
   return (
-    <SectionWrapper className='gap-16 grid min-h-[1070px]'>
-        <div>ValuePropositionSection</div>
+    <SectionWrapper id="value-proposition" className='gap-16 grid text-black min-h-[1070px] bg-gray-100'>
+        <h2>Value Proposition Section</h2>
     </SectionWrapper>
   )
 }

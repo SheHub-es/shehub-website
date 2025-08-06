@@ -5,19 +5,20 @@ const NavigationMenu = () => {
   const { t } = useTranslation();
 
   const navItems = [
-    { key: 'menu.item-1' },
-    { key: 'menu.item-2' },
-    { key: 'menu.item-3' },
-    { key: 'menu.item-4' },
-    { key: 'menu.item-5' },
+    { key: 'menu.item-1', href: '#collaborators' },
+    { key: 'menu.item-2', href: '#mentors' },
+    { key: 'menu.item-3', href: '#about' },
+    { key: 'menu.item-4', href: '#partners' },
+    { key: 'menu.item-5', href: '#contact' },
   ];
 
   return (
     <div className="flex gap-[32px]">
-      {navItems.map(({ key }) => (
+      {navItems.map(({ key, href }) => (
         <a 
           key={key} 
-          className="flex-1 whitespace-nowrap cursor-pointer nav-item hover:text-[var(--color-navigationmenu-hover)] focus:outline-none focus:ring-4 focus:ring-[var(--color-navigationmenu-focus-outline)] focus:rounded-md"
+          href={href}
+          className="flex-1 whitespace-nowrap cursor-pointer nav-item text-black hover:text-[var(--color-navigationmenu-hover)]"
           tabIndex={0}
         >
           {t(key)}
@@ -27,5 +28,4 @@ const NavigationMenu = () => {
   )
 }
 
-export default NavigationMenu;
-
+export default NavigationMenu

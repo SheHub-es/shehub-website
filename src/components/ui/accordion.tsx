@@ -37,7 +37,7 @@ export const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >(({ children, ...props }, ref) => (
-  <AccordionPrimitive.Header tabIndex={0} className="focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-accordion-focus-area)] focus-visible:rounded-md">
+  <AccordionPrimitive.Header>
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
@@ -85,4 +85,3 @@ export const AccordionContent = React.forwardRef<
   />
 ))
 AccordionContent.displayName = "AccordionContent"
-

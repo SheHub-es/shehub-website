@@ -1,9 +1,9 @@
-import SectionWrapper from '@/components/layout/SectionWrapper/SectionWrapper'
+import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper'
 
 export const FAQsSection = () => {
   return (
-    <SectionWrapper className='gap-20 grid min-h-[1472px] bg-gray-100'>
-        <div>FAQsSection</div>
+    <SectionWrapper id="faq" className="gap-20 grid min-h-[1472px] text-black">
+      <h2>FAQs Section</h2>
     </SectionWrapper>
   )
 }

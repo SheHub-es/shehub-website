@@ -1,9 +1,9 @@
-import SectionWrapper from '@/components/layout/SectionWrapper/SectionWrapper'
+import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper'
 
 export const CTASection = () => {
   return (
-    <SectionWrapper className='gap-12 grid min-h-[376px]'>
-        <div>CTASection</div>
+    <SectionWrapper id="contact" className="gap-12 grid text-black min-h-[376px] bg-gray-100">
+      <h2>CTA Section</h2>
     </SectionWrapper>
   )
 }
