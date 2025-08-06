@@ -41,12 +41,11 @@ export const Avatar = ({
         sizeClasses[size],
         disabled && 'grayscale cursor-not-allowed',
         className
-    )  
+    );
 
     const wrapperStyles = clsx(
-        'rounded-full',
+        'rounded-full focus:outline-none focus:ring-4 focus:ring-[var(--color-avatar-default-border-focus)]',
         sizeClasses[size],
-        !disabled && 'hover:ring-[4px] hover:ring-[var(--color-purple-300)]'
     );
 
     const bgColor = 'var(--color-purple-500)';
@@ -54,7 +53,7 @@ export const Avatar = ({
     switch (type) {
         case 'initials':
             return (
-                <div className={clsx(commonStyles, wrapperStyles)} style={{ backgroundColor: bgColor, color: 'white' }}>
+                <div className={clsx(commonStyles, wrapperStyles)} style={{ backgroundColor: bgColor, color: 'white' }} tabIndex={0}>
                     {initials}
                 </div>
             )
