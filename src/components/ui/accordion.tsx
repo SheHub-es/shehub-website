@@ -37,12 +37,13 @@ export const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >(({ children, ...props }, ref) => (
-  <AccordionPrimitive.Header>
+  <AccordionPrimitive.Header tabIndex={0} className="focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-accordion-focus-area)] focus-visible:rounded-md">
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
         "w-full text-[20px] leading-[24px] tracking-[0] font-bold transition-all [&[data-state=open]>svg]:rotate-180 pt-[20px] pb-[20px]"
       )}
+      tabIndex={0}
       {...props}
     >
     <div className="flex w-full justify-between items-start gap-4">

@@ -54,7 +54,7 @@ const ImagePlaceholder = ({
 }: ImagePlaceholderProps) => {
 
     const commonStyles = clsx(
-        'overflow-hidden hover:ring-[4px] hover:ring-[var(--color-purple-300)]',
+        'overflow-hidden focus:outline-none focus:ring-4 focus:ring-[var(--color-purple-300)]',
         sizeClasses[size],
         cornerClasses[corner],
         iconSizes[size],
@@ -63,7 +63,7 @@ const ImagePlaceholder = ({
     const imageRounding = cornerClasses[corner] 
 
 return (
-    <div className={clsx(commonStyles)}>
+    <div className={clsx(commonStyles)} tabIndex={0}>
         {imageUrl ? 
             <img
                 src={imageUrl}

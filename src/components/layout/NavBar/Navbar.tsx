@@ -20,8 +20,7 @@ export const Navbar = () =>  {
   
   return (
     <SectionWrapper>
-      <div className="w-[1248px] h-[92px] flex justify-between items-center px-[32px] py-[24px] rounded-[24px] bg-white shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]
-">
+      <div className="w-[1248px] h-[92px] flex justify-between items-center px-[32px] py-[24px] rounded-[24px] bg-white shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]">
         <SheHubLogo/>
         <NavigationMenu/>
         <div className="flex items-center gap-[24px]">
