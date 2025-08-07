@@ -43,6 +43,7 @@ export const AccordionTrigger = React.forwardRef<
       className={cn(
         "w-full text-[20px] leading-[24px] tracking-[0] font-bold transition-all [&[data-state=open]>svg]:rotate-180 pt-[20px] pb-[20px]"
       )}
+      tabIndex={0}
       {...props}
     >
     <div className="flex w-full justify-between items-start gap-4">
@@ -84,4 +85,3 @@ export const AccordionContent = React.forwardRef<
   />
 ))
 AccordionContent.displayName = "AccordionContent"
-

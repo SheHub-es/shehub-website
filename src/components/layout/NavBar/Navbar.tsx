@@ -1,5 +1,5 @@
-import { SheHubLogo } from "@/components/icons/custom/SheHubLogo";
-import SectionWrapper from "@/components/layout/SectionWrapper/SectionWrapper";
+import SheHubLogo from "@/components/icons/custom/SheHubLogo";
+import SectionWrapper from "@/components/layout/section-wrapper/SectionWrapper";
 import Button from "@/components/ui/button";
 import NavigationMenu from "@/components/ui/navigation-menu";
 import Toggle from "@/components/ui/toggle";
@@ -20,8 +20,7 @@ export const Navbar = () =>  {
   
   return (
     <SectionWrapper>
-      <div className="w-[1248px] h-[92px] flex justify-between items-center px-[32px] py-[24px] rounded-[24px] bg-white shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]
-">
+      <div className="fixed w-[1248px] h-[92px] z-50 flex justify-between items-center px-[32px] py-[24px] rounded-[24px] bg-white shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]">
         <SheHubLogo/>
         <NavigationMenu/>
         <div className="flex items-center gap-[24px]">
@@ -31,7 +30,7 @@ export const Navbar = () =>  {
             selected={language}
             onChange={(value: string) => setLanguage(value as Language)}
           />
-          <Button variant="primary-primary" size="sm" shape="rounded" className="rounded-full min-w-[180px]">
+          <Button variant="gradient" size="sm" shape="rounded" className="rounded-full min-w-[180px]">
             {t("menu_button.button")}
           </Button>
         </div>
