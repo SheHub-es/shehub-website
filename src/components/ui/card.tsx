@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const cardVariants = cva(
-    'transition-all box-border focus-visible:outline-none',
+    'transition-all box-border',
     {
         variants: {
             type: {
@@ -11,9 +11,6 @@ const cardVariants = cva(
                     [
                         'w-[296px] inline-flex', 'items-center', 'justify-center',
                         'gap-7', 'p-6', 'cursor-pointer',
-                        'focus-visible:ring-2',
-                        'focus-visible:ring-[var(--color-card-focus)]',
-                        'focus-visible:ring-offset-2'
                     ].join(' '),
                 nonClickable: ['flex flex-col items-start gap-7 p-10 w-[308px]',
                 ].join(' '),
@@ -28,7 +25,6 @@ const cardVariants = cva(
             state: {
                 default: 'shadow-[var(--color-card-shadow-default)]',
                 hover: 'hover:shadow-[var(--color-card-shadow-hover)]',
-                focus: 'outline outline-2 outline-[var(--color-card-focus)]',
                 disabled:
                     'bg-[var(--color-card-bg-disabled)] text-gray-400 opacity-50 pointer-events-none cursor-not-allowed'
             },
@@ -53,7 +49,7 @@ const cardVariants = cva(
                     'bg-[var(--color-card-white-bg-default)]',
                     'text-[var(--color-card-white-text)]',
                     'hover:bg-[var(--color-card-white-bg-hover)]',
-                    'hover:shadow-[var(--color-card-shadow-hover)]' 
+                    'hover:shadow-[var(--color-card-shadow-hover)]'
                 ].join(' ')
             },
 
@@ -64,7 +60,7 @@ const cardVariants = cva(
                     'bg-[var(--color-card-clickable-purple-bg-default)]',
                     'text-white',
                     'hover:bg-[var(--color-card-clickable-purple-bg-hover)]',
-                    'hover:shadow-[var(--color-card-shadow-hover)]' 
+                    'hover:shadow-[var(--color-card-shadow-hover)]'
                 ].join(' ')
             },
 
@@ -182,7 +178,7 @@ type BaseProps = React.HTMLAttributes<HTMLDivElement> & {
     title?: string;
     description?: string;
     color?: 'white' | 'purple' | 'lightPurple';
-    state?: 'default' | 'hover' | 'focus' | 'disabled';
+    state?: 'default' | 'hover' | 'disabled';
     radius?: 'sm' | 'md' | 'lg';
 };
 
@@ -218,7 +214,7 @@ export const Card: React.FC<CardProps> = (props) => {
             {...rest}
         >
             {type === 'nonClickableWithIcon' && icon && (
-                <div className={cn('text-5xl mb-6 w-[44px] h-[44px]', cardIconVariants({ color }))}>
+                <div className={cn('mb-6', cardIconVariants({ color }))}>
                     {icon}
                 </div>
             )}

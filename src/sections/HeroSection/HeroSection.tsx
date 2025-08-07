@@ -1,16 +1,21 @@
-import SectionWrapper from '@/components/layout/SectionWrapper/SectionWrapper'
-import Avatar from '@/components/ui/avatar'
-import ImagePlaceholder from '@/components/ui/image-placeholders'
+import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper';
+import { Card } from '@/components/ui/card';
+import { Icon } from '@/components/ui/icon';
+import { Globe, Info, Linkedin } from 'lucide-react';
 
-export const HeroSection = () => {
+const HeroSection = () => {
   return (
-    <SectionWrapper className='gap-20 grid min-h-[962px] bg-gray-100'>
-        <div>HeroSection</div>
-        <Avatar type="initials" size="xl" initials="SH" disabled/>
-        <div style={{display:'flex', gap: '10px'}}>
-        <ImagePlaceholder size="sm" corner="topRight" loading />
-        <ImagePlaceholder size="sm" corner="bottomLeft" imageUrl='https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d' />
-    </div>
+    <SectionWrapper id="hero" className="gap-20 grid min-h-[716px] text-black mt-10">
+      <h2>Hero Section</h2>
+      <Card
+        type='nonClickableWithIcon'
+        title='Este texto'
+        description='Este texto es simulado para probar el elemento'
+        icon={
+          <Icon icon={Info} size="2xl" aria-label='Info icon'/>
+        }
+        color='lightPurple'
+        />
     </SectionWrapper>
   )
 }
