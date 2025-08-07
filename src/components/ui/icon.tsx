@@ -37,7 +37,6 @@ export const Icon: React.FC<IconProps> = ({
             onClick={onClick}
             className={clsx(
                 "flex items-center justify-center rounded-full",
-                "text-[var(--color-icon-default)]",
                 interactive &&
                 "cursor-pointer hover:text-[var(--color-icon-hover)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-icon-hover)]",
                 className
