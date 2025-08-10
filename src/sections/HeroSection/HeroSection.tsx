@@ -1,6 +1,7 @@
 import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper';
+import { Card } from '@/components/ui/card';
 import { Icon } from '@/components/ui/icon';
-import { Globe, Linkedin } from 'lucide-react';
+import { Globe, Info, Linkedin } from 'lucide-react';
 
 const HeroSection = () => {
   return (
