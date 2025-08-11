@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "@/components/layout/navbar/Navbar";
+import Navbar from "@/components/layout/NavBar/Navbar";
 import CollaboratorsSection from "@/sections/CollaboratorsSection/CollaboratorsSection";
 import CTASection from "@/sections/CTASection/CTASection";
 import FAQsSection from "@/sections/FAQsSection/FAQsSection";
