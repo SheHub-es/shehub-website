@@ -11,12 +11,16 @@ const cardVariants = cva(
             type: {
                 clickable:
                     [
-                        'w-[296px] inline-flex', 'items-center', 'justify-center',
-                        'gap-7', 'p-6', 'cursor-pointer',
+                        'w-[13.5rem] h-[7rem] inline-flex', 'items-center', 'justify-center',
+                        'gap-7', 'p-[1.5rem]', 'cursor-pointer',
                     ].join(' '),
-                nonClickable: ['flex flex-col items-start gap-7 p-10 w-[308px]',
+                nonClickable: ['flex flex-col items-start gap-2.5 p-10 w-[18.5rem] h-[14.25rem]',
                 ].join(' '),
-                nonClickableWithIcon: ['flex flex-col items-start gap-7 p-10 w-[388px]'
+                nonClickableWithIcon: ['flex flex-col items-start gap-7 p-10 w-[24.25rem] h-[20rem]'
+                ].join(' '),
+                nonClickableWithIconAndCorner: ['flex flex-col items-start gap-7 p-8 w-auto h-auto '
+                ].join(' '),
+                nonClickableWithAvatarAndCorner: ['flex flex-col items-start gap-7 px-8 py-6 w-[11.25rem]'
                 ].join(' ')
             },
             color: {
@@ -34,6 +38,12 @@ const cardVariants = cva(
                 sm: 'rounded-[34px]',
                 md: 'rounded-[48px]',
                 lg: 'rounded-[64px]'
+            },
+            corner: {
+                tl: 'rounded-tl-[4px] rounded-tr-[48px] rounded-br-[48px] rounded-bl-[48px]',
+                tr: 'rounded-tr-[4px] rounded-tl-[48px] rounded-br-[48px] rounded-bl-[48px]',
+                bl: 'rounded-bl-[4px] rounded-tl-[48px] rounded-tr-[48px] rounded-br-[48px]',
+                br: 'rounded-br-[4px] rounded-tl-[48px] rounded-tr-[48px] rounded-bl-[48px]',
             }
         },
         compoundVariants: [
@@ -83,7 +93,7 @@ const cardVariants = cva(
                 ].join(' ')
             },
             {
-                type: ['nonClickable', 'nonClickableWithIcon'],
+                type: ['nonClickable', 'nonClickableWithIcon', 'nonClickableWithIconAndCorner', 'nonClickableWithAvatarAndCorner'],
                 color: 'white',
                 class: [
                     'bg-[var(--color-card-white-bg-default)]',
@@ -105,20 +115,15 @@ const cardContentVariants = cva('flex flex-col text-left', {
         type: {
             clickable: 'gap-2',
             nonClickable: 'gap-3',
-            nonClickableWithIcon: 'gap-4'
+            nonClickableWithIcon: 'gap-4',
+            nonClickableWithIconAndCorner: 'gap-2',
+            nonClickableWithAvatarAndCorner: 'gap-2'
         },
         hasIcon: {
-            true: 'mt-2',
+            true: '',
             false: ''
         }
     },
-    compoundVariants: [
-        {
-            type: 'nonClickableWithIcon',
-            hasIcon: true,
-            class: 'gap-5 mt-4'
-        }
-    ],
     defaultVariants: {
         type: 'clickable',
         hasIcon: false
@@ -130,7 +135,9 @@ const cardTitleVariants = cva('font-heavy', {
         type: {
             clickable: 'text-size-500',
             nonClickable: 'text-size-900 font-primary',
-            nonClickableWithIcon: 'text-size-500 font-secondary'
+            nonClickableWithIcon: 'text-size-500 font-secondary',
+            nonClickableWithIconAndCorner: 'text-size-900 font-primary',
+            nonClickableWithAvatarAndCorner: 'text-size-900 font-primary'
         },
         color: {
             white: 'text-[var(--color-card-white-title)]',
@@ -151,12 +158,26 @@ const cardDescriptionVariants = cva(
     ].join(' '),
     {
         variants: {
+            type: {
+                clickable: '',
+                nonClickable: '',
+                nonClickableWithIcon: '',
+                nonClickableWithIconAndCorner: '',
+                nonClickableWithAvatarAndCorner: '',
+            },
             color: {
                 white: 'text-[var(--color-card-white-description)]',
                 purple: 'text-[var(--color-card-non-clickable-purple-description)]',
                 lightPurple: 'text-[var(--color-card-non-clickable-light-purple-description)]'
             }
         },
+        compoundVariants: [
+            {
+                type: ['nonClickableWithIconAndCorner', 'nonClickableWithAvatarAndCorner'],
+                color: 'white',
+                class: 'text-[var(--color-card-white-title)]'
+            },
+        ],
         defaultVariants: {
             color: 'white'
         }
@@ -169,12 +190,13 @@ type BaseProps = React.HTMLAttributes<HTMLDivElement> & {
     color?: 'white' | 'purple' | 'lightPurple';
     state?: 'default' | 'hover' | 'disabled';
     radius?: 'sm' | 'md' | 'lg';
+    corner?: Corner;
 };
 
 type IconCardProps = BaseProps & {
-    type: 'nonClickableWithIcon';
+    type: 'nonClickableWithIcon' | 'nonClickableWithIconAndCorner';
     icon: React.FC<LucideProps>;
-    iconArielLabel?:string;
+    iconArielLabel?: string;
 };
 
 type SimpleCardProps = BaseProps & {
@@ -182,7 +204,15 @@ type SimpleCardProps = BaseProps & {
     icon?: never;
 };
 
-export type CardProps = IconCardProps | SimpleCardProps;
+type Corner = 'tl' | 'tr' | 'bl' | 'br';
+
+type AvatarCardProps = BaseProps & {
+    type: 'nonClickableWithAvatarAndCorner';
+    avatars: React.ReactNode;
+    icon?: never;
+};
+
+export type CardProps = IconCardProps | SimpleCardProps | AvatarCardProps;
 
 export const Card: React.FC<CardProps> = (props) => {
     const {
@@ -190,34 +220,49 @@ export const Card: React.FC<CardProps> = (props) => {
         color = 'white',
         state = 'default',
         radius = 'md',
+        corner,
         title,
         description,
         icon,
         className,
         ...rest
-    } = props;
+    } = props as any;
 
     return (
         <div
             tabIndex={type === 'clickable' && state !== 'disabled' ? 0 : -1}
-            className={cn(cardVariants({ type, color, state, radius }), className)}
+            className={cn(cardVariants({ type, color, state, radius, corner }), className)}
             {...rest}
         >
-            {type === 'nonClickableWithIcon' && icon && (
-                <div className="mb-6">
-                    <Icon icon={icon} size="2xl" aria-label={props.iconArielLabel ?? 'Card icon'} />
+            {(type === 'nonClickableWithIcon' || type === 'nonClickableWithIconAndCorner') && icon && (
+                <div>
+                    <Icon
+                        icon={icon}
+                        size="2xl"
+                        aria-label={(props as any).iconArielLabel ?? 'Card icon'}
+                    />
                 </div>
             )}
 
+            {type === 'nonClickableWithAvatarAndCorner' && (
+                <div>{(props as any).avatars}</div>
+            )}
+
             {(title || description) && (
-                <div className={cn(cardContentVariants({ type, hasIcon: type === 'nonClickableWithIcon' }))}>
+                <div className={cn(cardContentVariants({
+                    type,
+                    hasIcon:
+                        type === 'nonClickableWithIcon' ||
+                        type === 'nonClickableWithIconAndCorner' ||
+                        type === 'nonClickableWithAvatarAndCorner'
+                }))}>
                     {title && (
-                        <h3 className={cardTitleVariants({ type, color })}>
+                        <h3 className={cardTitleVariants({ type: type as any, color })}>
                             {title}
                         </h3>
                     )}
                     {description && (
-                        <p className={cardDescriptionVariants({ color })}>
+                        <p className={cardDescriptionVariants({ color, type })}>
                             {description}
                         </p>
                     )}
