@@ -12,7 +12,7 @@ export const SectionWrapper = ({ children, className, id }: SectionWrapperProps)
       id={id}
       className={`w-full py-10 scroll-mt-[100px] ${className ?? ""}`}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className={`max-w-7xl mx-auto px-6 ${className ?? ""}`}>
         {children}
       </div>
     </section>

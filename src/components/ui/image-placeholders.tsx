@@ -15,6 +15,7 @@ interface ImagePlaceholderProps {
   corner: ImageCorner;
   imageUrl?: string;
   loading?: boolean;
+  className?: string;
 }
 
 const sizeClasses: Record<ImageSize, string> = {
@@ -46,6 +47,7 @@ const ImagePlaceholder = ({
   corner,
   imageUrl,
   loading,
+  className
 }: ImagePlaceholderProps) => {
   const commonStyles = clsx(
     "overflow-hidden",
