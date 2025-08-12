@@ -4,6 +4,8 @@ import { cn } from '@/lib/utils';
 import { Icon } from '@/components/ui/icon';
 import { LucideProps } from 'lucide-react';
 import Image, { type StaticImageData } from 'next/image';
+import Avatar, { type AvatarSize, type AvatarVariant } from '@/components/ui/avatar';
+
 
 const cardVariants = cva(
     'transition-all box-border',
@@ -18,9 +20,9 @@ const cardVariants = cva(
                 ].join(' '),
                 nonClickableWithIcon: ['flex flex-col items-start gap-7 p-10 w-[24.25rem] h-[20rem]'
                 ].join(' '),
-                nonClickableWithIconAndCorner: ['flex flex-col items-start gap-7 p-8 w-auto h-auto '
+                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-7 p-8 w-auto h-auto '
                 ].join(' '),
-                nonClickableWithAvatarAndCorner: ['flex flex-col items-start gap-7 px-8 py-6 w-[11.25rem]'
+                nonClickableWithAvatarAndCorner: ['flex flex-col items-start self-start gap-7 px-8 py-6 w-[11.25rem]'
                 ].join(' ')
             },
             color: {
@@ -222,9 +224,23 @@ type Corner = 'tl' | 'tr' | 'bl' | 'br';
 
 type AvatarCardProps = BaseProps & {
     type: 'nonClickableWithAvatarAndCorner';
-    avatars: React.ReactNode;
+    avatarsData: AvatarItem[];
+    avatarSize?: AvatarSize;
+    overlap?: boolean;
+    maxAvatars?: number;
     icon?: never;
 };
+
+type AvatarItem = {
+    name: string;
+    imageUrl?: string;
+    initials?: string;
+    disabled?: boolean;
+    variant?: AvatarVariant;
+};
+
+const getInitials = (name: string) =>
+    name.trim().split(/\s+/).map(p => p[0] || '').slice(0, 2).join('').toUpperCase();
 
 export type CardProps = IconCardProps | ClickableCardProps | SimpleCardProps | AvatarCardProps;
 
@@ -274,7 +290,22 @@ export const Card: React.FC<CardProps> = (props) => {
             )}
 
             {type === 'nonClickableWithAvatarAndCorner' && (
-                <div>{(props as any).avatars}</div>
+                <div className={(props as AvatarCardProps).overlap === false ? 'flex space-x-2' : 'flex -space-x-2'}>
+                    {(props as AvatarCardProps).avatarsData
+                        ?.slice(0, (props as AvatarCardProps).maxAvatars ?? Number.POSITIVE_INFINITY)
+                        .map((u, i) => (
+                            <Avatar
+                                key={`${u.name}-${i}`}
+                                type={u.imageUrl ? 'image' : 'initials'}
+                                size={(props as AvatarCardProps).avatarSize ?? 'xs'}
+                                initials={u.imageUrl ? undefined : (u.initials ?? getInitials(u.name))}
+                                imageUrl={u.imageUrl}
+                                disabled={u.disabled}
+                                variant={u.variant}
+                                className="ring-2 ring-white"
+                            />
+                        ))}
+                </div>
             )}
 
             {(type !== 'clickable' && (title || description)) && (
