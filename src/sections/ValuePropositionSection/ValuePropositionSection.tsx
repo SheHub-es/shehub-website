@@ -9,7 +9,7 @@ const valueProps = [
     description:
       "Contributors deliver real features through short and iterative cycles, focusing on learning, value and continuous improvement",
     icon: Rocket,
-    color: "lightPurple",
+    color: "white",
   },
 
   {
@@ -17,7 +17,7 @@ const valueProps = [
     description:
       "Teams include UX/UI, Dev, Product, Marketing, and Data — like in real companies.",
     icon: Users,
-    color: "lightPurple",
+    color: "white",
   },
 
   {
@@ -25,7 +25,7 @@ const valueProps = [
     description:
       "Mentors provide guidance, feedback, and leadership development. They help you feel confident and ready to step into your next role.",
     icon: HeartHandshake,
-    color: "lightPurple",
+    color: "white",
   },
 
   {
@@ -33,7 +33,7 @@ const valueProps = [
     description:
       "Every project is fully remote and part-time, designed to fit around your job, studies, or personal life, so you can grow on your terms.",
     icon: MapPin,
-    color: "lightPurple",
+    color: "white",
   },
 
   {
@@ -41,7 +41,7 @@ const valueProps = [
     description:
       "Contributors never pay to be part of SheHub. Access mentorship, real-world experience, and a supportive tech community — all at zero cost.",
     icon: Gift,
-    color: "lightPurple",
+    color: "white",
   },
 
   {
@@ -49,7 +49,7 @@ const valueProps = [
     description:
       "Collaborators join from different countries and backgrounds, bringing diverse perspectives and creating a global, inclusive team dynamic that mirrors real tech workplaces.",
     icon: Globe2,
-    color: "lightPurple",
+    color: "white",
   },
 
 ];
