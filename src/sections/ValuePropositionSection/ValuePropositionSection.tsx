@@ -58,19 +58,9 @@ export const ValuePropositionSection = () => {
   return (
     <SectionWrapper
       id="value-proposition"
-      className="bg-[#E9E8FF] text-black py-24"
+      className="bg-purple-100 text-black py-24"
     >
-      {/* Heading */}
-
-      <div className="flex flex-col items-center text-center mb-20 gap-4">
-        <h2 className="text-[48px] font-bold font-ubuntu leading-[60px]">
-          Value <span className="text-[var(--color-primary)]">proposition</span>
-        </h2>
-        <p className="text-[20px] leading-[32px] font-nunito max-w-[768px]">
-          SheHub simulates real tech teams, so contributors grow through
-          collaboration, ownership, and mentorship.
-        </p>
-      </div>
+  
 
       {/* Cards */}
 
@@ -82,13 +72,13 @@ export const ValuePropositionSection = () => {
             icon={item.icon} 
             title={item.title}
             description={item.description}
-            color={item.color}
+            color="white"
           />
         ))}
-        
+
       </div>
     </SectionWrapper>
   );
-};
+}; 
 
 export default ValuePropositionSection;
