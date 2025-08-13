@@ -3,7 +3,6 @@ import SectionWrapper from "@/components/layout/section-wrapper/SectionWrapper";
 import { Card } from "@/components/ui/card";
 
 const valueProps = [
-
   {
     title: "Real projects",
     description:
@@ -11,7 +10,6 @@ const valueProps = [
     icon: Rocket,
     color: "white",
   },
-
   {
     title: "Cross-functional teams",
     description:
@@ -19,7 +17,6 @@ const valueProps = [
     icon: Users,
     color: "white",
   },
-
   {
     title: "Networking & Mentorship",
     description:
@@ -27,7 +24,6 @@ const valueProps = [
     icon: HeartHandshake,
     color: "white",
   },
-
   {
     title: "Remote & Flexible",
     description:
@@ -35,7 +31,6 @@ const valueProps = [
     icon: MapPin,
     color: "white",
   },
-
   {
     title: "Free",
     description:
@@ -43,7 +38,6 @@ const valueProps = [
     icon: Gift,
     color: "white",
   },
-
   {
     title: "International environment",
     description:
@@ -51,34 +45,30 @@ const valueProps = [
     icon: Globe2,
     color: "white",
   },
-
 ];
 
 export const ValuePropositionSection = () => {
   return (
     <SectionWrapper
       id="value-proposition"
-      className="bg-purple-100 text-black py-24"
+      className="bg-purple-100 text-black py-16 px-4 sm:px-6 lg:px-8"
     >
-  
-
-      {/* Cards */}
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {valueProps.map((item, index) => (
-          <Card
-            key={index}
-            type="nonClickableWithIcon"
-            icon={item.icon} 
-            title={item.title}
-            description={item.description}
-            color="white"
-          />
+          <div key={index} className="flex justify-center">
+            <Card
+              type="nonClickableWithIcon"
+              icon={item.icon}
+              title={item.title}
+              description={item.description}
+              color="white"
+              className="w-full max-w-sm"
+            />
+          </div>
         ))}
-
       </div>
     </SectionWrapper>
   );
-}; 
+};
 
 export default ValuePropositionSection;
