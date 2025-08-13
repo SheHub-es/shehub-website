@@ -3,6 +3,9 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import { Icon } from '@/components/ui/icon';
 import { LucideProps } from 'lucide-react';
+import Image, { type StaticImageData } from 'next/image';
+import Avatar, { type AvatarSize, type AvatarVariant } from '@/components/ui/avatar';
+
 
 const cardVariants = cva(
     'transition-all box-border',
@@ -11,16 +14,15 @@ const cardVariants = cva(
             type: {
                 clickable:
                     [
-                        'w-[13.5rem] h-[7rem] inline-flex', 'items-center', 'justify-center',
-                        'gap-7', 'p-[1.5rem]', 'cursor-pointer',
+                        'w-[13.5rem] h-[7rem] inline-flex items-center justify-center gap-7 p-8 cursor-pointer !rounded-[8px]',
                     ].join(' '),
                 nonClickable: ['flex flex-col items-start gap-2.5 p-10 w-[18.5rem] h-[14.25rem]',
                 ].join(' '),
                 nonClickableWithIcon: ['flex flex-col items-start gap-7 p-10 w-[24.25rem] h-[20rem]'
                 ].join(' '),
-                nonClickableWithIconAndCorner: ['flex flex-col items-start gap-7 p-8 w-auto h-auto '
+                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-7 p-8 w-auto h-auto '
                 ].join(' '),
-                nonClickableWithAvatarAndCorner: ['flex flex-col items-start gap-7 px-8 py-6 w-[11.25rem]'
+                nonClickableWithAvatarAndCorner: ['flex flex-col items-start self-start gap-7 px-8 py-6 w-[11.25rem]'
                 ].join(' ')
             },
             color: {
@@ -35,7 +37,7 @@ const cardVariants = cva(
                     'bg-[var(--color-card-bg-disabled)] text-gray-400 opacity-50 pointer-events-none cursor-not-allowed'
             },
             radius: {
-                sm: 'rounded-[34px]',
+                sm: 'rounded-[32px]',
                 md: 'rounded-[48px]',
                 lg: 'rounded-[64px]'
             },
@@ -193,10 +195,24 @@ type BaseProps = React.HTMLAttributes<HTMLDivElement> & {
     corner?: Corner;
 };
 
+type ClickableCardProps = {
+    type: 'clickable';
+    color?: 'white' | 'purple' | 'lightPurple';
+    state?: 'default' | 'hover' | 'disabled';
+    radius?: 'sm' | 'md' | 'lg';
+    corner?: never;
+    title?: never;
+    description?: never;
+    icon?: never;
+    avatars?: never;
+    logoSrc: string | StaticImageData;
+    logoAlt?: string;
+};
+
 type IconCardProps = BaseProps & {
     type: 'nonClickableWithIcon' | 'nonClickableWithIconAndCorner';
     icon: React.FC<LucideProps>;
-    iconArielLabel?: string;
+    iconArialLabel?: string;
 };
 
 type SimpleCardProps = BaseProps & {
@@ -208,11 +224,25 @@ type Corner = 'tl' | 'tr' | 'bl' | 'br';
 
 type AvatarCardProps = BaseProps & {
     type: 'nonClickableWithAvatarAndCorner';
-    avatars: React.ReactNode;
+    avatarsData: AvatarItem[];
+    avatarSize?: AvatarSize;
+    overlap?: boolean;
+    maxAvatars?: number;
     icon?: never;
 };
 
-export type CardProps = IconCardProps | SimpleCardProps | AvatarCardProps;
+type AvatarItem = {
+    name: string;
+    imageUrl?: string;
+    initials?: string;
+    disabled?: boolean;
+    variant?: AvatarVariant;
+};
+
+const getInitials = (name: string) =>
+    name.trim().split(/\s+/).map(p => p[0] || '').slice(0, 2).join('').toUpperCase();
+
+export type CardProps = IconCardProps | ClickableCardProps | SimpleCardProps | AvatarCardProps;
 
 export const Card: React.FC<CardProps> = (props) => {
     const {
@@ -234,6 +264,21 @@ export const Card: React.FC<CardProps> = (props) => {
             className={cn(cardVariants({ type, color, state, radius, corner }), className)}
             {...rest}
         >
+
+            {type === 'clickable' && (
+                <div
+                    aria-label={(props as ClickableCardProps).logoAlt ?? 'Logo'}
+                    className=" relative w-full h-full overflow-hidden flex items-center justify-center [&_img]:max-w-full [&_img]:max-h-full [&_img]:h-auto"
+                >
+                    <Image
+                        src={(props as ClickableCardProps).logoSrc}
+                        alt={(props as ClickableCardProps).logoAlt ?? 'Logo'}
+                        fill
+                        className="object-contain"
+                    />
+                </div>
+            )}
+
             {(type === 'nonClickableWithIcon' || type === 'nonClickableWithIconAndCorner') && icon && (
                 <div>
                     <Icon
@@ -245,10 +290,25 @@ export const Card: React.FC<CardProps> = (props) => {
             )}
 
             {type === 'nonClickableWithAvatarAndCorner' && (
-                <div>{(props as any).avatars}</div>
+                <div className={(props as AvatarCardProps).overlap === false ? 'flex space-x-2' : 'flex -space-x-2'}>
+                    {(props as AvatarCardProps).avatarsData
+                        ?.slice(0, (props as AvatarCardProps).maxAvatars ?? Number.POSITIVE_INFINITY)
+                        .map((u, i) => (
+                            <Avatar
+                                key={`${u.name}-${i}`}
+                                type={u.imageUrl ? 'image' : 'initials'}
+                                size={(props as AvatarCardProps).avatarSize ?? 'xs'}
+                                initials={u.imageUrl ? undefined : (u.initials ?? getInitials(u.name))}
+                                imageUrl={u.imageUrl}
+                                disabled={u.disabled}
+                                variant={u.variant}
+                                className="ring-2 ring-white"
+                            />
+                        ))}
+                </div>
             )}
 
-            {(title || description) && (
+            {(type !== 'clickable' && (title || description)) && (
                 <div className={cn(cardContentVariants({
                     type,
                     hasIcon:
