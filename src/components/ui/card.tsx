@@ -16,7 +16,7 @@ const cardVariants = cva(
                     [
                         'w-[13.5rem] h-[7rem] inline-flex items-center justify-center gap-7 p-8 cursor-pointer !rounded-[8px]',
                     ].join(' '),
-                nonClickable: ['flex flex-col items-start gap-2.5 p-10 w-[18.5rem] h-[14.25rem]',
+                nonClickable: ['flex flex-col items-start gap-2.5 p-10 w-[18.5rem]',
                 ].join(' '),
                 nonClickableWithIcon: ['flex flex-col items-start gap-7 p-10 w-[24.25rem] h-[20rem]'
                 ].join(' '),
