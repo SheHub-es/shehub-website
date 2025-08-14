@@ -57,7 +57,7 @@ const CollaboratorsMentorsImagesProps = [
 
 function CollaboratorsMentorsSection() {
   return (
-    <SectionWrapper className="flex flex-col h-[812px] gap-[80px]">
+    <SectionWrapper className="flex flex-col gap-[80px]">
       {CollaboratorsMentorsCopyProps.map((copy, i) => {
         const img = CollaboratorsMentorsImagesProps[i];
         return (
