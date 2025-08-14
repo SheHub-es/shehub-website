@@ -36,36 +36,35 @@ AccordionItem.displayName = "AccordionItem"
 export const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ children, ...props }, ref) => (
+>(({ children, className, ...props }, ref) => (
   <AccordionPrimitive.Header>
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "w-full text-[20px] leading-[24px] tracking-[0] font-bold transition-all [&[data-state=open]>svg]:rotate-180 pt-[20px] pb-[20px]"
+        "group w-full text-[length:var(--text-size-500)] leading-[24px] tracking-[0] font-[var(--font-weight-heavy)] pt-[20px] pb-[20px]",
+        className
       )}
-      tabIndex={0}
       {...props}
     >
-    <div className="flex w-full justify-between items-start gap-4">
-      <span className="text-left break-words whitespace-normal">
-        {children}
-      </span>
-      <svg
-        className="w-[22px] h-[22px] shrink-0 transition-transform duration-200 mt-1"
-        fill="none"
-      >
-        <path
-          d="M6 9l6 6 6-6"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </div>
-  </AccordionPrimitive.Trigger>
-</AccordionPrimitive.Header>
-
+      <div className="flex w-full justify-between items-start gap-4">
+        <span className="text-left break-words whitespace-normal">
+          {children}
+        </span>
+        <svg
+          className="w-[22px] h-[22px] shrink-0 transition-transform duration-300 mt-1 group-data-[state=open]:rotate-180"
+          fill="none"
+        >
+          <path
+            d="M6 9l6 6 6-6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+    </AccordionPrimitive.Trigger>
+  </AccordionPrimitive.Header>
 ))
 AccordionTrigger.displayName = "AccordionTrigger"
 
@@ -77,7 +76,7 @@ export const AccordionContent = React.forwardRef<
   <AccordionPrimitive.Content
     ref={ref}
     className={cn(
-      "pb-[24px] gap-[16px] font-normal overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+      "pb-[24px] gap-[16px] font-normal overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down leading-[var(--spacing-line-height-body-2)]",
       className
     )}
     style={{ color: "var(--color-button-disabled-text)" }}
