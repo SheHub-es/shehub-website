@@ -14,7 +14,7 @@ const TextSection = () => {
                     <HeroText />
                 </span>
             </div>
-            <div className="font-[var(--font-weight-default)] leading-[var(--spacing-line-height-body-1)]" style={{ fontFamily: 'var(--font-secondary)' }}>
+            <div className="font-[var(--font-weight-default)] leading-[var(--spacing-line-height-body-1)] text-[length:var(--text-size-500)]" style={{ fontFamily: 'var(--font-secondary)' }}>
                 SheHub connects early-career talent and experienced mentors to work on real-world, collaborative projects that are built and shipped — just like in a tech company.
             </div>
         </div>
