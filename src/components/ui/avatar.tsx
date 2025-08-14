@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import NextImage from "next/image";
+import NextImage, { StaticImageData } from "next/image";
 
 export type AvatarType = "container" | "initials" | "image";
 export type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl";
@@ -11,7 +11,8 @@ interface AvatarProps {
   variant?: AvatarVariant;
   initials?: string;
   disabled?: boolean;
-  imageUrl?: string;
+  imageUrl?: string | StaticImageData;
+  alt?: string;
   className?: string;
 }
 
@@ -52,6 +53,7 @@ export const Avatar = ({
   initials,
   disabled,
   imageUrl,
+  alt = "avatar",
   className,
 }: AvatarProps) => {
   const commonStyles = clsx(
@@ -67,7 +69,9 @@ export const Avatar = ({
   const styles = {
     backgroundColor: disabled
       ? "var(--color-avatar-default-disabled)"
-      : bg,
+      : type === "image"
+        ? "transparent"
+        : bg,
     color:
       variant === "default"
         ? "var(--color-avatar-default-text)"
@@ -85,10 +89,11 @@ export const Avatar = ({
       {type === "image" && imageUrl && (
         <NextImage
           src={imageUrl}
-          alt="avatar"
+          alt={alt}
+          fill
           className="object-cover w-full h-full"
-          width={200}
-          height={200}
+          priority={false}
+          sizes={`${sizeClasses[size]}`}
         />
       )}
     </div>
