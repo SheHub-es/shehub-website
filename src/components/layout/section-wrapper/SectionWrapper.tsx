@@ -1,9 +1,10 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 type SectionWrapperProps = {
   children: React.ReactNode;
   className?: string;
   id?: string;
+  style?: CSSProperties;
 };
 
 export const SectionWrapper = ({ children, className, id }: SectionWrapperProps) => {
