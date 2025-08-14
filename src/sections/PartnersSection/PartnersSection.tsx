@@ -7,6 +7,7 @@ import LogFemcodersClub from '@/assets/images/logos/femcoders-club.png'
 import LogoInnoit from '@/assets/images/logos/innoit.png'
 import LogoGenway from '@/assets/images/logos/genway.png'
 import Image, { StaticImageData } from 'next/image'
+import Button from '@/components/ui/button'
 
 export type Partner = {
   id: string;
@@ -86,6 +87,12 @@ export const PartnersSection = () => {
           ))}
         </div>
       </div>
+      <Button
+      variant='primary-primary'
+      size='sm'
+      shape='rounded'> 
+      Become a partner
+      </Button>
     </SectionWrapper>
   )
 }
