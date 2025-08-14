@@ -1,4 +1,3 @@
-import styles from './impactSection.module.css';
 import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper'
 import { Card } from '@/components/ui/card'
 
@@ -6,22 +5,22 @@ const impactProps = [
   {
     title: "100+",
     description:
-      "women joined the community in our first month"
+      "Women joined the community in our first month"
   },
   {
     title: "3+",
     description:
-      "active teams working across design, dev, product, and more"
+      "Active teams working across design, dev, product, and more"
   },
   {
     title: "760+",
     description:
-      "hours invested by contributors in real workflows"
+      "Hours invested by contributors in real workflows"
   },
   {
     title: "5+",
     description:
-      "interviews landed by contributors in our first month"
+      "Interviews landed by contributors in our first month"
   }
 ]
 
@@ -43,7 +42,7 @@ export const ImpactSection = () => {
             description={item.description}
             color='white'
             radius='lg'
-            className={styles.impactCard}
+            tone='impact'
           />
         ))}
       </div>
