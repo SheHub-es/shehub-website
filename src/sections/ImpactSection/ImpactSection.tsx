@@ -2,7 +2,7 @@ import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper'
 
 export const ImpactSection = () => {
   return (
-    <SectionWrapper id="about" className='gap-14 grid min-h-[584px] text-black'>
+    <SectionWrapper id="about" className="flex flex-col h-[812px]">
         <h2>Impact Section</h2>
     </SectionWrapper>
   )
