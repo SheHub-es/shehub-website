@@ -26,7 +26,7 @@ const impactProps = [
 
 export const ImpactSection = () => {
   return (
-    <SectionWrapper id="our-impact" className='flex flex-col py-24 gap-16 bg-primary'>
+    <SectionWrapper id="our-impact" className='flex flex-col py-14 gap-16 bg-primary'>
       <div className='flex flex-col justify-center items-center gap-4' >
         <h2 className='text-white text-size-900 font-bold font-primary '>Our Impact So Far</h2>
         <p className='font-secondary text-size-500 leading-line-height-body-1 text-white'>
