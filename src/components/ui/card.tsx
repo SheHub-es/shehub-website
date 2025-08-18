@@ -171,6 +171,10 @@ const cardDescriptionVariants = cva(
                 white: 'text-[var(--color-card-white-description)]',
                 purple: 'text-[var(--color-card-non-clickable-purple-description)]',
                 lightPurple: 'text-[var(--color-card-non-clickable-light-purple-description)]'
+            },
+            tone: {
+                default: '',
+                impact: ''
             }
         },
         compoundVariants: [
@@ -179,9 +183,15 @@ const cardDescriptionVariants = cva(
                 color: 'white',
                 class: 'text-[var(--color-card-white-title)]'
             },
+            {
+                tone: 'impact',
+                color: 'white',
+                class: 'text-[var(--color-card-white-title)]'
+            }
         ],
         defaultVariants: {
-            color: 'white'
+            color: 'white',
+            tone: 'default'
         }
     }
 );
@@ -193,6 +203,7 @@ type BaseProps = React.HTMLAttributes<HTMLDivElement> & {
     state?: 'default' | 'hover' | 'disabled';
     radius?: 'sm' | 'md' | 'lg';
     corner?: Corner;
+    tone?: 'default' | 'impact';
 };
 
 type ClickableCardProps = {
@@ -255,6 +266,7 @@ export const Card: React.FC<CardProps> = (props) => {
         description,
         icon,
         className,
+        tone='default',
         ...rest
     } = props as any;
 
@@ -322,7 +334,7 @@ export const Card: React.FC<CardProps> = (props) => {
                         </h3>
                     )}
                     {description && (
-                        <p className={cardDescriptionVariants({ color, type })}>
+                        <p className={cardDescriptionVariants({ color, type, tone })}>
                             {description}
                         </p>
                     )}

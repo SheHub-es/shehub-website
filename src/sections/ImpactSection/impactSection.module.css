@@ -1,9 +1,0 @@
-.impactCard h3 {
-    font-size: var(--text-size-700) !important;
-    line-height: var(--spacing-line-height-heading-4)
-}
-
-.impactCard p {
-    color: var(--color-card-white-title) !important;
-    line-height: var(--spacing-line-height-body-3) !important;
-}
