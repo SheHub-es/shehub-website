@@ -50,8 +50,8 @@ const variants = {
 // Define the sizes and shapes for the button
 
 const sizes = {
-  sm: "h-10 px-4 text-[var(--text-size-400)]",
-  lg: "h-12 px-5 text-[var(--text-size-400)]",
+  sm: "h-10 px-6 py-3 text-[var(--text-size-400)]",
+  lg: "h-12 px-6 py-3 text-[var(--text-size-400)]",
 };
 
 const shapes = {
@@ -73,7 +73,7 @@ const Button: React.FC<ButtonProps> = ({
 
     <button
       className={cn(
-        "inline-flex items-center justify-center font-alt transition-colors focus-square cursor-pointer",
+        "inline-flex items-center justify-center font-secondary transition-colors focus-square cursor-pointer",
         variants[variant],
         sizes[size],
         shapes[shape],
