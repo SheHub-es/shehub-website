@@ -1,4 +1,6 @@
-import NextImage, { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { cn } from "@/lib/cn";
 
 type ImageSectionVariant = "left" | "right";
 
@@ -37,7 +39,9 @@ const floatingImages: FloatingImageProps[] = [
       alt: "Main image",
       width: 297,
       height: 339,
-      className: variant === 'left' ? "absolute top-[22px] left-[32px]" : "absolute top-[255px] left-[288px] z-10",
+      className: variant === 'left' 
+        ? "absolute top-[22px] left-[32px] fade-in" 
+        : "absolute top-[255px] left-[288px] z-10 fade-in",
     },
     {
       src: smallImage,
@@ -65,6 +69,8 @@ const floatingImages: FloatingImageProps[] = [
     }
 ]
 
+  const [mainImageRef, isMainImageVisible] = useIntersectionObserver();
+
   return (
     <div className="relative w-[584px] h-[620px] flex m-auto">
       <div className={`absolute flex z-0 w-[327px] h-[331px] ${
@@ -72,7 +78,7 @@ const floatingImages: FloatingImageProps[] = [
           ? "top-[192px] left-[148px]"
           : "top-[181px] left-[113px]"
       }`}>
-        <NextImage
+        <Image
           src={centralImage}
           alt="Central image"
           width={300}
@@ -82,14 +88,24 @@ const floatingImages: FloatingImageProps[] = [
       </div>
 
       {floatingImages.map((img, idx) => (
-        <NextImage
-          key={idx}
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          className={img.className}
-        />
+        <div key={idx} className={img.className}>
+          <div 
+            ref={idx === 0 ? mainImageRef : undefined}
+            className={cn(
+              "w-full h-full",
+              idx === 0 && "fade-on-scroll",
+              idx === 0 && isMainImageVisible && "visible"
+            )}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              width={img.width || 0}
+              height={img.height || 0}
+              className="w-full h-full"
+            />
+          </div>
+        </div>
       ))}
     </div>
   )

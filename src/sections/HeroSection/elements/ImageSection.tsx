@@ -2,6 +2,8 @@
 import InfoCard from "@/components/ui/hero-info-card";
 import ImagePlaceholder from '@/components/ui/image-placeholders';
 import NextImage from "next/image";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { cn } from "@/lib/cn";
 
 import HeroImage from '../../../assets/images/hero-section-image.jpg';
 import AthenaAvatarGroup from '../../../assets/svg/athena-avatar-group.svg';
@@ -52,15 +54,24 @@ const floatingImages: FloatingImageProps[] = [
 
 
 const ImageSection = () => {
+  const [heroImageRef, isHeroVisible] = useIntersectionObserver();
+
   return (
-   
     <div className="relative z-1 w-[360px] h-[460px] mx-auto">
-        <ImagePlaceholder
-            size="lg"
-            corner="bottomLeft"
-            imageUrl={HeroImage.src}
-            className="w-full h-full rounded-tl-[8px] rounded-tr-[120px] rounded-br-[120px] rounded-bl-[120px]"
-        />
+        <div 
+          ref={heroImageRef}
+          className={cn(
+            "fade-on-scroll",
+            isHeroVisible && "visible"
+          )}
+        >
+          <ImagePlaceholder
+              size="lg"
+              corner="bottomLeft"
+              imageUrl={HeroImage.src}
+              className="w-full h-full rounded-tl-[8px] rounded-tr-[120px] rounded-br-[120px] rounded-bl-[120px]"
+          />
+        </div>
 
         {floatingImages.map((img, idx) => (
             <NextImage
