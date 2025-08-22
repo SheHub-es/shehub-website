@@ -295,7 +295,7 @@ export const Card: React.FC<CardProps> = (props) => {
                 <div>
                     <Icon
                         icon={icon}
-                        size="2xl"
+                        size="xl"
                         aria-label={(props as any).iconArielLabel ?? 'Card icon'}
                     />
                 </div>
