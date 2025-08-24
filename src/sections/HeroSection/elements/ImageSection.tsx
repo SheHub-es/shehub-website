@@ -69,7 +69,6 @@ const ImageSection = () => {
               size="lg"
               corner="bottomLeft"
               imageUrl={HeroImage.src}
-              className="w-full h-full rounded-tl-[8px] rounded-tr-[120px] rounded-br-[120px] rounded-bl-[120px]"
           />
         </div>
 
