@@ -1,14 +1,14 @@
 import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper'
-import { Testimonials, TestimonialsCard } from '@/sections/TestimonialsSection/elements/TestimonialCard'
+import { Review, ReviewCard } from '@/components/ui/review-card'
 import MartaImg from '@/assets/images/Marta-V-avatar.png'
 import LauraImg from '@/assets/images/Laura-Gracia-avatar.png'
 
-const testimonialsData: Testimonials[] = [
+const testimonialsData: Review[] = [
   {
     id: '1',
     image: MartaImg,
-    name:'Marta V., Collaborator',
-    quote:'"Before SheHub, I felt stuck between theory and the real world. Working on an actual product with a supportive team and a mentor who challenged me changed everything. I finally feel ready — and confident — to apply for jobs in tech."',
+    name: 'Marta V., Collaborator',
+    quote: '"Before SheHub, I felt stuck between theory and the real world. Working on an actual product with a supportive team and a mentor who challenged me changed everything. I finally feel ready — and confident — to apply for jobs in tech."',
     role: 'UX/UI Designer'
   },
   {
@@ -34,13 +34,13 @@ export const TestimonialsSection = () => {
         </p>
       </section>
       <div className='grid grid-cols-2 gap-20'>
-        {testimonialsData.map((testimonial) => (
-      <TestimonialsCard
-      key={testimonial.id}
-      testimonial={testimonial} />
+        {testimonialsData.map((review) => (
+          <ReviewCard
+            key={review.id}
+            review={review} />
         ))}
       </div>
-    </SectionWrapper>
+      </SectionWrapper>
   )
 }
 

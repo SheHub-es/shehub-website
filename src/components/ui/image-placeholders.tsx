@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Image as LucideImage } from "lucide-react";
-import NextImage from "next/image";
+import NextImage, { StaticImageData } from "next/image";
 
 export type ImageSize = "sm" | "md" | "lg";
 export type ImageCorner =
@@ -11,11 +11,14 @@ export type ImageCorner =
   | "bottomRight";
 
 interface ImagePlaceholderProps {
-  size: ImageSize;
+  size?: ImageSize;
   corner: ImageCorner;
-  imageUrl?: string;
+  imageUrl?: string | StaticImageData;
   loading?: boolean;
   className?: string;
+  square?: number;
+  customSize?: { width: number; height: number };
+  iconSizePx?: number;
 }
 
 const sizeClasses: Record<ImageSize, string> = {
@@ -43,23 +46,37 @@ const iconSizes: Record<ImageSize, string> = {
 };
 
 const ImagePlaceholder = ({
-  size,
+  size = "sm",
   corner,
   imageUrl,
   loading,
-  className
+  className,
+  square,
+  customSize,
+  iconSizePx,
 }: ImagePlaceholderProps) => {
+  const isCustom = typeof square === "number" || !!customSize;
+  const widthPx = square ?? customSize?.width;
+  const heightPx = square ?? customSize?.height;
+
   const commonStyles = clsx(
     "overflow-hidden",
-    sizeClasses[size],
+    !isCustom && sizeClasses[size],
     cornerClasses[corner],
-    loading && "bg-[var(--color-image-container-bg)]"
+    loading && "bg-[var(--color-image-container-bg)]",
+    className
   );
 
   const imageRounding = cornerClasses[corner];
 
+  const autoIconPx =
+    iconSizePx ??
+    (isCustom
+      ? Math.round(Math.min(widthPx ?? 0, heightPx ?? 0) * 0.35)
+      : iconSizes[size]);
+
   return (
-    <div className={clsx(commonStyles, "relative")} tabIndex={0}>
+    <div className={clsx(commonStyles, "relative")} tabIndex={0} style={isCustom ? {width: widthPx, height: heightPx} : undefined}>
       {imageUrl ? (
         <NextImage
           src={imageUrl}
@@ -78,10 +95,8 @@ const ImagePlaceholder = ({
           <LucideImage
             aria-hidden="true"
             focusable="false"
-            className={clsx(
-              iconSizes[size],
-              "text-[var(--color-image-stroke-icon)]"
-            )}
+            size={autoIconPx}
+            className="text-[var(--color-image-stroke-icon)]"
           />
         </div>
       )}

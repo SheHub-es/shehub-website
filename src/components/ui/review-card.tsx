@@ -1,7 +1,8 @@
 import Avatar from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 import { StaticImageData } from "next/image";
 
-export type Testimonials = {
+export type Review = {
     id: string;
     image: string | StaticImageData;
     name: string;
@@ -9,11 +10,17 @@ export type Testimonials = {
     role: string;
 };
 
-export const TestimonialsCard = ({ testimonial }: { testimonial: Testimonials }) => {
-    const { image, name, quote, role } = testimonial;
+type ReviewCardProps = {
+  review: Review;
+  className?: string;
+  compact?: boolean;
+};
+
+export const ReviewCard: React.FC<ReviewCardProps> = ({ review, className, compact = false }) => {
+    const { image, name, quote, role } = review;
 
     return (
-        <div className="flex flex-col justify-center items-center gap-8 w-[584px]">
+        <div className={cn("flex flex-col justify-center items-center gap-8", compact ? "w-full max-w-[480px]" : "w-[584px]")}>
             <p className="self-stretch text-size-500 font-heavy font-secondary text-black leading-line-height-body-1 text-center">
                 {quote}
             </p>
