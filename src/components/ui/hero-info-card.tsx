@@ -57,16 +57,16 @@ export default function InfoCard({
         </div>
       )}
 
-     <div
+      <div
         className="absolute inset-0 pointer-events-none"
         style={{ zIndex: 10 }}
         aria-hidden="true"
       />
       <div className="relative z-20 flex flex-col gap-[5px] h-full mt-[16px]" >
-        <p className="font-[700] text-[30px] leading-none text-left m-0">
+        <p className="text-black font-[700] text-[30px] leading-none text-left m-0">
           {title}
         </p>
-        <p className="text-[16px] leading-none text-left m-0">
+        <p className="text-[16px] text-black leading-none text-left m-0">
           {subtitle}
         </p>
       </div>

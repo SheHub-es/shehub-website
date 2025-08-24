@@ -16,10 +16,10 @@ interface InfoBlockProps {
 
 const InfoBlock = ({ title, text }: InfoBlockProps) => (
   <div className="flex flex-col flex-1 gap-4">
-    <h3 className="text-[length:var(--text-size-500)] font-[var(--font-weight-heavy)]">
+    <h3 className="text-black text-[length:var(--text-size-500)] font-[var(--font-weight-heavy)]">
       {title}
     </h3>
-    <p className="text-[length:var(--text-size-300)] font-[var(--font-weight-default)] leading-[var(--spacing-line-height-body-3)] font-secondary">
+    <p className="text-black text-[length:var(--text-size-300)] font-[var(--font-weight-default)] leading-[var(--spacing-line-height-body-3)] font-secondary">
       {text}
     </p>
   </div>
@@ -37,20 +37,20 @@ function TextSection({
   return (
      <section className="h-[536px]">
         <div className='flex flex-col gap-4'>
-            <div className="font-[var(--font-weight-heavy)] text-[length:var(--text-size-400)]">
+            <div className="text-black font-[var(--font-weight-heavy)] text-[length:var(--text-size-400)]">
                 {sectionHeading}
             </div>
-            <div className="font-[var(--font-weight-heavy)] text-[length:var(--text-size-900)] leading-[var(--spacing-line-height-heading-2)]">
+            <div className="text-black font-[var(--font-weight-heavy)] text-[length:var(--text-size-900)] leading-[var(--spacing-line-height-heading-2)]">
                 {primaryHeading}
             </div>
-            <div className="font-[var(--font-weight-default)] leading-[var(--spacing-line-height-body-2)] text-[length:var(--text-size-400)] mt-[12px]" style={{ fontFamily: 'var(--font-secondary)' }} >
+            <div className="text-black font-[var(--font-weight-default)] leading-[var(--spacing-line-height-body-2)] text-[length:var(--text-size-400)] mt-[12px]" style={{ fontFamily: 'var(--font-secondary)' }} >
                 {paragraphText}
             </div>
             <div className="flex gap-6 py-4">
                 <InfoBlock title="What You Bring" text={whatYouBringText} />
                 <InfoBlock title="What We Offer" text={whatWeOfferText} />
             </div>
-            <Button variant="secondary-primary" shape="rounded" className="w-[230px]">{buttonText}</Button>
+            <Button variant="secondary-primary" shape="rounded" className="text-black w-[230px]">{buttonText}</Button>
         </div>
     </section>
   )
