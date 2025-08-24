@@ -26,7 +26,7 @@ export default function HowSheHubWorks() {
   ];
 
   return (
-    <section className="bg-background-footer py-24 px-6 font-primary">
+    <section className="text-black bg-background-footer py-24 px-6 font-primary">
 
       <div className="text-center mb-16">
         <p className="text-sm font-bold text-[var(--color-black-text)]">How SheHub works</p>
