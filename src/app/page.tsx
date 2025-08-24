@@ -11,7 +11,7 @@ import PartnersSection from "@/sections/PartnersSection/PartnersSection";
 import TestimonialsSection from "@/sections/TestimonialsSection/TestimonialsSection";
 import ValuePropositionSection from "@/sections/ValuePropositionSection/ValuePropositionSection";
 
-export const Home = () => {
+export default function Home () {
   return (
     <>
       <Navbar/>
@@ -27,5 +27,3 @@ export const Home = () => {
     </>
   )
 }
-
-export default Home
