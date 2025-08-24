@@ -3,11 +3,11 @@
 "use client";
 
 import Link from 'next/link';
-// FIX: Importing the new, dedicated FooterLogo component.
 import AthenaIconInstagram from '@/components/icons/custom/AthenaIconInstagram';
 import AthenaIconLinkedin from '@/components/icons/custom/AthenaIconLinkedin';
 import AthenaIconMail from '@/components/icons/custom/AthenaIconMail';
 import FooterLogo from '@/components/icons/custom/FooterLogo';
+import { Icon } from '@/components/ui/icon';
 
 const navLinks = [
   { href: '/collaborators', label: 'Collaborators' },
@@ -25,9 +25,9 @@ const legalLinks = [
 
 const Footer = () => {
   return (
-    <footer className="font-[var(--font-secondary)] bg-[var(--color-background-footer)] text-[var(--color-foreground)]">
+    <footer className=" bg-[var(--color-background-footer)] text-[var(--color-foreground)]">
       {/* Final version with increased vertical padding (py-20) for more height. */}
-      <div className="container mx-auto max-w-7xl py-20">
+      <div className="container mx-auto max-w-7xl py-20 font-secondary">
         <div className="flex flex-col items-center justify-between gap-y-8 lg:flex-row lg:gap-y-0">
           
           <Link
@@ -40,7 +40,7 @@ const Footer = () => {
           </Link>
 
           <nav aria-label="Main navigation">
-            <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 md:gap-x-6">
+            <ul className="flex flex-wrap items-center justify-center gap-8 text-size-400">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -54,19 +54,33 @@ const Footer = () => {
             </ul>
           </nav>
 
-          <div className="flex shrink-0 items-center gap-6">
+          <div className="flex shrink-0 items-center gap-2 p-2.5">
             <a
               href="mailto:info@shehub.es"
-              className="group flex items-center gap-3 text-base text-[var(--color-purple-700)] underline hover:text-[var(--color-purple-600)]"
+              className="group flex items-center gap-1 text-base text-[var(--color-purple-700)] underline hover:text-[var(--color-purple-600)]"
             >
-              <AthenaIconMail className="h-6 w-6 text-[var(--color-icon-default)] group-hover:text-[var(--color-icon-hover)]" />
-              <span>info@shehub.es</span>
+              <Icon icon={<AthenaIconMail width={24} height={24} /> } className="text-[var(--color-icon-default)] group-hover:text-[var(--color-icon-hover)]"/>
+              <span className='font-secondary text-size-300 mr-4'>info@shehub.es</span>
             </a>
-            <a href="#" aria-label="SheHub on Instagram" className="block transition-opacity hover:opacity-90">
-              <AthenaIconInstagram className="h-6 w-6 text-[var(--color-icon-default)] hover:text-[var(--color-icon-hover)]" />
+
+            <a
+              href="https://instagram.com/shehub"
+              aria-label="SheHub on Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block transition-opacity hover:opacity-90"
+            >
+              <Icon icon={<AthenaIconInstagram width={24} height={24} /> } className="text-[var(--color-icon-default)] group-hover:text-[var(--color-icon-hover)]" />
             </a>
-            <a href="#" aria-label="SheHub on LinkedIn" className="block transition-opacity hover:opacity-90">
-              <AthenaIconLinkedin className="h-6 w-6 text-[var(--color-icon-default)] hover:text-[var(--color-icon-hover)]" />
+
+            <a
+              href="https://www.linkedin.com/company/shehub"
+              aria-label="SheHub on LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block transition-opacity hover:opacity-90"
+            >
+              <Icon icon={<AthenaIconLinkedin width={24} height={24} /> } className="text-[var(--color-icon-default)] group-hover:text-[var(--color-icon-hover)]" />
             </a>
           </div>
         </div>
