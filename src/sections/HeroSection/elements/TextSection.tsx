@@ -32,7 +32,7 @@ const TextSection = () => {
                         variant="secondary-primary"
                         size="sm"
                         shape="rounded"
-                        className="text-black min-w-[188px] min-h-[48px]"
+                        className="text-black min-w-[166px] min-h-[48px]"
                         style={{ fontFamily: 'var(--font-secondary)' }}
                     >
                         Mentor a team
