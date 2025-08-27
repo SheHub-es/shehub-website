@@ -41,7 +41,8 @@ const floatingImages: FloatingImageProps[] = [
     alt: "Star image",
     width: 86,
     height: 86,
-    className: "absolute top-[23px] -right-[60px] -translate-y-1/2"
+    className: "absolute top-[15px] -right-[25px] -translate-y-1/2"
+    
   },
   {
     src: BubblesImage,
