@@ -73,7 +73,7 @@ export const ValuePropositionSection = () => {
               description={item.description}
               color="white"
               radius="lg"
-              className="w-full max-w-sm"
+              className="w-full"
             />
           </div>
         ))}
