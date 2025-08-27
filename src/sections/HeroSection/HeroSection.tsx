@@ -4,7 +4,7 @@ import TextSection from '@/sections/HeroSection/elements/TextSection';
 
 const HeroSection = () => {
   return (
-    <SectionWrapper id="hero" className="w-[1248px] h-[962px] flex flex-row gap-[80px] mt-10">
+    <SectionWrapper id="hero" className="w-[1248px] h-[862px] flex flex-row gap-[80px] mt-10 ">
       <div className="flex-1">
         <TextSection/>
       </div>
