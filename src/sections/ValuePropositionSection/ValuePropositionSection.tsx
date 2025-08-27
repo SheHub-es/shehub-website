@@ -72,6 +72,7 @@ export const ValuePropositionSection = () => {
               title={item.title}
               description={item.description}
               color="white"
+              radius="lg"
               className="w-full max-w-sm"
             />
           </div>
