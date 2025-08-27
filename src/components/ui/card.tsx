@@ -6,6 +6,13 @@ import { LucideProps } from 'lucide-react';
 import Image, { type StaticImageData } from 'next/image';
 import Avatar, { type AvatarSize, type AvatarVariant } from '@/components/ui/avatar';
 
+interface CardVariantProps extends VariantProps<typeof cardVariants> {
+  title?: string;
+  description?: string;
+  icon?: React.ElementType<LucideProps>;
+  className?: string;
+}
+
 
 const cardVariants = cva(
     'transition-all box-border',
@@ -18,7 +25,7 @@ const cardVariants = cva(
                     ].join(' '),
                 nonClickable: ['flex flex-col items-start gap-2.5 p-10 w-[18.5rem]',
                 ].join(' '),
-                nonClickableWithIcon: ['flex flex-col items-start gap-7 p-10 w-[24.25rem] h-[20rem]'
+                nonClickableWithIcon: ['flex flex-col items-start gap-7 p-10 w-[24.375rem] h-[18rem]'
                 ].join(' '),
                 nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-7 p-8 w-auto h-auto '
                 ].join(' '),
