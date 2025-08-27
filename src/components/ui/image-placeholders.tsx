@@ -19,6 +19,7 @@ interface ImagePlaceholderProps {
   square?: number;
   customSize?: { width: number; height: number };
   iconSizePx?: number;
+  alt?: string;
 }
 
 const sizeClasses: Record<ImageSize, string> = {
@@ -54,6 +55,7 @@ const ImagePlaceholder = ({
   square,
   customSize,
   iconSizePx,
+  alt,
 }: ImagePlaceholderProps) => {
   const isCustom = typeof square === "number" || !!customSize;
   const widthPx = square ?? customSize?.width;
@@ -80,7 +82,7 @@ const ImagePlaceholder = ({
       {imageUrl ? (
         <NextImage
           src={imageUrl}
-          alt="Placeholder image"
+          alt={alt ?? "Placeholder image"}
           className={clsx("object-cover w-full h-full", imageRounding)}
           width={500}
           height={500}

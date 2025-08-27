@@ -70,6 +70,7 @@ const ImageSection = () => {
               size="lg"
               corner="bottomLeft"
               imageUrl={HeroImage.src}
+              alt="A group of joyful women interacting together"
           />
         </div>
 

@@ -36,7 +36,9 @@ const ImageSection = ({
 const floatingImages: FloatingImageProps[] = [
   {
       src: mainImage,
-      alt: "Main image",
+      alt: variant === 'left' 
+        ? "Two women smiling while looking at a laptop together"
+        : "Female speaker delivering a talk with a microphone",
       width: 297,
       height: 339,
       className: variant === 'left' 
@@ -45,7 +47,9 @@ const floatingImages: FloatingImageProps[] = [
     },
     {
       src: smallImage,
-      alt: "Small image",
+      alt: variant !== 'left' 
+        ? "Open laptop on a meeting table with people in discussion"
+        : "Small image",
       width: 188,
       height: 188,
       className: variant === 'left' ? "absolute top-[388px] left-[361px] z-10" : "absolute top-[81px] left-[43px] z-10"

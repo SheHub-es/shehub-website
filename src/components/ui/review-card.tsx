@@ -8,6 +8,7 @@ export type Review = {
     name: string;
     quote: string;
     role: string;
+    alt?: string;
 };
 
 type ReviewCardProps = {
@@ -17,7 +18,7 @@ type ReviewCardProps = {
 };
 
 export const ReviewCard: React.FC<ReviewCardProps> = ({ review, className, compact = false }) => {
-    const { image, name, quote, role } = review;
+    const { image, name, quote, role, alt } = review;
 
     return (
         <div className={cn("flex flex-col justify-center items-center gap-8", compact ? "w-full max-w-[480px]" : "w-[584px]")}>
@@ -28,7 +29,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review, className, compa
                 type="image"
                 size="xl"
                 imageUrl={image}
-                alt={name}
+                alt={alt ?? name}
             />
             <div className="flex flex-col items-center justify-center text-black self-stretch text-center text-size-400">
                 <p className="font-primary font-heavy leading-line-height-body-3 ">

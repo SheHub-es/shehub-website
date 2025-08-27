@@ -9,7 +9,8 @@ const testimonialsData: Review[] = [
     image: MartaImg,
     name: 'Marta V., Collaborator',
     quote: '"Before SheHub, I felt stuck between theory and the real world. Working on an actual product with a supportive team and a mentor who challenged me changed everything. I finally feel ready — and confident — to apply for jobs in tech."',
-    role: 'UX/UI Designer'
+    role: 'UX/UI Designer',
+    alt: 'Avatar of a female collaborator, UX/UI designer'
   },
   {
     id: '2',
@@ -18,6 +19,7 @@ const testimonialsData: Review[] = [
     quote:
       '"Being a mentor at SheHub has been one of the most fulfilling experiences in my career. Watching contributors grow, gain confidence, and land their first tech roles — while I honed my own leadership skills — reminded me why I love this industry."',
     role: 'Project Manager / Team Lead',
+    alt: 'Avatar of female mentor, project manager'
   }
 ]
 
