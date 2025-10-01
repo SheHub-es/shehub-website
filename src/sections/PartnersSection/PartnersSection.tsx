@@ -58,7 +58,7 @@ const PartnerLogo = ({ src, alt }: { src: string | StaticImageData; alt: string 
     src={src}
     alt={alt}
     height={48}
-    className="block !h-[44px] !w-auto max-h-[48px] object-contain gap-8 px-1"
+    className="block !h-[50px] !w-auto max-h-[48px] object-contain"
     loading='lazy'
   />
 )
@@ -76,7 +76,7 @@ export const PartnersSection = () => {
         </p>
       </div>
       <div className='mx-auto w-full'>
-        <div className='flex justify-center items-center gap-14 p-8 h-[79px]'>
+        <div className='flex justify-center items-center gap-10 p-8 pl-16 h-[70px]'>
           {partnersData.map((partner) => (
             <div key={partner.id} className="shrink-0 flex items-center">
               <PartnerLogo

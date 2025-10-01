@@ -3,7 +3,7 @@ import Typewriter from 'typewriter-effect';
 export default function HeroText() {
 
     const roleStrings = [
-        "Development",
+        "development",
         "UX/UI Design",
         "Product Management",
         "Data",

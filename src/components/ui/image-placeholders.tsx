@@ -19,6 +19,7 @@ interface ImagePlaceholderProps {
   square?: number;
   customSize?: { width: number; height: number };
   iconSizePx?: number;
+  alt?: string;
 }
 
 const sizeClasses: Record<ImageSize, string> = {
@@ -28,15 +29,15 @@ const sizeClasses: Record<ImageSize, string> = {
 };
 
 const cornerClasses: Record<ImageCorner, string> = {
-  noCorner: "rounded-[50px]",
+  noCorner: "rounded-[120px]",
   topLeft:
-    "rounded-tl-[4px] rounded-tr-[50px] rounded-br-[50px] rounded-bl-[50px]",
+    "rounded-tl-[4px] rounded-tr-[120px] rounded-br-[120px] rounded-bl-[120px]",
   topRight:
-    "rounded-tl-[50px] rounded-tr-[4px] rounded-br-[50px] rounded-bl-[50px]",
+    "rounded-tl-[120px] rounded-tr-[4px] rounded-br-[120px] rounded-bl-[120px]",
   bottomLeft:
-    "rounded-tl-[50px] rounded-tr-[50px] rounded-br-[50px] rounded-bl-[4px]",
+    "rounded-tl-[120px] rounded-tr-[120px] rounded-br-[120px] rounded-bl-[4px]",
   bottomRight:
-    "rounded-tl-[50px] rounded-tr-[50px] rounded-br-[4px] rounded-bl-[50px]",
+    "rounded-tl-[120px] rounded-tr-[120px] rounded-br-[4px] rounded-bl-[120px]",
 };
 
 const iconSizes: Record<ImageSize, string> = {
@@ -54,6 +55,7 @@ const ImagePlaceholder = ({
   square,
   customSize,
   iconSizePx,
+  alt,
 }: ImagePlaceholderProps) => {
   const isCustom = typeof square === "number" || !!customSize;
   const widthPx = square ?? customSize?.width;
@@ -80,7 +82,7 @@ const ImagePlaceholder = ({
       {imageUrl ? (
         <NextImage
           src={imageUrl}
-          alt="Placeholder image"
+          alt={alt ?? "Placeholder image"}
           className={clsx("object-cover w-full h-full", imageRounding)}
           width={500}
           height={500}
