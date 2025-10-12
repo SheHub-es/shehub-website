@@ -50,7 +50,7 @@ function TextSection({
                 <InfoBlock title="What You Bring" text={whatYouBringText} />
                 <InfoBlock title="What We Offer" text={whatWeOfferText} />
             </div>
-            <Button variant="secondary-primary" shape="rounded" className="text-black w-[230px]">{buttonText}</Button>
+            <Button variant="secondary-primary" shape="rounded" className="text-black w-[180px]">{buttonText}</Button>
         </div>
     </section>
   )
