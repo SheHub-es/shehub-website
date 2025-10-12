@@ -9,7 +9,7 @@ const QuestionsCTA = () => {
         <h2 className="font-[var(--font-weight-default)] text-[length:var(--text-size-400)] leading-[var(--spacing-line-height-body-2)] text-center" style={{ fontFamily: 'var(--font-secondary)' }}>
             We are here to help, do not hesitate and write us!        
         </h2>
-        <Button variant="secondary-primary" shape="rounded" className="w-[134px]">Contact us</Button>
+        <Button variant="secondary-primary" size="sm" shape="rounded" className="w-[134px]">Contact us</Button>
       </div>
   )
 }
