@@ -12,7 +12,7 @@ const FAQAccordionCopy: FAQAccordionCopyType[] = [
     },
     {
         header: "Who can join?",
-        text: "Contributors: Women pivoting into tech, typically from bootcamps or self-taught backgrounds, who already have the technical or design skills to contribute to a real product team. Mentors: Women in tech who want to give back, support others or grow their own leadership experience as they prepare for their next career move (e.g., management, team lead, strategy roles)."
+        text: "Contributors: Women pivoting into tech, typically from bootcamps or self-taught backgrounds,\nwho already have the technical or design skills to contribute to a real product team. Mentors:\nWomen in tech who want to give back, support others or grow their own leadership experience\nas they prepare for their next career move (e.g., management, team lead, strategy roles)."
     },
     {
         header: "Is it free?",
@@ -43,7 +43,7 @@ const AccordionBlock = () => {
 
 const FAQAccordions = () => {
   return (
-    <div className="flex w-[816px]">
+    <div className="flex w-[603px]">
         <AccordionBlock/>
     </div>
   )
