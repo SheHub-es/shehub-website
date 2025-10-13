@@ -28,7 +28,7 @@ const Footer = () => {
     <footer className=" bg-[var(--color-background-footer)] text-[var(--color-foreground)]">
       {/* Final version with increased vertical padding (py-20) for more height. */}
       <div className="container mx-auto max-w-7xl py-20 font-secondary">
-        <div className="flex flex-col items-center justify-between gap-y-8 lg:flex-row lg:gap-y-0">
+        <div className="flex flex-col items-center justify-between gap-y-4 lg:flex-row lg:gap-y-0 mb-0">
           
           <Link
             href="/"
@@ -85,7 +85,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr className="my-6 border-t border-[var(--color-foreground)]" />
+                <hr className="mt-0 mb-2 border-t border-[var(--color-foreground)]" />
 
         <div className="flex flex-col items-center justify-center gap-x-8 gap-y-4 pt-2 text-base lg:flex-row">
           <p className="text-center md:text-left">

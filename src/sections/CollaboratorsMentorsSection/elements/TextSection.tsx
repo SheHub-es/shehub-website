@@ -15,11 +15,11 @@ interface InfoBlockProps {
 }
 
 const InfoBlock = ({ title, text }: InfoBlockProps) => (
-  <div className="flex flex-col flex-1 gap-4">
+  <div className="flex flex-col flex-1 gap-2">
     <h3 className="text-black text-[length:var(--text-size-500)] font-[var(--font-weight-heavy)]">
       {title}
     </h3>
-    <p className="text-black text-[length:var(--text-size-300)] font-[var(--font-weight-default)] leading-[var(--spacing-line-height-body-3)] font-secondary">
+    <p className="text-black text-[length:var(--text-size-300)] font-[var(--font-weight-default)] leading-[1.6] max-w-[280px] whitespace-pre-line font-secondary">
       {text}
     </p>
   </div>
@@ -36,7 +36,7 @@ function TextSection({
 
   return (
      <section className="h-[536px]">
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-4 mt-[-30px]'>
             <div className="text-black font-[var(--font-weight-heavy)] text-[length:var(--text-size-400)]">
                 {sectionHeading}
             </div>
@@ -50,7 +50,7 @@ function TextSection({
                 <InfoBlock title="What You Bring" text={whatYouBringText} />
                 <InfoBlock title="What We Offer" text={whatWeOfferText} />
             </div>
-            <Button variant="secondary-primary" shape="rounded" className="text-black w-[230px]">{buttonText}</Button>
+            <Button variant="secondary-primary" shape="rounded" className="text-black w-[180px]">{buttonText}</Button>
         </div>
     </section>
   )

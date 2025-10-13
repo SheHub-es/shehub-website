@@ -13,8 +13,13 @@ export default function HeroText() {
 
   return (
     <div
-        className="bg-clip-text text-transparent relative"
-        style={{ backgroundImage: "var(--color-gradient-brand)" }}
+        className="bg-clip-text text-transparent text-[53px] whitespace-nowrap"
+        style={{ 
+          backgroundImage: "var(--color-gradient-brand)",
+          position: "absolute",
+          top: "0",
+          left: "0"
+        }}
     >
       <Typewriter
         options={{

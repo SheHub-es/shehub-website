@@ -9,10 +9,10 @@ const TextSection = () => {
                     Join SheHub as a collaborator
                 </div>
                 <div className="text-black font-[var(--font-weight-heavy)] text-[length:var(--text-size-1000)] leading-[var(--spacing-line-height-heading-1)] flex flex-col">
-                    Real tech experience for women in&nbsp;
-                    <span>
+                    <div>Real tech experience for women in</div>
+                    <div className="h-[80px] relative">
                         <HeroText />
-                    </span>
+                    </div>
                 </div>
                 <div className="text-black font-[var(--font-weight-default)] leading-[var(--spacing-line-height-body-1)] text-[length:var(--text-size-500)]" style={{ fontFamily: 'var(--font-secondary)' }}>
                     SheHub connects early-career talent and experienced mentors to work on real-world, collaborative projects that are built and shipped — just like in a tech company.

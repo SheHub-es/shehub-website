@@ -39,7 +39,7 @@ const floatingImages: FloatingImageProps[] = [
       alt: variant === 'left' 
         ? "Two women smiling while looking at a laptop together"
         : "Female speaker delivering a talk with a microphone",
-      width: 297,
+      width: 279,
       height: 339,
       className: variant === 'left' 
         ? "absolute top-[22px] left-[32px] fade-in" 
@@ -52,31 +52,31 @@ const floatingImages: FloatingImageProps[] = [
         : "Small image",
       width: 188,
       height: 188,
-      className: variant === 'left' ? "absolute top-[388px] left-[361px] z-10" : "absolute top-[81px] left-[43px] z-10"
+      className: variant === 'left' ? "absolute top-[388px] left-[341px] z-10" : "absolute top-[81px] left-[43px] z-10"
     },
     {
       src: arrowIcon,
       alt: "Arrow icon",
-      className: variant === 'left' ? "h-[153px] w-[153px] absolute top-[430px] left-[81px] z-10" : "h-[90px] w-[113px] absolute top-[161px] left-[314px] z-10"
+      className: variant === 'left' ? "h-[153px] w-[153px] absolute top-[388px] left-[81px] z-10" : "h-[90px] w-[113px] absolute top-[161px] left-[314px] z-10"
     },
     {
       src: bigIcon,
       alt: "Big icon",
-      className: variant === 'left' ? "w-[85px] h-[85px] absolute top-[127px] left-[374px] z-10" : "w-[94px] h-[130px] absolute top-[410px] left-[81px] z-10"
+      className: variant === 'left' ? "w-[85px] h-[85px] absolute top-[150px] left-[374px] z-10" : "w-[94px] h-[130px] absolute top-[410px] left-[81px] z-10"
     },
     {
       src: smallIcon,
       alt: "Small icon",
       width: 100,
       height: 50,
-      className: variant === 'left' ? "h-[100px] w-[100px] absolute top-[250px] left-[390px] z-10" : "h-[50px] w-[50px] absolute top-[304px] left-[88px] z-10"
+      className: variant === 'left' ? "h-[100px] w-[100px] absolute top-[250px] left-[370px] z-10" : "h-[50px] w-[50px] absolute top-[304px] left-[88px] z-10"
     }
 ]
 
   const [mainImageRef, isMainImageVisible] = useIntersectionObserver();
 
   return (
-    <div className="relative w-[584px] h-[620px] flex m-auto">
+    <div className="relative w-[584px] h-[620px] flex m-auto ml-[-20px]">
       <div className={`absolute flex z-0 w-[327px] h-[331px] ${
         variant === "left"
           ? "top-[192px] left-[148px]"
