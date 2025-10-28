@@ -41,8 +41,8 @@ const variantStyles: Record<
     borderFocus: "var(--color-avatar-secondary-border-focus)",
   },
   tertiary: {
-    bg: "var(--color-avatar-tertairy-variant-bg)",
-    borderFocus: "var(--color-avatar-tertairy-variant-border-focus)",
+    bg: "var(--color-avatar-tertiary-variant-bg)",
+    borderFocus: "var(--color-avatar-tertiary-variant-border-focus)",
   },
 };
 
