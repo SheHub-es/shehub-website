@@ -35,10 +35,10 @@ const variants = {
     "bg-[var(--color-button-secondary-secondary-bg-default)] text-[var(--color-button-secondary-secondary-text)] border border-[var(--color-button-secondary-secondary-border)] hover:bg-[var(--color-button-secondary-secondary-bg-hover)]",
 
   "primary-tertiary":
-    "bg-[var(--color-button-primary-tertairy-bg-default)] text-[var(--color-button-primary-tertairy-text)] hover:bg-[var(--color-button-primary-tertairy-bg-hover)]",
+    "bg-[var(--color-button-primary-tertiary-bg-default)] text-[var(--color-button-primary-tertiary-text)] hover:bg-[var(--color-button-primary-tertiary-bg-hover)]",
 
   "secondary-tertiary":
-    "bg-[var(--color-button-secondary-tertairy-bg-default)] text-[var(--color-button-secondary-tertairy-text)] border border-[var(--color-button-secondary-tertairy-border)] hover:bg-[var(--color-button-secondary-tertairy-bg-hover)]",
+    "bg-[var(--color-button-secondary-tertiary-bg-default)] text-[var(--color-button-secondary-tertiary-text)] border border-[var(--color-button-secondary-tertiary-border)] hover:bg-[var(--color-button-secondary-tertiary-bg-hover)]",
 
   disabled:
     "bg-[var(--color-button-disabled-bg)] text-[var(--color-button-disabled-text)] border border-[var(--color-button-disabled-border)] cursor-not-allowed opacity-50",
