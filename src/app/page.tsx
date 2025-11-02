@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/layout/NavBar/Navbar";
+import { TimelineItemContent } from "@/components/ui/timelineItemContent";
 import CollaboratorsMentorsSection from "@/sections/CollaboratorsMentorsSection/CollaboratorsMentorsSection";
 import CTASection from "@/sections/CTASection/CTASection";
 import FAQsSection from "@/sections/FAQsSection/FAQsSection";
@@ -24,6 +25,7 @@ export default function Home () {
       <PartnersSection/>
       <FAQsSection/>
       <CTASection/>
+      <TimelineItemContent date="Day 1" title="Event Planning" description="Welcome to our FAQ section, your place for quick, honest answers about how SheHub works, who it’s for, and how you can get involved." align={"right"}/>
     </>
   )
 }
