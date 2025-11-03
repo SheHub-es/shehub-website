@@ -25,7 +25,6 @@ export default function Home () {
       <PartnersSection/>
       <FAQsSection/>
       <CTASection/>
-      <TimelineItemContent date="Day 1" title="Event Planning" description="Welcome to our FAQ section, your place for quick, honest answers about how SheHub works, who it’s for, and how you can get involved." align={"right"}/>
     </>
   )
 }
