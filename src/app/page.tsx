@@ -27,7 +27,6 @@ export default function Home () {
       <PartnersSection/>
       <FAQsSection/>
       <CTASection/>
-      <Timeline items={mentorsTimelineData} variant={"right"}/>
     </>
   )
 }

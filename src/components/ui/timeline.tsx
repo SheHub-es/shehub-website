@@ -77,7 +77,6 @@ export const Timeline: React.FC<TimelineProps> = ({
                                         description={pair[0].description}
                                         align="right"
                                         headingLevel={pair[0].headingLevel ?? "h4"}
-                                        className="w-60 pt-4 pb-6"
                                     />
                                 )}
                             </div>
@@ -101,7 +100,6 @@ export const Timeline: React.FC<TimelineProps> = ({
                                         description={pair[1].description}
                                         align="left"
                                         headingLevel={pair[1].headingLevel ?? "h4"}
-                                        className="w-60 pt-4 pb-6"
                                     />
                                 )}
                             </div>
@@ -127,7 +125,6 @@ export const Timeline: React.FC<TimelineProps> = ({
                                             description={item.description}
                                             align="right"
                                             headingLevel={item.headingLevel ?? "h4"}
-                                            className="w-60 pt-4 pb-6"
                                         />
                                     </div>
                                 ) : (
@@ -153,7 +150,6 @@ export const Timeline: React.FC<TimelineProps> = ({
                                             description={item.description}
                                             align="left"
                                             headingLevel={item.headingLevel ?? "h4"}
-                                            className="w-60 pt-4 pb-6"
                                         />
                                     </div>
                                 ) : (

@@ -3,7 +3,7 @@ import { cva, VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 export const timelineItemContentVariants = cva(
-    "flex flex-col gap-1 pt-4 pb-6 w-60",
+    "flex flex-col gap-1 pt-4 pb-6",
 
     {
         variants: {
