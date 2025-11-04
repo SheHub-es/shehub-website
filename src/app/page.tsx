@@ -1,7 +1,9 @@
 "use client";
 
 import Navbar from "@/components/layout/NavBar/Navbar";
+import { Timeline } from "@/components/ui/timeline";
 import { TimelineItemContent } from "@/components/ui/timelineItemContent";
+import { mentorsTimelineData } from "@/data/timeline/mentorsTimelineData";
 import CollaboratorsMentorsSection from "@/sections/CollaboratorsMentorsSection/CollaboratorsMentorsSection";
 import CTASection from "@/sections/CTASection/CTASection";
 import FAQsSection from "@/sections/FAQsSection/FAQsSection";
@@ -25,6 +27,7 @@ export default function Home () {
       <PartnersSection/>
       <FAQsSection/>
       <CTASection/>
+      <Timeline items={mentorsTimelineData} variant={"right"}/>
     </>
   )
 }
