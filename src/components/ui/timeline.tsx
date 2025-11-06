@@ -1,7 +1,7 @@
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { TimelineItemContent } from "@/components/ui/timeline-item-content";
 import { cn } from "@/lib/utils";
-import { TimelineItemContent } from "@/components/ui/timelineItemContent";
+import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
 export type TimelineItemData = {
     id?: string;
