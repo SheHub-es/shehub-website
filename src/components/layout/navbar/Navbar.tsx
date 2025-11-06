@@ -1,3 +1,4 @@
+'use client'
 import SheHubLogo from "@/components/icons/custom/SheHubLogo";
 import SectionWrapper from "@/components/layout/sectionWrapper/SectionWrapper";
 import Button from "@/components/ui/button";

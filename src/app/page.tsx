@@ -1,6 +1,5 @@
 "use client";
 
-import Navbar from "@/components/layout/navbar/Navbar";
 import CallToAction from "@/sections/callToAction/CallToAction";
 import CollaboratorsMentors from "@/sections/collaboratorsMentors/CollaboratorsMentors";
 import FrequentlyAskedQuestions from "@/sections/frequentlyAskedQuestions/FrequentlyAskedQuestions";
@@ -14,7 +13,6 @@ import ValueProposition from "@/sections/valueProposition/ValueProposition";
 export default function Home () {
   return (
     <>
-      <Navbar/>
       <Hero/>
       <ValueProposition/>
       <CollaboratorsMentors/>

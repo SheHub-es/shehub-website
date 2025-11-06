@@ -1,4 +1,5 @@
 import Footer from "@/components/layout/footer/Footer";
+import Navbar from "@/components/layout/navbar/Navbar";
 import { AppProviders } from "@/lib/providers";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${ubuntu.variable} ${nunito.variable}`} suppressHydrationWarning>
       <body>
         <AppProviders>
+          <Navbar/>
           {children}
           <Footer/>
         </AppProviders>
