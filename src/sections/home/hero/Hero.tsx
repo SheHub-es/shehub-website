@@ -1,6 +1,6 @@
 import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper';
-import ImageSection from '@/sections/hero/components/ImageSection';
-import TextSection from '@/sections/hero/components/TextSection';
+import ImageSection from '@/sections/home/hero/components/ImageSection';
+import TextSection from '@/sections/home/hero/components/TextSection';
 
 const Hero = () => {
   return (

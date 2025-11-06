@@ -1,6 +1,6 @@
 import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper'
-import AccordionSection from '@/sections/frequentlyAskedQuestions/components/AccordionSection'
-import ContactSection from '@/sections/frequentlyAskedQuestions/components/ContactSection'
+import AccordionSection from '@/sections/home/frequentlyAskedQuestions/components/AccordionSection'
+import ContactSection from '@/sections/home/frequentlyAskedQuestions/components/ContactSection'
 
 export const FrequentlyAskedQuestions = () => {
   return (
