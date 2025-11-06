@@ -41,7 +41,7 @@ const valueProps = [
   },
 ];
 
-export const ValuePropositionSection = () => {
+export const ValueProposition = () => {
   return (
     <SectionWrapper
       id="value-proposition"
@@ -82,4 +82,4 @@ export const ValuePropositionSection = () => {
   );
 };
 
-export default ValuePropositionSection;
+export default ValueProposition;

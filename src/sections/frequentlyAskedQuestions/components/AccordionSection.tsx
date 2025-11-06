@@ -41,7 +41,7 @@ const AccordionBlock = () => {
     );
 }
 
-const FAQAccordions = () => {
+const AccordionSection = () => {
   return (
     <div className="flex w-[603px]">
         <AccordionBlock/>
@@ -49,4 +49,4 @@ const FAQAccordions = () => {
   )
 }
 
-export default FAQAccordions
+export default AccordionSection

@@ -23,7 +23,7 @@ const testimonialsData: Review[] = [
   }
 ]
 
-export const TestimonialsSection = () => {
+export const Testimonials = () => {
   return (
     <SectionWrapper id="testimonials" className='bg-background-light gap-20 flex flex-col items-center py-14'>
       <section className='flex flex-col gap-6'>
@@ -46,4 +46,4 @@ export const TestimonialsSection = () => {
   )
 }
 
-export default TestimonialsSection
+export default Testimonials

@@ -24,7 +24,7 @@ const impactProps = [
   }
 ]
 
-export const ImpactSection = () => {
+export const Impact = () => {
   return (
     <SectionWrapper id="our-impact" className='flex flex-col py-14 gap-16 bg-primary'>
       <div className='flex flex-col justify-center items-center gap-4' >
@@ -50,4 +50,4 @@ export const ImpactSection = () => {
   )
 }
 
-export default ImpactSection
+export default Impact

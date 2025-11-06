@@ -1,6 +1,6 @@
 import Button from "@/components/ui/button"
 
-const QuestionsCTA = () => {
+const ContactSection = () => {
   return (
     <div className="w-[768px] h-[148px] gap-[24px] flex flex-col items-center justify-center">
         <h2 className="font-[var(--font-weight-heavy)] text-[length:var(--text-size-700)] leading-[var(--spacing-line-height-heading-4)]">
@@ -14,4 +14,4 @@ const QuestionsCTA = () => {
   )
 }
 
-export default QuestionsCTA
+export default ContactSection

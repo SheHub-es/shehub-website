@@ -1,6 +1,6 @@
 import Button from '@/components/ui/button'
 
-export const CTASection = () => {
+export const CallToAction = () => {
   return (
     <div
       id="cta"
@@ -20,4 +20,4 @@ export const CTASection = () => {
   )
 }
 
-export default CTASection
+export default CallToAction

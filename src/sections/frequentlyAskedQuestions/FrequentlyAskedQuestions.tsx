@@ -1,8 +1,8 @@
 import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper'
-import FAQAccordions from '@/sections/frequentlyAskedQuestions/components/FAQAccordians'
-import QuestionsCTA from '@/sections/frequentlyAskedQuestions/components/QuestionsCTA'
+import AccordionSection from '@/sections/frequentlyAskedQuestions/components/AccordionSection'
+import ContactSection from '@/sections/frequentlyAskedQuestions/components/ContactSection'
 
-export const FAQsSection = () => {
+export const FrequentlyAskedQuestions = () => {
   return (
     <SectionWrapper id="faq" className="gap-[80px] text-black flex flex-col items-center justify-center my-[24px]">
       <div className="w-[816px] h-[148px] gap-[24px] flex flex-col items-center justify-center">
@@ -13,10 +13,10 @@ export const FAQsSection = () => {
           Welcome to our FAQ section, your place for quick, honest answers about how SheHub works, who it’s for, and how you can get involved.
         </h2>
       </div>
-      <FAQAccordions/>
-      <QuestionsCTA/>
+      <AccordionSection/>
+      <ContactSection/>
     </SectionWrapper>
   )
 }
 
-export default FAQsSection
+export default FrequentlyAskedQuestions

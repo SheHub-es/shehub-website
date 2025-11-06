@@ -63,7 +63,7 @@ const PartnerLogo = ({ src, alt }: { src: string | StaticImageData; alt: string 
   />
 )
 
-export const PartnersSection = () => {
+export const Partners = () => {
   return (
     <SectionWrapper id="partners" className="flex flex-col justify-center items-center gap-12 py-14 bg-background-footer">
       <div className='flex flex-col gap-6 w-[768px]'>
@@ -97,4 +97,4 @@ export const PartnersSection = () => {
   )
 }
 
-export default PartnersSection
+export default Partners
