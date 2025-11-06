@@ -21,7 +21,6 @@ interface InputProps {
 }
 
 const containerClasses = "flex flex-col items-start gap-2 w-[584px]";
-const labelClasses = "text-[var(--color-black)] font-nunito text-base font-[var(--font-weight-heavy)] leading-[var(--spacing-line-height-label-1)]";
 const helperTextClasses = "text-gray-500 font-nunito text-base font-[var(--font-weight-default)] leading-[var(--spacing-line-height-label-1)]";
 
 //input + icon
@@ -35,7 +34,7 @@ const inputWrapperVariants = cva(
                 success: "border-2 border-[var(--color-success)] bg-[var(--color-background-light)]"
             },
             disabled: {
-                true: "border-[var(--color-neutral-300)] bg-state-disabled-background",
+                true: "border-[var(--color-neutral-300)] bg-[var(--color-disabled)]",
                 false: ""
             }
         },
@@ -92,12 +91,13 @@ export const Input: React.FC<InputProps> = ({
     const inputRef = useRef<HTMLInputElement>(null);
 
     const selectedClasses = isSelected && !disabled ? {
-        default: "border-[var(--color-purple-800)]",
+        default: `${isFocused ? "border-[var(--color-neutral-300)]" : "border-[var(--color-purple-800)]"}`,
         error: "border-[var(--color-error)]",
         success: "border-[var(--color-success)]"
     }[status] : "";
 
     const focusClass = isFocused && !disabled ? "ring-3 ring-[var(--color-purple-600)] ring-offset-2 border-[var(--color-purple-600)]" : "";
+    const labelClasses = `${disabled ? "text-gray-600" : "text-[var(--color-black)]"} font-nunito text-base font-[var(--font-weight-heavy)] leading-[var(--spacing-line-height-label-1)`;
 
     const handleMouseDown = () => {
         if (!disabled) {
