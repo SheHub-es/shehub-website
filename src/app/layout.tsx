@@ -1,8 +1,8 @@
+import Footer from "@/components/layout/footer/Footer";
+import { AppProviders } from "@/lib/providers";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import Footer from "@/components/layout/Footer/Footer";
-import { AppProviders } from "@/lib/providers";
-import { Ubuntu, Nunito } from "next/font/google";
+import { Nunito, Ubuntu } from "next/font/google";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],

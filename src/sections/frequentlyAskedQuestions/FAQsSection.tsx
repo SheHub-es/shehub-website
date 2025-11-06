@@ -1,6 +1,6 @@
-import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper'
-import FAQAccordions from '@/sections/FAQsSection/components/FAQAccordians'
-import QuestionsCTA from '@/sections/FAQsSection/components/QuestionsCTA'
+import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper'
+import FAQAccordions from '@/sections/frequentlyAskedQuestions/components/FAQAccordians'
+import QuestionsCTA from '@/sections/frequentlyAskedQuestions/components/QuestionsCTA'
 
 export const FAQsSection = () => {
   return (

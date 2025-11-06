@@ -1,6 +1,6 @@
-import { Rocket, Users, HeartHandshake, MapPin, Gift, Globe2 } from "lucide-react";
-import SectionWrapper from "@/components/layout/section-wrapper/SectionWrapper";
+import SectionWrapper from "@/components/layout/sectionWrapper/SectionWrapper";
 import { Card } from "@/components/ui/card";
+import { Gift, Globe2, HeartHandshake, MapPin, Rocket, Users } from "lucide-react";
 
 const valueProps = [
   {

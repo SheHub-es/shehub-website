@@ -1,4 +1,4 @@
-import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper'
+import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper'
 import { Card } from '@/components/ui/card'
 
 const impactProps = [

@@ -1,5 +1,5 @@
 import SheHubLogo from "@/components/icons/custom/SheHubLogo";
-import SectionWrapper from "@/components/layout/section-wrapper/SectionWrapper";
+import SectionWrapper from "@/components/layout/sectionWrapper/SectionWrapper";
 import Button from "@/components/ui/button";
 import NavigationMenu from "@/components/ui/navigation-menu";
 import Toggle from "@/components/ui/toggle";

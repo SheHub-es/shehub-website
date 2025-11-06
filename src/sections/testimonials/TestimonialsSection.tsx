@@ -1,7 +1,7 @@
-import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper'
-import { Review, ReviewCard } from '@/components/ui/review-card'
-import MartaImg from '@/assets/images/Marta-V-avatar.png'
 import LauraImg from '@/assets/images/Laura-Gracia-avatar.png'
+import MartaImg from '@/assets/images/Marta-V-avatar.png'
+import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper'
+import { Review, ReviewCard } from '@/components/ui/review-card'
 
 const testimonialsData: Review[] = [
   {

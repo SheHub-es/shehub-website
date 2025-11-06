@@ -1,13 +1,13 @@
-import SectionWrapper from '@/components/layout/section-wrapper/SectionWrapper'
-import LogoNotion from '@/assets/images/logos/notion.png'
-import LogoStep4ward from '@/assets/images/logos/step4ward.png'
 import LogoDatacamp from '@/assets/images/logos/datacamp.png'
-import LogoSheLeads from '@/assets/images/logos/she-leads-product.png'
 import LogFemcodersClub from '@/assets/images/logos/femcoders-club.png'
-import LogoInnoit from '@/assets/images/logos/innoit.png'
 import LogoGenway from '@/assets/images/logos/genway.png'
-import Image, { StaticImageData } from 'next/image'
+import LogoInnoit from '@/assets/images/logos/innoit.png'
+import LogoNotion from '@/assets/images/logos/notion.png'
+import LogoSheLeads from '@/assets/images/logos/she-leads-product.png'
+import LogoStep4ward from '@/assets/images/logos/step4ward.png'
+import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper'
 import Button from '@/components/ui/button'
+import Image, { StaticImageData } from 'next/image'
 
 export type Partner = {
   id: string;
