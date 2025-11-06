@@ -1,10 +1,7 @@
-// components/ui/Checkbox.tsx
 import React, { useState, ChangeEvent, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
-/**
- * Props del componente Checkbox
- */
+
 interface CheckboxProps {
   label?: string;
   checked?: boolean;
@@ -13,9 +10,7 @@ interface CheckboxProps {
   inputProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
 }
 
-/**
- * Componente Checkbox
- */
+
 const Checkbox: React.FC<CheckboxProps> = ({
   checked: checkedProp = false,
   label,
@@ -99,44 +94,3 @@ const Checkbox: React.FC<CheckboxProps> = ({
 };
 
 export default Checkbox;
-
-{/*
-
-  CODIGO DE PRUEBAS
-
-import Checkbox from "@/components/ui/checkbox";
-import { useState } from "react";
-
-DEBAJO DE FUNCION
-
- 
-    const [checked, setChecked] = useState(false);
-  const [focused, setFocused] = useState(false);
-
-
-
-
-      <section className="p-8 bg-white border rounded-lg shadow-md max-w-xl mx-auto mt-12">
-      <h2 className="text-xl font-bold mb-6">Playground de Checkbox</h2>
-
-      <div className="space-y-4">
-        <Checkbox label="Desmarcado (default)" checked={false} />
-        <Checkbox label="Marcado (default)" checked={true} />
-        <Checkbox label="Interactivo" checked={checked} onChange={setChecked} />
-        <Checkbox label="Deshabilitado desmarcado" checked={false} disabled />
-        <Checkbox label="Deshabilitado marcado" checked={true} disabled />
-        <Checkbox
-          label="Simular foco"
-          checked={true}
-          inputProps={{
-            onFocus: () => setFocused(true),
-            onBlur: () => setFocused(false),
-          }}
-        />
-        <p className="text-sm text-gray-500">
-          Estado de foco: {focused ? "✅ Enfocado" : "❌ No enfocado"}
-        </p>
-      </div>
-    </section>
-
-        */}
