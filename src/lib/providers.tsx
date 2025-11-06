@@ -1,8 +1,8 @@
 "use client";
 
-import { LanguageProvider } from "@/components/providers/LanguageProvider";
-import { ReduxProvider } from "@/components/providers/ReduxProvider";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { LanguageProvider } from "@/providers/LanguageProvider";
+import { ReduxProvider } from "@/providers/ReduxProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import { ReactNode } from "react";
 
 export function AppProviders({ children }: { children: ReactNode }) {
