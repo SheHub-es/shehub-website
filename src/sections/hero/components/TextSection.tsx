@@ -1,5 +1,5 @@
 import Button from '@/components/ui/button'
-import HeroText from '@/sections/hero/elements/TypewriterAnimation'
+import HeroText from '@/sections/hero/components/TypewriterAnimation'
 
 const TextSection = () => {
     return (
