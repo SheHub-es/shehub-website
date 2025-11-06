@@ -1,17 +1,17 @@
 
 import InfoCard from "@/components/ui/hero-info-card";
 import ImagePlaceholder from '@/components/ui/image-placeholders';
-import NextImage from "next/image";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { cn } from "@/lib/cn";
+import NextImage from "next/image";
 
-import HeroImage from '../../../assets/images/hero-section-image.jpg';
-import AthenaAvatarGroup from '../../../assets/svg/athena-avatar-group.svg';
-import BubblesImage from '../../../assets/svg/bubbles-hero.svg';
-import CollaboratorOrangeImage from '../../../assets/svg/collaborator-orange.svg';
-import IconStar from '../../../assets/svg/icon-star-hero.svg';
-import MentorPinkImage from '../../../assets/svg/mentor-pink.svg';
-import RocketIcon from '../../../assets/svg/rocket-icon.svg';
+import BubblesImage from '../../../assets/images/icons/icon_bubbles.svg';
+import CollaboratorOrangeImage from '../../../assets/images/icons/icon_collaboratorOrange.svg';
+import MentorPinkImage from '../../../assets/images/icons/icon_mentorPink.svg';
+import RocketIcon from '../../../assets/images/icons/icon_rocket.svg';
+import IconStar from '../../../assets/images/icons/icon_star.svg';
+import AthenaAvatarGroup from '../../../assets/images/photos/photo_athenaAvatarGroup.svg';
+import HeroImage from '../../../assets/images/photos/photo_hero.jpg';
 
 type FloatingImageProps = {
   src: string;
