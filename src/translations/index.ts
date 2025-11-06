@@ -1,5 +1,5 @@
-import { navigationMenuButtonTranslations } from '@/translations/navigationMenuButtonTranslations'
-import { navigationMenuTranslations } from '@/translations/navigationMenuTranslations'
+import { navigationMenuButtonTranslations } from '@/translations/layout/navbar/navigationMenuButtonTranslations'
+import { navigationMenuTranslations } from '@/translations/layout/navbar/navigationMenuTranslations'
 import { testTranslations } from '@/translations/testTranslations'
 import type { TranslationObject } from '@/translations/types'
 
