@@ -11,10 +11,14 @@ import PartnersSection from "@/sections/PartnersSection/PartnersSection";
 import TestimonialsSection from "@/sections/TestimonialsSection/TestimonialsSection";
 import ValuePropositionSection from "@/sections/ValuePropositionSection/ValuePropositionSection";
 
-import Checkbox from "@/components/ui/checkbox";
 
 
 export default function Home () {
+
+
+
+
+
   return (
     <>
       <Navbar/>
@@ -27,7 +31,12 @@ export default function Home () {
       <PartnersSection/>
       <FAQsSection/>
       <CTASection/>
-      <Checkbox/>
+
+      
+   
+
+        
+
       
     </>
   )
