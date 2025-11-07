@@ -1,5 +1,6 @@
 "use client";
 
+import AuthSectionV2 from "@/sections/AuthSection/AuthSectionV2";
 import CallToAction from "@/sections/home/callToAction/CallToAction";
 import CollaboratorsMentors from "@/sections/home/collaboratorsMentors/CollaboratorsMentors";
 import FrequentlyAskedQuestions from "@/sections/home/frequentlyAskedQuestions/FrequentlyAskedQuestions";
@@ -22,6 +23,7 @@ export default function Home () {
       <Partners/>
       <FrequentlyAskedQuestions/>
       <CallToAction/>
+      <AuthSectionV2/>
     </>
   )
 }
