@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer/Footer";
 import { AppProviders } from "@/lib/providers";
 import { Ubuntu, Nunito } from "next/font/google";
 
+
 const ubuntu = Ubuntu({
   subsets: ["latin"],
   weight: ["400", "500", "700"],

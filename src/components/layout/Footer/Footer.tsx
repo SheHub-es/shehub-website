@@ -9,6 +9,8 @@ import AthenaIconMail from '@/components/icons/custom/AthenaIconMail';
 import FooterLogo from '@/components/icons/custom/FooterLogo';
 import { Icon } from '@/components/ui/icon';
 
+
+
 const navLinks = [
   { href: '/collaborators', label: 'Collaborators' },
   { href: '/mentors', label: 'Mentors' },
