@@ -1,4 +1,4 @@
-import uiReducer from "@/features/ui/uiSlice";
+import uiReducer from "@/store/features/ui/uiSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({

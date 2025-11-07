@@ -1,4 +1,4 @@
-import { LanguageContext } from '@/components/providers/language-provider'
+import { LanguageContext } from '@/providers/LanguageProvider'
 import { useContext } from 'react'
 
 export const useTranslation = () => {

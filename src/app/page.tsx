@@ -1,29 +1,27 @@
 "use client";
 
-import Navbar from "@/components/layout/NavBar/Navbar";
-import CollaboratorsMentorsSection from "@/sections/CollaboratorsMentorsSection/CollaboratorsMentorsSection";
-import CTASection from "@/sections/CTASection/CTASection";
-import FAQsSection from "@/sections/FAQsSection/FAQsSection";
-import HeroSection from "@/sections/HeroSection/HeroSection";
-import HowSheHubWorksSection from "@/sections/HowSheHubWorksSection/HowSheHubWorksSection";
-import ImpactSection from "@/sections/ImpactSection/ImpactSection";
-import PartnersSection from "@/sections/PartnersSection/PartnersSection";
-import TestimonialsSection from "@/sections/TestimonialsSection/TestimonialsSection";
-import ValuePropositionSection from "@/sections/ValuePropositionSection/ValuePropositionSection";
+import CallToAction from "@/sections/home/callToAction/CallToAction";
+import CollaboratorsMentors from "@/sections/home/collaboratorsMentors/CollaboratorsMentors";
+import FrequentlyAskedQuestions from "@/sections/home/frequentlyAskedQuestions/FrequentlyAskedQuestions";
+import Hero from "@/sections/home/hero/Hero";
+import HowSheHubWorks from "@/sections/home/howSheHubWorks/HowSheHubWorks";
+import Impact from "@/sections/home/impact/Impact";
+import Partners from "@/sections/home/partners/Partners";
+import Testimonials from "@/sections/home/testimonials/Testimonials";
+import ValueProposition from "@/sections/home/valueProposition/ValueProposition";
 
 export default function Home () {
   return (
     <>
-      <Navbar/>
-      <HeroSection/>
-      <ValuePropositionSection/>
-      <CollaboratorsMentorsSection/>
-      <ImpactSection/>
-      <HowSheHubWorksSection/>
-      <TestimonialsSection/>
-      <PartnersSection/>
-      <FAQsSection/>
-      <CTASection/>
+      <Hero/>
+      <ValueProposition/>
+      <CollaboratorsMentors/>
+      <Impact/>
+      <HowSheHubWorks/>
+      <Testimonials/>
+      <Partners/>
+      <FrequentlyAskedQuestions/>
+      <CallToAction/>
     </>
   )
 }
