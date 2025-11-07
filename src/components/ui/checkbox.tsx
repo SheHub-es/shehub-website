@@ -41,7 +41,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
           checked
             ? 'bg-[var(--color-purple-500)] border border-[var(--color-purple-500)] hover:bg-[var(--color-purple-600)] hover:border-[var(--color-purple-600)]'
             : 'bg-white border border-[var(--color-gray-200)] hover:border-[var(--color-gray-300)]',
-          focused && 'outline outline-[2px] outline-[var(--color-purple-400)]',
+          focused && 'outline-[2px] outline-[var(--color-purple-400)]',
           disabled && 'bg-[var(--color-gray-100)] border-[var(--color-gray-100)] opacity-50'
         )}
       >

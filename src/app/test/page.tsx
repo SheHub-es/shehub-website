@@ -6,7 +6,20 @@ import { Timeline } from "@/components/ui/timeline";
 import { mentorsTimelineData } from "@/data/timeline/mentorsTimelineData";
 import Checkbox from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Mail } from "lucide-react";
+import { Ghost, Mail } from "lucide-react";
+import Dropdown from "@/components/ui/dropdown";
+
+export const DropdownOptions = [
+  {
+    option: "Option 1"
+  },
+  {
+    option: "Option 2"
+  },
+  {
+    option: "Option 3"
+  },
+]
 
 export default function TestPage() {
   return (
@@ -32,6 +45,12 @@ export default function TestPage() {
           <h2 className="text-xl font-medium text-purple-700 mb-4">Checkbox</h2>
           <Checkbox label="Checkbox" />
           <Checkbox />
+        </section>
+        <section>
+          <h2 className="text-xl font-medium text-purple-700 mb-4">Outlined Dropdown</h2>
+          <Dropdown label="Select an Option" options={["Option A", "Option B", "Option C"]} type="outlined"/>
+          <h2 className="text-xl font-medium text-purple-700 mb-4">Ghost Dropdown</h2>
+          <Dropdown label="Select an Option" options={["Option A", "Option B", "Option C"]} type="ghost"/>
         </section>
         <section>
           <h2 className="text-xl font-medium text-purple-700 mb-4 text-center">Timeline alternate (default)</h2>
