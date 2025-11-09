@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 import { LucideProps } from "lucide-react";
 
-import { useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 
 import { Icon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
@@ -33,12 +33,9 @@ const inputWrapperVariants = cva(
   {
     variants: {
       status: {
-        default:
-          "border-2 border-neutral-300 bg-background-light",
-        error:
-          "border-2 border-error bg-background-light",
-        success:
-          "border-2 border-success bg-background-light",
+        default: "border-2 border-neutral-300 bg-background-light",
+        error: "border-2 border-error bg-background-light",
+        success: "border-2 border-success bg-background-light",
       },
       disabled: {
         true: "border-neutral-300 bg-disabled",
@@ -92,23 +89,22 @@ export const Input: React.FC<InputProps> = ({
   onChange,
   ...props
 }) => {
-  const [isFocused, setIsFocused] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const generatedId = useId(); //id for
+  const inputId = id || generatedId; //if for input
+  const helperId = helperText ? `${inputId}-helper` : undefined; //id if helper exists
 
   const selectedClasses =
     isSelected && !disabled
       ? {
-          default: `${isFocused ? "border-neutral-300" : "border-purple-800"}`,
+          default: "border-purple-800",
           error: "border-error",
           success: "border-success",
         }[status]
       : "";
 
-  const focusClass =
-    isFocused && !disabled
-      ? "ring-3 ring-purple-600 ring-offset-2 border-purple-600"
-      : "";
   const labelClasses = `${disabled ? "text-gray-600" : "text-black"} font-nunito text-base font-bold leading-6`;
 
   const handleMouseDown = () => {
@@ -119,27 +115,31 @@ export const Input: React.FC<InputProps> = ({
 
   const handleBlur = () => {
     setIsSelected(false);
-    setIsFocused(false);
   };
 
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+  const handleFocus = () => {
     if (!disabled) {
-      if (e.relatedTarget !== null) {
-        setIsFocused(true);
-      }
       setIsSelected(true);
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Tab") {
-      setIsFocused(true);
+  //when tabbing the component the wrapper gets focused and pressing space/enter will focus the input
+  const handleWrapperKeyDown = (e: React.KeyboardEvent) => {
+    if ((e.key === "Enter" || e.key === " ") && e.target === e.currentTarget) {
+      e.preventDefault();
+      inputRef.current?.focus();
+    }
+  };
+
+  const handleWrapperClick = () => {
+    if (!disabled) {
+      inputRef.current?.focus();
     }
   };
 
   return (
     <div className={cn(containerClasses, className)}>
-      <label className={labelClasses}>
+      <label htmlFor={id} className={labelClasses}>
         {label}
         {required && <span aria-label="required"> *</span>}
       </label>
@@ -147,12 +147,15 @@ export const Input: React.FC<InputProps> = ({
       <div
         className={cn(
           inputWrapperVariants({ status, disabled }),
-          focusClass,
           selectedClasses,
         )}
         onMouseDown={handleMouseDown}
+        onClick={handleWrapperClick}
+        tabIndex={disabled ? -1 : 0} //make the wrapper focusable
+        onKeyDown={handleWrapperKeyDown}
       >
         <input
+          id={inputId}
           type={type}
           name={name}
           ref={inputRef}
@@ -161,7 +164,6 @@ export const Input: React.FC<InputProps> = ({
           onChange={onChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onKeyDown={handleKeyDown}
           disabled={disabled}
           className={cn(inputFieldVariants({ disabled }), inputClassName)}
           style={{
@@ -169,6 +171,7 @@ export const Input: React.FC<InputProps> = ({
             border: "none",
             boxShadow: "none",
           }}
+          aria-describedby={helperId}
           aria-invalid={status === "error"}
           {...props}
         />
@@ -184,6 +187,7 @@ export const Input: React.FC<InputProps> = ({
 
       {helperText && (
         <span
+          id={helperId}
           className={helperTextClasses}
           role={status === "error" ? "alert" : undefined}
         >
