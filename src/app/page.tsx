@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/layout/NavBar/Navbar";
+import Checkbox from "@/components/ui/checkbox";
 import CollaboratorsMentorsSection from "@/sections/CollaboratorsMentorsSection/CollaboratorsMentorsSection";
 import CTASection from "@/sections/CTASection/CTASection";
 import FAQsSection from "@/sections/FAQsSection/FAQsSection";
@@ -31,13 +32,7 @@ export default function Home () {
       <PartnersSection/>
       <FAQsSection/>
       <CTASection/>
-
-      
-   
-
-        
-
-      
+      <Checkbox  label="prueba"   />
     </>
   )
 }

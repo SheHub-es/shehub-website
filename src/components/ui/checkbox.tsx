@@ -7,7 +7,7 @@ interface CheckboxProps {
   checked?: boolean;
   disabled?: boolean;
   onChange?: (checked: boolean) => void;
-  inputProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
+  checkboxProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
 }
 
 
@@ -16,10 +16,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
   label,
   disabled = false,
   onChange,
-  inputProps,
+  checkboxProps,
 }) => {
   const [checked, setChecked] = useState(checkedProp);
-  const [focused, setFocused] = useState(false);
+  
   const ref = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -39,10 +39,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
         className={cn(
           'relative flex-shrink-0 w-[18px] h-[18px] rounded-sm transition-all duration-150 flex items-center justify-center',
           checked
-            ? 'bg-[var(--color-purple-500)] border border-[var(--color-purple-500)] hover:bg-[var(--color-purple-600)] hover:border-[var(--color-purple-600)]'
-            : 'bg-white border border-[var(--color-gray-200)] hover:border-[var(--color-gray-300)]',
-          focused && 'outline outline-[2px] outline-[var(--color-purple-400)]',
-          disabled && 'bg-[var(--color-gray-100)] border-[var(--color-gray-100)] opacity-50'
+            ? 'bg-primary border border-primary hover:bg-purple-600 hover:border-purple-600'
+            : 'bg-white border border-neutral-200 hover:border-b-neutral-300',
+          
+          disabled && 'bg-neutral-100 border-neutral-100 opacity-50'
         )}
       >
         <input
@@ -51,10 +51,9 @@ const Checkbox: React.FC<CheckboxProps> = ({
           checked={checked}
           disabled={disabled}
           onChange={handleChange}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
+       
           className="absolute opacity-0 w-0 h-0 peer"
-          {...inputProps}
+          {...checkboxProps}
         />
 
         {checked && (
@@ -80,10 +79,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
       {label && (
         <span
           className={cn(
-            'font-[Nunito] text-[18px] leading-[24px] font-normal',
+            'font-secondary text-size-400 leading-line-height-body-3',
             disabled
-              ? 'text-[var(--color-gray-200)]'
-              : 'text-[var(--color-gray-900)]'
+              ? 'text-neutral-200'
+              : 'text-neutral-900'
           )}
         >
           {label}

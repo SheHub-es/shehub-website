@@ -9,8 +9,6 @@ import AthenaIconMail from '@/components/icons/custom/AthenaIconMail';
 import FooterLogo from '@/components/icons/custom/FooterLogo';
 import { Icon } from '@/components/ui/icon';
 
-
-
 const navLinks = [
   { href: '/collaborators', label: 'Collaborators' },
   { href: '/mentors', label: 'Mentors' },
@@ -23,7 +21,6 @@ const legalLinks = [
   { href: '/privacy-policy', label: 'Privacy Policy' },
   { href: '/terms-of-service', label: 'Terms of Service' },
 ];
-
 
 const Footer = () => {
   return (
