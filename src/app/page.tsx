@@ -1,7 +1,6 @@
 "use client";
 
 import Navbar from "@/components/layout/NavBar/Navbar";
-import Dropdown from "@/components/ui/dropdown";
 import CollaboratorsMentorsSection from "@/sections/CollaboratorsMentorsSection/CollaboratorsMentorsSection";
 import CTASection from "@/sections/CTASection/CTASection";
 import FAQsSection from "@/sections/FAQsSection/FAQsSection";
@@ -17,7 +16,6 @@ export default function Home () {
     <>
       <Navbar/>
       <HeroSection/>
-      <Dropdown/>
       <ValuePropositionSection/>
       <CollaboratorsMentorsSection/>
       <ImpactSection/>
