@@ -16,7 +16,6 @@ const dropdownButtonVariants = cva(
       state: {
         default: "",
         hover: "hover:bg-primary-hover",
-        disabled: "text-gray-600 pointer-events-none cursor-not-allowed",
       },
     },
     
@@ -27,22 +26,27 @@ const dropdownButtonVariants = cva(
   }
 );
 
+type DropdownOption = string | { label: string; disabled?: boolean };
+
 interface DropdownProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onSelect">,
   VariantProps<typeof dropdownButtonVariants> {
   label?: string;
   options?: string[];
   onSelect?: (option: string) => void;
-  disabled?: boolean;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
   label = "Dropdown Button",
-  options = ["Dropdown Item 1", "Dropdown Item 2", "Dropdown Item 3", "Dropdown Item 4"],
+  options = [
+    { label: "Dropdown Item 1" },
+    { label: "Dropdown Item 2" },
+    { label: "Dropdown Item 3"}, 
+    { label: "Dropdown Item 4", disabled: true }, //disabled example
+  ],
   onSelect = (option) => console.log("Selected:", option),
   className,
   type,
   state,
-  disabled,
   ...props
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -68,14 +72,10 @@ const Dropdown: React.FC<DropdownProps> = ({
         <button
           id="menu-button"
           type="button"
-          className={cn(
-            dropdownButtonVariants({ type, state }),
-          )}
-       
+          className={cn(dropdownButtonVariants({ type, state }))}
           onClick={toggleDropdown}
           aria-haspopup="true"
           aria-expanded={isOpen}
-          disabled={disabled}
         >
           <span className="hover:text-primary">
             {selectedOption || label}
@@ -101,17 +101,30 @@ const Dropdown: React.FC<DropdownProps> = ({
             tabIndex={-1}
         >
             <div className="py-1" role="none">
-              {(options ?? []).map((option) => (
-                <button
-                  key={option}
-                  className=" block w-full text-black font-secondary text-size-400 hover:bg-primary-hover text-left px-2 py-3 spacing-line-height-body-3 rounded" 
-                  role="menuitem"
-                  tabIndex={-1}
-                  onClick={() => handleOptionClick(option)}
-                >
-                  {option}
-                </button>
-              ))}
+              {(options ?? []).map((option) => {
+                  const label =
+                    typeof option === "string" ? option : option.label;
+                  const isDisabled =
+                    typeof option === "object" && option.disabled;
+
+                  return (
+                    <button
+                      key={label}
+                      className={cn(
+                        "block w-full text-black font-secondary text-size-400 text-left px-2 py-3 spacing-line-height-body-3 rounded transition-colors",
+                        isDisabled
+                          ? "text-gray-600 text-size-400 cursor-not-allowed opacity-70"
+                          : "hover:bg-primary-hover"
+                      )}
+                      role="menuitem"
+                      tabIndex={-1}
+                      disabled={isDisabled}
+                      onClick={() => !isDisabled && handleOptionClick(label)}
+                    >
+                      {label}
+                    </button>
+                  );
+              })}
             </div>
         </div>
       )}
