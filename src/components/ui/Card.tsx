@@ -1,5 +1,5 @@
 import Avatar, { type AvatarSize, type AvatarVariant } from '@/components/ui/Avatar';
-import { Icon } from '@/components/ui/icon';
+import { Icon } from '@/components/ui/Icon';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { LucideProps } from 'lucide-react';

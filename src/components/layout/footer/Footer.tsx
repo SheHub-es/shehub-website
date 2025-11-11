@@ -2,12 +2,12 @@
 
 "use client";
 
-import Link from 'next/link';
 import AthenaIconInstagram from '@/components/icons/custom/AthenaIconInstagram';
 import AthenaIconLinkedin from '@/components/icons/custom/AthenaIconLinkedin';
 import AthenaIconMail from '@/components/icons/custom/AthenaIconMail';
 import FooterLogo from '@/components/icons/custom/FooterLogo';
-import { Icon } from '@/components/ui/icon';
+import { Icon } from '@/components/ui/Icon';
+import Link from 'next/link';
 
 const navLinks = [
   { href: '/collaborators', label: 'Collaborators' },

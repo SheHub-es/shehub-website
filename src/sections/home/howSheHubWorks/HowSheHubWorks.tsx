@@ -1,5 +1,5 @@
-import { FilePenLine, HeartHandshake, UserPlus, CalendarCheck } from "lucide-react";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/Button";
+import { CalendarCheck, FilePenLine, HeartHandshake, UserPlus } from "lucide-react";
 
 export default function HowSheHubWorks() {
   const steps = [
