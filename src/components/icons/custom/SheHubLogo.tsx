@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function SheHubLogo() {
   return (
     <Link
-      href="#hero"
+      href="/"
       scroll={true}
       className="relative w-32 h-32 block"
     >
