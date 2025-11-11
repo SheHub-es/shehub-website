@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@/lib/utils';
+import Avatar, { type AvatarSize, type AvatarVariant } from '@/components/ui/Avatar';
 import { Icon } from '@/components/ui/icon';
+import { cn } from '@/lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { LucideProps } from 'lucide-react';
 import Image, { type StaticImageData } from 'next/image';
-import Avatar, { type AvatarSize, type AvatarVariant } from '@/components/ui/avatar';
+import * as React from 'react';
 
 interface CardVariantProps extends VariantProps<typeof cardVariants> {
   title?: string;
