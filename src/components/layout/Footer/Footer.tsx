@@ -22,7 +22,6 @@ const legalLinks = [
   { href: '/terms-of-service', label: 'Terms of Service' },
 ];
 
-
 const Footer = () => {
   return (
     <footer className=" bg-[var(--color-background-footer)] text-[var(--color-foreground)]">
