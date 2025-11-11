@@ -1,6 +1,6 @@
 
-import InfoCard from "@/components/ui/hero-info-card";
-import ImagePlaceholder from '@/components/ui/image-placeholders';
+import InfoCard from "@/components/ui/HeroInfoCard";
+import ImagePlaceholder from '@/components/ui/ImagePlaceholders';
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { cn } from "@/lib/cn";
 import NextImage from "next/image";

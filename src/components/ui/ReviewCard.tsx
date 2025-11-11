@@ -1,4 +1,4 @@
-import Avatar from "@/components/ui/avatar";
+import Avatar from "@/components/ui/Avatar";
 import { cn } from "@/lib/utils";
 import { StaticImageData } from "next/image";
 

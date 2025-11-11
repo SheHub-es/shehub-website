@@ -1,13 +1,13 @@
-import { Icon } from "@/components/ui/icon";
-import { Review, ReviewCard } from "@/components/ui/review-card";
+import ArrowLeft from "@/assets/svg/Athena-icon-circle-arrow-left.svg";
+import ArrowRight from "@/assets/svg/Athena-icon-circle-arrow-right.svg";
+import { Icon } from "@/components/ui/Icon";
+import ImagePlaceholder from "@/components/ui/ImagePlaceholders";
+import { Review, ReviewCard } from "@/components/ui/ReviewCard";
 import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
-import * as React from "react";
-import ArrowLeft from "@/assets/svg/Athena-icon-circle-arrow-left.svg";
-import ArrowRight from "@/assets/svg/Athena-icon-circle-arrow-right.svg"
 import { Dribbble, Linkedin, X } from "lucide-react";
-import ImagePlaceholder from "@/components/ui/image-placeholders";
 import { StaticImageData } from "next/image";
+import * as React from "react";
 
 type Variant = "review" | "cards";
 
