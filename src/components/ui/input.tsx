@@ -26,7 +26,7 @@ interface InputProps {
 
 const containerClasses = "flex flex-col items-start gap-2 w-[584px]";
 const helperTextClasses =
-  "text-gray-500 font-nunito text-base font-400 leading-6";
+  "text-neutral-500 font-secondary text-base font-400 leading-6";
 
 const inputWrapperVariants = cva(
   "flex h-12 items-center  self-stretch rounded-xl ps-5 pe-4 py-3 transition-all duration-100",
@@ -57,7 +57,7 @@ const inputWrapperVariants = cva(
 );
 
 const inputFieldVariants = cva(
-  "flex-1 bg-transparent outline-none text-black placeholder:text-gray-500",
+  "flex-1 bg-transparent outline-none text-black placeholder:text-neutral-500",
   {
     variants: {
       disabled: {
@@ -105,7 +105,7 @@ export const Input: React.FC<InputProps> = ({
         }[status]
       : "";
 
-  const labelClasses = `${disabled ? "text-gray-600" : "text-black"} font-nunito text-base font-bold leading-6`;
+  const labelClasses = `${disabled ? "text-neutral-600" : "text-black"} font-secondary text-base font-bold leading-6`;
 
   const handleMouseDown = () => {
     if (!disabled) {
