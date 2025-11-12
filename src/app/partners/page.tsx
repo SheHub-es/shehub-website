@@ -1,4 +1,4 @@
-import PartnersHero from "@/sections/partners/PartnersHero"
+import PartnersHero from "@/sections/partners/hero/PartnersHero"
 
 export default function PartnersPage() {
   return (
