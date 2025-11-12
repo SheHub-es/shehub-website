@@ -1,4 +1,3 @@
-
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
 
 export default function ConnectPage() {

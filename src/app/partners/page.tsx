@@ -1,4 +1,3 @@
-
 import PartnersHero from "@/sections/partners/hero/Hero"
 
 
