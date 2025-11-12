@@ -1,5 +1,5 @@
-import HeroLayout from "@/components/layout/heroLayout/HeroLayout"
-import HeroImage from "@/assets/images/photos/photo_hero.jpg"
+import HeroImage from "@/assets/images/photos/hero/image_hero_about.png"
+import HeroLayout from "@/sections/shared/heroLayout/HeroLayout"
 
 export default function AboutHero() {
   return (

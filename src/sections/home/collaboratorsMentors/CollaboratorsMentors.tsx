@@ -1,6 +1,6 @@
-import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper'
 import ImageSection from '@/sections/home/collaboratorsMentors/components/ImageSection'
 import TextSection from '@/sections/home/collaboratorsMentors/components/TextSection'
+import SectionWrapper from '@/sections/shared/sectionWrapper/SectionWrapper'
 import clsx from 'clsx'
 import CollaboratorArrowOrange from '../../../assets/images/icons/icon_collaboratorOrange.svg'
 import DiamondImage from '../../../assets/images/icons/icon_diamond.svg'

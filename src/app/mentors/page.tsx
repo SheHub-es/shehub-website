@@ -1,4 +1,4 @@
-import MentorsHero from "@/sections/mentors/MentorsHero"
+import MentorsHero from "@/sections/mentors/hero/MentorsHero"
 
 export default function PartnersPage() {
   return (

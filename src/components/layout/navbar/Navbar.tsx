@@ -1,11 +1,11 @@
 'use client'
 import SheHubLogo from "@/components/icons/custom/SheHubLogo";
-import SectionWrapper from "@/components/layout/sectionWrapper/SectionWrapper";
 import Button from "@/components/ui/Button";
 import NavigationMenu from "@/components/ui/NavigationMenu";
 import Toggle from "@/components/ui/Toggle";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useTranslation } from "@/hooks/useTranslation";
+import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper";
 import { Language } from "@/translations";
 
 export const Navbar = () =>  {

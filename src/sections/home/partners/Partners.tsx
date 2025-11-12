@@ -5,8 +5,8 @@ import LogoInnoit from '@/assets/images/logos/logo_innoit.png'
 import LogoNotion from '@/assets/images/logos/logo_notion.png'
 import LogoSheLeads from '@/assets/images/logos/logo_sheLeadsProduct.png'
 import LogoStep4ward from '@/assets/images/logos/logo_step4ward.png'
-import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper'
 import Button from '@/components/ui/Button'
+import SectionWrapper from '@/sections/shared/sectionWrapper/SectionWrapper'
 import Image, { StaticImageData } from 'next/image'
 
 export type Partner = {
