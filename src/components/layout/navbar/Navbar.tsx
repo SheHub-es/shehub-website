@@ -1,12 +1,12 @@
 'use client'
 import SheHubLogo from "@/components/icons/custom/SheHubLogo";
-import SectionWrapper from "@/components/layout/sectionWrapper/SectionWrapper";
 import Button from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import NavigationMenu from "@/components/ui/NavigationMenu";
 import Toggle from "@/components/ui/Toggle";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useTranslation } from "@/hooks/useTranslation";
+import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper";
 import { Language } from "@/translations";
 import { useState } from "react";
 import menuIcon from '../../../assets/images/icons/icon_menu.svg';

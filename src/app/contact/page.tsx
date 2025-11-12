@@ -1,4 +1,4 @@
-import SectionWrapper from "@/components/layout/sectionWrapper/SectionWrapper"
+import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
 
 export default function ConnectPage() {
   return (
