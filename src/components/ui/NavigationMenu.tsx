@@ -10,6 +10,11 @@ const NavigationMenu = () => {
     { key: 'menu.item-3', href: '#about' },
     { key: 'menu.item-4', href: '#partners' },
     { key: 'menu.item-5', href: '#contact' },
+    
+  // Login V1 y V2
+  { key: 'menu.loginV1', href: '/auth' },
+{ key: 'menu.loginV2', href: '/auth-v2' },
+
   ];
 
   return (

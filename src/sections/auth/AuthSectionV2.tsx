@@ -1,21 +1,26 @@
-"use client";
-
-import AuthTextV2 from "./elements/AuthTextV2";
+import AuthTextV2 from "@/sections/auth/elements/AuthTextV2";
 
 export default function AuthSectionV2() {
   return (
-    <section className="flex flex-col md:flex-row w-full min-h-screen">
-      {/* Lado Izquierdo */}
-      <div className="flex-1 flex justify-center items-center border p-8">
-        <AuthTextV2 />
-      </div>
-
-      {/* Lado Derecho */}
-      <div className="flex-1 flex justify-center items-center border p-8">
-        <div className="text-gray-500">
-          Form - Backend implementation pending
+    <section className="w-full min-h-screen pt-[120px] flex justify-center">
+      <div className="max-w-[1280px] w-full grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center">
+        
+        {/* COLUMNA IZQUIERDA */}
+        <div className="w-full flex justify-center">
+          <AuthTextV2 />
         </div>
+
+        {/* COLUMNA DERECHA */}
+        <div className="w-full flex justify-center">
+          <div className="text-gray-500">
+            Form - Backend implementation pending
+          </div>
+        </div>
+
       </div>
     </section>
   );
 }
+
+
+
