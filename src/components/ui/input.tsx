@@ -3,7 +3,7 @@ import { LucideProps } from "lucide-react";
 
 import { useId, useRef, useState } from "react";
 
-import { Icon } from "@/components/ui/icon";
+import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
 interface InputProps {

@@ -428,7 +428,7 @@ html {
 }
 
 :focus-visible {
-  outline: 0.25rem solid var(--color-purple-600);
+  outline: 0.25rem solid var(--color-purple-300);
   outline-offset: 0.125rem;
   position: relative;     
 }
@@ -445,7 +445,7 @@ html {
   left: -0.25rem;
   right: -0.25rem;
   bottom: -0.60rem;
-  border: 0.25rem solid var(--color-purple-600);
+  border: 0.25rem solid var(--color-purple-300);
   border-radius: 0;
   pointer-events: none;
 }
