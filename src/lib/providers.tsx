@@ -1,15 +1,18 @@
 "use client";
 
-import { ThemeProvider } from "@/components/providers/theme-provider";
-import { ReduxProvider } from "@/components/providers/redux-provider";
+import { LanguageProvider } from "@/providers/LanguageProvider";
+import { ReduxProvider } from "@/providers/ReduxProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import { ReactNode } from "react";
 
 export function AppProviders({ children }: { children: ReactNode }) {
   return (
     <ReduxProvider>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        {children}
-      </ThemeProvider>
+      <LanguageProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      </LanguageProvider>
     </ReduxProvider>
   );
 }
