@@ -9,10 +9,10 @@ import PurpleRectangle from '../../../assets/images/icons/icon_purpleRectangle.s
 import PurpleTrianglesIcon from '../../../assets/images/icons/icon_purpleTriangles.svg'
 import SmileIcon from '../../../assets/images/icons/icon_smileImage.svg'
 import SwirlArrowImage from '../../../assets/images/icons/icon_swirlArrow.svg'
-import CollaboratorPlaceholder from '../../../assets/images/photos/photo_collaboratorPlaceholder.svg'
-import CollaboratorComputerClockImage from '../../../assets/images/photos/photo_computerClockPlaceholder.svg'
-import CollaboratorComputerImage from '../../../assets/images/photos/photo_computerPlaceholder.svg'
-import MentorPlaceholder from '../../../assets/images/photos/photo_mentorPlaceholder.svg'
+import CollaboratorPlaceholder from '../../../assets/images/photos/photo_collaboratorPlaceholder.webp'
+import CollaboratorComputerClockImage from '../../../assets/images/photos/photo_computerClockPlaceholder.webp'
+import CollaboratorComputerImage from '../../../assets/images/photos/photo_computerPlaceholder.webp'
+import MentorPlaceholder from '../../../assets/images/photos/photo_mentorPlaceholder.webp'
 
 const CollaboratorsMentorsCopyProps = [
     {
