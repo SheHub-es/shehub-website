@@ -1,4 +1,7 @@
 import { useTranslation } from '@/hooks/useTranslation';
+import { cn } from "@/lib/utils";
+
+type Layout = 'horizontal' | 'vertical'
 
 const NavigationMenu = () => {
 
@@ -13,18 +16,21 @@ const NavigationMenu = () => {
   ];
 
   return (
-    <div className="flex gap-[32px]">
-      {navItems.map(({ key, href }) => (
-        <a 
-          key={key} 
-          href={href}
-          className="flex-1 whitespace-nowrap cursor-pointer nav-item text-black hover:text-[var(--color-navigationmenu-hover)]"
-          tabIndex={0}
-        >
-          {t(key)}
-        </a>
-      ))}
-    </div>
+    <nav aria-label='Main Navigation'>
+      <ul className="list-none flex flex-col gap-6 md:flex-row md:gap-8 md:items-center">
+        {navItems.map(({ key, href }) => (
+          <li key={key}>
+            <a
+              href={href}
+              className="flex-1 whitespace-nowrap cursor-pointer nav-item text-black hover:text-navigationmenu-hover"
+              tabIndex={0}
+            >
+              {t(key)}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   )
 }
 
