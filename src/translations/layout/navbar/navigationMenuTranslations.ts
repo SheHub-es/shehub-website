@@ -17,9 +17,9 @@ export const navigationMenuTranslations: TranslationObject = {
     ca: 'Qui som',
   },
   'menu.item-4': {
-    es: 'Socios',
+    es: 'Alianzas',
     en: 'Partners',
-    ca: 'Socis',
+    ca: 'Aliances',
   },
   'menu.item-5': {
     es: 'Contacto',
