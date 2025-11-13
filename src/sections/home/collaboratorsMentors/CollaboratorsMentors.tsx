@@ -9,9 +9,9 @@ import CollaboratorPlaceholder from '@/assets/images/photos/photo_collaboratorPl
 import CollaboratorComputerClockImage from '@/assets/images/photos/photo_computerClockPlaceholder.webp'
 import CollaboratorComputerImage from '@/assets/images/photos/photo_computerPlaceholder.webp'
 import MentorPlaceholder from '@/assets/images/photos/photo_mentorPlaceholder.webp'
+import SectionWrapper from '@/sections/shared/sectionWrapper/SectionWrapper'
 import ImageSection from '@/sections/home/collaboratorsMentors/components/ImageSection'
 import TextSection from '@/sections/home/collaboratorsMentors/components/TextSection'
-import SectionWrapper from '@/sections/shared/sectionWrapper/SectionWrapper'
 import clsx from 'clsx'
 
 const CollaboratorsMentorsCopyProps = [
