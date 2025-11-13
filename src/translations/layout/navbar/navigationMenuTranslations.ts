@@ -2,12 +2,12 @@ import type { TranslationObject } from '@/translations/types';
 
 export const navigationMenuTranslations: TranslationObject = {
   'menu.item-1': {
-    es: 'Colaboradores',
+    es: 'Colaboradoras',
     en: 'Collaborators',
-    ca: 'Collaboradores',
+    ca: 'Col·laboradores',
   },
   'menu.item-2': {
-    es: 'Mentores',
+    es: 'Mentoras',
     en: 'Mentors',
     ca: 'Mentores',
   },
