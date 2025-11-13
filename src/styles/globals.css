@@ -430,7 +430,7 @@ html {
 :focus-visible {
   outline: 0.25rem solid var(--color-purple-300);
   outline-offset: 0.125rem;
-  position: relative;
+  position: relative;     
 }
 
 .focus-square:focus-visible {
