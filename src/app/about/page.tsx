@@ -1,4 +1,4 @@
-import AboutHero from "@/sections/about/hero/AboutHero"
+import AboutHero from "@/sections/about/hero/Hero"
 
 export default function AboutPage() {
   return (

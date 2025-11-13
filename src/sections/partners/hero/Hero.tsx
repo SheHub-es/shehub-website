@@ -1,4 +1,4 @@
-import HeroImage from "@/assets/images/photos/hero/image_hero_partners.png"
+import HeroImage from "@/assets/images/photos/photo_heroPartners.webp"
 import HeroLayout from "@/sections/shared/heroLayout/HeroLayout"
 
 export default function PartnersHero() {

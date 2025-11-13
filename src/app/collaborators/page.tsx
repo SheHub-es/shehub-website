@@ -1,4 +1,4 @@
-import CollaboratorsHero from "@/sections/collaborators/hero/CollaboratorsHero"
+import CollaboratorsHero from "@/sections/collaborators/hero/Hero"
 
 export default function CollaboratorsPage() {
   return (

@@ -106,7 +106,7 @@ const floatingImages: FloatingImageProps[] = [
               alt={img.alt}
               width={img.width || 0}
               height={img.height || 0}
-              className="w-full h-full"
+              className="h-full"
             />
           </div>
         </div>
