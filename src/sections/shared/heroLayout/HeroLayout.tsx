@@ -3,7 +3,7 @@
 import Button from "@/components/ui/Button"
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver"
 import { cn } from "@/lib/cn"
-import { SectionWrapper } from "@/sections/shared/sectionWrapper/SectionWrapper"
+import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
 import clsx from "clsx"
 import NextImage from "next/image"
 
@@ -46,16 +46,15 @@ export default function HeroLayout({
   return (
     <SectionWrapper
       id={id}
-      fullWidth
       innerClassName={clsx(
         "flex flex-col lg:flex-row items-center justify-center mx-auto",
-        "px-6 sm:px-10",
+        "px-6 md:px-8",
 
         // MOBILE spacing
         "pt-4 gap-6",
 
         // DESKTOP spacing
-        "md:pt-10 lg:gap-2 lg:pt-12",
+        "md:pt-10 lg:pt-12 lg:gap-16",
 
         reverse && "lg:flex-row-reverse"
       )}
@@ -66,12 +65,12 @@ export default function HeroLayout({
       <div className="flex flex-col justify-center text-left lg:w-[592px] w-full h-auto">
 
         {eyebrow && (
-          <span className="text-[color:var(--color-primary)] text-base md:text-lg font-semibold tracking-wide mb-8 md:mb-12 md:my-12">
+          <span className="text-[color:var(--color-primary)] text-base md:text-lg font-semibold tracking-wide pt-12 md:pt-0 mb-8 md:mb-12 md:my-12">
             {eyebrow}
           </span>
         )}
 
-        <h1 className="text-3xl md:text-6xl font-bold tracking-tight text-[color:var(--color-black)] mb-8 md:mb-12">
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[color:var(--color-black)] mb-8 md:mb-12">
           {title}
         </h1>
 
