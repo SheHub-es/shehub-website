@@ -1,20 +1,35 @@
 import React, { CSSProperties } from "react"
+import { cn } from "@/lib/utils"
 
-type SectionWrapperProps = {
+interface SectionWrapperProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode
   className?: string
   id?: string
   style?: CSSProperties
+  innerClassName?: string
 }
 
-export const SectionWrapper = ({ children, className = "", id, style }: SectionWrapperProps) => {
+const SectionWrapper = ({
+  children,
+  className,
+  id,
+  style,
+  innerClassName,
+  ...props
+}: SectionWrapperProps) => {
   return (
     <section
       id={id}
       style={style}
-      className={`w-full py-10 scroll-mt-[100px]`}
+      className={cn("py-10", className)}
+      {...props}
     >
-      <div className={`max-w-7xl mx-auto px-6 ${className}`}>
+      <div
+        className={cn(
+          "max-w-7xl mx-auto px-6 md:px-4",
+          innerClassName
+        )}
+      >
         {children}
       </div>
     </section>

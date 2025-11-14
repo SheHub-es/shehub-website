@@ -58,7 +58,7 @@ const ImageSection = () => {
   const [heroImageRef, isHeroVisible] = useIntersectionObserver();
 
   return (
-    <div className="relative z-1 w-[360px] h-[460px] mx-auto">
+    <div className="relative z-1 w-[360px] h-[460px] mx-auto mt-8 md:mt-36">
         <div 
           ref={heroImageRef}
           className={cn(

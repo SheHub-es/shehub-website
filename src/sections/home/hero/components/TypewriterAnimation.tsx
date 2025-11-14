@@ -13,7 +13,7 @@ export default function HeroText() {
 
   return (
     <div
-        className="bg-clip-text text-transparent text-[53px] whitespace-nowrap"
+        className="bg-clip-text text-transparent text-[length:var(--text-size-800)] md:text-[length:var(--text-size-1000)] whitespace-nowrap pb-4"
         style={{ 
           backgroundImage: "var(--color-gradient-brand)",
           position: "absolute",
