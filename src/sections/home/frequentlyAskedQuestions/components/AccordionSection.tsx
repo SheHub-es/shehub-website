@@ -43,7 +43,7 @@ const AccordionBlock = () => {
 
 const AccordionSection = () => {
     return (
-        <div className="w-full px-4 mx-auto">
+        <div className="w-full  mx-auto">
             <AccordionBlock />
         </div>
     )

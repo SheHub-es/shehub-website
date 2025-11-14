@@ -1,10 +1,10 @@
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
 import { Mail } from "lucide-react"
 
-export default function ConnectPage() {
+export default function ContactPage() {
   return (
     <SectionWrapper
-      id="connect"
+      id="contact"
       className="py-40 flex flex-col items-center text-center gap-6"
     >
       <h1 className="font-primary text-4xl sm:text-5xl font-bold leading-tight text-[color:var(--color-black)]">
