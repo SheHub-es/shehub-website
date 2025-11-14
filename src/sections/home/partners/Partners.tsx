@@ -76,7 +76,7 @@ const Partners = () => {
         aria-label="List of SheHub sponsors and partners"
         className="w-full flex justify-center"
       >
-        <li className="flex flex-wrap justify-center items-center gap-x-10 md:gap-x-12 gap-y-10 my-24">
+        <li className="flex flex-wrap justify-center items-center gap-x-10 md:gap-x-12 gap-y-10 my-16">
           {partnersData.map((partner) => (
             <span
               key={partner.id}
