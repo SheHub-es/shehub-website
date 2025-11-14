@@ -70,7 +70,7 @@ export default function HeroLayout({
           </span>
         )}
 
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[color:var(--color-black)] mb-8 md:mb-12">
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[color:var(--color-black)] mb-6 md:mb-12">
           {title}
         </h1>
 
