@@ -31,22 +31,22 @@ const FAQAccordionCopy: FAQAccordionCopyType[] = [
 const AccordionBlock = () => {
     return (
         <Accordion type="multiple" className="w-full">
-        {FAQAccordionCopy.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-            <AccordionTrigger>{item.header}</AccordionTrigger>
-            <AccordionContent>{item.text}</AccordionContent>
-            </AccordionItem>
-        ))}
+            {FAQAccordionCopy.map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger>{item.header}</AccordionTrigger>
+                    <AccordionContent>{item.text}</AccordionContent>
+                </AccordionItem>
+            ))}
         </Accordion>
     );
 }
 
 const AccordionSection = () => {
-  return (
-    <div className="flex w-[603px]">
-        <AccordionBlock/>
-    </div>
-  )
+    return (
+        <div className="w-full px-4 mx-auto">
+            <AccordionBlock />
+        </div>
+    )
 }
 
 export default AccordionSection
