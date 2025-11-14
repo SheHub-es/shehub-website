@@ -9,7 +9,7 @@ export default function Collaborator() {
       <>
         Work as a{" "}
         <span
-          className="bg-clip-text text-transparent tracking-tight"
+          className="bg-clip-text text-transparent text-size-800 md:text-size-900 font-bold tracking-tight"
           style={{ backgroundImage: "var(--color-gradient-brand)" }}
         >
           collaborator

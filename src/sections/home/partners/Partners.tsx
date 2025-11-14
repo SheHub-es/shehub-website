@@ -37,8 +37,8 @@ const PartnerLogo = ({ src, alt }: { src: string | StaticImageData; alt: string 
       alt={alt}
       loading="lazy"
       className="
-        h-8        /* mobile → 32px */
-        lg:h-12    /* desktop → 48px */
+        h-12        /* mobile ? */
+        lg:h-12    /* desktop */
         w-auto
         object-contain
       "
@@ -57,7 +57,7 @@ const Partners = () => {
       <header className="flex flex-col gap-8 w-full mx-auto md:max-w-3xl">
         <h2
           id="partners-heading"
-          className="text-black text-size-800 md:text-size-900 font-primary font-heavy leading-line-height-heading-2 mb-6"
+          className="text-black text-size-800 md:text-size-900 font-primary font-heavy tracking-tight mb-6"
         >
           Our sponsors and <span className="text-primary">partners</span>
         </h2>
