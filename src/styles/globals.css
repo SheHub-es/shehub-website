@@ -181,44 +181,44 @@
 
   /* Buttons */
   --color-button-primary-primary-bg-default: var(--color-primary);
---color-button-primary-primary-bg-hover: var(--color-primary-hover);
---color-button-primary-primary-bg-focus: var(--color-primary);
---color-button-primary-primary-text: var(--color-white);
---color-button-primary-primary-text-hover: var(--color-black);
+  --color-button-primary-primary-bg-hover: var(--color-primary-hover);
+  --color-button-primary-primary-bg-focus: var(--color-primary);
+  --color-button-primary-primary-text: var(--color-white);
+  --color-button-primary-primary-text-hover: var(--color-black);
 
---color-button-secondary-primary-bg-default: var(--color-background-light);
---color-button-secondary-primary-bg-hover: var(--color-primary-hover);
---color-button-secondary-primary-bg-focus: var(--color-background-light);
---color-button-secondary-primary-text: var(--color-foreground);
---color-button-secondary-primary-border: var(--color-primary);
+  --color-button-secondary-primary-bg-default: var(--color-background-light);
+  --color-button-secondary-primary-bg-hover: var(--color-primary-hover);
+  --color-button-secondary-primary-bg-focus: var(--color-background-light);
+  --color-button-secondary-primary-text: var(--color-foreground);
+  --color-button-secondary-primary-border: var(--color-primary);
 
---color-button-primary-secondary-bg-default: var(--color-secondary);
---color-button-primary-secondary-bg-hover: var(--color-secondary-hover);
---color-button-primary-secondary-bg-focus: var(--color-primary);
---color-button-primary-secondary-text: var(--color-foreground);
+  --color-button-primary-secondary-bg-default: var(--color-secondary);
+  --color-button-primary-secondary-bg-hover: var(--color-secondary-hover);
+  --color-button-primary-secondary-bg-focus: var(--color-primary);
+  --color-button-primary-secondary-text: var(--color-foreground);
 
---color-button-secondary-secondary-bg-default: var(--color-background-light);
---color-button-secondary-secondary-bg-hover: var(--color-secondary-hover);
---color-button-secondary-secondary-bg-focus: var(--color-background-light);
---color-button-secondary-secondary-text: var(--color-foreground);
---color-button-secondary-secondary-border: var(--color-secondary);
+  --color-button-secondary-secondary-bg-default: var(--color-background-light);
+  --color-button-secondary-secondary-bg-hover: var(--color-secondary-hover);
+  --color-button-secondary-secondary-bg-focus: var(--color-background-light);
+  --color-button-secondary-secondary-text: var(--color-foreground);
+  --color-button-secondary-secondary-border: var(--color-secondary);
 
---color-button-primary-tertiary-bg-default: var(--color-tertiary);
---color-button-primary-tertiary-bg-hover: var(--color-tertiary-hover);
---color-button-primary-tertiary-bg-focus: var(--color-tertiary);
---color-button-primary-tertiary-text: var(--color-foreground);
+  --color-button-primary-tertiary-bg-default: var(--color-tertiary);
+  --color-button-primary-tertiary-bg-hover: var(--color-tertiary-hover);
+  --color-button-primary-tertiary-bg-focus: var(--color-tertiary);
+  --color-button-primary-tertiary-text: var(--color-foreground);
 
---color-button-secondary-tertiary-bg-default: var(--color-background-light);
---color-button-secondary-tertiary-bg-hover: var(--color-tertiary-hover);
---color-button-secondary-tertiary-bg-focus: var(--color-background-light);
---color-button-secondary-tertiary-text: var(--color-foreground);
---color-button-secondary-tertiary-border: var(--color-tertiary);
+  --color-button-secondary-tertiary-bg-default: var(--color-background-light);
+  --color-button-secondary-tertiary-bg-hover: var(--color-tertiary-hover);
+  --color-button-secondary-tertiary-bg-focus: var(--color-background-light);
+  --color-button-secondary-tertiary-text: var(--color-foreground);
+  --color-button-secondary-tertiary-border: var(--color-tertiary);
 
---color-button-disabled-bg: var(--color-disabled);
---color-button-disabled-text: var(--color-neutral-600);
---color-button-disabled-border: var(--color-neutral-300);
+  --color-button-disabled-bg: var(--color-disabled);
+  --color-button-disabled-text: var(--color-neutral-600);
+  --color-button-disabled-border: var(--color-neutral-300);
 
---color-button-bg-gradient: var(--color-gradient-brand);
+  --color-button-bg-gradient: var(--color-gradient-brand);
   /* To use it for example in the navbar button (which is the case for now) this is the way to apply it in the className "bg-[image:var(--color-button-bg-gradient)]"
 
   /* Toggle */
@@ -375,45 +375,79 @@
   --font-weight-heavy: 700;
 
   /*Spacing*/
---space-0: 0rem;          /* 0px  */
---space-025: 0.125rem;    /* 2px  */
---space-050: 0.25rem;     /* 4px  */
---space-075: 0.375rem;    /* 6px  */
---space-100: 0.5rem;      /* 8px  */
---space-150: 0.75rem;     /* 12px */
---space-200: 1rem;        /* 16px */
---space-250: 1.25rem;     /* 20px */
---space-300: 1.5rem;      /* 24px */
---space-400: 2rem;        /* 32px */
---space-500: 2.5rem;      /* 40px */
---space-600: 3rem;        /* 48px */
---space-800: 4rem;        /* 64px */
---space-1000: 5rem;       /* 80px */
+  --space-0: 0rem;
+  /* 0px  */
+  --space-025: 0.125rem;
+  /* 2px  */
+  --space-050: 0.25rem;
+  /* 4px  */
+  --space-075: 0.375rem;
+  /* 6px  */
+  --space-100: 0.5rem;
+  /* 8px  */
+  --space-150: 0.75rem;
+  /* 12px */
+  --space-200: 1rem;
+  /* 16px */
+  --space-250: 1.25rem;
+  /* 20px */
+  --space-300: 1.5rem;
+  /* 24px */
+  --space-400: 2rem;
+  /* 32px */
+  --space-500: 2.5rem;
+  /* 40px */
+  --space-600: 3rem;
+  /* 48px */
+  --space-800: 4rem;
+  /* 64px */
+  --space-1000: 5rem;
+  /* 80px */
 
-/*Breakpoints*/
---breakpoint-xxs: 320px;   /* 2 cols */
---breakpoint-xs: 480px;    /* 6 cols */
---breakpoint-s: 768px;     /* 6 cols */
---breakpoint-m: 1024px;    /* 12 cols */
---breakpoint-l: 1440px;    /* 12 cols */
---breakpoint-xl: 1768px;   /* 12 cols */
+  /*Breakpoints*/
+  --breakpoint-xxs: 320px;
+  /* 2 cols */
+  --breakpoint-xs: 480px;
+  /* 6 cols */
+  --breakpoint-s: 768px;
+  /* 6 cols */
+  --breakpoint-m: 1024px;
+  /* 12 cols */
+  --breakpoint-l: 1440px;
+  /* 12 cols */
+  --breakpoint-xl: 1768px;
+  /* 12 cols */
 
-/*Gutters & Margins */
---grid-gutter-s: 12px;
---grid-gutter-m: 16px;
---grid-margin-s: 16px;
---grid-margin-m: 32px;
+  /*Gutters & Margins */
+  --grid-gutter-s: 12px;
+  --grid-gutter-m: 16px;
+  --grid-margin-s: 16px;
+  --grid-margin-m: 32px;
 }
 
-.grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); }
-.gutters-s { column-gap: var(--grid-gutter-s); }
-.gutters-m { column-gap: var(--grid-gutter-m); }
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.gutters-s {
+  column-gap: var(--grid-gutter-s);
+}
+
+.gutters-m {
+  column-gap: var(--grid-gutter-m);
+}
+
 .container-margins {
   padding-left: var(--grid-margin-m);
   padding-right: var(--grid-margin-m);
 }
+
 @media (max-width: 1023px) {
-  .container-margins { padding-left: var(--grid-margin-s); padding-right: var(--grid-margin-s); }
+  .container-margins {
+    padding-left: var(--grid-margin-s);
+    padding-right: var(--grid-margin-s);
+  }
 }
 
 html {
@@ -428,9 +462,9 @@ html {
 }
 
 :focus-visible {
-  outline: 0.25rem solid var(--color-purple-300);
+  outline: 0.25rem solid var(--color-purple-600);
   outline-offset: 0.125rem;
-  position: relative;     
+  position: relative;
 }
 
 .focus-square:focus-visible {
@@ -445,7 +479,7 @@ html {
   left: -0.25rem;
   right: -0.25rem;
   bottom: -0.60rem;
-  border: 0.25rem solid var(--color-purple-300);
+  border: 0.25rem solid var(--color-purple-600);
   border-radius: 0;
   pointer-events: none;
 }
