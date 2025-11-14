@@ -45,27 +45,25 @@ export const ValueProposition = () => {
   return (
     <SectionWrapper
       id="value-proposition"
-      className="bg-purple-100 text-black py-16 px-4 sm:px-6 lg:px-8"
+      className="bg-purple-100 text-black py-16"
     >
       <div className="flex flex-col items-center text-center mb-20 gap-4">
-
-        <h2 className="text-size-900 font-bold font-primary leading-line-height-heading-2">
-          
-            Value <span className="text-primary">proposition</span>
-
+        <h2 className="text-size-800 md:text-size-900 font-bold font-primary leading-line-height-heading-2">
+          Value <span className="text-primary">proposition</span>
         </h2>
 
-        <p className="text-size-500 leading-line-height-body-1 font-secondary max-w-[768px]">
-
+        <p className="text-size-400 md:text-size-500 leading-line-height-body-1 font-secondary max-w-185">
           SheHub simulates real tech teams, so contributors grow through
           collaboration, ownership, and mentorship.
-
         </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {valueProps.map((item, index) => (
-          <div key={index} className="flex justify-center">
+          <div
+            key={index}
+            className="flex justify-center w-full"
+          >
             <Card
               type="nonClickableWithIcon"
               icon={item.icon}
@@ -73,7 +71,17 @@ export const ValueProposition = () => {
               description={item.description}
               color="white"
               radius="lg"
-              className="w-full"
+              className="
+              /* --- MOBILE FIX harcoded --- */
+              w-full
+              !max-w-[300px]
+              !h-auto
+              !p-8
+
+              /* --- DESKTOP harcoded  --- */
+              lg:!max-w-[24.375rem]
+              lg:!h-[18rem]
+              lg:!p-10"
             />
           </div>
         ))}
@@ -82,4 +90,4 @@ export const ValueProposition = () => {
   );
 };
 
-export default ValueProposition;
+export default ValueProposition

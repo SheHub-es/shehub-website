@@ -15,11 +15,11 @@ export default function HeroText() {
     <div
       className="
     bg-clip-text text-transparent
-    text-[length:var(--text-size-800)]
-    md:text-[length:var(--text-size-1000)]
+    text-4xl md:text-6xl
     whitespace-normal md:whitespace-nowrap
     relative md:absolute
     left-0 md:top-0
+    pb-4
   "
       style={{
         backgroundImage: "var(--color-gradient-brand)",

@@ -21,7 +21,7 @@ const SectionWrapper = ({
     <section
       id={id}
       style={style}
-      className={cn("w-full py-10", className)}
+      className={cn("py-10", className)}
       {...props}
     >
       <div
