@@ -5,7 +5,7 @@ import NavigationMenu from "@/components/ui/NavigationMenu";
 import Toggle from "@/components/ui/Toggle";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useTranslation } from "@/hooks/useTranslation";
-import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper";
+import { SectionWrapper } from "@/sections/shared/sectionWrapper/SectionWrapper";
 import { Language } from "@/translations";
 
 export const Navbar = () =>  {
@@ -21,7 +21,7 @@ export const Navbar = () =>  {
   
   return (
     <SectionWrapper>
-      <div className="fixed w-[1248px] h-[92px] z-50 flex justify-between items-center px-[32px] py-[24px] rounded-[24px] bg-white shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]">
+      <div className="fixed left-1/2 -translate-x-1/2 top-0 z-50 w-[1248px] h-[92px] flex justify-between items-center px-[32px] py-[24px] mt-10 rounded-[24px] bg-white shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]">
         <SheHubLogo/>
         <NavigationMenu/>
         <div className="flex items-center gap-[24px]">

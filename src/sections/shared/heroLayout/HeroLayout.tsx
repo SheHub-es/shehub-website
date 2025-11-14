@@ -3,7 +3,7 @@
 import Button from "@/components/ui/Button"
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver"
 import { cn } from "@/lib/cn"
-import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
+import { SectionWrapper } from "@/sections/shared/sectionWrapper/SectionWrapper"
 import clsx from "clsx"
 import NextImage from "next/image"
 
@@ -24,9 +24,10 @@ type HeroLayoutProps = {
   eyebrow?: string
   title: React.ReactNode
   paragraph: string
-  mainImage: string
-  alt: string
+  mainImage?: string
+  alt?: string
   buttons?: HeroButton[]
+  imageComponent?: React.ReactNode
 }
 
 export default function HeroLayout({
@@ -38,33 +39,39 @@ export default function HeroLayout({
   mainImage,
   alt,
   buttons = [],
+  imageComponent,
 }: HeroLayoutProps) {
   const [heroImageRef, isHeroVisible] = useIntersectionObserver();
-  
+
   return (
     <SectionWrapper
       id={id}
-      className={clsx(
-        // base structure
+      fullWidth
+      innerClassName={clsx(
         "flex flex-col lg:flex-row items-center justify-center mx-auto",
-        "sm:px-10 pt-12 md:py-10 lg:gap-16",
+        "px-6 sm:px-10",
+
+        // MOBILE spacing
+        "pt-4 gap-6",
+
+        // DESKTOP spacing
+        "md:pt-10 lg:gap-2 lg:pt-12",
+
         reverse && "lg:flex-row-reverse"
       )}
+
     >
+
       {/* Text column */}
-      <div
-        className={clsx(
-          "flex flex-col justify-center text-left",
-          "lg:w-[592px] w-full h-auto"
-        )}
-      >
+      <div className="flex flex-col justify-center text-left lg:w-[592px] w-full h-auto">
+
         {eyebrow && (
-          <span className="text-[color:var(--color-primary)] text-base md:text-lg font-semibold tracking-wide mb-12 md:my-12">
+          <span className="text-[color:var(--color-primary)] text-base md:text-lg font-semibold tracking-wide mb-8 md:mb-12 md:my-12">
             {eyebrow}
           </span>
         )}
 
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[color:var(--color-black)] mb-12">
+        <h1 className="text-3xl md:text-6xl font-bold tracking-tight text-[color:var(--color-black)] mb-8 md:mb-12">
           {title}
         </h1>
 
@@ -95,24 +102,25 @@ export default function HeroLayout({
       </div>
 
       {/* Image column */}
-      <div className="relative flex justify-center items-center lg:w-[592px] w-full h-auto mt-8">
-        <div
-          ref={heroImageRef}
-          className={cn(
-            "fade-on-scroll",
-            isHeroVisible && "visible"
+      <div className="relative flex justify-center items-center lg:w-[592px] w-full h-auto">
+          {imageComponent ? (
+            imageComponent
+          ) : (
+            <div
+              ref={heroImageRef}
+              className={cn("fade-on-scroll", isHeroVisible && "visible")}
+            >
+              <NextImage
+                src={mainImage!}
+                alt={alt!}
+                width={592}
+                height={620}
+                className="object-contain w-[500px] md:w-[540px] lg:w-[592px] h-auto"
+                priority
+              />
+            </div>
           )}
-        >
-          <NextImage
-            src={mainImage}
-            alt={alt}
-            width={592}
-            height={620}
-            className="object-contain w-[500px] md:w-[540px] lg:w-[592px] h-auto"
-            priority
-          />
         </div>
-      </div>
     </SectionWrapper>
   )
 }
