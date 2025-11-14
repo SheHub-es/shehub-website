@@ -28,7 +28,7 @@ export const Impact = () => {
     >
       {/* HEADER */}
       <div className="flex flex-col justify-center items-center gap-3 md:gap-4 text-center px-4">
-        <h2 className="text-white text-size-800 md:text-size-900 font-bold font-primary">
+        <h2 className="text-white text-size-800 md:text-size-900 font-bold tracking-tight font-primary">
           Our Impact So Far
         </h2>
 
