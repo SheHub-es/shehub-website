@@ -1,36 +1,39 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties } from "react"
+import { cn } from "@/lib/utils"
 
-type SectionWrapperProps = {
-  children: React.ReactNode;
-  className?: string;
-  innerClassName?: string;
-  fullWidth?: boolean;
-  id?: string;
-  style?: CSSProperties;
-};
+interface SectionWrapperProps extends React.HTMLAttributes<HTMLElement> {
+  children: React.ReactNode
+  className?: string
+  id?: string
+  style?: CSSProperties
+  innerClassName?: string
+}
 
-
-export const SectionWrapper = ({
+const SectionWrapper = ({
   children,
   className,
-  innerClassName,
-  fullWidth = false,
   id,
+  style,
+  innerClassName,
+  ...props
 }: SectionWrapperProps) => {
   return (
     <section
       id={id}
-      className={`w-full py-10 scroll-mt-[100px] ${className ?? ""}`}
+      style={style}
+      className={cn("w-full py-10", className)}
+      {...props}
     >
       <div
-        className={
-          fullWidth
-            ? `mx-auto ${innerClassName ?? ""}`
-            : `max-w-7xl mx-auto px-6 ${innerClassName ?? ""}`
-        }
+        className={cn(
+          "max-w-7xl mx-auto px-6 md:px-4",
+          innerClassName
+        )}
       >
         {children}
       </div>
     </section>
-  );
-};
+  )
+}
+
+export default SectionWrapper

@@ -1,7 +1,7 @@
 import LauraImg from '@/assets/images/avatars/avatar_lauraGracia.webp'
 import MartaImg from '@/assets/images/avatars/avatar_martaV.webp'
 import { Review, ReviewCard } from '@/components/ui/ReviewCard'
-import { SectionWrapper } from '@/sections/shared/sectionWrapper/SectionWrapper'
+import SectionWrapper from '@/sections/shared/sectionWrapper/SectionWrapper'
 
 const testimonialsData: Review[] = [
   {

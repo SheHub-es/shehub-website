@@ -1,4 +1,4 @@
-import { SectionWrapper } from "@/sections/shared/sectionWrapper/SectionWrapper"
+import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
 import { Mail } from "lucide-react"
 
 export default function ConnectPage() {
