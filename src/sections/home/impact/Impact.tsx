@@ -68,4 +68,3 @@ export const Impact = () => {
 }
 
 export default Impact
-
