@@ -11,7 +11,7 @@ import MentorPinkImage from '@/assets/images/icons/icon_mentorPink.svg';
 import RocketIcon from '@/assets/images/icons/icon_rocket.svg';
 import IconStar from '@/assets/images/icons/icon_star.svg';
 import AthenaAvatarGroup from '@/assets/images/photos/photo_athenaAvatarGroup.svg';
-import HeroImage from '@/assets/images/photos/photo_hero.jpg';
+import HeroImage from '@/assets/images/photos/photo_heroHome.jpg';
 
 type FloatingImageProps = {
   src: string;
