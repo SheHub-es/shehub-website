@@ -6,17 +6,18 @@ export default function Collaborator() {
   const copy = {
     sectionHeading: "Collaborators",
     primaryHeading: (
-      <>
+      <span className="leading-tight block">
         Work as a{" "}
         <span
-          className="bg-clip-text text-transparent text-size-800 md:text-size-900 font-bold tracking-tight"
+          className="bg-clip-text text-transparent text-size-800 md:text-size-900 font-bold tracking-tight leading-tight"
           style={{ backgroundImage: "var(--color-gradient-brand)" }}
         >
           collaborator
         </span>{" "}
         in a real tech project and build your portfolio
-      </>
+      </span>
     ),
+
     paragraphText:
       "Collaborate in multidisciplinary teams to design, build, and deliver real product features. Gain hands-on experience and create a portfolio that showcases your skills, process, and tangible results.",
     whatYouBringText:

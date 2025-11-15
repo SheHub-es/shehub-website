@@ -11,7 +11,6 @@ interface SectionWrapperProps extends React.HTMLAttributes<HTMLElement> {
 
 const SectionWrapper = ({
   children,
-  className,
   id,
   style,
   innerClassName,
@@ -21,7 +20,6 @@ const SectionWrapper = ({
     <section
       id={id}
       style={style}
-      className={cn("py-10", className)}
       {...props}
     >
       <div

@@ -6,16 +6,18 @@ export default function Mentor() {
   const copy = {
     sectionHeading: "Mentors",
     primaryHeading: (
-      <>
-        <span
-          className="bg-clip-text text-transparent tracking-tight"
-          style={{ backgroundImage: "var(--color-gradient-brand)" }}
-        >
-          Mentor a team
-        </span>{" "}
-        and grow as a leader
-      </>
-    ),
+  <span className="leading-tight block">
+    <span
+      className="bg-clip-text text-transparent tracking-tight leading-tight font-bold"
+      style={{ backgroundImage: "var(--color-gradient-brand)" }}
+    >
+      Mentor a team
+    </span>{" "}
+    and grow<br />
+    as a leader
+  </span>
+),
+
     paragraphText:
       "You’ve walked the path — now help someone take their next step. SheHub connects experienced professionals with emerging talent in tech and digital fields.",
     whatWeOfferText:

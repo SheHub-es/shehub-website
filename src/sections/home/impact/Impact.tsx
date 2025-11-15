@@ -27,7 +27,7 @@ export const Impact = () => {
       className="flex flex-col bg-primary py-16 md:py-20 lg:py-24"
     >
       {/* HEADER */}
-      <div className="flex flex-col justify-center items-center gap-3 md:gap-4 text-center px-4">
+      <div className="flex flex-col justify-center items-center gap-3 md:gap-4 text-center">
         <h2 className="text-white text-size-800 md:text-size-900 font-bold tracking-tight font-primary">
           Our Impact So Far
         </h2>
@@ -48,6 +48,7 @@ export const Impact = () => {
           md:gap-8 
           lg:gap-10
           mt-10
+          md:px-3
           justify-items-center
         "
       >

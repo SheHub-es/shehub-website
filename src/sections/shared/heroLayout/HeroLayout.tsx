@@ -48,7 +48,6 @@ export default function HeroLayout({
       id={id}
       innerClassName={clsx(
         "flex flex-col lg:flex-row items-center justify-center mx-auto",
-        "px-6 md:px-8",
 
         // MOBILE spacing
         "pt-4 gap-6",

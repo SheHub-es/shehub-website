@@ -40,7 +40,7 @@ function TextSection({
         <div className="text-black font-[var(--font-weight-heavy)] text-[length:var(--text-size-300)] md:text-[length:var(--text-size-400)]">
           {sectionHeading}
         </div>
-        <div className="text-black font-[var(--font-weight-heavy)] text-[length:var(--text-size-800)] md:text-[length:var(--text-size-900)] leading-[var(--spacing-line-height-heading-2)]">
+        <div className="text-black font-[var(--font-weight-heavy)] text-[length:var(--text-size-800)] md:text-[length:var(--text-size-900)] tracking-tight">
           {primaryHeading}
         </div>
         <div className="text-black font-[var(--font-weight-default)] leading-[var(--spacing-line-height-body-2)] text-[length:var(--text-size-300)] md:text-[length:var(--text-size-400)] mt-[12px]" style={{ fontFamily: 'var(--font-secondary)' }} >
@@ -50,8 +50,18 @@ function TextSection({
           <InfoBlock title="What You Bring" text={whatYouBringText} />
           <InfoBlock title="What We Offer" text={whatWeOfferText} />
         </div>
-        <Button variant="secondary-primary" shape="rounded" className="text-black w-[280px]">{buttonText}</Button>
-      </div>
+          <div className="w-full flex justify-center md:justify-start">
+            <div className="w-full flex justify-center md:justify-start">
+              <Button
+                variant="secondary-primary"
+                shape="rounded"
+                className="text-black w-full md:w-auto text-sm md:text-base py-2 md:py-3"
+              >
+                {buttonText}
+              </Button>
+            </div>
+          </div>
+        </div>
     </section>
   )
 }
