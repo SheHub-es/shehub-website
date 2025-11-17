@@ -7,6 +7,7 @@ import AthenaIconLinkedin from '@/components/icons/custom/AthenaIconLinkedin';
 import AthenaIconMail from '@/components/icons/custom/AthenaIconMail';
 import FooterLogo from '@/components/icons/custom/FooterLogo';
 import { Icon } from '@/components/ui/icon';
+import NavigationMenu from '@/components/ui/navigation-menu';
 
 const navLinks = [
   { href: '/collaborators', label: 'Collaborators' },
@@ -37,19 +38,8 @@ const Footer = () => {
             
           </Link>
 
-          <nav aria-label="Main navigation">
-            <ul className="flex flex-col items-start gap-7 lg:gap-8 lg:flex-row text-size-400 px-6 lg:px-0">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-lg font-normal text-[var(--color-navigationmenu-label)] hover:text-[var(--color-navigationmenu-hover)]"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <nav aria-label="Main navigation" className="px-6 lg:px-0">
+            <NavigationMenu className="flex flex-col items-start gap-7 lg:gap-8 lg:flex-row text-size-400"/>
           </nav>
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center lg:gap-2 px-4 lg:px-0">

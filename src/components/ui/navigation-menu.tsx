@@ -1,6 +1,7 @@
 import { useTranslation } from '@/hooks/useTranslation';
+import clsx from 'clsx';
 
-const NavigationMenu = () => {
+const NavigationMenu = ({ className = "" }) => {
 
   const { t } = useTranslation();
 
@@ -13,7 +14,11 @@ const NavigationMenu = () => {
   ];
 
   return (
-    <div className="flex gap-[32px]">
+    <div className={clsx(
+        "flex gap-[32px]", // Navbar
+        className              // Footer
+      )}
+      >
       {navItems.map(({ key, href }) => (
         <a 
           key={key} 
