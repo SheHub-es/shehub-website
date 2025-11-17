@@ -1,4 +1,4 @@
-import { TimelineItemData } from "@/components/ui/timeline";
+import { TimelineItemData } from "@/components/ui/Timeline";
 
 export const mentorsTimelineData: TimelineItemData[] = [
     {

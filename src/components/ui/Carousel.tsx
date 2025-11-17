@@ -1,5 +1,5 @@
-import ArrowLeft from "@/assets/svg/Athena-icon-circle-arrow-left.svg";
-import ArrowRight from "@/assets/svg/Athena-icon-circle-arrow-right.svg";
+import ArrowLeft from "@/assets/images/icons/icon_AthenaCircleArrowLeft.svg";
+import ArrowRight from "@/assets/images/icons/icon_AthenaCircleArrowRight.svg";
 import { Icon } from "@/components/ui/Icon";
 import ImagePlaceholder from "@/components/ui/ImagePlaceholders";
 import { Review, ReviewCard } from "@/components/ui/ReviewCard";

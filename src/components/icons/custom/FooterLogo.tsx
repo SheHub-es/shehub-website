@@ -1,5 +1,6 @@
 // src/components/icons/custom/FooterLogo.tsx
 
+import SheHubLogo from '@/assets/images/logos/sheHub/logo_shehub.png';
 import Image from 'next/image';
 
 type FooterLogoProps = {
@@ -15,7 +16,7 @@ export default function FooterLogo({ width = 128, height = 32 }: FooterLogoProps
       className="relative block"
     >
       <Image
-        src="/logo-shehub.png"
+        src={SheHubLogo}
         alt="SheHub Logo for Footer"
         fill
         priority
