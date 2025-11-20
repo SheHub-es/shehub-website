@@ -17,7 +17,7 @@ const legalLinks = [
 
 const Footer = () => {
   return (
-    <footer className=" bg-[var(--color-background-footer)] text-[var(--color-foreground)]">
+    <footer className=" bg-background-footer text-foreground">
       {/* Final version with increased vertical padding (py-20) for more height. */}
       <div className="container mx-auto max-w-7xl py-6 lg:py-20 px-2 lg:px-0 font-secondary">
         <div className="flex flex-col lg:flex-row lg:items-center gap-y-8 lg:gap-y-0 lg:justify-between">
@@ -38,9 +38,9 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row items-start lg:items-center lg:gap-2 px-4 lg:px-0">
             <a
               href="mailto:info@shehub.es"
-              className="group flex items-center lg:gap-1 text-base text-[var(--color-purple-700)] underline hover:text-[var(--color-purple-600)] pb-1 lg:pb-0"
+              className="group flex items-center lg:gap-1 text-base text-purple-700 underline hover:text-purple-600 pb-1 lg:pb-0"
             >
-              <Icon icon={<AthenaIconMail width={24} height={24} /> } className="text-[var(--color-icon-default)] group-hover:text-[var(--color-icon-hover)]"/>
+              <Icon icon={<AthenaIconMail width={24} height={24} /> } className="text-icon-default group-hover:text-icon-hover"/>
               <span className='font-secondary text-size-300 mr-4'>info@shehub.es</span>
             </a>
 
@@ -52,7 +52,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="group block transition-opacity hover:opacity-90"
               >
-                <Icon icon={<AthenaIconInstagram width={24} height={24} /> } className="text-[var(--color-icon-default)] group-hover:text-[var(--color-icon-hover)]" />
+                <Icon icon={<AthenaIconInstagram width={24} height={24} /> } className="text-icon-default group-hover:text-icon-hover" />
               </a>
 
               <a
@@ -62,13 +62,13 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="group block transition-opacity hover:opacity-90"
               >
-                <Icon icon={<AthenaIconLinkedin width={24} height={24} /> } className="text-[var(--color-icon-default)] group-hover:text-[var(--color-icon-hover)]" />
+                <Icon icon={<AthenaIconLinkedin width={24} height={24} /> } className="text-icon-default group-hover:text-icon-hover" />
               </a>
             </div>
           </div>
         </div>
 
-                <hr className=" md:mb-3 md:mt-3 border-t border-[var(--color-foreground)] mx-6 lg:mx-0" />
+                <hr className=" md:mb-3 md:mt-3 border-t border-foreground mx-6 lg:mx-0" />
 
         <div className="flex flex-col lg:flex-row lg:items-center pt-2 text-base lg:justify-center lg:gap-x-8 lg:gap-y-4 px-6 lg:px-0">
           <p className="text-left lg:text-center text-size-200 lg:text-size-300 pt-4.5 md:pt-0 pb-10 lg:pb-0">
@@ -79,12 +79,12 @@ const Footer = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[var(--color-purple-700)] underline hover:text-[var(--color-purple-600)] visited:text-[var(--color-textlink-visited)] text-size-200 lg:text-size-300"
+                className="text-purple-700 underline hover:text-purple-600 visited:text-textlink-visited text-size-200 lg:text-size-300"
               >
                 {link.label}
               </Link>
             ))}
-            <button className="text-[var(--color-purple-700)] underline hover:text-[var(--color-purple-600)] pb-4 lg:pb-0 text-size-200 lg:text-size-300">
+            <button className="text-purple-700 underline hover:text-purple-600 pb-4 lg:pb-0 text-size-200 lg:text-size-300">
               Cookies Settings
             </button>
           </div>
