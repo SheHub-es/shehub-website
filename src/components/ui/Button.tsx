@@ -77,7 +77,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center font-secondary transition-colors focus-square cursor-pointer", "w-full sm:w-auto",
+        "inline-flex items-center justify-center font-secondary transition-colors focus-square cursor-pointer", "w-full lg:w-auto",
         variants[variant],
         sizes[size],
         shapes[shape],
