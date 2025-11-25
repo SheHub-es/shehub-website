@@ -10,7 +10,6 @@ import Partners from "@/sections/home/partners/Partners";
 import Testimonials from "@/sections/home/testimonials/Testimonials";
 import ValueProposition from "@/sections/home/valueProposition/ValueProposition";
 
-
 export default function Home () {
   return (
     <>  

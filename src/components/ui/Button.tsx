@@ -53,12 +53,11 @@ const variants = {
     "bg-[image:var(--color-button-bg-gradient)] text-white hover:opacity-90",
 };
  
-{/* original  m: "h-10 px-6 py-3 text-[var(--text-size-400)]",     */}
+
 
 const sizes = {
     
-  sm: "h-10 px-6 py-3 min-w-[44px] gap-3 " +
-    "text-[var(--text-size-400)] leading-[var(--spacing-line-height-label-1)] font-normal", 
+  sm: "h-10 px-6 py-3 text-[var(--text-size-400)]", 
   lg: "h-12 px-6 py-3 text-[var(--text-size-400)]",
 };
 
@@ -78,7 +77,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center font-secondary transition-colors focus-square cursor-pointer",
+        "inline-flex items-center justify-center font-secondary transition-colors focus-square cursor-pointer", "w-full sm:w-auto",
         variants[variant],
         sizes[size],
         shapes[shape],
