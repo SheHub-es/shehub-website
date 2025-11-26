@@ -6,7 +6,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const dropdownButtonVariants = cva(
 
- "flex min-w-[44px] min-h-[44px] justify-center items-center w-[206px] h-12 rounded-[12px] pl-3 text-black font-secondary text-size-400 spacing-line-height-body-3",
+ "flex min-w-[44px] min-h-[44px] justify-between md:justify-center items-center w-[288px] md:w-[206px] h-12 rounded-[12px] pl-3 text-black font-secondary text-size-300 md:text-size-400 spacing-line-height-body-3",
   {
     variants: {
       type: {
@@ -92,7 +92,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       {isOpen && (
         <div
             className={cn(
-              "origin-top absolute left-1/2 top-full -translate-x-1/2 mt-2 w-[206px] z-50 flex flex-col items-stretch p-3 rounded-2xl border border-neutral-300 bg-neutral-50 shadow-card-shadow-default"
+              "origin-top absolute left-1/2 top-full -translate-x-1/2 mt-1.5 w-[288px] md:w-[206px] z-50 flex flex-col items-stretch px-3 py-2 rounded-2xl border border-neutral-300 bg-neutral-50 shadow-[0px_4px_16px_0px_#0E0E0E14]"
            )}
 
             role="menu"
@@ -111,9 +111,9 @@ const Dropdown: React.FC<DropdownProps> = ({
                     <button
                       key={label}
                       className={cn(
-                        "block w-full text-black font-secondary text-size-400 text-left px-2 py-3 spacing-line-height-body-3 rounded transition-colors",
+                        "block w-full text-black font-secondary text-size-300 md:text-size-400 text-left px-2 py-3 spacing-line-height-body-3 rounded transition-colors",
                         isDisabled
-                          ? "text-gray-600 text-size-400 cursor-not-allowed opacity-70"
+                          ? "text-gray-600 cursor-not-allowed opacity-70"
                           : "hover:bg-primary-hover"
                       )}
                       role="menuitem"
