@@ -24,7 +24,7 @@ interface InputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const containerClasses = "flex flex-col items-start gap-2 w-[584px]";
+const containerClasses = "flex flex-col items-start gap-2 w-full max-w-72 md:max-w-[584px]";
 const helperTextClasses =
   "text-neutral-500 font-secondary text-base font-400 leading-6";
 
