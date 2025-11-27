@@ -9,7 +9,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
   return (
     <ReduxProvider>
       <LanguageProvider>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
         </ThemeProvider>
       </LanguageProvider>
