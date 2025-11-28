@@ -1,12 +1,10 @@
 import ArrowLeft from "@/assets/images/icons/icon_AthenaCircleArrowLeft.svg";
 import ArrowRight from "@/assets/images/icons/icon_AthenaCircleArrowRight.svg";
+import { CardItem, MemberCardItem } from "@/components/ui/CardItem";
 import { Icon } from "@/components/ui/Icon";
-import ImagePlaceholder from "@/components/ui/ImagePlaceholders";
 import { Review, ReviewCard } from "@/components/ui/ReviewCard";
 import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
-import { Dribbble, Linkedin, X } from "lucide-react";
-import { StaticImageData } from "next/image";
 import * as React from "react";
 
 type Variant = "review" | "cards";
@@ -15,13 +13,7 @@ type ArrowsPlacement = "sides" | "bottom-right";
 
 export type PerView = | number | { base: number; sm?: number; md?: number; lg?: number; xl?: number };
 
-export type MemberCardItem = {
-    id: string;
-    name: string;
-    role: string;
-    photoUrl?: string | StaticImageData;
-    socials?: { linkedin?: string; x?: string; dribbble?: string };
-};
+
 
 type BaseProps = React.HTMLAttributes<HTMLElement> & VariantProps<typeof carouselVariants> & {
     loop?: boolean;
@@ -106,55 +98,14 @@ function perViewToClasses(perView: PerView | undefined) {
     return classes.join(" ");
 }
 
-function CardItem({ item }: { item: MemberCardItem }) {
-    return (
-        <div className="w-[18.5rem] gap-8 flex flex-col">
-            <ImagePlaceholder
-                square={296}
-                corner="noCorner"
-                imageUrl={item.photoUrl}
-                loading={!item.photoUrl}
-            />
-            <div className="px-4">
-                <div className="mt-3">
-                    <p className="font-secondary text-size-500 font-bold text-black leading-line-height-body-1">{item.name}</p>
-                    <p className="font-secondary text-black text-size-400 leading-line-height-body-2">{item.role}</p>
-                </div>
 
-                <div className="flex items-start text-primary">
-                    {item.socials?.linkedin ? (
-                        <a href={item.socials.linkedin} target="_blank" rel="noreferrer">
-                            <Icon icon={Linkedin} size="sm" interactive aria-label="LinkedIn" />
-                        </a>
-                    ) : (
-                        <Icon icon={Linkedin} size="sm" aria-label="LinkedIn" />
-                    )}
-                    {item.socials?.x ? (
-                        <a href={item.socials.x} target="_blank" rel="noreferrer">
-                            <Icon icon={X} size="sm" interactive aria-label="X" />
-                        </a>
-                    ) : (
-                        <Icon icon={X} size="sm" aria-label="X" />
-                    )}
-                    {item.socials?.dribbble ? (
-                        <a href={item.socials.dribbble} target="_blank" rel="noreferrer">
-                            <Icon icon={Dribbble} size="sm" interactive aria-label="Dribbble" />
-                        </a>
-                    ) : (
-                        <Icon icon={Dribbble} size="sm" aria-label="Dribbble" />
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-}
 
 export function Carousel(props: CarouselProps) {
     const {
         variant,
         items,
         loop = false,
-        withDots = variant === "review",
+        withDots: withDotsProps,
         perView = variant === "review" ? 1 : 4,
         onIndexChange,
         className,
@@ -168,6 +119,8 @@ export function Carousel(props: CarouselProps) {
 
     const isReview = variant === "review";
     const totalItems = items.length;
+    
+    const withDots = withDotsProps ?? (variant === "review" || (variant === "cards" && totalItems > 4));
 
     const getPerView = React.useCallback(() => {
         if (typeof perView === "number") return perView;
@@ -212,22 +165,37 @@ export function Carousel(props: CarouselProps) {
             className={cn(carouselVariants({}), className)}
             {...rest}
         >
-            <div ref={viewportRef} className={cn(viewportVariants(),
-                variant === "cards" && arrowsPlacement === "sides" && "px-[132px]")}>
-                <div className={cn(trackVariants({ gap: isReview ? "lg" : "md" }), !isReview && "gap-8 w-fit mx-auto"
+            <div ref={viewportRef} className={cn(viewportVariants())}>
+                <div className={cn(
+                    trackVariants({ gap: isReview ? "lg" : "none" }),
+                    !isReview && "justify-center"
                 )}>
-                    {items.map((item, i) => (
-                        <div
-                            key={(isReview ? (item as Review).id : (item as MemberCardItem).id) ?? i}
-                            className={cn(slideVariants({ variant, padded: !isReview }), slideBasisClasses, slideClassName)}
-                        >
-                            {isReview ? (
-                                (props as ReviewCarouselProps).renderItem?.(item as Review, i) ?? <ReviewCard review={item as Review} />
-                            ) : (
-                                <CardItem item={item as MemberCardItem} />
-                            )}
-                        </div>
-                    ))}
+                    {isReview ? (
+                        items.map((item, i) => (
+                            <div
+                                key={(item as Review).id ?? i}
+                                className={cn(slideVariants({ variant, padded: false }), slideBasisClasses, slideClassName)}
+                            >
+                                {(props as ReviewCarouselProps).renderItem?.(item as Review, i) ?? <ReviewCard review={item as Review} />}
+                            </div>
+                        ))
+                    ) : (
+                        Array.from({ length: Math.ceil(items.length / 4) }).map((_, pageIndex) => (
+                            <div
+                                key={pageIndex}
+                                className="flex w-[1280px] flex-col items-center gap-[72px] snap-start shrink-0"
+                            >
+                                <div className="flex h-[420px] items-start gap-8 justify-center">
+                                    {items.slice(pageIndex * 4, (pageIndex + 1) * 4).map((item, i) => (
+                                        <CardItem
+                                            key={(item as MemberCardItem).id ?? (pageIndex * 4 + i)}
+                                            item={item as MemberCardItem}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        ))
+                    )}
                 </div>
             </div>
             {withDots && (
@@ -243,7 +211,7 @@ export function Carousel(props: CarouselProps) {
                     ))}
                 </div>
             )}
-            {isReview ? (
+            {(isReview || (!isReview && totalItems > 4)) ? (
                 <>
                     <Icon
                         icon={ArrowLeft}
@@ -264,7 +232,8 @@ export function Carousel(props: CarouselProps) {
                         className="absolute top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-purple-100 shadow right-4"
                     />
                 </>
-            ) : (
+            ) : null}
+            {!isReview && totalItems <= 4 ? (
                 <div className="mt-[72px] mx-auto w-[calc(296px*4+72px*3)] flex items-center justify-end gap-2">
                     <Icon
                         icon={ArrowLeft}
@@ -273,7 +242,7 @@ export function Carousel(props: CarouselProps) {
                         onClick={prev}
                         aria-label="Previous slide"
                         disabled={!loop && index === 0}
-                        className="bg-white hover:bg-purple-100 shadow"
+                        className="bg-white hover:bg-purple-100 shadow opacity-50 cursor-not-allowed"
                     />
                     <Icon
                         icon={ArrowRight}
@@ -282,10 +251,10 @@ export function Carousel(props: CarouselProps) {
                         onClick={next}
                         aria-label="Next slide"
                         disabled={!loop && index === totalPages - 1}
-                        className="bg-white hover:bg-purple-100 shadow"
+                        className="bg-white hover:bg-purple-100 shadow opacity-50 cursor-not-allowed"
                     />
                 </div>
-            )}
+            ) : null}
 
         </section>
     )
