@@ -1,12 +1,10 @@
-import React, { JSX } from "react";
-import { LucideProps } from "lucide-react";
+import React from "react";
 import clsx from "clsx";
-import Image, { StaticImageData } from "next/image";
 
-type IconSize = "sm" | "md" | "lg" | "xl" | "2xl" | number;
+type IconSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | number;
 
-interface IconProps {
-    icon: React.ComponentType<LucideProps> | string | StaticImageData | JSX.Element;
+export interface IconProps {
+    icon: React.FC<React.SVGProps<SVGSVGElement>>;
     size?: IconSize;
     interactive?: boolean;
     className?: string;
@@ -16,6 +14,7 @@ interface IconProps {
 }
 
 const sizeMap: Record<Exclude<IconSize, number>, number> = {
+    xs: 12,
     sm: 16,
     md: 24,
     lg: 32,
@@ -24,7 +23,7 @@ const sizeMap: Record<Exclude<IconSize, number>, number> = {
 };
 
 export const Icon: React.FC<IconProps> = ({
-    icon,
+    icon: IconComponent,
     size = "md",
     interactive = false,
     className,
@@ -35,33 +34,6 @@ export const Icon: React.FC<IconProps> = ({
     const px = typeof size === "number" ? size : sizeMap[size];
     const Wrapper = interactive ? "button" : "span";
 
-    const renderContent = () => {
-        if (React.isValidElement(icon)) {
-            if (typeof (icon as any).type === "string" && ((icon as any).type as string).toLowerCase() === "svg") {
-                const svgEl = icon as React.ReactElement<React.SVGProps<SVGSVGElement>>;
-                return React.cloneElement<React.SVGProps<SVGSVGElement>>(svgEl, {
-                    width: svgEl.props.width ?? px,
-                    height: svgEl.props.height ?? px,
-                });
-            }
-            return icon;
-        }
-        const isStaticAsset =
-            typeof icon === "object" && icon !== null && "src" in (icon as any);
-        if (typeof icon === "string" || isStaticAsset) {
-            return (
-                <Image
-                    src={icon as string | StaticImageData}
-                    alt={props["aria-label"] ?? "icon"}
-                    width={px}
-                    height={px}
-                />
-            );
-        }
-
-        const Comp = icon as React.ComponentType<LucideProps>;
-        return <Comp size={px} strokeWidth={2} color="currentColor" />;
-    };
 
     return (
         <Wrapper
@@ -81,7 +53,7 @@ export const Icon: React.FC<IconProps> = ({
             }}
             {...props}
         >
-            {renderContent()}
+            <IconComponent width={px} height={px} fill="currentColor" stroke="currentColor" />
         </Wrapper>
     );
 };

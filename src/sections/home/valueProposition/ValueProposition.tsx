@@ -1,43 +1,48 @@
+import { IconEarth } from "@/components/icons/IconEarth";
+import { IconGift } from "@/components/icons/IconGift";
+import { IconHeartHandshake } from "@/components/icons/IconHeartHandshake";
+import { IconMapPinHouse } from "@/components/icons/IconMapPinHouse";
+import { IconRocket } from "@/components/icons/IconRocket";
+import { IconUsers } from "@/components/icons/IconUsers";
 import { Card } from "@/components/ui/Card";
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper";
-import { Gift, Globe2, HeartHandshake, MapPin, Rocket, Users } from "lucide-react";
 
 const valueProps = [
   {
     title: "Real projects",
     description:
       "Contributors deliver real features through short and iterative cycles, focusing on learning, value and continuous improvement",
-    icon: Rocket,
+    icon: IconRocket,
   },
   {
     title: "Cross-functional teams",
     description:
       "Teams include UX/UI, Dev, Product, Marketing, and Data — like in real companies.",
-    icon: Users,
+    icon: IconUsers,
   },
   {
     title: "Networking & Mentorship",
     description:
       "Mentors provide guidance, feedback, and leadership development. They help you feel confident and ready to step into your next role.",
-    icon: HeartHandshake,
+    icon: IconHeartHandshake,
   },
   {
     title: "Remote & Flexible",
     description:
       "Every project is fully remote and part-time, designed to fit around your job, studies, or personal life, so you can grow on your terms.",
-    icon: MapPin,
+    icon: IconMapPinHouse,
   },
   {
     title: "Free",
     description:
       "Contributors never pay to be part of SheHub. Access mentorship, real-world experience, and a supportive tech community — all at zero cost.",
-    icon: Gift,
+    icon: IconGift,
   },
   {
     title: "International environment",
     description:
       "Collaborators join from different countries and backgrounds, bringing diverse perspectives and creating a global, inclusive team dynamic that mirrors real tech workplaces.",
-    icon: Globe2,
+    icon: IconEarth,
   },
 ];
 

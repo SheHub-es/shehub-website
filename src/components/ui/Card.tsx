@@ -1,16 +1,15 @@
 import Avatar, { type AvatarSize, type AvatarVariant } from '@/components/ui/Avatar';
-import { Icon } from '@/components/ui/Icon';
+import { IconProps } from '@/components/ui/Icon';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { LucideProps } from 'lucide-react';
 import Image, { type StaticImageData } from 'next/image';
 import * as React from 'react';
 
 interface CardVariantProps extends VariantProps<typeof cardVariants> {
-  title?: string;
-  description?: string;
-  icon?: React.ElementType<LucideProps>;
-  className?: string;
+    title?: string;
+    description?: string;
+    icon?: DSIconComponent;
+    className?: string;
 }
 
 
@@ -227,9 +226,11 @@ type ClickableCardProps = {
     logoAlt?: string;
 };
 
+type DSIconComponent = React.ComponentType<Omit<IconProps, "icon">>;
+
 type IconCardProps = BaseProps & {
     type: 'nonClickableWithIcon' | 'nonClickableWithIconAndCorner';
-    icon: React.FC<LucideProps>;
+    icon: DSIconComponent;
     iconArialLabel?: string;
 };
 
@@ -273,7 +274,7 @@ export const Card: React.FC<CardProps> = (props) => {
         description,
         icon,
         className,
-        tone='default',
+        tone = 'default',
         ...rest
     } = props as any;
 
@@ -300,11 +301,15 @@ export const Card: React.FC<CardProps> = (props) => {
 
             {(type === 'nonClickableWithIcon' || type === 'nonClickableWithIconAndCorner') && icon && (
                 <div>
-                    <Icon
-                        icon={icon}
-                        size="xl"
-                        aria-label={(props as any).iconArielLabel ?? 'Card icon'}
-                    />
+                    {(() => {
+                        const IconComponent = icon;
+                        return (
+                            <IconComponent
+                                size="xl"
+                                aria-label={(props as any).iconArialLabel ?? "Card icon"}
+                            />
+                        );
+                    })()}
                 </div>
             )}
 
