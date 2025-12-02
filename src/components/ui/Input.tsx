@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 import { useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { IconProps } from "@/components/ui/Icon";
+import { Icon, IconProps } from "@/components/ui/Icon";
 
 interface InputProps {
   id?: string;
@@ -9,7 +9,7 @@ interface InputProps {
   label: string;
   helperText?: string;
   placeholder?: string;
-  icon?: DSIconComponent;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   iconAriaLabel?: string;
   status?: "default" | "error" | "success";
   disabled?: boolean;
@@ -21,10 +21,7 @@ interface InputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-type DSIconComponent = React.ComponentType<Omit<IconProps, "icon">>;
-
-
-const containerClasses = "flex flex-col items-start gap-2 w-[584px]";
+const containerClasses = "flex flex-col items-start gap-2 w-full max-w-72 md:max-w-[584px]";
 const helperTextClasses =
   "text-neutral-500 font-secondary text-base font-400 leading-6";
 
@@ -177,9 +174,9 @@ export const Input: React.FC<InputProps> = ({
         />
         {icon && (
           (() => {
-            const IconComponent = icon;
             return (
-              <IconComponent
+              <Icon
+                icon={icon}
                 size="sm"
                 aria-label={iconAriaLabel}
                 className={disabled ? "text-neutral-300" : ""}
