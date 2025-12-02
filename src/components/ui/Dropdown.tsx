@@ -2,7 +2,9 @@
 import * as React from "react";
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from "@/lib/utils";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { Icon } from "@/components/ui/Icon";
+import IconChevronUp from "@/components/icons/IconChevronUp";
+import IconChevronDown from "@/components/icons/IconChevronDown";
 
 const dropdownButtonVariants = cva(
 
@@ -82,9 +84,9 @@ const Dropdown: React.FC<DropdownProps> = ({
           </span>
 
           {isOpen ? (
-          <ChevronUp className=" w-11 h-11 p-2 " />
+          <Icon icon={IconChevronUp} size="lg" className="p-2" />
         ) : (
-          <ChevronDown className=" w-11 h-11 p-2 " />
+          <Icon icon={IconChevronDown} size="lg" className="p-2" />
         )}
         </button>
       </div>

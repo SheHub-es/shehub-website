@@ -1,9 +1,12 @@
+
 import React from "react";
-import { Icon, type IconProps } from "@/components/ui/Icon";
-import Svg from "@/assets/images/icons/icon_message.svg";
 
-export type IconMessageProps = Omit<IconProps, "icon">;
+const IconMessage = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg"   fill="currentColor" viewBox="0 0 44 44">
+  <path fill="currentColor" d="M36.667 14.667a5.5 5.5 0 0 1 5.5 5.5v20.166a1.834 1.834 0 0 1-3.13 1.297l-6.797-6.797H22a5.5 5.5 0 0 1-5.5-5.5V27.5a1.833 1.833 0 0 1 3.667 0v1.833A1.835 1.835 0 0 0 22 31.167h11c.486 0 .952.193 1.296.536l4.204 4.204v-15.74a1.835 1.835 0 0 0-1.833-1.834H33a1.833 1.833 0 1 1 0-3.666h3.667Z"/>
+  <path fill="currentColor" fill-rule="evenodd" d="M22 1.833a5.5 5.5 0 0 1 5.5 5.5V16.5A5.5 5.5 0 0 1 22 22H11.76l-6.797 6.797a1.834 1.834 0 0 1-3.13-1.297V7.333a5.5 5.5 0 0 1 5.5-5.5H22ZM7.333 5.5A1.833 1.833 0 0 0 5.5 7.333v15.741l4.204-4.204c.344-.343.81-.537 1.296-.537h11a1.834 1.834 0 0 0 1.833-1.833V7.333A1.833 1.833 0 0 0 22 5.5H7.333Z" clip-rule="evenodd"/>
+</svg>
 
-export const IconMessage: React.FC<IconMessageProps> = (props) => (
-  <Icon icon={Svg} {...props} />
 );
+
+export default IconMessage;

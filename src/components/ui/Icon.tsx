@@ -4,7 +4,7 @@ import clsx from "clsx";
 type IconSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | number;
 
 export interface IconProps {
-    icon: React.FC<React.SVGProps<SVGSVGElement>>;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     size?: IconSize;
     interactive?: boolean;
     className?: string;
@@ -43,7 +43,7 @@ export const Icon: React.FC<IconProps> = ({
             className={clsx(
                 "flex items-center justify-center rounded-full text-[var(--color-icon-default)]",
                 interactive &&
-                "cursor-pointer hover:text-[var(--color-icon-hover)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-icon-hover)]",
+                "cursor-pointer hover:text-icon-hover focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-icon-hover",
                 disabled && "opacity-40 pointer-events-none",
                 className
             )}

@@ -4,8 +4,6 @@ import NextImage, { StaticImageData } from "next/image";
 interface InfoCardProps {
   imageSrc?: string | StaticImageData;
   imageAlt?: string;
-  imageWidth: number;
-  imageHeight: number;
   title: string;
   subtitle: string;
   className?: string;
@@ -54,8 +52,6 @@ export default function InfoCard({
           <NextImage
             src={typeof imageSrc === "string" ? imageSrc : imageSrc}
             alt={imageAlt ?? ""}
-            width={imageWidth}
-  height={imageH}
             priority={false}
           />
         </div>

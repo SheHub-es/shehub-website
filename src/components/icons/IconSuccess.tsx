@@ -1,9 +1,11 @@
+
 import React from "react";
-import { Icon, type IconProps } from "@/components/ui/Icon";
-import Svg from "@/assets/images/icons/icon_success.svg";
 
-export type IconSuccessProps = Omit<IconProps, "icon">;
+const IconSuccess = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg"   fill="currentColor" viewBox="0 0 44 44">
+  <path stroke="#0E0E0E" stroke-linecap="round" stroke-linejoin="round" stroke- d="M43.333 13 19.5 36.833 8.667 26"/>
+</svg>
 
-export const IconSuccess: React.FC<IconSuccessProps> = (props) => (
-  <Icon icon={Svg} {...props} />
 );
+
+export default IconSuccess;

@@ -1,9 +1,19 @@
+
 import React from "react";
-import { Icon, type IconProps } from "@/components/ui/Icon";
-import Svg from "@/assets/images/icons/icon_user.svg";
 
-export type IconUserProps = Omit<IconProps, "icon">;
+const IconUser = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg"   fill="currentColor" viewBox="0 0 44 44">
+  <g clip-path="url(#a)">
+    <path fill="currentColor" fill-rule="evenodd" d="M26 6.5C15.23 6.5 6.5 15.23 6.5 26S15.23 45.5 26 45.5 45.5 36.77 45.5 26 36.77 6.5 26 6.5ZM2.167 26C2.167 12.837 12.837 2.166 26 2.166c13.163 0 23.833 10.671 23.833 23.834S39.163 49.833 26 49.833C12.837 49.833 2.167 39.163 2.167 26Z" clip-rule="evenodd"/>
+    <path fill="currentColor" fill-rule="evenodd" d="M26 17.333A4.333 4.333 0 1 0 26 26a4.333 4.333 0 0 0 0-8.667Zm-8.667 4.334a8.667 8.667 0 1 1 17.334 0 8.667 8.667 0 0 1-17.334 0ZM19.5 39a2.167 2.167 0 0 0-2.167 2.166v3.602a2.167 2.167 0 1 1-4.333 0v-3.602a6.5 6.5 0 0 1 6.5-6.5h13a6.5 6.5 0 0 1 6.5 6.5v3.602a2.167 2.167 0 1 1-4.333 0v-3.602A2.167 2.167 0 0 0 32.5 39h-13Z" clip-rule="evenodd"/>
+  </g>
+  <defs>
+    <clipPath id="a">
+      <rect   fill="currentColor" rx="4"/>
+    </clipPath>
+  </defs>
+</svg>
 
-export const IconUser: React.FC<IconUserProps> = (props) => (
-  <Icon icon={Svg} {...props} />
 );
+
+export default IconUser;

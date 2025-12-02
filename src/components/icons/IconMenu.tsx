@@ -1,9 +1,11 @@
+
 import React from "react";
-import { Icon, type IconProps } from "@/components/ui/Icon";
-import Svg from "@/assets/images/icons/icon_menu.svg";
 
-export type IconMenuProps = Omit<IconProps, "icon">;
+const IconMenu = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg"   fill="currentColor" viewBox="0 0 44 44">
+  <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke- d="M4 5h16M4 12h16M4 19h16"/>
+</svg>
 
-export const IconMenu: React.FC<IconMenuProps> = (props) => (
-  <Icon icon={Svg} {...props} />
 );
+
+export default IconMenu;

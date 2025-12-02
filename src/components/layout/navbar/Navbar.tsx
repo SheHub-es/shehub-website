@@ -8,8 +8,9 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Language } from "@/translations";
 import { useState } from "react";
-import { IconClose } from "@/components/icons/IconClose";
-import { IconMenu } from "@/components/icons/IconMenu";
+import { Icon } from "@/components/ui/Icon";
+import IconClose from "@/components/icons/IconClose";
+import IconMenu from "@/components/icons/IconMenu";
 
 export const Navbar = () => {
 
@@ -33,21 +34,17 @@ export const Navbar = () => {
                 <SheHubLogo />
               </div>
             </div>
-            <button
-              type="button"
-              aria-label={open ? (t("close") ?? "Close menu") : (t("open") ?? "Open menu")}
+            <Icon
+              icon={open ? IconClose : IconMenu}
+              interactive
+              size="md"
+              aria-label={open ? (t('close') ?? 'Close menu') : (t('open') ?? 'Open menu')}
               aria-expanded={open}
               aria-controls="mobile-menu"
               onClick={() => setOpen(prev => !prev)}
-              className="md:hidden flex items-center justify-center"
-            >
-              {open ? (
-                <IconClose size="md"/>
-              ) : (
-                <IconMenu size="md"/>
-              )}
-            </button>
-          </div>
+              className="md:hidden"
+            />
+            </div>
 
           <div className="hidden md:flex w-full items-center justify-between">
             <div aria-label="SheHub" className="flex items-center">

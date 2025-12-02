@@ -1,9 +1,11 @@
+
 import React from "react";
-import { Icon, type IconProps } from "@/components/ui/Icon";
-import Svg from "@/assets/images/icons/icon_mail.svg";
 
-export type IconMailProps = Omit<IconProps, "icon">;
+const IconMail = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg"   fill="currentColor" viewBox="0 0 44 44">
+  <path fill="currentColor" fill-rule="evenodd" d="M36.667 5.833A5.168 5.168 0 0 1 41.834 11v22a5.167 5.167 0 0 1-5.167 5.166H7.334A5.167 5.167 0 0 1 2.167 33V11a5.168 5.168 0 0 1 5.167-5.167h29.333ZM5.167 33c0 1.197.97 2.166 2.167 2.166h29.333c1.196 0 2.167-.97 2.167-2.166V15.566l-14.178 9.032-.052.032a5.168 5.168 0 0 1-5.243-.032L5.167 15.565V33ZM7.334 8.833c-1.197 0-2.167.97-2.167 2.167v1.009l15.767 10.033a2.167 2.167 0 0 0 2.148.001l15.752-10.034V11c0-1.196-.97-2.167-2.167-2.167H7.334Z" clip-rule="evenodd"/>
+</svg>
 
-export const IconMail: React.FC<IconMailProps> = (props) => (
-  <Icon icon={Svg} {...props} />
 );
+
+export default IconMail;

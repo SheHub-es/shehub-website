@@ -1,8 +1,9 @@
-import { IconDribbble } from "@/components/icons/IconDribbble";
-import { IconLeftArrow } from "@/components/icons/IconLeftArrow";
-import { IconLinkedIn } from "@/components/icons/IconLinkedIn";
-import { IconRightArrow } from "@/components/icons/IconRightArrow";
-import { IconX } from "@/components/icons/IconX";
+import IconDribbble from "@/components/icons/IconDribbble";
+import IconLeftArrow from "@/components/icons/IconLeftArrow";
+import IconLinkedIn from "@/components/icons/IconLinkedIn";
+import IconRightArrow from "@/components/icons/IconRightArrow";
+import IconX from "@/components/icons/IconX";
+import { Icon } from "@/components/ui/Icon";
 import ImagePlaceholder from "@/components/ui/ImagePlaceholders";
 import { Review, ReviewCard } from "@/components/ui/ReviewCard";
 import { cn } from "@/lib/utils";
@@ -125,24 +126,24 @@ function CardItem({ item }: { item: MemberCardItem }) {
                 <div className="flex items-start text-primary">
                     {item.socials?.linkedin ? (
                         <a href={item.socials.linkedin} target="_blank" rel="noreferrer">
-                            <IconLinkedIn size="sm" interactive aria-label="LinkedIn" />
+                            <Icon icon={IconLinkedIn} size="sm" interactive aria-label="LinkedIn" />
                         </a>
                     ) : (
-                        <IconLinkedIn size="sm" aria-label="LinkedIn" />
+                        <Icon icon={IconLinkedIn} size="sm" aria-label="LinkedIn" />
                     )}
                     {item.socials?.x ? (
                         <a href={item.socials.x} target="_blank" rel="noreferrer">
-                            <IconX size="sm" interactive aria-label="X" />
+                            <Icon icon={IconX} size="sm" interactive aria-label="X" />
                         </a>
                     ) : (
-                        <IconX size="sm" aria-label="X" />
+                        <Icon icon={IconX} size="sm" aria-label="X" />
                     )}
                     {item.socials?.dribbble ? (
                         <a href={item.socials.dribbble} target="_blank" rel="noreferrer">
-                            <IconDribbble size="sm" interactive aria-label="Dribbble" />
+                            <Icon icon={IconDribbble} size="sm" interactive aria-label="Dribbble" />
                         </a>
                     ) : (
-                        <IconDribbble size="sm" aria-label="Dribbble" />
+                        <Icon icon={IconDribbble} size="sm" aria-label="Dribbble" />
                     )}
                 </div>
             </div>
@@ -246,7 +247,8 @@ export function Carousel(props: CarouselProps) {
             )}
             {isReview ? (
                 <>
-                    <IconLeftArrow
+                    <Icon
+                        icon={IconLeftArrow}
                         size="2xl"
                         interactive
                         onClick={prev}
@@ -254,7 +256,8 @@ export function Carousel(props: CarouselProps) {
                         disabled={!loop && index === 0}
                         className="absolute top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-purple-100 shadow left-4"
                     />
-                    <IconRightArrow
+                    <Icon
+                        icon={IconRightArrow}
                         size="2xl"
                         interactive
                         onClick={next}
@@ -265,7 +268,8 @@ export function Carousel(props: CarouselProps) {
                 </>
             ) : (
                 <div className="mt-[72px] mx-auto w-[calc(296px*4+72px*3)] flex items-center justify-end gap-2">
-                    <IconLeftArrow
+                    <Icon
+                        icon={IconLeftArrow}
                         size="xl"
                         interactive
                         onClick={prev}
@@ -273,7 +277,8 @@ export function Carousel(props: CarouselProps) {
                         disabled={!loop && index === 0}
                         className="bg-white hover:bg-purple-100 shadow"
                     />
-                    <IconRightArrow
+                    <Icon
+                        icon={IconRightArrow}
                         size="xl"
                         interactive
                         onClick={next}

@@ -1,9 +1,11 @@
+
 import React from "react";
-import { Icon, type IconProps } from "@/components/ui/Icon";
-import Svg from "@/assets/images/icons/icon_checkedCheckbox2.svg";
 
-export type IconCheckedCheckbox2Props = Omit<IconProps, "icon">;
+const IconCheckedCheckbox2 = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg"   fill="currentColor" viewBox="0 0 44 44">
+  <path stroke="#0E0E0E" stroke-linecap="round" stroke-linejoin="round" stroke- d="M45.5 23.088v18.079a4.333 4.333 0 0 1-4.333 4.333H10.833A4.333 4.333 0 0 1 6.5 41.167V10.833A4.333 4.333 0 0 1 10.833 6.5H37.58M19.5 23.833l6.5 6.5L47.667 8.667"/>
+</svg>
 
-export const IconCheckedCheckbox2: React.FC<IconCheckedCheckbox2Props> = (props) => (
-  <Icon icon={Svg} {...props} />
 );
+
+export default IconCheckedCheckbox2;

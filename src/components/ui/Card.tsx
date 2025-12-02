@@ -1,5 +1,5 @@
 import Avatar, { type AvatarSize, type AvatarVariant } from '@/components/ui/Avatar';
-import { IconProps } from '@/components/ui/Icon';
+import { Icon, IconProps } from '@/components/ui/Icon';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import Image, { type StaticImageData } from 'next/image';
@@ -8,7 +8,7 @@ import * as React from 'react';
 interface CardVariantProps extends VariantProps<typeof cardVariants> {
     title?: string;
     description?: string;
-    icon?: DSIconComponent;
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     className?: string;
 }
 
@@ -174,9 +174,9 @@ const cardDescriptionVariants = cva(
                 nonClickableWithAvatarAndCorner: '',
             },
             color: {
-                white: 'text-[var(--color-card-white-description)]',
-                purple: 'text-[var(--color-card-non-clickable-purple-description)]',
-                lightPurple: 'text-[var(--color-card-non-clickable-light-purple-description)]'
+                white: 'text-card-white-description',
+                purple: 'text-card-non-clickable-purple-description',
+                lightPurple: 'text-card-non-clickable-light-purple-description'
             },
             tone: {
                 default: '',
@@ -187,12 +187,12 @@ const cardDescriptionVariants = cva(
             {
                 type: ['nonClickableWithIconAndCorner', 'nonClickableWithAvatarAndCorner'],
                 color: 'white',
-                class: 'text-[var(--color-card-white-title)]'
+                class: 'text-card-white-title'
             },
             {
                 tone: 'impact',
                 color: 'white',
-                class: 'text-[var(--color-card-white-title)]'
+                class: 'text-card-white-title'
             }
         ],
         defaultVariants: {
@@ -226,11 +226,10 @@ type ClickableCardProps = {
     logoAlt?: string;
 };
 
-type DSIconComponent = React.ComponentType<Omit<IconProps, "icon">>;
 
 type IconCardProps = BaseProps & {
     type: 'nonClickableWithIcon' | 'nonClickableWithIconAndCorner';
-    icon: DSIconComponent;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     iconArialLabel?: string;
 };
 
@@ -302,9 +301,9 @@ export const Card: React.FC<CardProps> = (props) => {
             {(type === 'nonClickableWithIcon' || type === 'nonClickableWithIconAndCorner') && icon && (
                 <div>
                     {(() => {
-                        const IconComponent = icon;
                         return (
-                            <IconComponent
+                            <Icon
+                                icon={icon}
                                 size="xl"
                                 aria-label={(props as any).iconArialLabel ?? "Card icon"}
                             />

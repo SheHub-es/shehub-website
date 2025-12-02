@@ -1,9 +1,9 @@
-import { IconEarth } from "@/components/icons/IconEarth";
-import { IconGift } from "@/components/icons/IconGift";
-import { IconHeartHandshake } from "@/components/icons/IconHeartHandshake";
-import { IconMapPinHouse } from "@/components/icons/IconMapPinHouse";
-import { IconRocket } from "@/components/icons/IconRocket";
-import { IconUsers } from "@/components/icons/IconUsers";
+import IconEarth from "@/components/icons/IconEarth";
+import IconGift from "@/components/icons/IconGift";
+import IconHeartHandshake from "@/components/icons/IconHeartHandshake";
+import IconMapPinHouse from "@/components/icons/IconMapPinHouse";
+import IconRocket from "@/components/icons/IconRocket";
+import IconUsers from "@/components/icons/IconUsers";
 import { Card } from "@/components/ui/Card";
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper";
 
