@@ -23,11 +23,11 @@ const cardVariants = cva(
                     [
                         'w-[13.5rem] h-[7rem] inline-flex items-center justify-center gap-7 p-8 cursor-pointer !rounded-[8px]',
                     ].join(' '),
-                nonClickable: ['flex flex-col items-start gap-2.5 p-10 w-[18.5rem]',
+                nonClickable: ['flex flex-col items-start gap-2.5 p-[30px] md:p-10 w-[18rem] md:w-[18.5rem]',
                 ].join(' '),
-                nonClickableWithIcon: ['flex flex-col items-start gap-7 p-10 w-[24.375rem] h-[18rem]'
+                nonClickableWithIcon: ['flex flex-col items-start gap-4 md:gap-7 p-[30px] md:p-10 w-[17.938rem] md:w-[24.25rem] h-[20.25rem] md:h-[20rem]'
                 ].join(' '),
-                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-7 p-8 w-auto h-auto '
+                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-1 md:gap-7 p-4 md:p-8 w-[9.0625rem] md:w-[14.1875rem] h-[5.5rem] md:h-[13.5rem]'
                 ].join(' '),
                 nonClickableWithAvatarAndCorner: ['flex flex-col items-start self-start gap-7 px-8 py-6 w-[11.25rem]'
                 ].join(' ')
@@ -143,9 +143,9 @@ const cardTitleVariants = cva('font-heavy', {
     variants: {
         type: {
             clickable: 'text-size-500',
-            nonClickable: 'text-size-900 font-primary',
+            nonClickable: 'text-size-800 md:text-size-900 leading-[2.75rem] md:leading-[3.75rem] font-primary',
             nonClickableWithIcon: 'text-size-500 font-secondary',
-            nonClickableWithIconAndCorner: 'text-size-900 font-primary',
+            nonClickableWithIconAndCorner: 'text-size-400 md:text-size-900 font-primary',
             nonClickableWithAvatarAndCorner: 'text-size-900 font-primary'
         },
         color: {
@@ -162,17 +162,16 @@ const cardTitleVariants = cva('font-heavy', {
 
 const cardDescriptionVariants = cva(
     [
-        'text-size-300',
         'font-secondary'
     ].join(' '),
     {
         variants: {
             type: {
                 clickable: '',
-                nonClickable: '',
-                nonClickableWithIcon: '',
-                nonClickableWithIconAndCorner: '',
-                nonClickableWithAvatarAndCorner: '',
+                nonClickable: 'text-size-300',
+                nonClickableWithIcon: 'text-size-300',
+                nonClickableWithIconAndCorner: 'text-size-100 md:text-size-300',
+                nonClickableWithAvatarAndCorner: 'text-size-100 md:text-size-300',
             },
             color: {
                 white: 'text-[var(--color-card-white-description)]',
@@ -302,7 +301,15 @@ export const Card: React.FC<CardProps> = (props) => {
                 <div>
                     <Icon
                         icon={icon}
+                         size={type === 'nonClickableWithIconAndCorner' ? 'sm' : 'lg'}
+                        className="block md:hidden"
+                        aria-label={(props as any).iconArielLabel ?? 'Card icon'}
+                    />
+
+                    <Icon
+                        icon={icon}
                         size="xl"
+                        className="hidden md:block"
                         aria-label={(props as any).iconArielLabel ?? 'Card icon'}
                     />
                 </div>
