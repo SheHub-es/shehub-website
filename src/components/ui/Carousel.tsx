@@ -160,102 +160,148 @@ export function Carousel(props: CarouselProps) {
             role="region"
             aria-roledescription="carousel"
             aria-label={`${variant} carousel`}
-            tabIndex={0}
+            //tabIndex={0}
             onKeyDown={onKeyDown}
             className={cn(carouselVariants({}), className)}
             {...rest}
         >
-            <div ref={viewportRef} className={cn(viewportVariants())}>
-                <div className={cn(
-                    trackVariants({ gap: isReview ? "lg" : "none" }),
-                    !isReview && "justify-center"
-                )}>
-                    {isReview ? (
-                        items.map((item, i) => (
-                            <div
-                                key={(item as Review).id ?? i}
-                                className={cn(slideVariants({ variant, padded: false }), slideBasisClasses, slideClassName)}
-                            >
-                                {(props as ReviewCarouselProps).renderItem?.(item as Review, i) ?? <ReviewCard review={item as Review} />}
+            {isReview ? (
+                //Max-w for avoid arrows expanding with more items
+                <div className="relative max-w-[1280px] mx-auto">
+                    <div className="flex items-center gap-4">
+                        <Icon
+                            icon={ArrowLeft}
+                            size="2xl"
+                            interactive
+                            onClick={prev}
+                            aria-label="Previous slide"
+                            disabled={!loop && index === 0}
+                            className={cn(
+                                "flex-shrink-0 bg-white hover:bg-purple-100 shadow",
+                                (!loop && index === 0) && "opacity-50 cursor-not-allowed"
+                            )}
+                        />
+                        <div ref={viewportRef} className={cn(viewportVariants())}>
+                            <div className={cn(trackVariants({ gap: "lg" }))}>
+                                {items.map((item, i) => (
+                                    <div
+                                        key={(item as Review).id ?? i}
+                                        className={cn(slideVariants({ variant, padded: false }), slideBasisClasses, slideClassName)}
+                                    >
+                                        {(props as ReviewCarouselProps).renderItem?.(item as Review, i) ?? <ReviewCard review={item as Review} />}
+                                    </div>
+                                ))}
                             </div>
-                        ))
-                    ) : (
-                        Array.from({ length: Math.ceil(items.length / 4) }).map((_, pageIndex) => (
-                            <div
-                                key={pageIndex}
-                                className="flex w-[1280px] flex-col items-center gap-[72px] snap-start shrink-0"
-                            >
-                                <div className="flex h-[420px] items-start gap-8 justify-center">
-                                    {items.slice(pageIndex * 4, (pageIndex + 1) * 4).map((item, i) => (
-                                        <CardItem
-                                            key={(item as MemberCardItem).id ?? (pageIndex * 4 + i)}
-                                            item={item as MemberCardItem}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-                        ))
+                        </div>
+                        <Icon
+                            icon={ArrowRight}
+                            size="2xl"
+                            interactive
+                            onClick={next}
+                            aria-label="Next slide"
+                            disabled={!loop && index === totalPages - 1}
+                            className={cn(
+                                "flex-shrink-0 bg-white hover:bg-purple-100 shadow",
+                                (!loop && index === totalPages - 1) && "opacity-50 cursor-not-allowed"
+                            )}
+                        />
+                    </div>
+                    {withDots && (
+                        <div className="mt-4 flex items-center justify-center gap-2">
+                            {Array.from({ length: totalPages }).map((_, i) => (
+                                <button
+                                    key={i}
+                                    aria-label={`Go to slide ${i + 1}`}
+                                    aria-selected={i === index}
+                                    className={dotVariants({ active: i === index })}
+                                    onClick={() => goTo(i)}
+                                />
+                            ))}
+                        </div>
                     )}
                 </div>
-            </div>
-            {withDots && (
-                <div className="mt-4 flex items-center justify-center gap-2">
-                    {Array.from({ length: totalPages }).map((_, i) => (
-                        <button
-                            key={i}
-                            aria-label={`Go to slide ${i + 1}`}
-                            aria-selected={i === index}
-                            className={dotVariants({ active: i === index })}
-                            onClick={() => goTo(i)}
-                        />
-                    ))}
+            ) : (
+                <div className="flex flex-col">
+                    {/* Carousel Content Container */}
+                    <div className={viewportVariants()}>
+                        <div ref={viewportRef} className={cn(viewportVariants())}>
+                            <div className={cn(trackVariants({ gap: "none" }), "justify-center")}>
+                                {Array.from({ length: Math.ceil(items.length / 4) }).map((_, pageIndex) => (
+                                    <div
+                                        key={pageIndex}
+                                        className="flex w-[1280px] flex-col items-center gap-[72px] snap-start shrink-0"
+                                    >
+                                        <div className="flex h-[420px] items-start gap-8 justify-center">
+                                            {items.slice(pageIndex * 4, (pageIndex + 1) * 4).map((item, i) => (
+                                                <CardItem
+                                                    key={(item as MemberCardItem).id ?? (pageIndex * 4 + i)}
+                                                    item={item as MemberCardItem}
+                                                />
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    {withDots && (
+                        <div className="mt-4 flex items-center justify-center gap-2">
+                            {Array.from({ length: totalPages }).map((_, i) => (
+                                <button
+                                    key={i}
+                                    aria-label={`Go to slide ${i + 1}`}
+                                    aria-selected={i === index}
+                                    className={dotVariants({ active: i === index })}
+                                    onClick={() => goTo(i)}
+                                />
+                            ))}
+                        </div>
+                    )}
+                    {totalItems > 4 ? (
+                        <>
+                            <Icon
+                                icon={ArrowLeft}
+                                size="2xl"
+                                interactive
+                                onClick={prev}
+                                aria-label="Previous slide"
+                                disabled={!loop && index === 0}
+                                className="absolute top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-purple-100 shadow left-4"
+                            />
+                            <Icon
+                                icon={ArrowRight}
+                                size="2xl"
+                                interactive
+                                onClick={next}
+                                aria-label="Next slide"
+                                disabled={!loop && index === totalPages - 1}
+                                className="absolute top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-purple-100 shadow right-4"
+                            />
+                        </>
+                    ) : (
+                        <div className="mt-[72px] mx-auto w-[calc(296px*4+72px*3)] flex items-center justify-end gap-2">
+                            <Icon
+                                icon={ArrowLeft}
+                                size="xl"
+                                interactive
+                                onClick={prev}
+                                aria-label="Previous slide"
+                                disabled={!loop && index === 0}
+                                className="bg-white hover:bg-purple-100 shadow opacity-50 cursor-not-allowed"
+                            />
+                            <Icon
+                                icon={ArrowRight}
+                                size="xl"
+                                interactive
+                                onClick={next}
+                                aria-label="Next slide"
+                                disabled={!loop && index === totalPages - 1}
+                                className="bg-white hover:bg-purple-100 shadow opacity-50 cursor-not-allowed"
+                            />
+                        </div>
+                    )}
                 </div>
             )}
-            {(isReview || (!isReview && totalItems > 4)) ? (
-                <>
-                    <Icon
-                        icon={ArrowLeft}
-                        size="2xl"
-                        interactive
-                        onClick={prev}
-                        aria-label="Previous slide"
-                        disabled={!loop && index === 0}
-                        className="absolute top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-purple-100 shadow left-4"
-                    />
-                    <Icon
-                        icon={ArrowRight}
-                        size="2xl"
-                        interactive
-                        onClick={next}
-                        aria-label="Next slide"
-                        disabled={!loop && index === totalPages - 1}
-                        className="absolute top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-purple-100 shadow right-4"
-                    />
-                </>
-            ) : null}
-            {!isReview && totalItems <= 4 ? (
-                <div className="mt-[72px] mx-auto w-[calc(296px*4+72px*3)] flex items-center justify-end gap-2">
-                    <Icon
-                        icon={ArrowLeft}
-                        size="xl"
-                        interactive
-                        onClick={prev}
-                        aria-label="Previous slide"
-                        disabled={!loop && index === 0}
-                        className="bg-white hover:bg-purple-100 shadow opacity-50 cursor-not-allowed"
-                    />
-                    <Icon
-                        icon={ArrowRight}
-                        size="xl"
-                        interactive
-                        onClick={next}
-                        aria-label="Next slide"
-                        disabled={!loop && index === totalPages - 1}
-                        className="bg-white hover:bg-purple-100 shadow opacity-50 cursor-not-allowed"
-                    />
-                </div>
-            ) : null}
-
         </section>
     )
 }
