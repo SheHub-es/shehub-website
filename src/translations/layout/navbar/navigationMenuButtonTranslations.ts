@@ -5,5 +5,16 @@ export const navigationMenuButtonTranslations: TranslationObject = {
     es: 'Únete a la Lista',
     en: 'Join the waitlist',
     ca: 'Uneix-te a la Llista',
-  }
+  },
+    open: {
+    es: 'Abrir menú',
+    en: 'Open menu',
+    ca: 'Obrir menú',
+  },
+
+  close: {
+    es: 'Cerrar menú',
+    en: 'Close menu',
+    ca: 'Tancar menú',
+  },
 };

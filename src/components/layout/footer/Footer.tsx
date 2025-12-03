@@ -1,11 +1,9 @@
-// src/components/layout/Footer/Footer.tsx
-
 "use client";
 
-import AthenaIconInstagram from '@/components/icons/custom/AthenaIconInstagram';
-import AthenaIconLinkedin from '@/components/icons/custom/AthenaIconLinkedin';
-import AthenaIconMail from '@/components/icons/custom/AthenaIconMail';
 import FooterLogo from '@/components/icons/custom/FooterLogo';
+import IconInstagram from '@/components/icons/IconInstagram';
+import IconLinkedIn from '@/components/icons/IconLinkedIn';
+import IconMail from '@/components/icons/IconMail';
 import { Icon } from '@/components/ui/Icon';
 import NavigationMenu from '@/components/ui/NavigationMenu';
 import Link from 'next/link';
@@ -40,7 +38,7 @@ const Footer = () => {
               href="mailto:info@shehub.es"
               className="group flex items-center lg:gap-1 text-base text-purple-700 underline hover:text-purple-600 pb-1 lg:pb-0"
             >
-              <Icon icon={<AthenaIconMail width={24} height={24} /> } className="text-icon-default group-hover:text-icon-hover"/>
+              <Icon icon={IconMail} size="md" className="text-icon-default group-hover:text-icon-hover"/>
               <span className='font-secondary text-size-300 mr-4'>info@shehub.es</span>
             </a>
 
@@ -52,7 +50,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="group block transition-opacity hover:opacity-90"
               >
-                <Icon icon={<AthenaIconInstagram width={24} height={24} /> } className="text-icon-default group-hover:text-icon-hover" />
+                <Icon icon={IconInstagram} size="md" className="group-hover:text-icon-hover" />
               </a>
 
               <a
@@ -62,7 +60,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="group block transition-opacity hover:opacity-90"
               >
-                <Icon icon={<AthenaIconLinkedin width={24} height={24} /> } className="text-icon-default group-hover:text-icon-hover" />
+                <Icon icon={IconLinkedIn} size="md" className="group-hover:text-icon-hover"/>
               </a>
             </div>
           </div>
@@ -94,4 +92,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer

@@ -1,18 +1,44 @@
-import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper';
-import ImageSection from '@/sections/home/hero/components/ImageSection';
-import TextSection from '@/sections/home/hero/components/TextSection';
+import HeroLayout from "@/sections/shared/heroLayout/HeroLayout";
+import ImageSection from "@/sections/home/hero/components/ImageSection";
+import HeroText from "@/sections/home/hero/components/TypewriterAnimation";
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <SectionWrapper id="hero" className="w-[1248px] h-[862px] flex flex-row gap-[80px] mt-10 ">
-      <div className="flex-1">
-        <TextSection/>
-      </div>
-      <div className="flex-1">
-        <ImageSection/>
-      </div>
-    </SectionWrapper>
-  )
-}
+    <HeroLayout
+      id="home"
+      eyebrow="Join SheHub as a collaborator"
+      title={
+        <>
+          <p className="whitespace-pre-line">
+            {`Real tech
+            experience for
+            women in`}
+          </p>
 
-export default Hero
+          <div className="mb-10 relative">
+            <HeroText />
+          </div>
+        </>
+      }
+      paragraph="SheHub connects early-career talent and experienced mentors to work on real-world, collaborative projects that are built and shipped — just like in a tech company."
+      buttons={[
+        { text: "Join a real project", variant: "primary-primary" },
+        { text: "Mentor a team", variant: "secondary-primary" },
+      ]}
+      imageComponent={
+        <div
+          className="
+            scale-[0.6]            /* mobile */
+            sm:scale-[0.75]        /* sm */
+            md:scale-[0.9]         /* tablet */
+            lg:scale-100           /* desktop */
+            origin-center
+            -mt-30
+          "
+        >
+          <ImageSection />
+        </div>
+      }
+    />
+  );
+}

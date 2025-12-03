@@ -8,11 +8,11 @@ const NavigationMenu = () => {
   const { t } = useTranslation();
 
   const navItems = [
-    { key: 'menu.item-1', href: '#collaborators' },
-    { key: 'menu.item-2', href: '#mentors' },
-    { key: 'menu.item-3', href: '#about' },
-    { key: 'menu.item-4', href: '#partners' },
-    { key: 'menu.item-5', href: '#contact' },
+    { key: 'menu.item-1', href: '/collaborators' },
+    { key: 'menu.item-2', href: '/mentors' },
+    { key: 'menu.item-3', href: '/about' },
+    { key: 'menu.item-4', href: '/partners' },
+    { key: 'menu.item-5', href: '/contact' },
   ];
 
   return (

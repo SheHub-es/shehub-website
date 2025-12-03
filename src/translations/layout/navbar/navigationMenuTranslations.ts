@@ -12,9 +12,9 @@ export const navigationMenuTranslations: TranslationObject = {
     ca: 'Mentores',
   },
   'menu.item-3': {
-    es: 'Sobre nosotros',
+    es: 'Sobre nosotras',
     en: 'About',
-    ca: 'Qui som',
+    ca: 'Sobre nosaltres',
   },
   'menu.item-4': {
     es: 'Alianzas',
