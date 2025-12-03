@@ -27,7 +27,7 @@ const cardVariants = cva(
                 ].join(' '),
                 nonClickableWithIcon: ['flex flex-col items-start gap-4 md:gap-7 p-[30px] md:p-10 w-[17.938rem] md:w-[24.25rem] h-[20.25rem] md:h-[20rem]'
                 ].join(' '),
-                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-1 md:gap-7 p-4 md:p-8 w-[9.0625rem] md:w-[14.1875rem] h-[5.5rem] md:h-[13.5rem]'
+                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-1 md:gap-7 p-4 md:p-8 w-[9.0625rem] md:w-[14.1875rem]  h-auto '
                 ].join(' '),
                 nonClickableWithAvatarAndCorner: ['flex flex-col items-start self-start gap-7 px-8 py-6 w-[11.25rem]'
                 ].join(' ')
@@ -125,7 +125,7 @@ const cardContentVariants = cva('flex flex-col text-left', {
             clickable: 'gap-2',
             nonClickable: 'gap-3',
             nonClickableWithIcon: 'gap-4',
-            nonClickableWithIconAndCorner: 'gap-2',
+            nonClickableWithIconAndCorner: 'gap-1 md:gap-2',
             nonClickableWithAvatarAndCorner: 'gap-2'
         },
         hasIcon: {
@@ -145,7 +145,7 @@ const cardTitleVariants = cva('font-heavy', {
             clickable: 'text-size-500',
             nonClickable: 'text-size-800 md:text-size-900 leading-[2.75rem] md:leading-[3.75rem] font-primary',
             nonClickableWithIcon: 'text-size-500 font-secondary',
-            nonClickableWithIconAndCorner: 'text-size-400 md:text-size-900 font-primary',
+            nonClickableWithIconAndCorner: 'text-size-400 md:text-size-900 leading-tight font-primary',
             nonClickableWithAvatarAndCorner: 'text-size-900 font-primary'
         },
         color: {
@@ -301,7 +301,7 @@ export const Card: React.FC<CardProps> = (props) => {
                 <div>
                     <Icon
                         icon={icon}
-                         size={type === 'nonClickableWithIconAndCorner' ? 'sm' : 'lg'}
+                        size={type === 'nonClickableWithIconAndCorner' ? 'sm' : 'lg'}
                         className="block md:hidden"
                         aria-label={(props as any).iconArielLabel ?? 'Card icon'}
                     />
