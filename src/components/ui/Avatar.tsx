@@ -26,23 +26,19 @@ const sizeClasses: Record<AvatarSize, string> = {
 
 const variantStyles: Record<
   AvatarVariant,
-  { bg: string; borderFocus: string }
+  { bg: string; }
 > = {
   default: {
-    bg: "var(--color-avatar-default-bg)",
-    borderFocus: "var(--color-avatar-default-border-focus)",
+    bg: "var(--color-avatar-default-bg)",    
   },
   primary: {
     bg: "var(--color-avatar-primary-variant-bg)",
-    borderFocus: "var(--color-avatar-primary-variant-border-focus)",
   },
   secondary: {
     bg: "var(--color-avatar-secondary-variant-bg)",
-    borderFocus: "var(--color-avatar-secondary-border-focus)",
   },
   tertiary: {
     bg: "var(--color-avatar-tertiary-variant-bg)",
-    borderFocus: "var(--color-avatar-tertiary-variant-border-focus)",
   },
 };
 
@@ -64,7 +60,7 @@ export const Avatar = ({
     className
   );
 
-  const { bg, borderFocus } = variantStyles[variant];
+  const { bg } = variantStyles[variant];
 
   const styles = {
     backgroundColor: disabled
@@ -76,20 +72,18 @@ export const Avatar = ({
       variant === "default"
         ? "var(--color-avatar-default-text)"
         : "var(--color-avatar-variant-text)",
-    outlineColor: borderFocus,
   };
 
   return (
     <div
       className={commonStyles}
       style={styles}
-      tabIndex={0}
     >
       {type === "initials" && initials}
       {type === "image" && imageUrl && (
         <NextImage
           src={imageUrl}
-          alt={alt}
+          alt={alt}          
           fill
           className="object-cover w-full h-full"
           priority={false}
