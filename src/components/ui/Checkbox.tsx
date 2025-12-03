@@ -77,7 +77,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         <span
           className={cn(
             // Mobile (default) → Figma specs
-            'font-secundary text-size-300 leading-line-height-heading-6 font-normal text-content-primary]',
+            'font-secondary text-size-300 leading-line-height-heading-6 font-normal text-content-primary',
             // Desktop → tus tokens originales
             'sm:font-secondary sm:text-size-400 sm:leading-line-height-body-3 sm:text-neutral-900',
             disabled && 'text-neutral-200'
