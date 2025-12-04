@@ -50,10 +50,10 @@ const viewportVariants = cva("overflow-hidden w-full");
 
 const trackVariants = cva(" flex snap-x snap-mandatory scroll-smooth", {
     variants: {
-        gap: { none: "", sm: "gap-2", md: "gap-4", lg: "" },
+        gap: { none: "", sm: "gap-2", md: "gap-4", lg: "gap-8" },
         align: { start: "items-start", center: "items-center", end: "items-end" },
     },
-    defaultVariants: { gap: "lg", align: "start" },
+    defaultVariants: { gap: "none", align: "start" },
 });
 
 const slideVariants = cva("snap-start shrink-0", {
@@ -183,7 +183,7 @@ export function Carousel(props: CarouselProps) {
                             )}
                         />
                         <div ref={viewportRef} className={cn(viewportVariants())}>
-                            <div className={cn(trackVariants({ gap: "lg" }))}>
+                            <div className={cn(trackVariants({ gap: "none" }))}>
                                 {items.map((item, i) => (
                                     <div
                                         key={(item as Review).id ?? i}
@@ -223,16 +223,15 @@ export function Carousel(props: CarouselProps) {
                 </div>
             ) : (
                 <div className="flex flex-col">
-                    {/* Carousel Content Container */}
-                    <div className={viewportVariants()}>
+                    <div className={cn("relative mx-auto w-full max-w-[1280px]")}>
                         <div ref={viewportRef} className={cn(viewportVariants())}>
-                            <div className={cn(trackVariants({ gap: "none" }), "justify-center")}>
-                                {Array.from({ length: Math.ceil(items.length / 4) }).map((_, pageIndex) => (
+                            <div className={cn(trackVariants({ gap: "none" }))}>
+                                {Array.from({ length: totalPages }).map((_, pageIndex) => (
                                     <div
                                         key={pageIndex}
-                                        className="flex w-[1280px] flex-col items-center gap-[72px] snap-start shrink-0"
+                                        className="w-full snap-start shrink-0 pr-8 last:pr-0"
                                     >
-                                        <div className="flex h-[420px] items-start gap-8 justify-center">
+                                        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
                                             {items.slice(pageIndex * 4, (pageIndex + 1) * 4).map((item, i) => (
                                                 <CardItem
                                                     key={(item as MemberCardItem).id ?? (pageIndex * 4 + i)}
@@ -243,6 +242,32 @@ export function Carousel(props: CarouselProps) {
                                     </div>
                                 ))}
                             </div>
+                        </div>
+                        <div className="mt-12 md:mt-[72px] flex items-center justify-end gap-2">
+                            <Icon
+                                icon={ArrowLeft}
+                                size="xl"
+                                interactive
+                                onClick={prev}
+                                aria-label="Previous slide"
+                                disabled={!loop && index === 0}
+                                className={cn(
+                                    "bg-white hover:bg-purple-100 shadow",
+                                    (!loop && index === 0) && "opacity-50 cursor-not-allowed"
+                                )}
+                            />
+                            <Icon
+                                icon={ArrowRight}
+                                size="xl"
+                                interactive
+                                onClick={next}
+                                aria-label="Next slide"
+                                disabled={!loop && index === totalPages - 1}
+                                className={cn(
+                                    "bg-white hover:bg-purple-100 shadow",
+                                    (!loop && index === totalPages - 1) && "opacity-50 cursor-not-allowed"
+                                )}
+                            />
                         </div>
                     </div>
                     {withDots && (
@@ -256,49 +281,6 @@ export function Carousel(props: CarouselProps) {
                                     onClick={() => goTo(i)}
                                 />
                             ))}
-                        </div>
-                    )}
-                    {totalItems > 4 ? (
-                        <>
-                            <Icon
-                                icon={ArrowLeft}
-                                size="2xl"
-                                interactive
-                                onClick={prev}
-                                aria-label="Previous slide"
-                                disabled={!loop && index === 0}
-                                className="absolute top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-purple-100 shadow left-4"
-                            />
-                            <Icon
-                                icon={ArrowRight}
-                                size="2xl"
-                                interactive
-                                onClick={next}
-                                aria-label="Next slide"
-                                disabled={!loop && index === totalPages - 1}
-                                className="absolute top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-purple-100 shadow right-4"
-                            />
-                        </>
-                    ) : (
-                        <div className="mt-[72px] mx-auto w-[calc(296px*4+72px*3)] flex items-center justify-end gap-2">
-                            <Icon
-                                icon={ArrowLeft}
-                                size="xl"
-                                interactive
-                                onClick={prev}
-                                aria-label="Previous slide"
-                                disabled={!loop && index === 0}
-                                className="bg-white hover:bg-purple-100 shadow opacity-50 cursor-not-allowed"
-                            />
-                            <Icon
-                                icon={ArrowRight}
-                                size="xl"
-                                interactive
-                                onClick={next}
-                                aria-label="Next slide"
-                                disabled={!loop && index === totalPages - 1}
-                                className="bg-white hover:bg-purple-100 shadow opacity-50 cursor-not-allowed"
-                            />
                         </div>
                     )}
                 </div>
