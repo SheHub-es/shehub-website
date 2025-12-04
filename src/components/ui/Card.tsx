@@ -27,9 +27,9 @@ const cardVariants = cva(
                 ].join(' '),
                 nonClickableWithIcon: ['flex flex-col items-start gap-4 md:gap-7 p-[30px] md:p-10 w-[17.938rem] md:w-[24.25rem] h-[20.25rem] md:h-[20rem]'
                 ].join(' '),
-                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-1 md:gap-7 p-4 md:p-8 w-[9.0625rem] md:w-[14.1875rem]  h-auto '
+                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-0.5 md:gap-7 p-4 md:p-8 w-[9.0625rem] md:w-[14.1875rem] h-auto '
                 ].join(' '),
-                nonClickableWithAvatarAndCorner: ['flex flex-col items-start self-start gap-7 px-8 py-6 w-[11.25rem]'
+                nonClickableWithAvatarAndCorner: ['flex flex-col items-start self-start gap-1 md:gap-3 p-4 md:px-8 md:py-6 w-[6.5rem] md:w-[11.25rem] h-[6rem] md:h-[11.25rem] !rounded-[4px_24px_24px_24px] md:rounded-[48px]'
                 ].join(' ')
             },
             color: {
@@ -126,7 +126,7 @@ const cardContentVariants = cva('flex flex-col text-left', {
             nonClickable: 'gap-3',
             nonClickableWithIcon: 'gap-4',
             nonClickableWithIconAndCorner: 'gap-1 md:gap-2',
-            nonClickableWithAvatarAndCorner: 'gap-2'
+            nonClickableWithAvatarAndCorner: 'gap-1 md:gap-2'
         },
         hasIcon: {
             true: '',
@@ -146,7 +146,7 @@ const cardTitleVariants = cva('font-heavy', {
             nonClickable: 'text-size-800 md:text-size-900 leading-[2.75rem] md:leading-[3.75rem] font-primary',
             nonClickableWithIcon: 'text-size-500 font-secondary',
             nonClickableWithIconAndCorner: 'text-size-400 md:text-size-900 leading-tight font-primary',
-            nonClickableWithAvatarAndCorner: 'text-size-900 font-primary'
+            nonClickableWithAvatarAndCorner: 'text-size-400 md:text-size-900 leading-tight font-primary'
         },
         color: {
             white: 'text-[var(--color-card-white-title)]',
@@ -170,8 +170,8 @@ const cardDescriptionVariants = cva(
                 clickable: '',
                 nonClickable: 'text-size-300',
                 nonClickableWithIcon: 'text-size-300',
-                nonClickableWithIconAndCorner: 'text-size-100 md:text-size-300',
-                nonClickableWithAvatarAndCorner: 'text-size-100 md:text-size-300',
+                nonClickableWithIconAndCorner: 'text-size-100 md:text-size-300 md:font-heavy',
+                nonClickableWithAvatarAndCorner: 'text-size-100 md:text-size-300 md:font-heavy',
             },
             color: {
                 white: 'text-[var(--color-card-white-description)]',
@@ -323,7 +323,7 @@ export const Card: React.FC<CardProps> = (props) => {
                             <Avatar
                                 key={`${u.name}-${i}`}
                                 type={u.imageUrl ? 'image' : 'initials'}
-                                size={(props as AvatarCardProps).avatarSize ?? 'xs'}
+                                size={(props as AvatarCardProps).avatarSize ?? 'md'}
                                 initials={u.imageUrl ? undefined : (u.initials ?? getInitials(u.name))}
                                 imageUrl={u.imageUrl}
                                 disabled={u.disabled}
