@@ -1,4 +1,4 @@
-import AuthTextV2 from "@/sections/auth/elements/AuthTextV2";
+import AuthTextV2 from "@/sections/auth/components/AuthTextV2";
 
 export default function AuthSectionV2() {
   return (
