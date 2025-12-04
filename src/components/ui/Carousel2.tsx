@@ -184,14 +184,14 @@ export function Carousel2(props: Carousel2Props) {
       role="region"
       aria-roledescription="carousel"
       aria-label={`${variant} carousel with ${totalSlides} slides`}
-      tabIndex={0}
+      //tabIndex={0}
       onKeyDown={onKeyDown}
       className={cn(carousel2Variants({}), className)}
       {...rest}
     >
       {/*REVIEW VARIANT */}
       {isReview ? (
-        //Max-w for arrows not to keep expanding with more items
+        //Max-w for avoid arrows expanding with more items
         <div className="relative max-w-[1280px] mx-auto">
           <div className="flex items-center gap-4">
             <Icon

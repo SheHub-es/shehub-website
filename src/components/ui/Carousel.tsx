@@ -243,7 +243,7 @@ export function Carousel(props: CarouselProps) {
                                 ))}
                             </div>
                         </div>
-                        <div className="mt-12 md:mt-[72px] flex items-center justify-end gap-2">
+                        <div className={cn("mt-12 md:mt-[72px] flex items-center justify-end gap-2", "hidden md:flex")}>
                             <Icon
                                 icon={ArrowLeft}
                                 size="xl"
@@ -271,7 +271,7 @@ export function Carousel(props: CarouselProps) {
                         </div>
                     </div>
                     {withDots && (
-                        <div className="mt-4 flex items-center justify-center gap-2">
+                        <div className={cn("mt-4 flex items-center justify-center gap-2", "md:hidden")}>
                             {Array.from({ length: totalPages }).map((_, i) => (
                                 <button
                                     key={i}
