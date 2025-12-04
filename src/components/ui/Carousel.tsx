@@ -50,7 +50,7 @@ const viewportVariants = cva("overflow-hidden w-full");
 
 const trackVariants = cva(" flex snap-x snap-mandatory scroll-smooth", {
     variants: {
-        gap: { none: "", sm: "gap-2", md: "gap-4", lg: "gap-8" },
+        gap: { none: "", sm: "gap-2", md: "gap-4", lg: "" },
         align: { start: "items-start", center: "items-center", end: "items-end" },
     },
     defaultVariants: { gap: "lg", align: "start" },
@@ -74,6 +74,7 @@ const dotVariants = cva('h-2 w-2 rounded-full', {
     defaultVariants: { active: false }
 });
 
+//not used, only 1 item in review and 4 in card at the moment
 function perViewToClasses(perView: PerView | undefined) {
     const basisMap: Record<number, string> = {
         1: "basis-full",
@@ -167,7 +168,7 @@ export function Carousel(props: CarouselProps) {
         >
             {isReview ? (
                 //Max-w for avoid arrows expanding with more items
-                <div className="relative max-w-[1280px] mx-auto">
+                <div className={cn("relative mx-auto", "w-[343px] min-h-[416px] py-2", "md:w-full md:max-w-[1280px] md:min-h-0 md:py-0")}>
                     <div className="flex items-center gap-4">
                         <Icon
                             icon={ArrowLeft}
