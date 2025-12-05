@@ -1,3 +1,5 @@
+import CarouselV2 from "@/sections/auth/components/CarouselV2";
+
 export default function AuthTextV2() {
   return (
     <div className="flex flex-col justify-center items-center text-center gap-0 max-w-lg">
@@ -29,10 +31,8 @@ export default function AuthTextV2() {
         Connect. Create. Break Barriers.
       </h2>
 
-      {/* CAROUSEL PLACEHOLDER */}
-      <div className="w-full h-40 flex items-center justify-center border border-dashed border-gray-300 rounded-lg mt-4">
-        <span className="text-gray-400">Carousel - Implementation Pending</span>
-      </div>
+      {/* REAL CAROUSEL */}
+      <CarouselV2/>
 
     </div>
   );
