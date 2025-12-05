@@ -1,144 +1,327 @@
 "use client";
 
 import LinkedinLogo from '@/components/icons/custom/LinkedinLogo';
+import { Eye, EyeOff } from 'lucide-react';
+import { useState } from 'react';
 
 export default function AuthFormV1() {
+  const [isLogin, setIsLogin] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   return (
     <div className="w-full bg-white shadow-lg rounded-2xl p-6 font-primary">
       
-      <form className="space-y-2.5">
-        {/* Name fields */}
-        <div className="flex gap-4">
-          <div className="flex-1">
-            <label 
-              htmlFor="firstName" 
-              className="input-label"
-            >
-              Name
-            </label>
-            <input
-              id="firstName"
-              type="text"
-              placeholder="Name"
-              name="firstName"
-              className="input-base"
-            />
-          </div>
-          <div className="flex-1">
-            <label 
-              htmlFor="lastName" 
-              className="input-label"
-            >
-              Last Name
-            </label>
-            <input
-              id="lastName"
-              type="text"
-              placeholder="Last Name"
-              name="lastName"
-              className="input-base"
-            />
-          </div>
-        </div>
-
-        {/* Email */}
-        <div>
-          <label 
-            htmlFor="email" 
-            className="input-label"
-          >
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            placeholder="Email"
-            name="email"
-            className="input-base"
-          />
-        </div>
-
-        {/* Password fields */}
-        <div className="flex gap-4">
-          <div className="flex-1">
-            <label 
-              htmlFor="password" 
-              className="input-label"
-            >
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Password"
-              name="password"
-              className="input-base"
-            />
-          </div>
-          <div className="flex-1">
-            <label 
-              htmlFor="confirmPassword" 
-              className="input-label"
-            >
-              Confirm Password
-            </label>
-            <input
-              id="confirmPassword"
-              type="password"
-              placeholder="Confirm Password"
-              name="confirmPassword"
-              className="input-base"
-            />
-          </div>
-        </div>
-
-        {/* Desired Role select */}
-        <div>
-          <label 
-            htmlFor="desiredRole" 
-            className="input-label"
-          >
-            Desired Role
-          </label>
-          <select
-            id="desiredRole"
-            name="desiredRole"
-            className="input-base"
-          >
-            <option value="">Select your role</option>
-            <option value="Miembro">Miembro</option>
-            <option value="Mentora">Mentora</option>
-            <option value="Colaboradora">Colaboradora</option>
-          </select>
-        </div>
-
-        {/* Checkbox - siempre visible */}
-        <label
-          className="flex items-center gap-2 text-sm cursor-pointer pt-1"
-          style={{ color: "var(--color-neutral-700)" }}
-        >
-          <input 
-            type="checkbox" 
-            name="wantToBeMentor"
-            className="w-4 h-4 rounded border-[var(--color-neutral-300)] 
-                     checked:bg-[var(--color-primary)] focus:ring-2 
-                     focus:ring-[var(--color-primary)]/20"
-          />
-          Register as a Mentor for the selected Role.
-        </label>
-
-        {/* Create Account button */}
+      {/* Toggle buttons */}
+      <div className="flex gap-2 mb-6">
         <button
-          type="submit"
-          className="w-full py-2.5 rounded-lg font-bold text-base transition-all
-                   hover:opacity-90 active:scale-[0.98] mt-4"
-          style={{
-            backgroundColor: "var(--color-primary)",
-            color: "var(--color-white)"
+          type="button"
+          onClick={() => setIsLogin(true)}
+          className={`flex-1 py-2.5 rounded-lg font-bold text-base transition-all
+                     border-2 active:scale-[0.98] ${
+                       isLogin 
+                         ? 'border-[var(--color-primary)] bg-gray-50' 
+                         : 'border-[var(--color-neutral-300)] bg-white hover:bg-gray-50 active:bg-gray-50'
+                     }`}
+          style={{ 
+            color: "var(--color-foreground)"
           }}
         >
-          Create Account
+          Log In
         </button>
+        <button
+          type="button"
+          onClick={() => setIsLogin(false)}
+          className={`flex-1 py-2.5 rounded-lg font-bold text-base transition-all
+                     border-2 active:scale-[0.98] ${
+                       !isLogin 
+                         ? 'border-[var(--color-primary)] bg-gray-50' 
+                         : 'border-[var(--color-neutral-300)] bg-white hover:bg-gray-50 active:bg-gray-50'
+                     }`}
+          style={{ 
+            color: "var(--color-foreground)"
+          }}
+        >
+          Sign Up
+        </button>
+      </div>
+
+      <form className="space-y-2.5">
+        {/* LOGIN FORM */}
+        {isLogin ? (
+          <>
+            {/* Email */}
+            <div>
+              <label 
+                htmlFor="email" 
+                className="input-label"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="Email"
+                name="email"
+                className="input-base"
+              />
+            </div>
+
+            {/* Password */}
+            <div>
+              <label 
+                htmlFor="password" 
+                className="input-label"
+              >
+                Password
+              </label>
+              <div className="relative">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  name="password"
+                  className="input-base pr-12"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-700)] transition-colors"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? (
+                    <EyeOff className="w-5 h-5" />
+                  ) : (
+                    <Eye className="w-5 h-5" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Privacy terms checkbox */}
+            <label
+              className="flex items-center gap-2 text-sm cursor-pointer pt-1"
+              style={{ color: "var(--color-neutral-700)" }}
+            >
+              <input 
+                type="checkbox" 
+                name="acceptTerms"
+                className="w-4 h-4 rounded border-[var(--color-neutral-300)] 
+                         checked:bg-[var(--color-primary)] focus:ring-2 
+                         focus:ring-[var(--color-primary)]/20"
+              />
+              I accept the{" "}
+              <a 
+                href="/privacy" 
+                className="font-semibold hover:underline"
+                style={{ color: "var(--color-primary)" }}
+              >
+                privacy terms
+              </a>
+            </label>
+
+            {/* Login button */}
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center focus-square cursor-pointer 
+                       bg-[var(--color-button-primary-primary-bg-default)] 
+                       !text-[var(--color-button-primary-primary-text)] 
+                       hover:bg-[var(--color-button-primary-primary-bg-hover)] 
+                       px-6 py-3 text-[var(--text-size-400)] rounded-full 
+                       w-full h-[48px] min-h-[48px] 
+                       font-[var(--font-weight-default)] 
+                       transition-colors duration-200 hover:!text-black mt-4"
+            >
+              Log In
+            </button>
+          </>
+        ) : (
+          <>
+            {/* REGISTER FORM */}
+            {/* Name fields */}
+            <div className="flex gap-4">
+              <div className="flex-1">
+                <label 
+                  htmlFor="firstName" 
+                  className="input-label"
+                >
+                  Name
+                </label>
+                <input
+                  id="firstName"
+                  type="text"
+                  placeholder="Name"
+                  name="firstName"
+                  className="input-base"
+                />
+              </div>
+              <div className="flex-1">
+                <label 
+                  htmlFor="lastName" 
+                  className="input-label"
+                >
+                  Last Name
+                </label>
+                <input
+                  id="lastName"
+                  type="text"
+                  placeholder="Last Name"
+                  name="lastName"
+                  className="input-base"
+                />
+              </div>
+            </div>
+
+            {/* Email */}
+            <div>
+              <label 
+                htmlFor="email" 
+                className="input-label"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="Email"
+                name="email"
+                className="input-base"
+              />
+            </div>
+
+            {/* Password fields */}
+            <div className="flex gap-4">
+              <div className="flex-1">
+                <label 
+                  htmlFor="password" 
+                  className="input-label"
+                >
+                  Password
+                </label>
+                <div className="relative">
+                  <input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password"
+                    name="password"
+                    className="input-base pr-12"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-700)] transition-colors"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? (
+                      <EyeOff className="w-5 h-5" />
+                    ) : (
+                      <Eye className="w-5 h-5" />
+                    )}
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1">
+                <label 
+                  htmlFor="confirmPassword" 
+                  className="input-label"
+                >
+                  Confirm Password
+                </label>
+                <div className="relative">
+                  <input
+                    id="confirmPassword"
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder="Confirm Password"
+                    name="confirmPassword"
+                    className="input-base pr-12"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-700)] transition-colors"
+                    aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                  >
+                    {showConfirmPassword ? (
+                      <EyeOff className="w-5 h-5" />
+                    ) : (
+                      <Eye className="w-5 h-5" />
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Desired Role select */}
+            <div>
+              <label 
+                htmlFor="desiredRole" 
+                className="input-label"
+              >
+                Desired Role
+              </label>
+              <select
+                id="desiredRole"
+                name="desiredRole"
+                className="input-base"
+              >
+                <option value="">Select your role</option>
+                <option value="Miembro">Miembro</option>
+                <option value="Mentora">Mentora</option>
+                <option value="Colaboradora">Colaboradora</option>
+              </select>
+            </div>
+
+            {/* Checkbox - Register as Mentor */}
+            <label
+              className="flex items-center gap-2 text-sm cursor-pointer pt-1"
+              style={{ color: "var(--color-neutral-700)" }}
+            >
+              <input 
+                type="checkbox" 
+                name="wantToBeMentor"
+                className="w-4 h-4 rounded border-[var(--color-neutral-300)] 
+                         checked:bg-[var(--color-primary)]"
+              />
+              Register as a Mentor for the selected Role.
+            </label>
+
+            {/* Privacy terms checkbox */}
+            <label
+              className="flex items-center gap-2 text-sm cursor-pointer pt-1"
+              style={{ color: "var(--color-neutral-700)" }}
+            >
+              <input 
+                type="checkbox" 
+                name="acceptTerms"
+                className="w-4 h-4 rounded border-[var(--color-neutral-300)] 
+                         checked:bg-[var(--color-primary)]"
+              />
+              I accept the{" "}
+              <a 
+                href="/privacy" 
+                className="font-semibold hover:underline"
+                style={{ color: "var(--color-primary)" }}
+              >
+                privacy terms
+              </a>
+            </label>
+
+            {/* Create Account button */}
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center focus-square cursor-pointer 
+                       bg-[var(--color-button-primary-primary-bg-default)] 
+                       !text-[var(--color-button-primary-primary-text)] 
+                       hover:bg-[var(--color-button-primary-primary-bg-hover)] 
+                       px-6 py-3 text-[var(--text-size-400)] rounded-full 
+                       w-full h-[48px] min-h-[48px] 
+                       font-[var(--font-weight-default)] 
+                       transition-colors duration-200 hover:!text-black mt-4"
+            >
+              Create Account
+            </button>
+          </>
+        )}
 
         {/* Divider */}
         <div className="relative my-4">
@@ -183,19 +366,36 @@ export default function AuthFormV1() {
         </div>
       </form>
 
-      {/* Login link */}
+      {/* Toggle link */}
       <p 
         className="text-center text-sm mt-3"
         style={{ color: "var(--color-neutral-600)" }}
       >
-        Already have an account?{" "}
-        <a
-          href="/login"
-          className="font-semibold hover:underline transition-colors"
-          style={{ color: "var(--color-primary)" }}
-        >
-          Log in
-        </a>
+        {isLogin ? (
+          <>
+            Don&apos;t have an account?{" "}
+            <button
+              type="button"
+              onClick={() => setIsLogin(false)}
+              className="font-semibold hover:underline transition-colors"
+              style={{ color: "var(--color-primary)" }}
+            >
+              Sign up
+            </button>
+          </>
+        ) : (
+          <>
+            Already have an account?{" "}
+            <button
+              type="button"
+              onClick={() => setIsLogin(true)}
+              className="font-semibold hover:underline transition-colors"
+              style={{ color: "var(--color-primary)" }}
+            >
+              Log in
+            </button>
+          </>
+        )}
       </p>
     </div>
   );

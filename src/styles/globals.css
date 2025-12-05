@@ -557,7 +557,7 @@ html {
     outline: none;
     border-width: var(--input-border-width-focus);
     border-color: var(--input-border-focus);
-    box-shadow: 0 0 0 var(--input-ring-width) var(--input-ring-focus);
+    box-shadow: none;
   }
 
   /* Error State */

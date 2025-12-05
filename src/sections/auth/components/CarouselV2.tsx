@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-import avatarMarta from "@/assets/images/avatars/avatar_martaV.webp";
 import avatarLaura from "@/assets/images/avatars/avatar_lauraGracia.webp";
+import avatarMarta from "@/assets/images/avatars/avatar_martaV.webp";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 
 const testimonials = [
@@ -13,7 +13,7 @@ const testimonials = [
     role: "UX/UI Designer",
     text: `Being part of SheHub has been a game-changer. I’ve connected with talented people,
     worked on real projects that matter, and grown more in a few months than I ever imagined.
-    It’s not just experience—it's purpose-driven growth.`,
+    `,
   },
   {
     img: avatarLaura,
@@ -50,7 +50,7 @@ export default function CarouselV2() {
   }, []);
 
   return (
-    <div className="overflow-hidden w-full max-w-xl mx-auto mt-10">
+    <div className="overflow-hidden w-full max-w-xl mx-auto mt-4">
       <div
         ref={containerRef}
         className="flex transition-transform duration-700 ease-in-out"
@@ -59,8 +59,8 @@ export default function CarouselV2() {
           <div key={i} className="min-w-full text-center flex flex-col items-center px-4">
 
             {/* Testimonial Text */}
-            <p className="text-gray-600 text-lg leading-relaxed italic max-w-xl">
-              “{item.text}”
+            <p className="text-[color:var(--color-black)] text-lg md:text-xl tracking-tight leading-relaxed italic max-w-xl">
+              &ldquo;{item.text}&rdquo;
             </p>
 
             {/* Image */}
