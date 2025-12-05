@@ -121,14 +121,9 @@ export function Carousel(props: CarouselProps) {
     const isReview = variant === "review";
     const totalItems = items.length;
     
-    const withDots = withDotsProps ?? (variant === "review" || (variant === "cards" && totalItems > 4));
+    const withDots = withDotsProps ?? (variant === "review" || (variant === "cards" && totalItems > 1));
 
-    const getPerView = React.useCallback(() => {
-        if (typeof perView === "number") return perView;
-        return perView.base ?? 1;
-    }, [perView]);
-
-    const totalPages = isReview ? totalItems : Math.max(1, Math.ceil(totalItems / getPerView()));
+    const totalPages = totalItems; //mobile 1 per page
 
     const goTo = React.useCallback((nextIndex: number) => {
         const clamped = loop ? (nextIndex + totalPages) % totalPages : Math.max(0, Math.min(nextIndex, totalPages - 1));
@@ -166,6 +161,7 @@ export function Carousel(props: CarouselProps) {
             className={cn(carouselVariants({}), className)}
             {...rest}
         >
+            {/*REVIEW VARIANT*/}
             {isReview ? (
                 //Max-w for avoid arrows expanding with more items
                 <div className={cn("relative mx-auto", "w-[343px] min-h-[416px] py-2", "md:w-full md:max-w-[1280px] md:min-h-0 md:py-0")}>
@@ -222,23 +218,24 @@ export function Carousel(props: CarouselProps) {
                     )}
                 </div>
             ) : (
+                //CARDS VARIANT
                 <div className="flex flex-col">
-                    <div className={cn("relative mx-auto w-full max-w-[1280px]")}>
+                    <div className={cn(
+                        "relative mx-auto",
+                        "w-72 h-[455px]",
+                        "md:w-full md:h-auto md:max-w-[1280px]"
+                    )}>
                         <div ref={viewportRef} className={cn(viewportVariants())}>
-                            <div className={cn(trackVariants({ gap: "none" }))}>
-                                {Array.from({ length: totalPages }).map((_, pageIndex) => (
+                            <div className={cn(trackVariants({ gap: "lg" }))}>
+                                {items.map((item, i) => (
                                     <div
-                                        key={pageIndex}
-                                        className="w-full snap-start shrink-0 pr-8 last:pr-0"
+                                        key={(item as MemberCardItem).id ?? i}
+                                        className={cn(
+                                            "snap-start shrink-0 w-full",
+                                            "md:w-[calc((100%-96px)/4)]" //4 items with gap-8 (32px*3=96px)
+                                        )}
                                     >
-                                        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
-                                            {items.slice(pageIndex * 4, (pageIndex + 1) * 4).map((item, i) => (
-                                                <CardItem
-                                                    key={(item as MemberCardItem).id ?? (pageIndex * 4 + i)}
-                                                    item={item as MemberCardItem}
-                                                />
-                                            ))}
-                                        </div>
+                                        <CardItem item={item as MemberCardItem} />
                                     </div>
                                 ))}
                             </div>
@@ -271,7 +268,10 @@ export function Carousel(props: CarouselProps) {
                         </div>
                     </div>
                     {withDots && (
-                        <div className={cn("mt-4 flex items-center justify-center gap-2", "md:hidden")}>
+                        <div className={cn(
+                            "flex items-center justify-center gap-2",
+                            "mt-2 md:hidden"
+                        )}>
                             {Array.from({ length: totalPages }).map((_, i) => (
                                 <button
                                     key={i}
