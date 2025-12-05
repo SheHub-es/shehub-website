@@ -1,6 +1,6 @@
 "use client";
 
-import AuthFormV1 from "./components/AuthForm";
+import AuthForm from "./components/AuthForm";
 import AuthTextV1 from "./components/AuthTextV1";
 
 export default function AuthSectionV1() {
@@ -12,14 +12,14 @@ export default function AuthSectionV1() {
 
       {/* LEFT side text section */}
 
-      <div className="w-full md:w-1/2 max-w-xl md:mt-32">
+      <div className="w-full md:w-1/2 max-w-xl md:mt-40 md:ml-8 lg:ml-12">
         <AuthTextV1 />
       </div>
 
       {/* RIGHT side form section */}
 
       <div className="w-full md:w-1/2 max-w-lg md:mt-8">
-        <AuthFormV1 />
+        <AuthForm />
       </div>
     </section>
   );

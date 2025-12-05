@@ -7,13 +7,13 @@ export default function AuthSectionV2() {
       <div className="max-w-[1280px] w-full grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center">
 
         {/* COLUMNA IZQUIERDA */}
-        <div className="w-full flex justify-center md:justify-end md:pr-6">
+        <div className="w-full flex justify-center md:justify-start">
           <AuthTextV2 />
         </div>
 
         {/* COLUMNA DERECHA (FORM) */}
-        <div className="w-full flex justify-center md:justify-start md:pl-6">
-          <div className="w-full max-w-md">
+        <div className="w-full flex justify-center md:justify-end md:-mt-8">
+          <div className="w-full max-w-lg">
             <AuthFormV1 />
           </div>
         </div>
