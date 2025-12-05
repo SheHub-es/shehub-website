@@ -16,29 +16,28 @@ interface CardItemProps {
 
 export function CardItem({ item }: CardItemProps) {
     return (
-        <div className="flex w-[296px] flex-col items-start gap-6">
+        <div className="flex w-72 md:w-[296px] flex-col items-start md:gap-6">
             {/* Image Section */}
-            <div className="flex h-[296px] p-[74px_12px] flex-col justify-center items-center gap-[10px] self-stretch aspect-square rounded-[50px] bg-[var(--color-background-purpleLight,#D6D4FF)]">
+            <div className="flex h-[296px] px-3 py-[74px] flex-col justify-center items-center gap-2.5 self-stretch aspect-square rounded-[50px] bg-purple-200 relative overflow-hidden">
                 {item.photoUrl && (
                     <Image
                         src={item.photoUrl}
                         alt={item.name}
-                        width={220}
-                        height={148}
-                        className="object-cover"
+                        fill
+                        className="object-cover rounded-[50px]"
                     />
                 )}
             </div>
 
             {/* Content Section */}
-            <div className="flex p-[0_16px] flex-col items-start self-stretch">
+            <div className="flex py-0 px-4 flex-col items-start self-stretch text-black">
                 {/* Name */}
-                <h3 className="self-stretch font-[Nunito] text-[20px] font-bold leading-[32px]">
+                <h3 className="self-stretch font-secondary text-xl font-bold leading-8">
                     {item.name}
                 </h3>
 
                 {/* Job Title */}
-                <p className="self-stretch font-[Nunito] text-[18px] font-normal leading-[28px]">
+                <p className="self-stretch font-secondary text-lg font-normal leading-7">
                     {item.role}
                 </p>
 
