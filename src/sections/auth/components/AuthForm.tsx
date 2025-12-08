@@ -1,25 +1,19 @@
 "use client";
-import { useState } from "react";
-import { useRegisterForm } from "@/hooks/useRegisterForm";
 import LinkedinLogo from '@/components/icons/custom/LinkedinLogo';
+import { useLoginForm } from "@/hooks/useLoginForm";
+import { useRegisterForm } from "@/hooks/useRegisterForm";
 import { Eye, EyeOff } from 'lucide-react';
+import { useState } from "react";
 import Popup from "./Popup";
 
-export default function AuthFormV1() {
-  const [isLogin, setIsLogin] = useState(false); // Por defecto Register
+export default function AuthForm() {
+  const [isLogin, setIsLogin] = useState(false); 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   
-  // Hook solo para Register
-  const { 
-    form, 
-    handleChange, 
-    handleSubmit, 
-    popupMessage, 
-    popupType, 
-    showPopup, 
-    setShowPopup 
-  } = useRegisterForm();
+  // Hooks para LOGIN y REGISTER
+  const loginHook = useLoginForm();
+  const registerHook = useRegisterForm();
 
   return (
     <div className="w-full bg-white shadow-lg rounded-2xl p-6 font-primary">
@@ -52,24 +46,34 @@ export default function AuthFormV1() {
         </button>
       </div>
 
-      <form onSubmit={isLogin ? (e) => { e.preventDefault(); alert("Login TODO"); } : handleSubmit} className="space-y-2.5">
+      <form onSubmit={isLogin ? loginHook.handleSubmit : registerHook.handleSubmit} className="space-y-2.5">
         {isLogin ? (
           /* ===== LOGIN FORM ===== */
           <>
             <div>
-              <label htmlFor="email" className="input-label">Email</label>
-              <input id="email" type="email" placeholder="Email" name="email" className="input-base" />
+              <label htmlFor="login-email" className="input-label">Email</label>
+              <input 
+                id="login-email" 
+                type="email" 
+                placeholder="Email" 
+                name="email" 
+                className="input-base"
+                value={loginHook.form.email}
+                onChange={loginHook.handleChange}
+              />
             </div>
 
             <div>
-              <label htmlFor="password" className="input-label">Password</label>
+              <label htmlFor="login-password" className="input-label">Password</label>
               <div className="relative">
                 <input
-                  id="password"
+                  id="login-password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   name="password"
                   className="input-base pr-12"
+                  value={loginHook.form.password}
+                  onChange={loginHook.handleChange}
                 />
                 <button
                   type="button"
@@ -83,17 +87,24 @@ export default function AuthFormV1() {
             </div>
 
             <label className="flex items-center gap-2 text-sm cursor-pointer pt-1" style={{ color: "var(--color-neutral-700)" }}>
-              <input type="checkbox" name="acceptTerms" className="w-4 h-4 rounded border-[var(--color-neutral-300)] checked:bg-[var(--color-primary)]" />
+              <input 
+                type="checkbox" 
+                name="acceptTerms" 
+                checked={loginHook.form.acceptTerms}
+                onChange={loginHook.handleChange}
+                className="w-4 h-4 rounded border-[var(--color-neutral-300)] checked:bg-[var(--color-primary)]" 
+              />
               I accept the{" "}
               <a href="/privacy" className="font-semibold hover:underline" style={{ color: "var(--color-primary)" }}>privacy terms</a>
             </label>
 
             <button
               type="submit"
-              className="w-full py-2.5 rounded-lg font-bold text-base transition-all hover:opacity-90 active:scale-[0.98] mt-4"
+              disabled={loginHook.isLoading}
+              className="w-full py-2.5 rounded-lg font-bold text-base transition-all hover:opacity-90 active:scale-[0.98] mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ backgroundColor: "var(--color-primary)", color: "var(--color-white)" }}
             >
-              Log In
+              {loginHook.isLoading ? "Iniciando sesión..." : "Log In"}
             </button>
           </>
         ) : (
@@ -102,17 +113,41 @@ export default function AuthFormV1() {
             <div className="flex gap-4">
               <div className="flex-1">
                 <label htmlFor="firstName" className="input-label">Name</label>
-                <input id="firstName" type="text" placeholder="Name" name="firstName" className="input-base" value={form.firstName} onChange={handleChange} />
+                <input 
+                  id="firstName" 
+                  type="text" 
+                  placeholder="Name" 
+                  name="firstName" 
+                  className="input-base" 
+                  value={registerHook.form.firstName} 
+                  onChange={registerHook.handleChange} 
+                />
               </div>
               <div className="flex-1">
                 <label htmlFor="lastName" className="input-label">Last Name</label>
-                <input id="lastName" type="text" placeholder="Last Name" name="lastName" className="input-base" value={form.lastName} onChange={handleChange} />
+                <input 
+                  id="lastName" 
+                  type="text" 
+                  placeholder="Last Name" 
+                  name="lastName" 
+                  className="input-base" 
+                  value={registerHook.form.lastName} 
+                  onChange={registerHook.handleChange} 
+                />
               </div>
             </div>
 
             <div>
               <label htmlFor="email" className="input-label">Email</label>
-              <input id="email" type="email" placeholder="Email" name="email" className="input-base" value={form.email} onChange={handleChange} />
+              <input 
+                id="email" 
+                type="email" 
+                placeholder="Email" 
+                name="email" 
+                className="input-base" 
+                value={registerHook.form.email} 
+                onChange={registerHook.handleChange} 
+              />
             </div>
 
             <div className="flex gap-4">
@@ -125,8 +160,8 @@ export default function AuthFormV1() {
                     placeholder="Password"
                     name="password"
                     className="input-base pr-12"
-                    value={form.password}
-                    onChange={handleChange}
+                    value={registerHook.form.password}
+                    onChange={registerHook.handleChange}
                   />
                   <button
                     type="button"
@@ -147,8 +182,8 @@ export default function AuthFormV1() {
                     placeholder="Confirm Password"
                     name="confirmPassword"
                     className="input-base pr-12"
-                    value={form.confirmPassword}
-                    onChange={handleChange}
+                    value={registerHook.form.confirmPassword}
+                    onChange={registerHook.handleChange}
                   />
                   <button
                     type="button"
@@ -164,7 +199,13 @@ export default function AuthFormV1() {
 
             <div>
               <label htmlFor="desiredRole" className="input-label">Desired Role</label>
-              <select id="desiredRole" name="desiredRole" className="input-base" value={form.desiredRole} onChange={handleChange}>
+              <select 
+                id="desiredRole" 
+                name="desiredRole" 
+                className="input-base" 
+                value={registerHook.form.desiredRole} 
+                onChange={registerHook.handleChange}
+              >
                 <option value="">Select your role</option>
                 <option value="Miembro">Miembro</option>
                 <option value="Mentora">Mentora</option>
@@ -176,25 +217,32 @@ export default function AuthFormV1() {
               <input 
                 type="checkbox" 
                 name="wantToBeMentor" 
-                checked={form.wantToBeMentor}
-                onChange={handleChange}
+                checked={registerHook.form.wantToBeMentor}
+                onChange={registerHook.handleChange}
                 className="w-4 h-4 rounded border-[var(--color-neutral-300)] checked:bg-[var(--color-primary)]" 
               />
               Register as a Mentor for the selected Role.
             </label>
 
             <label className="flex items-center gap-2 text-sm cursor-pointer pt-1" style={{ color: "var(--color-neutral-700)" }}>
-              <input type="checkbox" name="acceptTerms" className="w-4 h-4 rounded border-[var(--color-neutral-300)] checked:bg-[var(--color-primary)]" />
+              <input 
+                type="checkbox" 
+                name="acceptTerms" 
+                checked={registerHook.form.acceptTerms}
+                onChange={registerHook.handleChange}
+                className="w-4 h-4 rounded border-[var(--color-neutral-300)] checked:bg-[var(--color-primary)]" 
+              />
               I accept the{" "}
               <a href="/privacy" className="font-semibold hover:underline" style={{ color: "var(--color-primary)" }}>privacy terms</a>
             </label>
 
             <button
               type="submit"
-              className="w-full py-2.5 rounded-lg font-bold text-base transition-all hover:opacity-90 active:scale-[0.98] mt-4"
+              disabled={registerHook.isLoading}
+              className="w-full py-2.5 rounded-lg font-bold text-base transition-all hover:opacity-90 active:scale-[0.98] mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ backgroundColor: "var(--color-primary)", color: "var(--color-white)" }}
             >
-              Create Account
+              {registerHook.isLoading ? "Creando cuenta..." : "Create Account"}
             </button>
           </>
         )}
@@ -234,8 +282,22 @@ export default function AuthFormV1() {
         )}
       </p>
 
-      {/* Popup */}
-      <Popup message={popupMessage} type={popupType} show={showPopup} onClose={() => setShowPopup(false)} />
+      {/* Popups */}
+      {isLogin ? (
+        <Popup 
+          message={loginHook.popupMessage} 
+          type={loginHook.popupType} 
+          show={loginHook.showPopup} 
+          onClose={() => loginHook.setShowPopup(false)} 
+        />
+      ) : (
+        <Popup 
+          message={registerHook.popupMessage} 
+          type={registerHook.popupType} 
+          show={registerHook.showPopup} 
+          onClose={() => registerHook.setShowPopup(false)} 
+        />
+      )}
     </div>
   );
 }
