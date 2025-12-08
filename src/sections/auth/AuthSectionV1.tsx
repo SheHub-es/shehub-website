@@ -12,7 +12,7 @@ export default function AuthSectionV1() {
 
       {/* LEFT side text section */}
 
-      <div className="w-full md:w-1/2 max-w-xl md:mt-40 md:ml-8 lg:ml-12">
+      <div className="w-full md:w-1/2 max-w-xl md:mt-24 md:ml-8 lg:ml-12">
         <AuthTextV1 />
       </div>
 
