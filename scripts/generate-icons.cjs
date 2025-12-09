@@ -18,16 +18,52 @@ const toComponentName = (fileName) => {
   );
 };
 
+const ATTR_MAP = {
+  "stroke-linecap": "strokeLinecap",
+  "stroke-linejoin": "strokeLinejoin",
+  "stroke-width": "strokeWidth",
+  "stroke-miterlimit": "strokeMiterlimit",
+  "stroke-dasharray": "strokeDasharray",
+  "stroke-dashoffset": "strokeDashoffset",
+  "fill-rule": "fillRule",
+  "clip-rule": "clipRule",
+  "clip-path": "clipPath",
+  "stop-color": "stopColor",
+  "stop-opacity": "stopOpacity",
+  "stroke-opacity": "strokeOpacity",
+  "flood-color": "floodColor",
+  "flood-opacity": "floodOpacity",
+  "lighting-color": "lightingColor",
+  "color-interpolation-filters": "colorInterpolationFilters",
+  "xlink:href": "xlinkHref",
+  "xmlns:xlink": "xmlnsXlink",
+  "class=": "className=",
+};
+
 const files = fs.readdirSync(iconsDir).filter((f) => f.endsWith(".svg"));
 
 files.forEach((file) => {
   const filePath = path.join(iconsDir, file);
-  const svgContent = fs.readFileSync(filePath, "utf8");
+  let svgContent = fs.readFileSync(filePath, "utf8");
 
-  const cleaned = svgContent
-    .replace(/width="[^"]*"/g, '')
-    .replace(/height="[^"]*"/g, '')
-    .replace(/fill="[^"]*"/g, 'fill="currentColor"');
+  svgContent = svgContent
+    .replace(/(<svg[^>]*?)\swidth="[^"]*"/, "$1")
+    .replace(/(<svg[^>]*?)\sheight="[^"]*"/, "$1");
+
+  let cleaned = svgContent.replace(
+    /fill="(?!none)[^"]*"/g,
+    'fill="currentColor"'
+  );
+
+  Object.entries(ATTR_MAP).forEach(([rawAttr, camelAttr]) => {
+    if (rawAttr.endsWith("=")) {
+      const regex = new RegExp(rawAttr, "g");
+      cleaned = cleaned.replace(regex, camelAttr);
+    } else {
+      const regex = new RegExp(`${rawAttr}=`, "g");
+      cleaned = cleaned.replace(regex, `${camelAttr}=`);
+    }
+  });
 
   const componentName = toComponentName(file);
 
@@ -47,4 +83,4 @@ export default ${componentName};
   console.log("Generated:", componentName);
 });
 
-console.log("✨ All inline icon components generated!");
+console.log("✨ All inline icon components generated (JSX-safe)!");
