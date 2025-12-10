@@ -1,16 +1,15 @@
 import Avatar, { type AvatarSize, type AvatarVariant } from '@/components/ui/Avatar';
-import { Icon } from '@/components/ui/Icon';
+import { Icon, IconProps } from '@/components/ui/Icon';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { LucideProps } from 'lucide-react';
 import Image, { type StaticImageData } from 'next/image';
 import * as React from 'react';
 
 interface CardVariantProps extends VariantProps<typeof cardVariants> {
-  title?: string;
-  description?: string;
-  icon?: React.ElementType<LucideProps>;
-  className?: string;
+    title?: string;
+    description?: string;
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    className?: string;
 }
 
 
@@ -174,9 +173,9 @@ const cardDescriptionVariants = cva(
                 nonClickableWithAvatarAndCorner: 'text-size-100 md:text-size-300',
             },
             color: {
-                white: 'text-[var(--color-card-white-description)]',
-                purple: 'text-[var(--color-card-non-clickable-purple-description)]',
-                lightPurple: 'text-[var(--color-card-non-clickable-light-purple-description)]'
+                white: 'text-card-white-description',
+                purple: 'text-card-non-clickable-purple-description',
+                lightPurple: 'text-card-non-clickable-light-purple-description'
             },
             tone: {
                 default: '',
@@ -187,12 +186,12 @@ const cardDescriptionVariants = cva(
             {
                 type: ['nonClickableWithIconAndCorner', 'nonClickableWithAvatarAndCorner'],
                 color: 'white',
-                class: 'text-[var(--color-card-white-title)]'
+                class: 'text-card-white-title'
             },
             {
                 tone: 'impact',
                 color: 'white',
-                class: 'text-[var(--color-card-white-title)]'
+                class: 'text-card-white-title'
             }
         ],
         defaultVariants: {
@@ -226,9 +225,10 @@ type ClickableCardProps = {
     logoAlt?: string;
 };
 
+
 type IconCardProps = BaseProps & {
     type: 'nonClickableWithIcon' | 'nonClickableWithIconAndCorner';
-    icon: React.FC<LucideProps>;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     iconArialLabel?: string;
 };
 
@@ -272,7 +272,7 @@ export const Card: React.FC<CardProps> = (props) => {
         description,
         icon,
         className,
-        tone='default',
+        tone = 'default',
         ...rest
     } = props as any;
 
