@@ -78,6 +78,8 @@ export function useLoginForm() {
     popupType,
     showPopup,
     setShowPopup,
+    setPopupMessage, 
+    setPopupType,
     isLoading,
   };
 }
