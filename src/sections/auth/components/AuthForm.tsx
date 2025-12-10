@@ -2,6 +2,8 @@
 import LinkedinLogo from '@/components/icons/custom/LinkedinLogo';
 import { useLoginForm } from "@/hooks/useLoginForm";
 import { useRegisterForm } from "@/hooks/useRegisterForm";
+import { PasswordMatchIndicator } from '@/sections/auth/components/PasswordMatchIndicator';
+import { PasswordStrengthIndicator } from '@/sections/auth/components/PasswordStrengthIndicator';
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from "react";
 import Popup from "./Popup";
@@ -172,7 +174,10 @@ export default function AuthForm() {
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
+                {/* 🆕 Indicador de fuerza - desaparece cuando es válida */}
+                <PasswordStrengthIndicator password={registerHook.form.password} />
               </div>
+              
               <div className="flex-1">
                 <label htmlFor="confirmPassword" className="input-label">Confirm Password</label>
                 <div className="relative">
@@ -194,6 +199,11 @@ export default function AuthForm() {
                     {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
+                {/* 🆕 Indicador de coincidencia */}
+                <PasswordMatchIndicator 
+                  password={registerHook.form.password} 
+                  confirmPassword={registerHook.form.confirmPassword} 
+                />
               </div>
             </div>
 

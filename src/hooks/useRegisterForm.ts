@@ -38,13 +38,36 @@ export function useRegisterForm() {
     }));
   };
 
+  // ✅ Función para validar contraseña fuerte
+  const validatePassword = (password: string): { isValid: boolean; error: string } => {
+    if (password.length < 8) {
+      return { isValid: false, error: "Password must be at least 8 characters" };
+    }
+    if (password.length > 128) {
+      return { isValid: false, error: "Password must not exceed 128 characters" };
+    }
+    if (!/[a-z]/.test(password)) {
+      return { isValid: false, error: "Password must contain at least one lowercase letter" };
+    }
+    if (!/[A-Z]/.test(password)) {
+      return { isValid: false, error: "Password must contain at least one uppercase letter" };
+    }
+    if (!/\d/.test(password)) {
+      return { isValid: false, error: "Password must contain at least one number" };
+    }
+    if (!/[!@#$%^&*()_+\-=\[\]{}|;:,.<>?]/.test(password)) {
+      return { isValid: false, error: "Password must contain at least one special character (!@#$%^&*()_+-=[]{}|;:,.<>?)" };
+    }
+    return { isValid: true, error: "" };
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // ✅ Validación de campos vacíos
     if (!form.firstName.trim() || !form.lastName.trim() || 
         !form.email.trim() || !form.password) {
-      setPopupMessage("Todos los campos son obligatorios");
+      setPopupMessage("All fields are required");
       setPopupType("error");
       setShowPopup(true);
       return;
@@ -52,32 +75,33 @@ export function useRegisterForm() {
 
     // ✅ Validación de aceptación de política de privacidad
     if (!form.acceptTerms) {
-      setPopupMessage("Debes aceptar la política de privacidad para crear una cuenta");
+      setPopupMessage("You must accept the privacy terms to create an account");
       setPopupType("error");
       setShowPopup(true);
       return;
     }
 
-    // ✅ Validación de nombre y apellido (letras, acentos, espacios, guiones, apóstrofes)
+    // ✅ Validación de nombre y apellido
     const namePattern = /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+(?:[\s'-][a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+)*$/;
     
     if (!namePattern.test(form.firstName.trim())) {
-      setPopupMessage("El nombre solo puede contener letras, espacios, guiones o apóstrofes");
+      setPopupMessage("First name can only contain letters, spaces, hyphens or apostrophes");
       setPopupType("error");
       setShowPopup(true);
       return;
     }
 
     if (!namePattern.test(form.lastName.trim())) {
-      setPopupMessage("El apellido solo puede contener letras, espacios, guiones o apóstrofes");
+      setPopupMessage("Last name can only contain letters, spaces, hyphens or apostrophes");
       setPopupType("error");
       setShowPopup(true);
       return;
     }
 
-    // ✅ Validación de longitud mínima
-    if (form.password.length < 8) {
-      setPopupMessage("La contraseña debe tener al menos 8 caracteres");
+    // ✅ Validación de contraseña fuerte
+    const passwordValidation = validatePassword(form.password);
+    if (!passwordValidation.isValid) {
+      setPopupMessage(passwordValidation.error);
       setPopupType("error");
       setShowPopup(true);
       return;
@@ -85,7 +109,7 @@ export function useRegisterForm() {
 
     // ✅ Validación de coincidencia
     if (form.password !== form.confirmPassword) {
-      setPopupMessage("Las contraseñas no coinciden");
+      setPopupMessage("Passwords do not match");
       setPopupType("error");
       setShowPopup(true);
       return;
@@ -112,11 +136,7 @@ export function useRegisterForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        // ✅ Manejo mejorado de errores del backend
-        // El GlobalExceptionHandler puede devolver:
-        // 1. { message: "...", status: 409 } para ApiErrorResponse
-        // 2. { message: "...", timestamp: "...", status: 400 } para errores de validación
-        const errorMessage = data.message || data.error || "Error en el registro";
+        const errorMessage = data.message || data.error || "Registration error";
         
         setPopupMessage(errorMessage);
         setPopupType("error");
@@ -124,12 +144,9 @@ export function useRegisterForm() {
         return;
       }
 
-      // El backend devuelve AuthResponse con { token, message, ... }
-      setPopupMessage(data.message || "Usuario registrado correctamente");
+      setPopupMessage(data.message || "User registered successfully");
       setPopupType("success");
       setShowPopup(true);
-
-      // ✅ Opcional: Limpiar form tras éxito
       setTimeout(() => {
         setForm({
           firstName: "",
@@ -144,7 +161,7 @@ export function useRegisterForm() {
       }, 2000);
 
     } catch {
-      setPopupMessage("Error de conexión. Verifica que el servidor esté activo.");
+      setPopupMessage("Connection error. Check that the server is active.");
       setPopupType("error");
       setShowPopup(true);
     } finally {
