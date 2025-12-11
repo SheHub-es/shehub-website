@@ -46,7 +46,15 @@ const carouselVariants = cva("relative w-full", {
     }
 });
 
-const viewportVariants = cva("overflow-hidden w-full");
+const viewportVariants = cva("overflow-hidden w-full", {
+    variants: {
+        variant: {
+            review: "",
+            cards: "scroll-px-8" // padding para centrar en móvil
+        }
+    },
+    defaultVariants: { variant: "review" }
+});
 
 const trackVariants = cva(" flex snap-x snap-mandatory scroll-smooth", {
     variants: {
@@ -58,7 +66,10 @@ const trackVariants = cva(" flex snap-x snap-mandatory scroll-smooth", {
 
 const slideVariants = cva("snap-start shrink-0", {
     variants: {
-        variant: { review: "w-full flex justify-center", cards: "" },
+        variant: { 
+            review: "w-full flex justify-center", 
+            cards: "snap-center md:snap-start" // snap-center en móvil, snap-start en desktop
+        },
         padded: { true: "px-2", false: "" },
     },
     defaultVariants: { variant: "review", padded: false }
@@ -131,11 +142,37 @@ export function Carousel(props: CarouselProps) {
         onIndexChange?.(clamped);
         const viewport = viewportRef.current;
         if (!viewport) return;
+        
+        //cards desktop (based on items)
+        const isDesktop = window.innerWidth >= 768; // md breakpoint
+        if (variant === "cards" && isDesktop) {
+            const firstItem = viewport.querySelector('[class*="snap-"]') as HTMLElement;
+            if (firstItem) {
+                const itemWidth = firstItem.offsetWidth;
+                const gap = 32; // gap-8 = 32px
+                viewport.scrollTo({
+                    left: clamped * (itemWidth + gap),
+                    behavior: "smooth",
+                });
+                return;
+            }
+        }
+        
+        //cards mobile (viewport.clientWidth centers item)
+        if (variant === "cards" && !isDesktop) {
+            viewport.scrollTo({
+                left: clamped * viewport.clientWidth,
+                behavior: "smooth",
+            });
+            return;
+        }
+        
+        //fallback for variant review
         viewport.scrollTo({
             left: clamped * viewport.clientWidth,
             behavior: "smooth",
         });
-    }, [loop, totalPages, onIndexChange])
+    }, [loop, totalPages, onIndexChange, variant])
 
     const next = () => goTo(index + 1);
     const prev = () => goTo(index - 1);
@@ -222,17 +259,18 @@ export function Carousel(props: CarouselProps) {
                 <div className="flex flex-col">
                     <div className={cn(
                         "relative mx-auto",
-                        "w-72 h-[455px]",
+                        "w-80 h-[455px]",
                         "md:w-full md:h-auto md:max-w-[1280px]"
                     )}>
-                        <div ref={viewportRef} className={cn(viewportVariants())}>
-                            <div className={cn(trackVariants({ gap: "lg" }))}>
+                        <div ref={viewportRef} className={cn(viewportVariants({variant: "cards"}))}>
+                            <div className={cn(trackVariants({ gap: "lg" }), "md:justify-between px-8 md:px-0")}>
                                 {items.map((item, i) => (
                                     <div
                                         key={(item as MemberCardItem).id ?? i}
                                         className={cn(
-                                            "snap-start shrink-0 w-full",
-                                            "md:w-[calc((100%-96px)/4)]" //4 items with gap-8 (32px*3=96px)
+                                            slideVariants({ variant: "cards" }),
+                                            "w-72 flex justify-center",
+                                            "md:w-[calc((100%-96px)/4)] md:justify-start" // Calcula para que 4 items + 3 gaps quepan exactamente
                                         )}
                                     >
                                         <CardItem item={item as MemberCardItem} />

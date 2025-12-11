@@ -18,9 +18,9 @@ interface CardItemProps {
 
 export function CardItem({ item }: CardItemProps) {
     return (
-        <div className="flex w-72 md:w-[296px] flex-col items-start md:gap-6">
+        <div className="flex w-full flex-col items-start md:gap-6">
             {/* Image Section */}
-            <div className="flex h-[296px] px-3 py-[74px] flex-col justify-center items-center gap-2.5 self-stretch aspect-square rounded-[50px] bg-purple-200 relative overflow-hidden">
+            <div className="flex px-3 py-[74px] flex-col justify-center items-center gap-2.5 w-full aspect-square rounded-[50px] bg-purple-200 relative overflow-hidden">
                 {item.photoUrl && (
                     <Image
                         src={item.photoUrl}
