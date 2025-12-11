@@ -1,10 +1,7 @@
 import { cva } from "class-variance-authority";
-import { LucideProps } from "lucide-react";
-
 import { useId, useRef, useState } from "react";
-
-import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
+import { Icon, IconProps } from "@/components/ui/Icon";
 
 interface InputProps {
   id?: string;
@@ -12,7 +9,7 @@ interface InputProps {
   label: string;
   helperText?: string;
   placeholder?: string;
-  icon?: React.FC<LucideProps>;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   iconAriaLabel?: string;
   status?: "default" | "error" | "success";
   disabled?: boolean;
@@ -99,10 +96,10 @@ export const Input: React.FC<InputProps> = ({
   const selectedClasses =
     isSelected && !disabled
       ? {
-          default: "border-purple-800",
-          error: "border-error",
-          success: "border-success",
-        }[status]
+        default: "border-purple-800",
+        error: "border-error",
+        success: "border-success",
+      }[status]
       : "";
 
   const labelClasses = `${disabled ? "text-neutral-600" : "text-black"} font-secondary text-base font-bold leading-6`;
@@ -176,12 +173,16 @@ export const Input: React.FC<InputProps> = ({
           {...props}
         />
         {icon && (
-          <Icon
-            icon={icon}
-            size="sm"
-            aria-label={iconAriaLabel}
-            className={disabled ? "text-neutral-300" : ""}
-          />
+          (() => {
+            return (
+              <Icon
+                icon={icon}
+                size="sm"
+                aria-label={iconAriaLabel}
+                className={disabled ? "text-neutral-300" : ""}
+              />
+            );
+          })()
         )}
       </div>
 

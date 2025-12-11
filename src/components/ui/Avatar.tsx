@@ -24,6 +24,7 @@ const sizeClasses: Record<AvatarSize, string> = {
   xl: "w-24 h-24 text-[48px]",
 };
 
+
 const variantStyles: Record<
   AvatarVariant,
   { bg: string; }
