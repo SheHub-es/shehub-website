@@ -1,5 +1,7 @@
+import Dribbble from "@/components/icons/IconDribbble";
+import Linkedin from "@/components/icons/IconLinkedIn";
+import X from "@/components/icons/IconX";
 import { Icon } from "@/components/ui/Icon";
-import { Dribbble, Linkedin, X } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 
 export type MemberCardItem = {

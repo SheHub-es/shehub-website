@@ -1,5 +1,5 @@
-import ArrowLeft from "@/assets/images/icons/icon_AthenaCircleArrowLeft.svg";
-import ArrowRight from "@/assets/images/icons/icon_AthenaCircleArrowRight.svg";
+import ArrowLeft from "@/components/icons/IconLeftArrow";
+import ArrowRight from "@/components/icons/IconRightArrow";
 import { CardItem, MemberCardItem } from "@/components/ui/CardItem";
 import { Icon } from "@/components/ui/Icon";
 import { Review, ReviewCard } from "@/components/ui/ReviewCard";
@@ -163,7 +163,7 @@ export function Carousel(props: CarouselProps) {
         >
             {/*REVIEW VARIANT*/}
             {isReview ? (
-                //Max-w for avoid arrows expanding with more items
+                //Max-w to avoid arrows expanding with more items
                 <div className={cn("relative mx-auto", "w-[343px] min-h-[416px] py-2", "md:w-full md:max-w-[1280px] md:min-h-0 md:py-0")}>
                     <div className="flex items-center gap-4">
                         <Icon
