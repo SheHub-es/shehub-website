@@ -1,11 +1,20 @@
+import { getInitials } from "@/lib/getInitials";
 import clsx from "clsx";
 import NextImage, { StaticImageData } from "next/image";
 
 export type AvatarType = "container" | "initials" | "image";
 export type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl";
 export type AvatarVariant = "default" | "primary" | "secondary" | "tertiary";
+export type AvatarItem = {
+    name: string;
+    imageUrl?: string;
+    initials?: string;
+    disabled?: boolean;
+    variant?: AvatarVariant;
+};
 
 interface AvatarProps {
+  name?: string;
   type: AvatarType;
   size: AvatarSize;
   variant?: AvatarVariant;
@@ -48,6 +57,7 @@ const variantStyles: Record<
 };
 
 export const Avatar = ({
+  name,
   type,
   size,
   variant = "default",
@@ -80,13 +90,15 @@ export const Avatar = ({
     outlineColor: borderFocus,
   };
 
+  const resolvedInitials = type === "initials" ? initials ?? (name ? getInitials(name) : undefined) : undefined;
+
   return (
     <div
       className={commonStyles}
       style={styles}
       tabIndex={0}
     >
-      {type === "initials" && initials}
+      {type === "initials" && resolvedInitials}
       {type === "image" && imageUrl && (
         <NextImage
           src={imageUrl}
