@@ -1,4 +1,5 @@
 "use client";
+import PasswordResetModal from '@/sections/auth/components/PasswordResetModal';
 import GoogleLogo from '@/components/icons/custom/GoogleLogo';
 import LinkedinLogo from '@/components/icons/custom/LinkedinLogo';
 import { useLoginForm } from "@/hooks/useLoginForm";
@@ -20,6 +21,9 @@ export default function AuthForm() {
   const [googlePopupMessage, setGooglePopupMessage] = useState("");
   const [googlePopupType, setGooglePopupType] = useState<"success" | "error">("success");
   const [showGooglePopup, setShowGooglePopup] = useState(false);
+  
+  // Estado para Password Reset Modal
+  const [showPasswordResetModal, setShowPasswordResetModal] = useState(false);
   
   const loginHook = useLoginForm();
   const registerHook = useRegisterForm();
@@ -148,6 +152,17 @@ export default function AuthForm() {
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
+            </div>
+
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={() => setShowPasswordResetModal(true)}
+                className="text-sm font-medium hover:underline transition-colors"
+                style={{ color: 'var(--color-primary)' }}
+              >
+                ¿Olvidaste tu contraseña?
+              </button>
             </div>
 
             <label className="flex items-center gap-2 text-sm cursor-pointer pt-1" style={{ color: "var(--color-neutral-700)" }}>
@@ -389,6 +404,13 @@ export default function AuthForm() {
         type={googlePopupType} 
         show={showGooglePopup} 
         onClose={() => setShowGooglePopup(false)} 
+      />
+
+      {/* Password Reset Modal */}
+      <PasswordResetModal
+        isOpen={showPasswordResetModal}
+        onClose={() => setShowPasswordResetModal(false)}
+        token={null}
       />
     </div>
   );
