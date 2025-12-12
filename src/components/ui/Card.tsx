@@ -170,10 +170,10 @@ const cardDescriptionVariants = cva(
                 nonClickable: 'text-size-300',
                 nonClickableWithIcon: 'text-size-300',
                 nonClickableWithIconAndCorner: 'text-size-100 md:text-size-300 md:font-heavy',
-                nonClickableWithAvatarAndCorner: 'text-size-100 md:text-size-300',
+                nonClickableWithAvatarAndCorner: 'text-size-100 md:text-size-300 md:font-heavy',
             },
             color: {
-                white: 'text-card-white-description',
+                white: 'text-[var(--color-card-white-description)]',
                 purple: 'text-card-non-clickable-purple-description',
                 lightPurple: 'text-card-non-clickable-light-purple-description'
             },

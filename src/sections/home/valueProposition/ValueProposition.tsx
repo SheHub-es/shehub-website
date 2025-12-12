@@ -70,11 +70,11 @@ export const ValueProposition = () => {
             className="flex justify-center w-full"
           >
             <Card
-              type="nonClickableWithIcon"
-              icon={item.icon}
+              type="clickable"
+              // icon={item.icon}
               title={item.title}
               description={item.description}
-              color="white"
+              color="purple"
               radius="lg"
               className="
               /* --- MOBILE FIX harcoded --- */
