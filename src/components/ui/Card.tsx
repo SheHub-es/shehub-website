@@ -174,8 +174,8 @@ const cardDescriptionVariants = cva(
             },
             color: {
                 white: 'text-[var(--color-card-white-description)]',
-                purple: 'text-card-non-clickable-purple-description',
-                lightPurple: 'text-card-non-clickable-light-purple-description'
+                purple: 'text-[var(--color-card-non-clickable-purple-description)]',
+                lightPurple: 'text-[var(--color-card-non-clickable-light-purple-description)]'
             },
             tone: {
                 default: '',
@@ -298,21 +298,14 @@ export const Card: React.FC<CardProps> = (props) => {
             )}
 
             {(type === 'nonClickableWithIcon' || type === 'nonClickableWithIconAndCorner') && icon && (
-                <div>
-                    <Icon
-                        icon={icon}
-                        size={type === 'nonClickableWithIconAndCorner' ? 'sm' : 'lg'}
-                        className="block md:hidden"
-                        aria-label={(props as any).iconArielLabel ?? 'Card icon'}
-                    />
-
+                
                     <Icon
                         icon={icon}
                         size="xl"
-                        className="hidden md:block"
-                        aria-label={(props as any).iconArielLabel ?? 'Card icon'}
+                        aria-label={(props as any).
+                        iconArielLabel ?? "Card icon"}
                     />
-                </div>
+                
             )}
 
             {type === 'nonClickableWithAvatarAndCorner' && (
