@@ -11,13 +11,13 @@ export type Review = {
     alt?: string;
 };
 
-type ReviewCardProps = {
+type CarouselReviewProps = {
   review: Review;
   className?: string;
   compact?: boolean;
 };
 
-export const ReviewCard: React.FC<ReviewCardProps> = ({ review, className, compact = false }) => {
+export const CarouselReview: React.FC<CarouselReviewProps> = ({ review, className, compact = false }) => {
     const { image, name, quote, role, alt } = review;
 
     return (

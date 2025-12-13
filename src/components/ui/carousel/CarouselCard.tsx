@@ -4,7 +4,7 @@ import X from "@/components/icons/IconX";
 import { Icon } from "@/components/ui/Icon";
 import Image, { StaticImageData } from "next/image";
 
-export type MemberCardItem = {
+export type MemberCarouselCard = {
     id: string;
     name: string;
     role: string;
@@ -12,11 +12,11 @@ export type MemberCardItem = {
     socials?: { linkedin?: string; x?: string; dribbble?: string };
 };
 
-interface CardItemProps {
-    item: MemberCardItem;
+interface CarouselCardProps {
+    item: MemberCarouselCard;
 }
 
-export function CardItem({ item }: CardItemProps) {
+export function CarouselCard({ item }: CarouselCardProps) {
     return (
         <div className="flex w-full flex-col items-start md:gap-6">
             {/* Image Section */}
