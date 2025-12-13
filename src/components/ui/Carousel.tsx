@@ -137,45 +137,62 @@ export function Carousel(props: CarouselProps) {
     const totalPages = totalItems; //mobile 1 per page
 
     const goTo = React.useCallback((nextIndex: number) => {
-        const clamped = loop ? (nextIndex + totalPages) % totalPages : Math.max(0, Math.min(nextIndex, totalPages - 1));
-        setIndex(clamped);
-        onIndexChange?.(clamped);
-        const viewport = viewportRef.current;
-        if (!viewport) return;
+    const clamped = loop 
+        ? (nextIndex + totalPages) % totalPages 
+        : Math.max(0, Math.min(nextIndex, totalPages - 1));
+    
+    setIndex(clamped);
+    onIndexChange?.(clamped);
+    
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    //cards logic
+    if (variant === "cards") {        
+        const firstItem = viewport.firstElementChild?.firstElementChild as HTMLElement; 
         
-        //cards desktop (based on items)
-        const isDesktop = window.innerWidth >= 768; // md breakpoint
-        if (variant === "cards" && isDesktop) {
-            const firstItem = viewport.querySelector('[class*="snap-"]') as HTMLElement;
-            if (firstItem) {
-                const itemWidth = firstItem.offsetWidth;
-                const gap = 32; // gap-8 = 32px
-                viewport.scrollTo({
-                    left: clamped * (itemWidth + gap),
-                    behavior: "smooth",
-                });
-                return;
-            }
-        }
-        
-        //cards mobile (viewport.clientWidth centers item)
-        if (variant === "cards" && !isDesktop) {
+        if (firstItem) {            
+            const style = window.getComputedStyle(viewport.firstElementChild as Element);
+            const gap = parseFloat(style.columnGap) || 32; //fallback to 32px (gap-8)
+            const itemWidth = firstItem.offsetWidth;
+            
+            const scrollPos = clamped * (itemWidth + gap);
+
             viewport.scrollTo({
-                left: clamped * viewport.clientWidth,
+                left: scrollPos,
                 behavior: "smooth",
             });
             return;
         }
-        
-        //fallback for variant review
-        viewport.scrollTo({
-            left: clamped * viewport.clientWidth,
-            behavior: "smooth",
-        });
-    }, [loop, totalPages, onIndexChange, variant])
+    }
 
-    const next = () => goTo(index + 1);
-    const prev = () => goTo(index - 1);
+    //Fallback for review (100% width)
+    viewport.scrollTo({
+        left: clamped * viewport.clientWidth,
+        behavior: "smooth",
+    });
+
+}, [loop, totalPages, onIndexChange, variant]);
+
+const jumpSize = React.useMemo(() => {
+    if (variant === "review") return 1;   
+    return 1;
+}, [variant]);
+
+
+const next = () => {    
+    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
+    const step = (variant === "cards" && isDesktop) ? 4 : 1;
+    
+    goTo(index + step);
+};
+
+const prev = () => {
+    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
+    const step = (variant === "cards" && isDesktop) ? 4 : 1;
+    
+    goTo(index - step);
+};
 
     const onKeyDown: React.KeyboardEventHandler<HTMLElement> = (e) => {
         if (e.key === "ArrowRight") next();
@@ -270,7 +287,7 @@ export function Carousel(props: CarouselProps) {
                                         className={cn(
                                             slideVariants({ variant: "cards" }),
                                             "w-72 flex justify-center",
-                                            "md:w-[calc((100%-96px)/4)] md:justify-start" // Calcula para que 4 items + 3 gaps quepan exactamente
+                                            "md:w-[calc((100%-96px)/4)] md:justify-start" //4 items + 3 gaps
                                         )}
                                     >
                                         <CardItem item={item as MemberCardItem} />
