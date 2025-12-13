@@ -1,5 +1,6 @@
 "use client";
 
+import { CheckCircle2, XCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface PopupProps {
@@ -12,7 +13,6 @@ interface PopupProps {
 export default function Popup({ message, type, show, onClose }: PopupProps) {
   const [isVisible, setIsVisible] = useState(show);
 
-  // Handle visibility when `show` changes
   useEffect(() => {
     setIsVisible(show);
 
@@ -20,7 +20,7 @@ export default function Popup({ message, type, show, onClose }: PopupProps) {
       const timer = setTimeout(() => {
         setIsVisible(false);
         onClose();
-      }, 3000); // Auto-close after 3 seconds
+      }, 4000); 
 
       return () => clearTimeout(timer);
     }
@@ -28,13 +28,23 @@ export default function Popup({ message, type, show, onClose }: PopupProps) {
 
   if (!isVisible) return null;
 
-  const bgColor = type === "success" ? "bg-green-500" : "bg-red-500";
-
   return (
     <div
-      className={`fixed bottom-5 left-1/2 -translate-x-1/2 px-4 py-2 rounded shadow-lg text-white font-medium ${bgColor}`}
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 px-5 py-3.5 rounded-xl font-medium flex items-center gap-3 shadow-lg animate-in slide-in-from-bottom-5 fade-in duration-300 z-50 min-w-[300px] max-w-[500px]"
+      style={{
+        backgroundColor: type === "success" 
+          ? "var(--color-success)" 
+          : "var(--color-error)",
+        color: "var(--color-white)",
+        borderRadius: "var(--input-border-radius)"
+      }}
     >
-      {message}
+      {type === "success" ? (
+        <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+      ) : (
+        <XCircle className="w-5 h-5 flex-shrink-0" />
+      )}
+      <span className="text-sm">{message}</span>
     </div>
   );
 }

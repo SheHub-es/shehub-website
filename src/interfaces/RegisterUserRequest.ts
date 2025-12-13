@@ -6,5 +6,6 @@ export interface RegisterUserRequest {
   confirmPassword: string;
   desiredRole: string;
   wantToBeMentor: boolean;
+  acceptTerms: boolean;
 }
 
