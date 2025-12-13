@@ -28,27 +28,27 @@ export function CardsVariant({
   });
 
   const handleNav = (direction: "next" | "prev") => {
-    const isDesktop = window.innerWidth >= 768;
+    const isDesktop = window.innerWidth >= 1024; //lg breakpoint
     const step = isDesktop ? 4 : 1; //4 items in desktop
     direction === "next" ? next(step) : prev(step);
   };
 
   return (
     <div className={cn("flex flex-col", className)}>
-      <div className="relative mx-auto w-80 h-[455px] md:w-full md:h-auto md:max-w-[1280px]">
+      <div className="relative mx-auto w-80 h-[455px] lg:w-full lg:h-auto lg:max-w-[1280px]">
         <div ref={viewportRef} className="overflow-hidden w-full scroll-px-8 py-2">
-          <div className="flex snap-x snap-mandatory scroll-smooth gap-8 md:justify-between px-8 md:px-0">
+          <div className="flex snap-x snap-mandatory scroll-smooth gap-8 lg:justify-between px-8 lg:px-0">
             {items.map((item, i) => (
               <div
                 key={item.id ?? i}
-                className="snap-center md:snap-start shrink-0 w-72 flex justify-center md:w-[calc((100%-96px)/4)] md:justify-start"
+                className="snap-center lg:snap-start shrink-0 w-72 flex justify-center lg:w-[calc((100%-96px)/4)] lg:justify-start"
               >
                 <CarouselCard item={item} />
               </div>
             ))}
           </div>
         </div>
-        <div className="mt-12 md:mt-[72px] items-center justify-end gap-2 hidden md:flex">
+        <div className="mt-12 lg:mt-[72px] items-center justify-end gap-2 hidden lg:flex">
           <Icon
             icon={ArrowLeft}
             size="xl"
@@ -72,7 +72,7 @@ export function CardsVariant({
             )}
           />
         </div>
-        <div className="mt-8 flex items-center justify-center gap-2 md:hidden">
+        <div className="mt-8 flex items-center justify-center gap-2 lg:hidden">
           {items.map((_, i) => (
             <button
               key={i}
