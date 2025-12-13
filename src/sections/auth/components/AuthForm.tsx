@@ -1,10 +1,11 @@
 "use client";
-import PasswordResetModal from '@/sections/auth/components/PasswordResetModal';
+
 import GoogleLogo from '@/components/icons/custom/GoogleLogo';
 import LinkedinLogo from '@/components/icons/custom/LinkedinLogo';
 import { useLoginForm } from "@/hooks/useLoginForm";
 import { useRegisterForm } from "@/hooks/useRegisterForm";
 import { PasswordMatchIndicator } from '@/sections/auth/components/PasswordMatchIndicator';
+import PasswordResetModal from '@/sections/auth/components/PasswordResetModal';
 import { PasswordStrengthIndicator } from '@/sections/auth/components/PasswordStrengthIndicator';
 import type { GoogleAuthError, GoogleAuthResponse } from '@/types/google-oauth';
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
@@ -16,14 +17,12 @@ export default function AuthForm() {
   const [isLogin, setIsLogin] = useState(false); 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showPasswordResetModal, setShowPasswordResetModal] = useState(false);
   
-  // Estado para popups de Google OAuth
+  // Google OAuth state
   const [googlePopupMessage, setGooglePopupMessage] = useState("");
   const [googlePopupType, setGooglePopupType] = useState<"success" | "error">("success");
   const [showGooglePopup, setShowGooglePopup] = useState(false);
-  
-  // Estado para Password Reset Modal
-  const [showPasswordResetModal, setShowPasswordResetModal] = useState(false);
   
   const loginHook = useLoginForm();
   const registerHook = useRegisterForm();
@@ -56,7 +55,6 @@ export default function AuthForm() {
 
       const data: GoogleAuthResponse = await response.json();
       
-      // Guardar token y usuario
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
@@ -65,9 +63,8 @@ export default function AuthForm() {
       setGooglePopupType("success");
       setShowGooglePopup(true);
 
-      // Redirigir después de 1.5s
       setTimeout(() => {
-        window.location.href = "/"; // Ajusta según tu ruta
+        window.location.href = "/";
       }, 1500);
 
     } catch {
@@ -83,10 +80,39 @@ export default function AuthForm() {
     setShowGooglePopup(true);
   };
 
+  const handleLinkedInLogin = () => {
+    const clientId = process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID;
+    const redirectUri = encodeURIComponent(
+      process.env.NEXT_PUBLIC_LINKEDIN_REDIRECT_URI || 
+      `${window.location.origin}/auth/linkedin/callback`
+    );
+    const state = Math.random().toString(36).substring(7);
+
+    if (!clientId) {
+      console.error('LinkedIn Client ID not configured in environment variables');
+      setGooglePopupMessage("LinkedIn authentication not configured");
+      setGooglePopupType("error");
+      setShowGooglePopup(true);
+      return;
+    }
+
+    // Guardar state para validar después
+    sessionStorage.setItem('linkedin_oauth_state', state);
+
+    // Redirigir a LinkedIn OAuth
+    window.location.href =
+      `https://www.linkedin.com/oauth/v2/authorization` +
+      `?response_type=code` +
+      `&client_id=${clientId}` +
+      `&redirect_uri=${redirectUri}` +
+      `&state=${state}` +
+      `&scope=openid%20profile%20email`;
+  };
+
   return (
     <div className="w-full bg-white shadow-lg rounded-2xl p-6 font-primary">
       
-      {/* Toggle buttons */}
+      {/* Toggle between Login and Sign Up */}
       <div className="flex gap-2 mb-6">
         <button
           type="button"
@@ -116,7 +142,7 @@ export default function AuthForm() {
 
       <form onSubmit={isLogin ? loginHook.handleSubmit : registerHook.handleSubmit} className="space-y-2.5">
         {isLogin ? (
-          /* ===== LOGIN FORM ===== */
+          /* Login Form */
           <>
             <div>
               <label htmlFor="login-email" className="input-label">Email</label>
@@ -187,7 +213,7 @@ export default function AuthForm() {
             </button>
           </>
         ) : (
-          /* ===== REGISTER FORM ===== */
+          /* Register Form */
           <>
             <div className="flex gap-4">
               <div className="flex-1">
@@ -251,7 +277,6 @@ export default function AuthForm() {
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
-                {/* 🆕 Indicador de fuerza - desaparece cuando es válida */}
                 <PasswordStrengthIndicator password={registerHook.form.password} />
               </div>
               
@@ -276,7 +301,6 @@ export default function AuthForm() {
                     {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
-                {/* 🆕 Indicador de coincidencia */}
                 <PasswordMatchIndicator 
                   password={registerHook.form.password} 
                   confirmPassword={registerHook.form.confirmPassword} 
@@ -334,7 +358,7 @@ export default function AuthForm() {
           </>
         )}
 
-        {/* Divider */}
+        {/* Social login divider */}
         <div className="relative my-4">
           <div className="w-full h-px bg-[var(--color-neutral-300)]" />
           <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 text-sm bg-white" style={{ color: "var(--color-neutral-600)" }}>
@@ -342,12 +366,11 @@ export default function AuthForm() {
           </span>
         </div>
 
-        {/* Social login */}
+        {/* OAuth providers */}
         <div className="flex gap-4 pt-1">
           <button 
             type="button" 
             onClick={() => {
-              // Trigger Google Login manually
               const googleBtn = document.querySelector('[aria-labelledby="button-label"]') as HTMLElement;
               googleBtn?.click();
             }}
@@ -357,45 +380,20 @@ export default function AuthForm() {
             <GoogleLogo className="w-5 h-5" />
             Google
           </button>
+          
           <button
             type="button"
-            onClick={() => {
-              const redirectUri = encodeURIComponent(
-                "http://localhost:3000/auth/linkedin/callback"
-              );
-
-              window.location.href =
-                `https://www.linkedin.com/oauth/v2/authorization` +
-                `?response_type=code` +
-                `&client_id=781hyz56k40ccp` +
-                `&redirect_uri=${redirectUri}` +
-                `&scope=openid%20profile%20email`;
-            }}
+            onClick={handleLinkedInLogin}
             className="flex-1 border border-[var(--color-neutral-300)] rounded-lg py-2 font-medium flex items-center justify-center gap-2 transition-all hover:bg-gray-50 active:scale-[0.98]"
             style={{ color: "var(--color-foreground)" }}
           >
-          {/* Hidden Google Login component */}
-          <div className="hidden">
-            <GoogleLogin
-              onSuccess={handleGoogleSuccess}
-              onError={handleGoogleError}
-              useOneTap
-            />
-          </div>
-          <button type="button" className="flex-1 border border-[var(--color-neutral-300)] rounded-lg py-2 font-medium flex items-center justify-center gap-2 transition-all hover:bg-gray-50 active:scale-[0.98]" style={{ color: "var(--color-foreground)" }}>
             <LinkedinLogo className="w-5 h-5" style={{ color: "#0077B5" }} />
             LinkedIn
           </button>
-
-
-
-
-
-
         </div>
       </form>
 
-      {/* Toggle link */}
+      {/* Toggle authentication mode */}
       <p className="text-center text-sm mt-3" style={{ color: "var(--color-neutral-600)" }}>
         {isLogin ? (
           <>Don&apos;t have an account? <button type="button" onClick={() => setIsLogin(false)} className="font-semibold hover:underline transition-colors" style={{ color: "var(--color-primary)" }}>Sign up</button></>
@@ -404,7 +402,16 @@ export default function AuthForm() {
         )}
       </p>
 
-      {/* Popups */}
+      {/* Hidden Google Login component */}
+      <div className="hidden">
+        <GoogleLogin
+          onSuccess={handleGoogleSuccess}
+          onError={handleGoogleError}
+          useOneTap
+        />
+      </div>
+
+      {/* Form validation popups */}
       {isLogin ? (
         <Popup 
           message={loginHook.popupMessage} 
@@ -421,7 +428,7 @@ export default function AuthForm() {
         />
       )}
 
-      {/* Google OAuth Popup */}
+      {/* Google OAuth popup */}
       <Popup 
         message={googlePopupMessage} 
         type={googlePopupType} 
@@ -429,7 +436,7 @@ export default function AuthForm() {
         onClose={() => setShowGooglePopup(false)} 
       />
 
-      {/* Password Reset Modal */}
+      {/* Password reset modal */}
       <PasswordResetModal
         isOpen={showPasswordResetModal}
         onClose={() => setShowPasswordResetModal(false)}

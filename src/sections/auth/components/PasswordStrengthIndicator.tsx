@@ -1,4 +1,3 @@
-// src/sections/auth/components/PasswordStrengthIndicator.tsx
 interface PasswordStrengthIndicatorProps {
   password: string;
 }

@@ -54,7 +54,7 @@ export default function LinkedInCallbackPage() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ 
             code,
-            redirectUri: `${window.location.origin}/auth/linkedin/callback`
+            redirectUri: `${window.location.origin}/auth/callback/linkedin`
           }),
         });
 
