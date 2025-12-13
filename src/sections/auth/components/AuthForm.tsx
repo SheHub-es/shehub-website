@@ -357,6 +357,23 @@ export default function AuthForm() {
             <GoogleLogo className="w-5 h-5" />
             Google
           </button>
+          <button
+            type="button"
+            onClick={() => {
+              const redirectUri = encodeURIComponent(
+                "http://localhost:3000/auth/linkedin/callback"
+              );
+
+              window.location.href =
+                `https://www.linkedin.com/oauth/v2/authorization` +
+                `?response_type=code` +
+                `&client_id=781hyz56k40ccp` +
+                `&redirect_uri=${redirectUri}` +
+                `&scope=openid%20profile%20email`;
+            }}
+            className="flex-1 border border-[var(--color-neutral-300)] rounded-lg py-2 font-medium flex items-center justify-center gap-2 transition-all hover:bg-gray-50 active:scale-[0.98]"
+            style={{ color: "var(--color-foreground)" }}
+          >
           {/* Hidden Google Login component */}
           <div className="hidden">
             <GoogleLogin
@@ -369,6 +386,12 @@ export default function AuthForm() {
             <LinkedinLogo className="w-5 h-5" style={{ color: "#0077B5" }} />
             LinkedIn
           </button>
+
+
+
+
+
+
         </div>
       </form>
 
