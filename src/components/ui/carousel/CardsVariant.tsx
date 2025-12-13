@@ -36,7 +36,7 @@ export function CardsVariant({
   return (
     <div className={cn("flex flex-col", className)}>
       <div className="relative mx-auto w-80 h-[455px] md:w-full md:h-auto md:max-w-[1280px]">
-        <div ref={viewportRef} className="overflow-hidden w-full scroll-px-8">
+        <div ref={viewportRef} className="overflow-hidden w-full scroll-px-8 py-2">
           <div className="flex snap-x snap-mandatory scroll-smooth gap-8 md:justify-between px-8 md:px-0">
             {items.map((item, i) => (
               <div

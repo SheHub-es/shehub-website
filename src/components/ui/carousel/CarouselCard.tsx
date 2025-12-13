@@ -46,8 +46,8 @@ export function CarouselCard({ item }: CarouselCardProps) {
 
         {/* Socials */}
         <div className="flex justify-center items-center">
-          {item.socials?.linkedin ? (
-            <a href={item.socials.linkedin} target="_blank" rel="noreferrer">
+          {item.socials?.linkedin && (
+            <a href={item.socials.linkedin} target="_blank" rel="noreferrer" tabIndex={-1}>
               <Icon
                 icon={Linkedin}
                 size="sm"
@@ -56,16 +56,9 @@ export function CarouselCard({ item }: CarouselCardProps) {
                 className="flex justify-center items-center"
               />
             </a>
-          ) : (
-            <Icon
-              icon={Linkedin}
-              size="sm"
-              aria-label="LinkedIn"
-              className="flex justify-center items-center"
-            />
           )}
-          {item.socials?.x ? (
-            <a href={item.socials.x} target="_blank" rel="noreferrer">
+          {item.socials?.x && (
+            <a href={item.socials.x} target="_blank" rel="noreferrer" tabIndex={-1}>
               <Icon
                 icon={X}
                 size="sm"
@@ -74,16 +67,9 @@ export function CarouselCard({ item }: CarouselCardProps) {
                 className="flex justify-center items-center"
               />
             </a>
-          ) : (
-            <Icon
-              icon={X}
-              size="sm"
-              aria-label="X"
-              className="flex justify-center items-center"
-            />
           )}
-          {item.socials?.dribbble ? (
-            <a href={item.socials.dribbble} target="_blank" rel="noreferrer">
+          {item.socials?.dribbble && (
+            <a href={item.socials.dribbble} target="_blank" rel="noreferrer" tabIndex={-1}>
               <Icon
                 icon={Dribbble}
                 size="sm"
@@ -92,13 +78,6 @@ export function CarouselCard({ item }: CarouselCardProps) {
                 className="flex justify-center items-center"
               />
             </a>
-          ) : (
-            <Icon
-              icon={Dribbble}
-              size="sm"
-              aria-label="Dribbble"
-              className="flex justify-center items-center"
-            />
           )}
         </div>
       </div>
