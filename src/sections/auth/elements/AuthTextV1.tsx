@@ -1,4 +1,8 @@
+import { useTranslation } from "@/hooks/useTranslation";
+
 export default function AuthTextV1() {
+  const { t } = useTranslation();
+
   return (
     <div className="font-primary">
       <h1
@@ -6,31 +10,31 @@ export default function AuthTextV1() {
         style={{
           fontSize: "var(--text-size-800)",
           lineHeight: "var(--spacing-line-height-heading-3)",
-          color: "var(--color-foreground)"
+          color: "var(--color-foreground)",
         }}
       >
-        Join a community of women{" "}
+        {t("authV1.title.part1")}{" "}
         <span
           style={{
             backgroundImage: "var(--color-gradient-brand)",
             WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent"
+            WebkitTextFillColor: "transparent",
           }}
         >
-          shaping the
+          {t("authV1.title.part2")}
         </span>{" "}
-        future of tech
+        {t("authV1.title.part3")}
       </h1>
 
-      <p className="mt-6 max-w-md"
+      <p
+        className="mt-6 max-w-md"
         style={{
           fontSize: "var(--text-size-400)",
           color: "var(--color-neutral-600)",
-          lineHeight: "var(--spacing-line-height-body)"
+          lineHeight: "var(--spacing-line-height-body)",
         }}
       >
-        Connect with inspiring women in technology, find mentors, collaborate on
-        meaningful projects, and grow together.
+        {t("authV1.description")}
       </p>
     </div>
   );
