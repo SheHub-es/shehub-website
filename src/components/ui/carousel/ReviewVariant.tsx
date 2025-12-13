@@ -44,9 +44,8 @@ export function ReviewVariant(props: ReviewVariantProps) {
     return (
         <div className={cn("relative mx-auto", className)}>
             {/* Contenedor principal para centrar y limitar ancho */}
-            <div className={cn("w-[343px] min-h-[416px] py-2", "md:w-full md:max-w-[1280px] md:min-h-0 md:py-0")}>
-                
-                {/* Contenedor de flechas y contenido */}
+            <div className={cn("w-[343px] min-h-[416px] py-2 mx-auto", "md:w-full md:max-w-[1280px] md:min-h-0 md:py-0")}>
+               {/* Contenedor de flechas y contenido */}
                 <div className="flex items-center gap-4">
                     {/* Flecha Izquierda */}
                     <Icon
