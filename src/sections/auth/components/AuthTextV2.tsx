@@ -1,17 +1,13 @@
+import CarouselV2 from "@/sections/auth/components/CarouselV2";
+
 export default function AuthTextV2() {
   return (
     <div className="flex flex-col justify-center items-center text-center gap-0 max-w-lg">
 
       {/* TITLE */}
-      <h1
-        style={{ fontSize: "var(--text-size-900)" }}
-        className="
-          font-heavy
-          leading-[var(--spacing-line-height-heading-2)]
-          bg-[image:var(--color-gradient-brand)]
-          bg-clip-text
-          text-transparent
-        "
+      <h1 
+        className="text-4xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent"
+        style={{ backgroundImage: "var(--color-gradient-brand)" }}
       >
         Join SheHub
       </h1>
@@ -24,15 +20,14 @@ export default function AuthTextV2() {
           leading-[var(--spacing-line-height-heading-4)]
           text-[var(--carousel-text-sub)]
           text-center
+          mb-4 md:mb-12
         "
       >
         Connect. Create. Break Barriers.
       </h2>
 
-      {/* CAROUSEL PLACEHOLDER */}
-      <div className="w-full h-40 flex items-center justify-center border border-dashed border-gray-300 rounded-lg mt-4">
-        <span className="text-gray-400">Carousel - Implementation Pending</span>
-      </div>
+      {/* REAL CAROUSEL */}
+      <CarouselV2/>
 
     </div>
   );

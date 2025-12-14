@@ -291,6 +291,47 @@
   --color-card-shadow-default: 0px 4px 16px rgba(var(--color-black-rgb), 0.08);
   --color-card-shadow-hover: 0px 4px 16px rgba(var(--color-black-rgb), 0.16);
 
+  /* ========================================
+     TEXT INPUT COMPONENT TOKENS (Login/Register Forms)
+     ======================================== */
+
+  /* Input States */
+  --input-bg-default: var(--color-white);
+  --input-bg-disabled: var(--color-disabled);
+
+  --input-border-default: var(--color-neutral-300);
+  --input-border-hover: var(--color-neutral-400);
+  --input-border-focus: var(--color-primary);
+  --input-border-error: var(--color-error);
+  --input-border-success: var(--color-success);
+
+  --input-text-default: var(--color-foreground);
+  --input-text-placeholder: var(--color-neutral-400);
+  --input-text-disabled: var(--color-neutral-600);
+  --input-text-helper: var(--color-neutral-600);
+
+  --input-label-text: var(--color-foreground);
+
+  /* Input Focus Ring */
+  --input-ring-focus: rgba(120, 88, 255, 0.1);
+  --input-ring-error: rgba(219, 51, 39, 0.1);
+  --input-ring-success: rgba(13, 135, 94, 0.1);
+
+  /* Input Dimensions */
+  --input-border-radius: 12px;
+  --input-padding-vertical: 12px;
+  --input-padding-horizontal-left: 20px;
+  --input-padding-horizontal-right: 16px;
+  --input-border-width-default: 1px;
+  --input-border-width-focus: 2px;
+  --input-ring-width: 4px;
+
+  /* Input Typography */
+  --input-font-size: 16px;
+  --input-label-font-size: 14px;
+  --input-helper-font-size: 14px;
+  --input-label-font-weight: 500;
+
   /* Image Placeholder */
   --color-image-container-bg: var(--color-purple-200);
   --color-image-stroke-icon: var(--color-purple-600);
@@ -482,4 +523,91 @@ html {
   border: 0.25rem solid var(--color-purple-600);
   border-radius: 0;
   pointer-events: none;
+}
+
+/* ========================================
+   INPUT COMPONENT STYLES (Login/Register Forms)
+   ======================================== */
+
+@layer components {
+  /* Base Input */
+  .input-base {
+    width: 100%;
+    padding: var(--input-padding-vertical) var(--input-padding-horizontal-right) 
+             var(--input-padding-vertical) var(--input-padding-horizontal-left);
+    font-size: var(--input-font-size);
+    color: var(--input-text-default);
+    background-color: var(--input-bg-default);
+    border: var(--input-border-width-default) solid var(--input-border-default);
+    border-radius: var(--input-border-radius);
+    transition: all 150ms ease-in-out;
+  }
+
+  .input-base::placeholder {
+    color: var(--input-text-placeholder);
+  }
+
+  /* Hover State */
+  .input-base:hover:not(:disabled) {
+    border-color: var(--input-border-hover);
+  }
+
+  /* Focus State */
+  .input-base:focus {
+    outline: none;
+    border-width: var(--input-border-width-focus);
+    border-color: var(--input-border-focus);
+    box-shadow: none;
+  }
+
+  /* Error State */
+  .input-error {
+    border-width: var(--input-border-width-focus);
+    border-color: var(--input-border-error);
+  }
+
+  .input-error:focus {
+    box-shadow: 0 0 0 var(--input-ring-width) var(--input-ring-error);
+  }
+
+  /* Success State */
+  .input-success {
+    border-width: var(--input-border-width-focus);
+    border-color: var(--input-border-success);
+  }
+
+  .input-success:focus {
+    box-shadow: 0 0 0 var(--input-ring-width) var(--input-ring-success);
+  }
+
+  /* Disabled State */
+  .input-base:disabled {
+    background-color: var(--input-bg-disabled);
+    color: var(--input-text-disabled);
+    cursor: not-allowed;
+  }
+
+  /* Label */
+  .input-label {
+    display: block;
+    font-size: var(--input-label-font-size);
+    font-weight: var(--input-label-font-weight);
+    color: var(--input-label-text);
+    margin-bottom: 8px;
+  }
+
+  /* Helper Text */
+  .input-helper {
+    font-size: var(--input-helper-font-size);
+    color: var(--input-text-helper);
+    margin-top: 8px;
+  }
+
+  .input-helper.error {
+    color: var(--input-border-error);
+  }
+
+  .input-helper.success {
+    color: var(--input-border-success);
+  }
 }
