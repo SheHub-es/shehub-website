@@ -1,38 +1,35 @@
 "use client";
 
+import { useTranslation } from "@/hooks/useTranslation";
 import avatarLaura from "@/assets/images/avatars/avatar_lauraGracia.webp";
 import avatarMarta from "@/assets/images/avatars/avatar_martaV.webp";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-
-const testimonials = [
-  {
-    img: avatarMarta,
-    name: "Marta V.",
-    role: "UX/UI Designer",
-    text: `Being part of SheHub has been a game-changer. I’ve connected with talented people,
-    worked on real projects that matter, and grown more in a few months than I ever imagined.
-    `,
-  },
-  {
-    img: avatarLaura,
-    name: "Laura Medina",
-    role: "Frontend Developer",
-    text: `The community at SheHub is incredibly supportive. I improved my portfolio with real teamwork
-    and mentorship. Highly recommended for anyone who wants to level up.`,
-  },
-  {
-    img: avatarLaura,
-    name: "Elena Duarte",
-    role: "Product Designer",
-    text: `At SheHub I felt valued, challenged, and inspired. The projects helped me land interviews
-    with companies I never thought possible.`,
-  },
-];
-
 export default function CarouselV2() {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const testimonials = [
+    {
+      img: avatarMarta,
+      name: t('carousel.testimonial1.name'),
+      role: t('carousel.testimonial1.role'),
+      text: t('carousel.testimonial1.text'),
+    },
+    {
+      img: avatarLaura,
+      name: t('carousel.testimonial2.name'),
+      role: t('carousel.testimonial2.role'),
+      text: t('carousel.testimonial2.text'),
+    },
+    {
+      img: avatarLaura,
+      name: t('carousel.testimonial3.name'),
+      role: t('carousel.testimonial3.role'),
+      text: t('carousel.testimonial3.text'),
+    },
+  ];
 
   useEffect(() => {
     const container = containerRef.current;
@@ -47,7 +44,7 @@ export default function CarouselV2() {
     }, 4500);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [testimonials.length]);
 
   return (
     <div className="overflow-hidden w-full max-w-xl mx-auto mt-4">

@@ -1,3 +1,5 @@
+import { useLanguage } from '@/providers/LanguageProvider';
+import { useTranslation } from '@/hooks/useTranslation';
 import { useState } from 'react';
 
 interface UsePasswordResetReturn {
@@ -21,6 +23,9 @@ interface UsePasswordResetReturn {
 }
 
 export const usePasswordReset = (): UsePasswordResetReturn => {
+  const { t } = useTranslation();
+  const { language } = useLanguage();
+  
   // Forgot Password State
   const [forgotEmail, setForgotEmail] = useState('');
   const [forgotLoading, setForgotLoading] = useState(false);
@@ -46,7 +51,7 @@ export const usePasswordReset = (): UsePasswordResetReturn => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept-Language': 'es', // TODO: dinámico según i18n
+          'Accept-Language': language,
         },
         body: JSON.stringify({ email: forgotEmail }),
       });
@@ -56,7 +61,7 @@ export const usePasswordReset = (): UsePasswordResetReturn => {
       setForgotType('success');
 
     } catch {
-      setForgotMessage('Error al enviar el email. Intenta nuevamente.');
+      setForgotMessage(t('passwordReset.forgot.error.send'));
       setForgotType('error');
     } finally {
       setForgotLoading(false);
@@ -65,13 +70,13 @@ export const usePasswordReset = (): UsePasswordResetReturn => {
 
   const handleResetPassword = async (token: string) => {
     if (newPassword !== confirmPassword) {
-      setResetMessage('Las contraseñas no coinciden');
+      setResetMessage(t('passwordReset.reset.error.mismatch'));
       setResetType('error');
       return;
     }
 
     if (newPassword.length < 8) {
-      setResetMessage('La contraseña debe tener al menos 8 caracteres');
+      setResetMessage(t('passwordReset.reset.error.length'));
       setResetType('error');
       return;
     }
@@ -86,7 +91,7 @@ export const usePasswordReset = (): UsePasswordResetReturn => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept-Language': 'es',
+          'Accept-Language': language,
         },
         body: JSON.stringify({
           token,
@@ -96,7 +101,7 @@ export const usePasswordReset = (): UsePasswordResetReturn => {
       });
 
       if (!response.ok) {
-        throw new Error('Error al restablecer la contraseña');
+        throw new Error(t('passwordReset.reset.error.failed'));
       }
 
       const message = await response.text();
@@ -105,11 +110,11 @@ export const usePasswordReset = (): UsePasswordResetReturn => {
 
       // Redirigir al login después de 2 segundos
       setTimeout(() => {
-        window.location.href = '/auth'; // Ajusta según tu ruta
+        window.location.href = '/auth';
       }, 2000);
 
     } catch (error) {
-      setResetMessage(error instanceof Error ? error.message : 'Error al restablecer la contraseña');
+      setResetMessage(error instanceof Error ? error.message : t('passwordReset.reset.error.failed'));
       setResetType('error');
     } finally {
       setResetLoading(false);

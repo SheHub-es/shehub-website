@@ -1,3 +1,4 @@
+import { useTranslation } from "@/hooks/useTranslation";
 import { useState } from "react";
 
 interface LoginForm {
@@ -7,6 +8,8 @@ interface LoginForm {
 }
 
 export function useLoginForm() {
+  const { t } = useTranslation();
+  
   const [form, setForm] = useState<LoginForm>({
     email: "",
     password: "",
@@ -30,7 +33,7 @@ export function useLoginForm() {
     e.preventDefault();
 
     if (!form.email.trim() || !form.password) {
-      setPopupMessage("Email y contraseña son obligatorios");
+      setPopupMessage(t('login.error.required'));
       setPopupType("error");
       setShowPopup(true);
       return;
@@ -48,21 +51,19 @@ export function useLoginForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        setPopupMessage(data.message || "Error en el login");
+        setPopupMessage(data.message || t('login.error.failed'));
         setPopupType("error");
         setShowPopup(true);
         return;
       }
 
-      setPopupMessage("Login exitoso");
+      setPopupMessage(t('login.success'));
       setPopupType("success");
       setShowPopup(true);
 
-      // Aquí guardarías el token en localStorage o context
-      // localStorage.setItem("token", data.token);
       
     } catch {
-      setPopupMessage("Error de conexión. Verifica que el servidor esté activo.");
+      setPopupMessage(t('login.error.connection'));
       setPopupType("error");
       setShowPopup(true);
     } finally {

@@ -1,49 +1,85 @@
 "use client";
 
-import PasswordResetModal from '@/sections/auth/components/PasswordResetModal';
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
+
 import AuthForm from "./components/AuthForm";
+import PasswordResetModal from "@/sections/auth/components/PasswordResetModal";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function AuthSectionV1() {
+  const { t } = useTranslation();
   const searchParams = useSearchParams();
-  const token = searchParams.get('token');
+  const token = searchParams.get("token");
+
   const [showResetModal, setShowResetModal] = useState(false);
 
   useEffect(() => {
-    if (token) {
-      setShowResetModal(true);
-    }
+    if (token) setShowResetModal(true);
   }, [token]);
-  
+
+  // - firstWord: "women" / "mujeres" / "dones" (NEGRO)
+  // - gradLine2: resto de la primera línea (GRADIENTE)
+  // - gradLine3: segunda línea (GRADIENTE)
+  const { firstWord, gradLine2, gradLine3 } = useMemo(() => {
+    const raw = String(t("auth.sectionV1.title.highlight") ?? "").trim();
+
+    const match = raw.match(/^(\S+)\s+([\s\S]+)$/);
+    if (!match) return { firstWord: raw, gradLine2: "", gradLine3: "" };
+
+    const [, first, rest] = match;
+    const [line2 = "", line3 = ""] = rest.split("\n");
+
+    return {
+      firstWord: first,
+      gradLine2: line2.trim(),
+      gradLine3: line3.trim(),
+    };
+  }, [t]);
+
   return (
-    <section className="w-full flex flex-col md:flex-row items-start justify-between py-12 px-6 md:px-12 lg:px-20 gap-12 min-h-screen font-primary"  
-    style={{ backgroundColor: "var(--color-background-light)" }}>
+    <section
+      className="w-full min-h-screen flex justify-center px-2 font-primary"
+      style={{ backgroundColor: "var(--color-background-light)" }}
+    >
+      <div className="max-w-[1280px] w-full grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center py-12">
+        {/* LEFT side text section */}
+        <div className="w-full flex justify-center md:justify-start md:-mt-20">
+          <div className="w-full max-w-xl text-left">
+            <h1 className="auth-hero-title mb-4 md:mb-12 text-[color:var(--color-black)]">
+              {/* Línea 1 */}
+              <span className="auth-hero-line1">
+                {t("auth.sectionV1.title.line1")}
+              </span>
 
-      {/* LEFT side text section */}
-      <div className="w-full md:w-1/2 max-w-xl md:mt-24 md:ml-8 lg:ml-12">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[color:var(--color-black)] mb-4 md:mb-12">
-          Join a community of
-          <br />
-          women{" "}
-          <span 
-            className="bg-clip-text text-transparent" 
-            style={{ backgroundImage: "var(--color-gradient-brand)" }}
-          >
-            shaping the
-            <br />
-            future of tech
-          </span>
-        </h1>
+              <br />
 
-        <p className="text-[color:var(--color-black)] text-lg md:text-xl tracking-tight leading-relaxed mt-6">
-          Connect with inspiring women in technology, find mentors, collaborate on meaningful projects, and break through barriers together. SheHub is your platform for growth, learning, and success in tech.
-        </p>
-      </div>
+              {/* Línea 2 + 3 */}
+              <span className="auth-hero-line2">
+                <span className="auth-hero-word">{firstWord}</span>{" "}
+                <span
+                  className="auth-hero-gradient bg-clip-text text-transparent"
+                  style={{ backgroundImage: "var(--color-gradient-brand)" }}
+                >
+                  {gradLine2}
+                  <br />
+                  {gradLine3}
+                </span>
+              </span>
+            </h1>
 
-      {/* RIGHT side form section */}
-      <div className="w-full md:w-1/2 max-w-lg md:mt-8">
-        <AuthForm />
+            <p className="text-[color:var(--color-black)] text-lg md:text-xl tracking-tight leading-relaxed mt-6">
+              {t("auth.sectionV1.description")}
+            </p>
+          </div>
+        </div>
+
+        {/* RIGHT side form section */}
+        <div className="w-full flex justify-center md:justify-end md:-mt-8">
+          <div className="w-full max-w-xl">
+            <AuthForm />
+          </div>
+        </div>
       </div>
 
       {/* Password Reset Modal */}
@@ -55,3 +91,4 @@ export default function AuthSectionV1() {
     </section>
   );
 }
+

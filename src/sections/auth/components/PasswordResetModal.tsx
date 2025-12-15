@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslation } from '@/hooks/useTranslation';
 import logoShehub from '@/assets/images/logos/sheHub/logo_shehub.png';
 import { usePasswordReset } from '@/hooks/usePasswordReset';
 import { Eye, EyeOff, X } from 'lucide-react';
@@ -13,6 +14,7 @@ interface PasswordResetModalProps {
 }
 
 export default function PasswordResetModal({ isOpen, onClose, token }: PasswordResetModalProps) {
+  const { t } = useTranslation();
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   
@@ -53,11 +55,11 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
       );
       
       if (!response.ok) {
-        alert('Token inválido o expirado');
+        alert(t('passwordReset.error.invalidToken'));
         onClose();
       }
     } catch {
-      alert('Error al validar el token');
+      alert(t('passwordReset.error.validateToken'));
       onClose();
     }
   };
@@ -81,7 +83,7 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-700)] transition-colors"
-          aria-label="Cerrar"
+          aria-label={t('passwordReset.modal.close')}
         >
           <X className="w-6 h-6" />
         </button>
@@ -99,13 +101,11 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
 
         {/* Título dinámico */}
         <h3 className="text-2xl font-bold text-center mb-2" style={{ color: 'var(--color-foreground)' }}>
-          {token ? 'Crear Nueva Contraseña' : 'Recuperar Contraseña'}
+          {token ? t('passwordReset.reset.title') : t('passwordReset.forgot.title')}
         </h3>
         
         <p className="text-sm text-center mb-6" style={{ color: 'var(--color-neutral-600)' }}>
-          {token
-            ? 'Ingresa tu nueva contraseña'
-            : 'Ingresa tu email y te enviaremos un enlace para restablecer tu contraseña'}
+          {token ? t('passwordReset.reset.description') : t('passwordReset.forgot.description')}
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -114,12 +114,12 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
             <>
               <div>
                 <label htmlFor="forgot-email" className="input-label">
-                  Email
+                  {t('passwordReset.forgot.email.label')}
                 </label>
                 <input
                   id="forgot-email"
                   type="email"
-                  placeholder="tu@email.com"
+                  placeholder={t('passwordReset.forgot.email.placeholder')}
                   className="input-base"
                   value={forgotEmail}
                   onChange={(e) => setForgotEmail(e.target.value)}
@@ -149,7 +149,7 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
                   color: 'var(--color-white)',
                 }}
               >
-                {forgotLoading ? 'Enviando...' : 'Enviar Enlace'}
+                {forgotLoading ? t('passwordReset.forgot.button.loading') : t('passwordReset.forgot.button.submit')}
               </button>
             </>
           ) : (
@@ -157,13 +157,13 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
             <>
               <div>
                 <label htmlFor="new-password" className="input-label">
-                  Nueva Contraseña
+                  {t('passwordReset.reset.newPassword.label')}
                 </label>
                 <div className="relative">
                   <input
                     id="new-password"
                     type={showNewPassword ? 'text' : 'password'}
-                    placeholder="Mínimo 8 caracteres"
+                    placeholder={t('passwordReset.reset.newPassword.placeholder')}
                     className="input-base pr-12"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
@@ -174,6 +174,7 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
                     type="button"
                     onClick={() => setShowNewPassword(!showNewPassword)}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-700)]"
+                    aria-label={showNewPassword ? t('passwordReset.a11y.hidePassword') : t('passwordReset.a11y.showPassword')}
                   >
                     {showNewPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -182,13 +183,13 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
 
               <div>
                 <label htmlFor="confirm-password" className="input-label">
-                  Confirmar Contraseña
+                  {t('passwordReset.reset.confirmPassword.label')}
                 </label>
                 <div className="relative">
                   <input
                     id="confirm-password"
                     type={showConfirmPassword ? 'text' : 'password'}
-                    placeholder="Repite tu contraseña"
+                    placeholder={t('passwordReset.reset.confirmPassword.placeholder')}
                     className="input-base pr-12"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
@@ -199,6 +200,7 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-700)]"
+                    aria-label={showConfirmPassword ? t('passwordReset.a11y.hidePassword') : t('passwordReset.a11y.showPassword')}
                   >
                     {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -226,7 +228,7 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
                   color: 'var(--color-white)',
                 }}
               >
-                {resetLoading ? 'Cambiando...' : 'Cambiar Contraseña'}
+                {resetLoading ? t('passwordReset.reset.button.loading') : t('passwordReset.reset.button.submit')}
               </button>
             </>
           )}

@@ -1,11 +1,15 @@
-// src/sections/auth/components/PasswordMatchIndicator.tsx
+"use client";
+
+import { useTranslation } from "@/hooks/useTranslation";
+
 interface PasswordMatchIndicatorProps {
   password: string;
   confirmPassword: string;
 }
 
 export function PasswordMatchIndicator({ password, confirmPassword }: PasswordMatchIndicatorProps) {
-  // No mostrar nada si confirmPassword está vacío
+  const { t } = useTranslation();
+  
   if (!confirmPassword) return null;
 
   const passwordsMatch = password === confirmPassword;
@@ -21,7 +25,7 @@ export function PasswordMatchIndicator({ password, confirmPassword }: PasswordMa
           {passwordsMatch ? "✓" : "✗"}
         </span>
         <span className={passwordsMatch ? "text-green-600" : "text-red-600"}>
-          {passwordsMatch ? "Passwords match" : "Passwords do not match"}
+          {passwordsMatch ? t('password.match.success') : t('password.match.error')}
         </span>
       </div>
     </div>

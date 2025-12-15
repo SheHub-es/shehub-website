@@ -1,7 +1,10 @@
+import { useTranslation } from "@/hooks/useTranslation";
 import { RegisterUserRequest } from "@/interfaces/RegisterUserRequest";
 import { useState } from "react";
 
 export function useRegisterForm() {
+  const { t } = useTranslation();
+  
   const [form, setForm] = useState<RegisterUserRequest>({
     firstName: "",
     lastName: "",
@@ -41,22 +44,22 @@ export function useRegisterForm() {
   // ✅ Función para validar contraseña fuerte
   const validatePassword = (password: string): { isValid: boolean; error: string } => {
     if (password.length < 8) {
-      return { isValid: false, error: "Password must be at least 8 characters" };
+      return { isValid: false, error: t('register.error.password.minLength') };
     }
     if (password.length > 128) {
-      return { isValid: false, error: "Password must not exceed 128 characters" };
+      return { isValid: false, error: t('register.error.password.maxLength') };
     }
     if (!/[a-z]/.test(password)) {
-      return { isValid: false, error: "Password must contain at least one lowercase letter" };
+      return { isValid: false, error: t('register.error.password.lowercase') };
     }
     if (!/[A-Z]/.test(password)) {
-      return { isValid: false, error: "Password must contain at least one uppercase letter" };
+      return { isValid: false, error: t('register.error.password.uppercase') };
     }
     if (!/\d/.test(password)) {
-      return { isValid: false, error: "Password must contain at least one number" };
+      return { isValid: false, error: t('register.error.password.number') };
     }
     if (!/[!@#$%^&*()_+\-=\[\]{}|;:,.<>?]/.test(password)) {
-      return { isValid: false, error: "Password must contain at least one special character (!@#$%^&*()_+-=[]{}|;:,.<>?)" };
+      return { isValid: false, error: t('register.error.password.special') };
     }
     return { isValid: true, error: "" };
   };
@@ -67,7 +70,7 @@ export function useRegisterForm() {
     // ✅ Validación de campos vacíos
     if (!form.firstName.trim() || !form.lastName.trim() || 
         !form.email.trim() || !form.password) {
-      setPopupMessage("All fields are required");
+      setPopupMessage(t('register.error.required'));
       setPopupType("error");
       setShowPopup(true);
       return;
@@ -75,7 +78,7 @@ export function useRegisterForm() {
 
     // ✅ Validación de aceptación de política de privacidad
     if (!form.acceptTerms) {
-      setPopupMessage("You must accept the privacy terms to create an account");
+      setPopupMessage(t('register.error.terms'));
       setPopupType("error");
       setShowPopup(true);
       return;
@@ -85,14 +88,14 @@ export function useRegisterForm() {
     const namePattern = /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+(?:[\s'-][a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+)*$/;
     
     if (!namePattern.test(form.firstName.trim())) {
-      setPopupMessage("First name can only contain letters, spaces, hyphens or apostrophes");
+      setPopupMessage(t('register.error.firstName.invalid'));
       setPopupType("error");
       setShowPopup(true);
       return;
     }
 
     if (!namePattern.test(form.lastName.trim())) {
-      setPopupMessage("Last name can only contain letters, spaces, hyphens or apostrophes");
+      setPopupMessage(t('register.error.lastName.invalid'));
       setPopupType("error");
       setShowPopup(true);
       return;
@@ -109,7 +112,7 @@ export function useRegisterForm() {
 
     // ✅ Validación de coincidencia
     if (form.password !== form.confirmPassword) {
-      setPopupMessage("Passwords do not match");
+      setPopupMessage(t('register.error.password.mismatch'));
       setPopupType("error");
       setShowPopup(true);
       return;
@@ -136,7 +139,7 @@ export function useRegisterForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        const errorMessage = data.message || data.error || "Registration error";
+        const errorMessage = data.message || data.error || t('register.error.failed');
         
         setPopupMessage(errorMessage);
         setPopupType("error");
@@ -144,7 +147,7 @@ export function useRegisterForm() {
         return;
       }
 
-      setPopupMessage(data.message || "User registered successfully");
+      setPopupMessage(data.message || t('register.success'));
       setPopupType("success");
       setShowPopup(true);
       setTimeout(() => {
@@ -161,7 +164,7 @@ export function useRegisterForm() {
       }, 2000);
 
     } catch {
-      setPopupMessage("Connection error. Check that the server is active.");
+      setPopupMessage(t('register.error.connection'));
       setPopupType("error");
       setShowPopup(true);
     } finally {

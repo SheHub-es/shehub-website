@@ -4,6 +4,7 @@ import GoogleLogo from '@/components/icons/custom/GoogleLogo';
 import LinkedinLogo from '@/components/icons/custom/LinkedinLogo';
 import { useLoginForm } from "@/hooks/useLoginForm";
 import { useRegisterForm } from "@/hooks/useRegisterForm";
+import { useTranslation } from "@/hooks/useTranslation";
 import { PasswordMatchIndicator } from '@/sections/auth/components/PasswordMatchIndicator';
 import PasswordResetModal from '@/sections/auth/components/PasswordResetModal';
 import { PasswordStrengthIndicator } from '@/sections/auth/components/PasswordStrengthIndicator';
@@ -14,6 +15,7 @@ import { useState } from "react";
 import Popup from "./Popup";
 
 export default function AuthForm() {
+  const { t } = useTranslation();
   const [isLogin, setIsLogin] = useState(false); 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -124,7 +126,7 @@ export default function AuthForm() {
           }`}
           style={{ color: "var(--color-foreground)" }}
         >
-          Log In
+          {t('auth.toggle.login')}
         </button>
         <button
           type="button"
@@ -136,7 +138,7 @@ export default function AuthForm() {
           }`}
           style={{ color: "var(--color-foreground)" }}
         >
-          Sign Up
+          {t('auth.toggle.signup')}
         </button>
       </div>
 
@@ -145,11 +147,11 @@ export default function AuthForm() {
           /* Login Form */
           <>
             <div>
-              <label htmlFor="login-email" className="input-label">Email</label>
+              <label htmlFor="login-email" className="input-label">{t('auth.field.email')}</label>
               <input 
                 id="login-email" 
                 type="email" 
-                placeholder="Email" 
+                placeholder={t('auth.field.email.placeholder')}
                 name="email" 
                 className="input-base"
                 value={loginHook.form.email}
@@ -158,12 +160,12 @@ export default function AuthForm() {
             </div>
 
             <div>
-              <label htmlFor="login-password" className="input-label">Password</label>
+              <label htmlFor="login-password" className="input-label">{t('auth.field.password')}</label>
               <div className="relative">
                 <input
                   id="login-password"
                   type={showPassword ? "text" : "password"}
-                  placeholder="Password"
+                  placeholder={t('auth.field.password.placeholder')}
                   name="password"
                   className="input-base pr-12"
                   value={loginHook.form.password}
@@ -173,7 +175,7 @@ export default function AuthForm() {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-700)] transition-colors"
-                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  aria-label={showPassword ? t('auth.a11y.hidePassword') : t('auth.a11y.showPassword')}
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -187,7 +189,7 @@ export default function AuthForm() {
                 className="text-sm font-medium hover:underline transition-colors"
                 style={{ color: 'var(--color-primary)' }}
               >
-                ¿Olvidaste tu contraseña?
+                {t('auth.button.forgotPassword')}
               </button>
             </div>
 
@@ -199,8 +201,8 @@ export default function AuthForm() {
                 onChange={loginHook.handleChange}
                 className="w-4 h-4 rounded border-[var(--color-neutral-300)] checked:bg-[var(--color-primary)]" 
               />
-              I accept the{" "}
-              <a href="/privacy" className="font-semibold hover:underline" style={{ color: "var(--color-primary)" }}>privacy terms</a>
+              {t('auth.checkbox.terms')}{" "}
+              <a href="/privacy" className="font-semibold hover:underline" style={{ color: "var(--color-primary)" }}>{t('auth.checkbox.terms.link')}</a>
             </label>
 
             <button
@@ -209,7 +211,7 @@ export default function AuthForm() {
               className="w-full py-2.5 rounded-lg font-bold text-base transition-all hover:opacity-90 active:scale-[0.98] mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ backgroundColor: "var(--color-primary)", color: "var(--color-white)" }}
             >
-              {loginHook.isLoading ? "Iniciando sesión..." : "Log In"}
+              {loginHook.isLoading ? t('auth.button.login.loading') : t('auth.button.login')}
             </button>
           </>
         ) : (
@@ -217,11 +219,11 @@ export default function AuthForm() {
           <>
             <div className="flex gap-4">
               <div className="flex-1">
-                <label htmlFor="firstName" className="input-label">Name</label>
+                <label htmlFor="firstName" className="input-label">{t('auth.field.firstName')}</label>
                 <input 
                   id="firstName" 
                   type="text" 
-                  placeholder="Name" 
+                  placeholder={t('auth.field.firstName.placeholder')}
                   name="firstName" 
                   className="input-base" 
                   value={registerHook.form.firstName} 
@@ -229,11 +231,11 @@ export default function AuthForm() {
                 />
               </div>
               <div className="flex-1">
-                <label htmlFor="lastName" className="input-label">Last Name</label>
+                <label htmlFor="lastName" className="input-label">{t('auth.field.lastName')}</label>
                 <input 
                   id="lastName" 
                   type="text" 
-                  placeholder="Last Name" 
+                  placeholder={t('auth.field.lastName.placeholder')}
                   name="lastName" 
                   className="input-base" 
                   value={registerHook.form.lastName} 
@@ -243,11 +245,11 @@ export default function AuthForm() {
             </div>
 
             <div>
-              <label htmlFor="email" className="input-label">Email</label>
+              <label htmlFor="email" className="input-label">{t('auth.field.email')}</label>
               <input 
                 id="email" 
                 type="email" 
-                placeholder="Email" 
+                placeholder={t('auth.field.email.placeholder')}
                 name="email" 
                 className="input-base" 
                 value={registerHook.form.email} 
@@ -257,12 +259,12 @@ export default function AuthForm() {
 
             <div className="flex gap-4">
               <div className="flex-1">
-                <label htmlFor="password" className="input-label">Password</label>
+                <label htmlFor="password" className="input-label">{t('auth.field.password')}</label>
                 <div className="relative">
                   <input
                     id="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="Password"
+                    placeholder={t('auth.field.password.placeholder')}
                     name="password"
                     className="input-base pr-12"
                     value={registerHook.form.password}
@@ -272,7 +274,7 @@ export default function AuthForm() {
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-700)] transition-colors"
-                    aria-label={showPassword ? "Hide password" : "Show password"}
+                    aria-label={showPassword ? t('auth.a11y.hidePassword') : t('auth.a11y.showPassword')}
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -281,12 +283,12 @@ export default function AuthForm() {
               </div>
               
               <div className="flex-1">
-                <label htmlFor="confirmPassword" className="input-label">Confirm Password</label>
+                <label htmlFor="confirmPassword" className="input-label">{t('auth.field.confirmPassword')}</label>
                 <div className="relative">
                   <input
                     id="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
-                    placeholder="Confirm Password"
+                    placeholder={t('auth.field.confirmPassword.placeholder')}
                     name="confirmPassword"
                     className="input-base pr-12"
                     value={registerHook.form.confirmPassword}
@@ -296,7 +298,7 @@ export default function AuthForm() {
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-700)] transition-colors"
-                    aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                    aria-label={showConfirmPassword ? t('auth.a11y.hidePassword') : t('auth.a11y.showPassword')}
                   >
                     {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -309,7 +311,7 @@ export default function AuthForm() {
             </div>
 
             <div>
-              <label htmlFor="desiredRole" className="input-label">Desired Role</label>
+              <label htmlFor="desiredRole" className="input-label">{t('auth.field.desiredRole')}</label>
               <select 
                 id="desiredRole" 
                 name="desiredRole" 
@@ -317,10 +319,10 @@ export default function AuthForm() {
                 value={registerHook.form.desiredRole} 
                 onChange={registerHook.handleChange}
               >
-                <option value="">Select your role</option>
-                <option value="Miembro">Miembro</option>
-                <option value="Mentora">Mentora</option>
-                <option value="Colaboradora">Colaboradora</option>
+                <option value="">{t('auth.field.desiredRole.placeholder')}</option>
+                <option value="Miembro">{t('auth.field.desiredRole.option.miembro')}</option>
+                <option value="Mentora">{t('auth.field.desiredRole.option.mentora')}</option>
+                <option value="Colaboradora">{t('auth.field.desiredRole.option.colaboradora')}</option>
               </select>
             </div>
 
@@ -332,7 +334,7 @@ export default function AuthForm() {
                 onChange={registerHook.handleChange}
                 className="w-4 h-4 rounded border-[var(--color-neutral-300)] checked:bg-[var(--color-primary)]" 
               />
-              Register as a Mentor for the selected Role.
+              {t('auth.checkbox.mentor')}
             </label>
 
             <label className="flex items-center gap-2 text-sm cursor-pointer pt-1" style={{ color: "var(--color-neutral-700)" }}>
@@ -343,8 +345,8 @@ export default function AuthForm() {
                 onChange={registerHook.handleChange}
                 className="w-4 h-4 rounded border-[var(--color-neutral-300)] checked:bg-[var(--color-primary)]" 
               />
-              I accept the{" "}
-              <a href="/privacy" className="font-semibold hover:underline" style={{ color: "var(--color-primary)" }}>privacy terms</a>
+              {t('auth.checkbox.terms')}{" "}
+              <a href="/privacy" className="font-semibold hover:underline" style={{ color: "var(--color-primary)" }}>{t('auth.checkbox.terms.link')}</a>
             </label>
 
             <button
@@ -353,7 +355,7 @@ export default function AuthForm() {
               className="w-full py-2.5 rounded-lg font-bold text-base transition-all hover:opacity-90 active:scale-[0.98] mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ backgroundColor: "var(--color-primary)", color: "var(--color-white)" }}
             >
-              {registerHook.isLoading ? "Creando cuenta..." : "Create Account"}
+              {registerHook.isLoading ? t('auth.button.signup.loading') : t('auth.button.signup')}
             </button>
           </>
         )}
@@ -362,7 +364,7 @@ export default function AuthForm() {
         <div className="relative my-4">
           <div className="w-full h-px bg-[var(--color-neutral-300)]" />
           <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 text-sm bg-white" style={{ color: "var(--color-neutral-600)" }}>
-            or continue with
+            {t('auth.divider.social')}
           </span>
         </div>
 
@@ -378,7 +380,7 @@ export default function AuthForm() {
             style={{ color: "var(--color-foreground)" }}
           >
             <GoogleLogo className="w-5 h-5" />
-            Google
+            {t('auth.social.google')}
           </button>
           
           <button
@@ -388,7 +390,7 @@ export default function AuthForm() {
             style={{ color: "var(--color-foreground)" }}
           >
             <LinkedinLogo className="w-5 h-5" style={{ color: "#0077B5" }} />
-            LinkedIn
+            {t('auth.social.linkedin')}
           </button>
         </div>
       </form>
@@ -396,9 +398,9 @@ export default function AuthForm() {
       {/* Toggle authentication mode */}
       <p className="text-center text-sm mt-3" style={{ color: "var(--color-neutral-600)" }}>
         {isLogin ? (
-          <>Don&apos;t have an account? <button type="button" onClick={() => setIsLogin(false)} className="font-semibold hover:underline transition-colors" style={{ color: "var(--color-primary)" }}>Sign up</button></>
+          <>{t('auth.toggle.text.noAccount')} <button type="button" onClick={() => setIsLogin(false)} className="font-semibold hover:underline transition-colors" style={{ color: "var(--color-primary)" }}>{t('auth.toggle.text.signup')}</button></>
         ) : (
-          <>Already have an account? <button type="button" onClick={() => setIsLogin(true)} className="font-semibold hover:underline transition-colors" style={{ color: "var(--color-primary)" }}>Log in</button></>
+          <>{t('auth.toggle.text.hasAccount')} <button type="button" onClick={() => setIsLogin(true)} className="font-semibold hover:underline transition-colors" style={{ color: "var(--color-primary)" }}>{t('auth.toggle.text.login')}</button></>
         )}
       </p>
 

@@ -1,8 +1,14 @@
+"use client";
+
+import { useTranslation } from "@/hooks/useTranslation";
+
 interface PasswordStrengthIndicatorProps {
   password: string;
 }
 
 export function PasswordStrengthIndicator({ password }: PasswordStrengthIndicatorProps) {
+  const { t } = useTranslation();
+
   const checks = {
     length: password.length >= 8 && password.length <= 128,
     lowercase: /[a-z]/.test(password),
@@ -14,23 +20,23 @@ export function PasswordStrengthIndicator({ password }: PasswordStrengthIndicato
   const allMet = Object.values(checks).every(Boolean);
 
   const requirements = [
-    { label: "8-128 characters", met: checks.length },
-    { label: "One lowercase letter (a-z)", met: checks.lowercase },
-    { label: "One uppercase letter (A-Z)", met: checks.uppercase },
-    { label: "One number (0-9)", met: checks.number },
-    { label: "One special character (!@#$...)", met: checks.special },
+    { label: t('password.strength.length'), met: checks.length },
+    { label: t('password.strength.lowercase'), met: checks.lowercase },
+    { label: t('password.strength.uppercase'), met: checks.uppercase },
+    { label: t('password.strength.number'), met: checks.number },
+    { label: t('password.strength.special'), met: checks.special },
   ];
 
-  // 🆕 No mostrar nada si no hay contraseña
+  // No mostrar nada si no hay contraseña
   if (!password) return null;
 
-  // 🆕 Desaparecer cuando todo está correcto
+  // Desaparecer cuando todo está correcto
   if (allMet) return null;
 
   return (
     <div className="mt-2 p-3 rounded-lg bg-gray-50 border border-gray-200">
       <p className="text-xs font-semibold mb-2" style={{ color: "var(--color-neutral-600)" }}>
-        Password requirements:
+        {t('password.strength.title')}
       </p>
       <div className="space-y-1">
         {requirements.map((req, index) => (
