@@ -1,4 +1,5 @@
-import Avatar, { type AvatarSize, type AvatarVariant } from '@/components/ui/Avatar';
+import Avatar, { AvatarItem, type AvatarSize } from '@/components/ui/Avatar';
+import { AvatarGroup, AvatarGroupVariants } from '@/components/ui/AvatarGroup';
 import { Icon, IconProps } from '@/components/ui/Icon';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -11,7 +12,6 @@ interface CardVariantProps extends VariantProps<typeof cardVariants> {
     icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     className?: string;
 }
-
 
 const cardVariants = cva(
     'transition-all box-border',
@@ -245,19 +245,10 @@ type AvatarCardProps = BaseProps & {
     avatarSize?: AvatarSize;
     overlap?: boolean;
     maxAvatars?: number;
+    avatarGroupVariant?: AvatarGroupVariants
+    groupSize?: number
     icon?: never;
 };
-
-type AvatarItem = {
-    name: string;
-    imageUrl?: string;
-    initials?: string;
-    disabled?: boolean;
-    variant?: AvatarVariant;
-};
-
-const getInitials = (name: string) =>
-    name.trim().split(/\s+/).map(p => p[0] || '').slice(0, 2).join('').toUpperCase();
 
 export type CardProps = IconCardProps | ClickableCardProps | SimpleCardProps | AvatarCardProps;
 
@@ -273,6 +264,15 @@ export const Card: React.FC<CardProps> = (props) => {
         icon,
         className,
         tone = 'default',
+        avatarsData,
+        avatarSize,
+        overlap,
+        maxAvatars,
+        avatarGroupVariant,
+        groupSize,
+        logoSrc,
+        logoAlt,
+        iconArialLabel,
         ...rest
     } = props as any;
 
@@ -309,22 +309,13 @@ export const Card: React.FC<CardProps> = (props) => {
             )}
 
             {type === 'nonClickableWithAvatarAndCorner' && (
-                <div className={(props as AvatarCardProps).overlap === false ? 'flex space-x-2' : 'flex -space-x-2'}>
-                    {(props as AvatarCardProps).avatarsData
-                        ?.slice(0, (props as AvatarCardProps).maxAvatars ?? Number.POSITIVE_INFINITY)
-                        .map((u, i) => (
-                            <Avatar
-                                key={`${u.name}-${i}`}
-                                type={u.imageUrl ? 'image' : 'initials'}
-                                size={(props as AvatarCardProps).avatarSize ?? 'md'}
-                                initials={u.imageUrl ? undefined : (u.initials ?? getInitials(u.name))}
-                                imageUrl={u.imageUrl}
-                                disabled={u.disabled}
-                                variant={u.variant}
-                                className="ring-2 ring-white"
-                            />
-                        ))}
-                </div>
+                <AvatarGroup
+                avatars={(props as AvatarCardProps).avatarsData}
+                size={(props as AvatarCardProps).avatarSize ?? 'sm'}
+                overlap={(props as AvatarCardProps).overlap ?? true}
+                maxAvatars={(props as AvatarCardProps).maxAvatars}
+                variant={(props as AvatarCardProps).avatarGroupVariant}
+                />
             )}
 
             {(type !== 'clickable' && (title || description)) && (
