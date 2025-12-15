@@ -4,8 +4,8 @@ import { Icon } from "@/components/ui/Icon";
 import { CarouselCard } from "@/components/ui/carousel/CarouselCard";
 import { cn } from "@/lib/utils";
 
+import { useCarousel } from "../../../hooks/useCarousel";
 import { CardsVariantProps } from "./Carousel.types";
-import { useCarousel } from "./useCarousel";
 
 const dotVariants = (active: boolean) =>
   cn(

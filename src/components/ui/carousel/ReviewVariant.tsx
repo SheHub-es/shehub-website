@@ -2,13 +2,13 @@ import ArrowLeft from "@/components/icons/IconLeftArrow";
 import ArrowRight from "@/components/icons/IconRightArrow";
 import { Icon } from "@/components/ui/Icon";
 import {
-  CarouselReview,
-  Review,
+    CarouselReview,
+    Review,
 } from "@/components/ui/carousel/CarouselReview";
 import { cn } from "@/lib/utils";
 
+import { useCarousel } from "../../../hooks/useCarousel";
 import { ReviewVariantProps } from "./Carousel.types";
-import { useCarousel } from "./useCarousel";
 
 const dotVariants = (active: boolean) =>
   cn(
