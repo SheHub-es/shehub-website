@@ -265,6 +265,15 @@ export const Card: React.FC<CardProps> = (props) => {
         icon,
         className,
         tone = 'default',
+        avatarsData,
+        avatarSize,
+        overlap,
+        maxAvatars,
+        avatarGroupVariant,
+        groupSize,
+        logoSrc,
+        logoAlt,
+        iconArialLabel,
         ...rest
     } = props as any;
 
