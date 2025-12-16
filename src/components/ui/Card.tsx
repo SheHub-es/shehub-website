@@ -22,13 +22,13 @@ const cardVariants = cva(
                     [
                         'w-[13.5rem] h-[7rem] inline-flex items-center justify-center gap-7 p-8 cursor-pointer !rounded-[8px]',
                     ].join(' '),
-                nonClickable: ['flex flex-col items-start gap-2.5 p-10 w-[18.5rem]',
+                nonClickable: ['flex flex-col items-start gap-2.5 p-[30px] md:p-10 w-[18rem] md:w-[18.5rem]',
                 ].join(' '),
-                nonClickableWithIcon: ['flex flex-col items-start gap-7 p-10 w-[24.375rem] h-[18rem]'
+                nonClickableWithIcon: ['flex flex-col items-start gap-4 md:gap-7 p-[30px] md:p-10 w-[17.938rem] md:w-[24.25rem] h-[20.25rem] md:h-[20rem]'
                 ].join(' '),
-                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-7 p-8 w-auto h-auto '
+                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-0.5 md:gap-7 p-4 md:p-8 w-[9.0625rem] md:w-[14.1875rem] h-auto '
                 ].join(' '),
-                nonClickableWithAvatarAndCorner: ['flex flex-col items-start self-start gap-7 px-8 py-6 w-[11.25rem]'
+                nonClickableWithAvatarAndCorner: ['flex flex-col items-start self-start gap-1 md:gap-3 p-4 md:px-8 md:py-6 w-[6.5rem] md:w-[11.25rem] h-[6rem] md:h-[11.25rem] !rounded-[4px_24px_24px_24px] md:rounded-[48px]'
                 ].join(' ')
             },
             color: {
@@ -124,8 +124,8 @@ const cardContentVariants = cva('flex flex-col text-left', {
             clickable: 'gap-2',
             nonClickable: 'gap-3',
             nonClickableWithIcon: 'gap-4',
-            nonClickableWithIconAndCorner: 'gap-2',
-            nonClickableWithAvatarAndCorner: 'gap-2'
+            nonClickableWithIconAndCorner: 'gap-1 md:gap-2',
+            nonClickableWithAvatarAndCorner: 'gap-1 md:gap-2'
         },
         hasIcon: {
             true: '',
@@ -142,10 +142,10 @@ const cardTitleVariants = cva('font-heavy', {
     variants: {
         type: {
             clickable: 'text-size-500',
-            nonClickable: 'text-size-900 font-primary',
+            nonClickable: 'text-size-800 md:text-size-900 leading-[2.75rem] md:leading-[3.75rem] font-primary',
             nonClickableWithIcon: 'text-size-500 font-secondary',
-            nonClickableWithIconAndCorner: 'text-size-900 font-primary',
-            nonClickableWithAvatarAndCorner: 'text-size-900 font-primary'
+            nonClickableWithIconAndCorner: 'text-size-400 md:text-size-900 leading-tight font-primary',
+            nonClickableWithAvatarAndCorner: 'text-size-400 md:text-size-900 leading-tight font-primary'
         },
         color: {
             white: 'text-[var(--color-card-white-title)]',
@@ -161,22 +161,21 @@ const cardTitleVariants = cva('font-heavy', {
 
 const cardDescriptionVariants = cva(
     [
-        'text-size-300',
         'font-secondary'
     ].join(' '),
     {
         variants: {
             type: {
                 clickable: '',
-                nonClickable: '',
-                nonClickableWithIcon: '',
-                nonClickableWithIconAndCorner: '',
-                nonClickableWithAvatarAndCorner: '',
+                nonClickable: 'text-size-300',
+                nonClickableWithIcon: 'text-size-300',
+                nonClickableWithIconAndCorner: 'text-size-100 md:text-size-300 md:font-heavy',
+                nonClickableWithAvatarAndCorner: 'text-size-100 md:text-size-300 md:font-heavy',
             },
             color: {
-                white: 'text-card-white-description',
-                purple: 'text-card-non-clickable-purple-description',
-                lightPurple: 'text-card-non-clickable-light-purple-description'
+                white: 'text-[var(--color-card-white-description)]',
+                purple: 'text-[var(--color-card-non-clickable-purple-description)]',
+                lightPurple: 'text-[var(--color-card-non-clickable-light-purple-description)]'
             },
             tone: {
                 default: '',
@@ -299,17 +298,14 @@ export const Card: React.FC<CardProps> = (props) => {
             )}
 
             {(type === 'nonClickableWithIcon' || type === 'nonClickableWithIconAndCorner') && icon && (
-                <div>
-                    {(() => {
-                        return (
-                            <Icon
-                                icon={icon}
-                                size="xl"
-                                aria-label={(props as any).iconArialLabel ?? "Card icon"}
-                            />
-                        );
-                    })()}
-                </div>
+                
+                    <Icon
+                        icon={icon}
+                        size="xl"
+                        aria-label={(props as any).
+                        iconArielLabel ?? "Card icon"}
+                    />
+                
             )}
 
             {type === 'nonClickableWithAvatarAndCorner' && (
