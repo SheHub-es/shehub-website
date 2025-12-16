@@ -18,7 +18,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants = {
   "primary-primary":
-       "bg-[var(--color-button-primary-primary-bg-default)] text-[var(--color-button-primary-primary-text)] " +
+       "bg-[var(--color-button-primary-primary-bg-default)] !text-[var(--color-button-primary-primary-text)] " +
     "hover:bg-[var(--color-button-primary-primary-bg-hover)] hover:text-[var(--color-button-primary-primary-text-hover)]",
 
   "secondary-primary":
@@ -50,7 +50,7 @@ const variants = {
 
   gradient:
  
-    "bg-[image:var(--color-button-bg-gradient)] text-white hover:opacity-90",
+    "bg-[image:var(--color-button-bg-gradient)] !text-[var(--color-button-primary-primary-text)] hover:opacity-90",
 };
  
 
