@@ -61,7 +61,8 @@ export default function HowSheHubWorks() {
         <Button
           variant="primary-primary"
           size="sm"
-          shape="rounded" >
+          shape="rounded"
+          className="hover:!text-black transition-colors duration-200" >
           Join a real project
         </Button>
       </div>
