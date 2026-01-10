@@ -1,5 +1,6 @@
+import IconMail from "@/components/icons/IconMail"
+import { Icon } from "@/components/ui/Icon"
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
-import { Mail } from "lucide-react"
 
 export default function ContactPage() {
   return (
@@ -27,11 +28,11 @@ export default function ContactPage() {
       </p>
 
       <div className="flex items-center justify-center gap-3 mt-2">
-        <Mail className="w-6 h-6 text-[color:var(--color-black)]" />
+              <Icon icon={IconMail} size="md" className="text-icon-default"/>
 
         <a
           href="mailto:info@shehub.es"
-          className="text-[color:var(--color-primary)] font-medium hover:underline"
+          className="text-primary font-medium hover:underline"
         >
           info@shehub.es
         </a>
