@@ -1,9 +1,9 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
-export default function LinkedInCallbackPage() {
+function LinkedInCallbackContent() {
   const searchParams = useSearchParams();
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [message, setMessage] = useState('Procesando autenticación de LinkedIn...');
@@ -133,5 +133,24 @@ export default function LinkedInCallbackPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function LinkedInCallbackPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-[var(--color-background-light)]">
+        <div className="text-center p-8 bg-white rounded-2xl shadow-lg max-w-md">
+          <div className="flex flex-col items-center gap-4">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--color-primary)]"></div>
+            <p className="text-lg" style={{ color: 'var(--color-foreground)' }}>
+              Cargando...
+            </p>
+          </div>
+        </div>
+      </div>
+    }>
+      <LinkedInCallbackContent />
+    </Suspense>
   );
 }

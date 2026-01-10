@@ -404,14 +404,16 @@ export default function AuthForm() {
         )}
       </p>
 
-      {/* Hidden Google Login component */}
-      <div className="hidden">
-        <GoogleLogin
-          onSuccess={handleGoogleSuccess}
-          onError={handleGoogleError}
-          useOneTap
-        />
-      </div>
+      {/* Hidden Google Login component - only render if clientId is available */}
+      {process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID && (
+        <div className="hidden">
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={handleGoogleError}
+            useOneTap
+          />
+        </div>
+      )}
 
       {/* Form validation popups */}
       {isLogin ? (

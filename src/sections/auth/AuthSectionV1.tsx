@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useMemo, useState } from "react";
 
-import AuthForm from "./components/AuthForm";
-import PasswordResetModal from "@/sections/auth/components/PasswordResetModal";
 import { useTranslation } from "@/hooks/useTranslation";
+import PasswordResetModal from "@/sections/auth/components/PasswordResetModal";
+import AuthForm from "./components/AuthForm";
 
-export default function AuthSectionV1() {
+function AuthSectionV1Content() {
   const { t } = useTranslation();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
@@ -92,3 +92,21 @@ export default function AuthSectionV1() {
   );
 }
 
+export default function AuthSectionV1() {
+  return (
+    <Suspense fallback={
+      <section
+        className="w-full min-h-screen flex justify-center px-2 font-primary"
+        style={{ backgroundColor: "var(--color-background-light)" }}
+      >
+        <div className="max-w-[1280px] w-full grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center py-12">
+          <div className="w-full flex justify-center items-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--color-primary)]"></div>
+          </div>
+        </div>
+      </section>
+    }>
+      <AuthSectionV1Content />
+    </Suspense>
+  );
+}

@@ -9,9 +9,9 @@ import { ReactNode } from "react";
 export function AppProviders({ children }: { children: ReactNode }) {
   const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
-  if (!googleClientId) {
-    console.error('Missing NEXT_PUBLIC_GOOGLE_CLIENT_ID');
-    // En producción podrías lanzar un error o deshabilitar el botón
+  // Solo mostrar warning en desarrollo
+  if (!googleClientId && process.env.NODE_ENV === 'development') {
+    console.warn('Missing NEXT_PUBLIC_GOOGLE_CLIENT_ID - Google OAuth will not work');
   }
 
   return (
