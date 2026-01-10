@@ -4,11 +4,11 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { cn } from "@/lib/cn";
 import NextImage from "next/image";
 
-import BubblesImage from '@/assets/images/icons/icon_bubbles.svg';
-import CollaboratorOrangeImage from '@/assets/images/icons/icon_collaboratorOrange.svg';
-import MentorPinkImage from '@/assets/images/icons/icon_mentorPink.svg';
-import RocketIcon from '@/assets/images/icons/icon_rocket.svg';
-import IconStar from '@/assets/images/icons/icon_star.svg';
+import BubblesImage from '@/assets/images/graphics/icon_bubbles.svg';
+import CollaboratorOrangeImage from '@/assets/images/graphics/icon_collaboratorOrange.svg';
+import MentorPinkImage from '@/assets/images/graphics/icon_mentorPink.svg';
+import RocketIcon from '@/assets/images/graphics/icon_rocket.svg';
+import IconStar from '@/assets/images/graphics/icon_star.svg';
 import AthenaAvatarGroup from '@/assets/images/photos/photo_athenaAvatarGroup.svg';
 import HeroImage from '@/assets/images/photos/photo_heroHome.jpg';
 

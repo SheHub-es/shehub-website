@@ -12,7 +12,7 @@ import ValueProposition from "@/sections/home/valueProposition/ValueProposition"
 
 export default function Home () {
   return (
-    <>
+    <>  
       <Hero/>
       <ValueProposition/>
       <CollaboratorsMentors/>
