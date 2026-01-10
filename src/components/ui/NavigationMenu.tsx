@@ -1,10 +1,10 @@
 import { useTranslation } from '@/hooks/useTranslation';
-import { cn } from "@/lib/utils";
+import { useState } from 'react';
 
 type Layout = 'horizontal' | 'vertical'
 
 const NavigationMenu = () => {
-
+  const [isAuthDropdownOpen, setIsAuthDropdownOpen] = useState(false);
   const { t } = useTranslation();
 
   const navItems = [
@@ -13,6 +13,11 @@ const NavigationMenu = () => {
     { key: 'menu.item-3', href: '/about' },
     { key: 'menu.item-4', href: '/partners' },
     { key: 'menu.item-5', href: '/contact' },
+  ];
+
+  const authItems = [
+    { key: 'menu.loginV1', href: '/auth', label: 'Login V1' },
+    { key: 'menu.loginV2', href: '/auth-v2', label: 'Login V2' },
   ];
 
   return (
@@ -29,6 +34,44 @@ const NavigationMenu = () => {
             </a>
           </li>
         ))}
+        
+        {/* Auth Dropdown */}
+        <li 
+          className="relative"
+          onMouseEnter={() => setIsAuthDropdownOpen(true)}
+          onMouseLeave={() => setIsAuthDropdownOpen(false)}
+        >
+          <button
+            type="button"
+            className="flex items-center gap-1 whitespace-nowrap cursor-pointer nav-item text-black hover:text-navigationmenu-hover py-2 bg-transparent border-none"
+            onClick={() => setIsAuthDropdownOpen(!isAuthDropdownOpen)}
+          >
+            Auth
+            <svg 
+              className={`w-4 h-4 transition-transform ${isAuthDropdownOpen ? 'rotate-180' : ''}`} 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          {isAuthDropdownOpen && (
+            <ul className="absolute top-full left-0 mt-1 bg-white shadow-lg rounded-lg py-2 min-w-[150px] z-50 border border-gray-200">
+              {authItems.map(({ key, href, label }) => (
+                <li key={key}>
+                  <a
+                    href={href}
+                    className="block px-5 py-3 text-black hover:bg-gray-100 hover:text-navigationmenu-hover transition-colors text-sm"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
       </ul>
     </nav>
   )

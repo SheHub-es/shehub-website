@@ -3,6 +3,7 @@
 import { translations, type Language } from '@/translations';
 import {
   createContext,
+  useContext,
   useEffect,
   useState,
   type ReactNode,
@@ -48,4 +49,13 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </LanguageContext.Provider>
   )
+}
+
+// 🆕 Hook para usar el contexto
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
 }
