@@ -26,4 +26,16 @@ export const navigationMenuTranslations: TranslationObject = {
     en: 'Contact',
     ca: 'Contacte',
   },
+  /**Login V1 y V2 */
+    'menu.loginV1': {
+    es: 'Login V1',
+    en: 'Login V1',
+    ca: 'Login V1',
+  },
+  'menu.loginV2': {
+    es: 'Login V2',
+    en: 'Login V2',
+    ca: 'Login V2',
+  },
+
 };
