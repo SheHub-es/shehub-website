@@ -8,9 +8,6 @@ const nextConfig: NextConfig = {
       "randomuser.me"
     ],
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
 };
 
 export default nextConfig;
