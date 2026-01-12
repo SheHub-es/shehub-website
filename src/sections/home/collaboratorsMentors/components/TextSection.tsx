@@ -15,11 +15,11 @@ interface InfoBlockProps {
 }
 
 const InfoBlock = ({ title, text }: InfoBlockProps) => (
-  <div className="flex flex-col flex-1 gap-2">
-    <h3 className="text-black text-[length:var(--text-size-500)] font-[var(--font-weight-heavy)]">
+  <div className="flex flex-col gap-2 w-full">
+    <h3 className="text-black text-size-500 font-(--font-weight-heavy)">
       {title}
     </h3>
-    <p className="text-black text-[length:var(--text-size-300)] font-[var(--font-weight-default)] leading-[1.6] max-w-[584px] whitespace-pre-line font-secondary">
+    <p className="text-black text-size-300 font-(--font-weight-default) leading-[1.6] whitespace-pre-line font-secondary">
       {text}
     </p>
   </div>
@@ -35,18 +35,18 @@ function TextSection({
 }: TextSectionProps) {
 
   return (
-    <section className="h-[536px]">
-      <div className='flex flex-col gap-5 mt-[-30px]'>
-        <div className="text-black font-[var(--font-weight-heavy)] text-[length:var(--text-size-300)] md:text-[length:var(--text-size-400)]">
+    <section className="min-h-auto md:min-h-[536px] w-full">
+      <div className='flex flex-col gap-5 mt-[-30px] md:mt-[-30px] w-full'>
+        <div className="text-black font-(--font-weight-heavy) text-size-300 md:text-size-400">
           {sectionHeading}
         </div>
-        <div className="text-black font-[var(--font-weight-heavy)] text-[length:var(--text-size-800)] md:text-[length:var(--text-size-900)] tracking-tight">
+        <div className="text-black font-(--font-weight-heavy) text-size-500 md:text-size-900 tracking-tight">
           {primaryHeading}
         </div>
-        <div className="text-black font-[var(--font-weight-default)] leading-[var(--spacing-line-height-body-2)] text-[length:var(--text-size-300)] md:text-[length:var(--text-size-400)] mt-[12px]" style={{ fontFamily: 'var(--font-secondary)' }} >
+          <div className="text-black font--font-weight-default) leading(--spacing-line-height-body-2) text-size-300 md:text-size-400 mt-[12px]" style={{ fontFamily: 'var(--font-secondary)' }} >
           {paragraphText}
         </div>
-        <div className="flex gap-6 py-4">
+        <div className="grid grid-cols-2 gap-4 md:gap-8 py-4 w-full max-w-full">
           <InfoBlock title="What You Bring" text={whatYouBringText} />
           <InfoBlock title="What We Offer" text={whatWeOfferText} />
         </div>

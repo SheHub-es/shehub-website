@@ -44,7 +44,7 @@ const Footer = () => {
 
             <div className="flex gap-2 pb-4 lg:pb-0">
               <a
-                href="https://instagram.com/shehub"
+                href="https://www.instagram.com/shehub.es/"
                 aria-label="SheHub on Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -54,7 +54,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://www.linkedin.com/company/shehub"
+                href="https://www.linkedin.com/company/shehub-es/"
                 aria-label="SheHub on LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"

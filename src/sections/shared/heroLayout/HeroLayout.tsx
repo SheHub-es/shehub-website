@@ -47,7 +47,7 @@ export default function HeroLayout({
     <SectionWrapper
       id={id}
       innerClassName={clsx(
-        "flex flex-col lg:flex-row items-center justify-center mx-auto",
+        "flex flex-col lg:flex-row items-center justify-center mx-auto md:mb-20",
 
         // MOBILE spacing
         "pt-4 gap-6",
@@ -64,16 +64,16 @@ export default function HeroLayout({
       <div className="flex flex-col justify-center text-left lg:w-[592px] w-full h-auto">
 
         {eyebrow && (
-          <span className="text-[color:var(--color-primary)] text-base md:text-lg font-semibold tracking-wide pt-12 md:pt-0 mb-8 md:mb-12 md:my-12">
+          <span className="text-black text-base md:text-lg font-semibold tracking-wide pt-8 md:pt-0 mb-8 md:mb-12 md:my-12">
             {eyebrow}
           </span>
         )}
 
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[color:var(--color-black)] mb-4 md:mb-12">
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-black mb-4 md:mb-12">
           {title}
         </h1>
 
-        <p className="text-[color:var(--color-black)] text-lg md:text-xl tracking-tight leading-relaxed mb-12">
+        <p className="text-black text-lg md:text-xl tracking-tight leading-relaxed mb-10">
           {paragraph}
         </p>
 
@@ -87,9 +87,9 @@ export default function HeroLayout({
                 shape="rounded"
                 onClick={btn.onClick}
                 className={clsx(
-                  "w-full sm:w-auto h-[40px] sm:h-[48px] min-w-[170px] min-h-[48px] font-[var(--font-weight-default)] transition-colors duration-200",
+                  "w-full sm:w-auto h-[40px] sm:h-[48px] min-w-[170px] min-h-[48px] font-(--font-weight-default) transition-colors duration-200",
                   btn.variant === "secondary-primary" && "!text-black", // hardcoded so as not to touch Button.tsx
-                  btn.variant === "primary-primary" && "hover:!text-black" // hardcoded so as not to touch Button.tsx
+                  btn.variant === "primary-primary" && "!hover:text-black" // hardcoded so as not to touch Button.tsx
                 )}
               >
                 {btn.text}
