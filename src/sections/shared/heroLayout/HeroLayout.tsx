@@ -64,7 +64,7 @@ export default function HeroLayout({
       <div className="flex flex-col justify-center text-left lg:w-[592px] w-full h-auto">
 
         {eyebrow && (
-          <span className="text-black text-base md:text-lg font-semibold tracking-wide pt-8 md:pt-0 mb-8 md:mb-12 md:my-12">
+          <span className="text-accent text-base md:text-lg font-semibold tracking-wide pt-8 md:pt-0 mb-8 md:mb-12 md:my-12">
             {eyebrow}
           </span>
         )}

@@ -1,9 +1,13 @@
+'use client'
 import { useTranslation } from '@/hooks/useTranslation';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 type Layout = 'horizontal' | 'vertical'
 
 const NavigationMenu = () => {
+  const pathname = usePathname();
   const [isAuthDropdownOpen, setIsAuthDropdownOpen] = useState(false);
   const { t } = useTranslation();
 
@@ -23,17 +27,25 @@ const NavigationMenu = () => {
   return (
     <nav aria-label='Main Navigation'>
       <ul className="list-none flex flex-col gap-6 md:flex-row md:gap-8 md:items-center">
-        {navItems.map(({ key, href }) => (
-          <li key={key}>
-            <a
-              href={href}
-              className="flex-1 whitespace-nowrap cursor-pointer nav-item text-black hover:text-navigationmenu-hover"
-              tabIndex={0}
-            >
-              {t(key)}
-            </a>
-          </li>
-        ))}
+        {navItems.map(({ key, href }) => {
+          const isActive = pathname === href;
+          return (
+            <li key={key}>
+              <a
+                href={href}
+                className={cn(
+                  "flex-1 whitespace-nowrap cursor-pointer nav-item hover:text-navigationmenu-hover",
+                  isActive 
+                    ? "text-[var(--color-primary)]" 
+                    : "text-black"
+                )}
+                tabIndex={0}
+              >
+                {t(key)}
+              </a>
+            </li>
+          );
+        })}
         
         {/* Auth Dropdown */}
         <li 

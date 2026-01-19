@@ -33,6 +33,10 @@ export function CardsVariant({
     direction === "next" ? next(step) : prev(step);
   };
 
+  // Determine disabled states
+  const isLeftDisabled = !loop && index === 0;
+  const isRightDisabled = !loop && index >= items.length - 4;
+
   return (
     <div className={cn("flex flex-col", className)}>
       <div className="relative mx-auto w-80 h-[455px] lg:w-full lg:h-auto lg:max-w-[1280px]">
@@ -41,7 +45,7 @@ export function CardsVariant({
             {items.map((item, i) => (
               <div
                 key={item.id ?? i}
-                className="snap-center lg:snap-start shrink-0 w-72 flex justify-center lg:w-[calc((100%-96px)/4)] lg:justify-start"
+                className="snap-center lg:snap-start shrink-0 w-[296px] flex justify-center lg:w-[calc((100%-128px)/4.5)] lg:justify-start"
               >
                 <CarouselCard item={item} />
               </div>
@@ -51,24 +55,30 @@ export function CardsVariant({
         <div className="mt-12 lg:mt-[72px] items-center justify-end gap-2 hidden lg:flex">
           <Icon
             icon={ArrowLeft}
-            size="xl"
+            size="2xl"
             interactive
             onClick={() => handleNav("prev")}
-            disabled={!loop && index === 0}
+            disabled={isLeftDisabled}
             className={cn(
-              "bg-white hover:bg-purple-100 shadow",
-              !loop && index === 0 && "opacity-50",
+              "shrink-0",
+              isLeftDisabled
+                ? "text-[#E7E7E7] cursor-not-allowed"
+                : "text-black hover:text-purple-600",
+              "focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2",
             )}
           />
           <Icon
             icon={ArrowRight}
-            size="xl"
+            size="2xl"
             interactive
             onClick={() => handleNav("next")}
-            disabled={!loop && index >= items.length - 4}
+            disabled={isRightDisabled}
             className={cn(
-              "bg-white hover:bg-purple-100 shadow",
-              !loop && index >= items.length - 4 && "opacity-50",
+              "shrink-0",
+              isRightDisabled
+                ? "text-[#E7E7E7] cursor-not-allowed"
+                : "text-black hover:text-purple-600",
+              "focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2",
             )}
           />
         </div>

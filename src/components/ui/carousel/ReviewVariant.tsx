@@ -40,27 +40,34 @@ export function ReviewVariant(props: ReviewVariantProps) {
   const handleNext = () => next(1);
   const handlePrev = () => prev(1);
   const withDots = totalItems > 1;
+  
+  // Determine disabled states
+  const isLeftDisabled = !loop && index === 0;
+  const isRightDisabled = !loop && index === totalPages - 1;
 
   return (
     <div className={cn("relative mx-auto", className)}>
       {/* Container to limit widht */}
       <div
         className={cn(
-          "w-[343px] min-h-[416px] py-2 mx-auto",
-          "md:w-full md:max-w-[1280px] md:min-h-0 md:py-0",
+          "w-full max-w-[343px] min-h-[416px] py-2 mx-auto px-4",
+          "md:w-full md:max-w-[1280px] md:min-h-0 md:py-0 md:px-0",
         )}
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
           <Icon
             icon={ArrowLeft}
             size="2xl"
             interactive
             onClick={handlePrev}
             aria-label="Previous slide"
-            disabled={!loop && index === 0}
+            disabled={isLeftDisabled}
             className={cn(
-              "flex-shrink-0 bg-white hover:bg-purple-100 shadow",
-              !loop && index === 0 && "opacity-50 cursor-not-allowed",
+              "shrink-0",
+              isLeftDisabled
+                ? "text-[#E7E7E7] cursor-not-allowed"
+                : "text-black hover:text-purple-600",
+              "focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2",
             )}
           />
           {/* Scroll */}
@@ -91,29 +98,30 @@ export function ReviewVariant(props: ReviewVariantProps) {
             interactive
             onClick={handleNext}
             aria-label="Next slide"
-            disabled={!loop && index === totalPages - 1}
+            disabled={isRightDisabled}
             className={cn(
-              "flex-shrink-0 bg-white hover:bg-purple-100 shadow",
-              !loop &&
-                index === totalPages - 1 &&
-                "opacity-50 cursor-not-allowed",
+              "shrink-0",
+              isRightDisabled
+                ? "text-[#E7E7E7] cursor-not-allowed"
+                : "text-black hover:text-purple-600",
+              "focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2",
             )}
           />
         </div>
-        {withDots && (
-          <div className="mt-4 flex items-center justify-center gap-2">
-            {Array.from({ length: totalPages }).map((_, i) => (
-              <button
-                key={i}
-                aria-label={`Go to slide ${i + 1}`}
-                aria-selected={i === index}
-                className={dotVariants(i === index)}
-                onClick={() => scrollTo(i)}
-              />
-            ))}
-          </div>
-        )}
       </div>
+      {withDots && (
+        <div className="mt-4 flex items-center justify-center gap-2 w-full">
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Go to slide ${i + 1}`}
+              aria-selected={i === index}
+              className={dotVariants(i === index)}
+              onClick={() => scrollTo(i)}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
