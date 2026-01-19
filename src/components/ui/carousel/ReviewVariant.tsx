@@ -50,11 +50,12 @@ export function ReviewVariant(props: ReviewVariantProps) {
       {/* Container to limit widht */}
       <div
         className={cn(
-          "w-full max-w-[343px] min-h-[416px] py-2 mx-auto px-4",
-          "md:w-full md:max-w-[1280px] md:min-h-0 md:py-0 md:px-0",
+          "w-full max-w-[343px] min-h-[416px] py-2 mx-auto",
+          "md:w-full md:max-w-[1280px] md:min-h-0 md:py-0",
         )}
       >
-        <div className="flex items-center gap-2 md:gap-4">
+        {/* Desktop: flechas a los lados */}
+        <div className="hidden md:flex items-center gap-4">
           <Icon
             icon={ArrowLeft}
             size="2xl"
@@ -107,6 +108,69 @@ export function ReviewVariant(props: ReviewVariantProps) {
               "focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2",
             )}
           />
+        </div>
+
+        {/* Mobile: flechas entre texto e imagen */}
+        <div className="md:hidden">
+          {/* Scroll */}
+          <div ref={viewportRef} className="overflow-hidden w-full">
+            <div
+              className={cn(
+                "flex snap-x snap-mandatory scroll-smooth",
+                "gap-0 items-start",
+              )}
+            >
+              {items.map((item, i) => {
+                const mobileArrows = (
+                  <>
+                    <Icon
+                      icon={ArrowLeft}
+                      size="2xl"
+                      interactive
+                      onClick={handlePrev}
+                      aria-label="Previous slide"
+                      disabled={isLeftDisabled}
+                      className={cn(
+                        "shrink-0",
+                        isLeftDisabled
+                          ? "text-[#E7E7E7] cursor-not-allowed"
+                          : "text-black hover:text-purple-600",
+                        "focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2",
+                      )}
+                    />
+                    <Icon
+                      icon={ArrowRight}
+                      size="2xl"
+                      interactive
+                      onClick={handleNext}
+                      aria-label="Next slide"
+                      disabled={isRightDisabled}
+                      className={cn(
+                        "shrink-0",
+                        isRightDisabled
+                          ? "text-[#E7E7E7] cursor-not-allowed"
+                          : "text-black hover:text-purple-600",
+                        "focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2",
+                      )}
+                    />
+                  </>
+                );
+
+                return (
+                  <div
+                    key={item.id ?? i}
+                    className={cn(
+                      "snap-start shrink-0 w-full flex justify-center",
+                    )}
+                  >
+                    {renderItem?.(item, i) ?? (
+                      <CarouselReview review={item as Review} arrows={mobileArrows} />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
       {withDots && (

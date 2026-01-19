@@ -36,7 +36,7 @@ export default function HowSheHubWorks() {
 
         <h2 className="mt-4 text-size-800 md:text-size-900 font-bold tracking-tight leading-[1.2] whitespace-pre-line">
           Join, connect, and start building{"\n"}
-          real experience <span className="text-primary">in just 4 steps</span>
+          real experience <span className="text-gradient-steps">in just 4 steps</span>
         </h2>
       </div>
 
