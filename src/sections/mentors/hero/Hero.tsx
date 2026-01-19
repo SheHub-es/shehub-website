@@ -17,9 +17,9 @@ export default function MentorsHero() {
           </span>
         </>
       }
-      paragraph="At SheHub, you’ll join real tech teams where you can gain hands-on experience, grow with peers, and build your portfolio. Whether you're exploring product management, UX design, development, data, QA or marketing, you’ll work on impactful projects with support from mentors and a community that empowers you."
+      paragraph="At SheHub, you'll guide emerging women in tech as they work on real projects, build confidence, and take their first steps in the industry. As a mentor, you'll share your expertise, strengthen your leadership skills, and make a lasting impact—all while growing in a flexible, supportive community."
       mainImage={HeroImage.src}
-      alt="SheHub mentors  collaborating"
+      alt="SheHub mentors collaborating"
       buttons={[
         { text: "Become a mentor", variant: "primary-primary" },
       ]}

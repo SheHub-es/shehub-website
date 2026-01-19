@@ -190,6 +190,7 @@
   --color-button-secondary-primary-bg-hover: var(--color-primary-hover);
   --color-button-secondary-primary-bg-focus: var(--color-background-light);
   --color-button-secondary-primary-text: var(--color-foreground);
+  --color-button-secondary-primary-text-hover: var(--color-black);
   --color-button-secondary-primary-border: var(--color-primary);
 
   --color-button-primary-secondary-bg-default: var(--color-secondary);
@@ -644,5 +645,12 @@ html {
   html:lang(ca) .auth-hero-title {
     font-size: clamp(2.35rem, 4.2vw, 3.25rem);
     line-height: 1.08;
+  }
+
+  .text-gradient-steps {
+    background: linear-gradient(90deg, #f83c85 0%, #7858ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

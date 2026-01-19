@@ -18,13 +18,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants = {
   "primary-primary":
-       "bg-[var(--color-button-primary-primary-bg-default)] !text-[var(--color-button-primary-primary-text)] " +
+    "bg-[var(--color-button-primary-primary-bg-default)] !text-[var(--color-button-primary-primary-text)] " +
     "hover:bg-[var(--color-button-primary-primary-bg-hover)] hover:text-[var(--color-button-primary-primary-text-hover)]",
 
   "secondary-primary":
     "bg-[var(--color-button-secondary-primary-bg-default)] text-[var(--color-button-secondary-primary-text)] " +
     "border border-[var(--color-button-secondary-primary-border)] " +
-    "hover:bg-[var(--color-button-secondary-primary-bg-hover)]",
+    "hover:bg-[var(--color-button-secondary-primary-bg-hover)] hover:!text-[var(--color-button-secondary-primary-text-hover)]",
 
   "primary-secondary":
     "bg-[var(--color-button-primary-secondary-bg-default)] text-[var(--color-button-primary-secondary-text)] " +
@@ -49,8 +49,8 @@ const variants = {
     "border border-[var(--color-button-disabled-border)] cursor-not-allowed opacity-50",
 
   gradient:
- 
-    "bg-[image:var(--color-button-bg-gradient)] !text-[var(--color-button-primary-primary-text)] hover:opacity-90",
+    "bg-gradient-to-r from-[#f76702] via-[#f83c85] to-[#7858ff] !text-[var(--color-button-primary-primary-text)] " +
+    "hover:opacity-90",
 };
  
 
@@ -74,14 +74,23 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
+  // Extract hover class from className if it exists, to ensure it has priority
+  const hoverClass = variant === "secondary-primary" ? "hover:!text-black" : "";
+  
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center font-secondary transition-colors focus-square cursor-pointer", "w-full lg:w-auto",
+        "btn",
+        `btn-${variant}`,
+        "inline-flex items-center justify-center font-secondary transition-all duration-200 cursor-pointer",
+        "w-full lg:w-auto",
+        "min-h-[44px] min-w-[44px]",
         variants[variant],
         sizes[size],
         shapes[shape],
-        className
+        disabled && "cursor-not-allowed",
+        className,
+        hoverClass // Apply hover class last to ensure it has priority
       )}
       disabled={disabled || variant === "disabled"}
       {...props}

@@ -88,7 +88,7 @@ export default function HeroLayout({
                 onClick={btn.onClick}
                 className={clsx(
                   "w-full sm:w-auto h-[40px] sm:h-[48px] min-w-[170px] min-h-[48px] font-(--font-weight-default) transition-colors duration-200",
-                  btn.variant === "secondary-primary" && "!text-black", // hardcoded so as not to touch Button.tsx
+                  btn.variant === "secondary-primary" && "!text-black hover:!text-black", // hardcoded so as not to touch Button.tsx
                   btn.variant === "primary-primary" && "!hover:text-black" // hardcoded so as not to touch Button.tsx
                 )}
               >

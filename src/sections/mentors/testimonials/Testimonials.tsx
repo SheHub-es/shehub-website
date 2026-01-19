@@ -27,7 +27,7 @@ export default function MentorsTestimonials() {
       id="mentors-testimonials"
       items={mentorsTestimonials}
       className="
-        bg-background-light
+        bg-purple-100
         flex flex-col
         items-center
         py-24
