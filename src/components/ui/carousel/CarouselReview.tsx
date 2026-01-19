@@ -28,9 +28,9 @@ export const CarouselReview: React.FC<CarouselReviewProps> = ({
   return (
     <div
       className={cn(
-        "flex flex-col items-center gap-8",
-        "w-[240px] max-w-[880px]",
-        "md:w-full",
+        "flex flex-col items-center gap-6 md:gap-8",
+        "w-full max-w-[280px] px-4",
+        "md:w-full md:max-w-[880px] md:px-0",
         compact ? "md:max-w-[480px]" : "md:max-w-[584px]",
       )}
     >

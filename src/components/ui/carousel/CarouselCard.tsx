@@ -21,13 +21,13 @@ export function CarouselCard({ item }: CarouselCardProps) {
   return (
     <div className="flex w-full flex-col items-start md:gap-6">
       {/* Image Section */}
-      <div className="flex px-3 py-[74px] flex-col justify-center items-center gap-2.5 w-full aspect-square rounded-[50px] bg-purple-200 relative overflow-hidden">
+      <div className="flex px-3 py-[74px] flex-col justify-center items-center gap-2.5 w-full aspect-square rounded-[48px] bg-purple-200 relative overflow-hidden">
         {item.photoUrl && (
           <Image
             src={item.photoUrl}
             alt={item.name}
             fill
-            className="object-cover rounded-[50px]"
+            className="object-cover rounded-[48px]"
           />
         )}
       </div>
@@ -53,7 +53,7 @@ export function CarouselCard({ item }: CarouselCardProps) {
                 size="sm"
                 interactive
                 aria-label="LinkedIn"
-                className="flex justify-center items-center"
+                className="flex justify-center items-center text-[var(--color-primary)]"
               />
             </a>
           )}
