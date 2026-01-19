@@ -6,7 +6,7 @@ interface HowItWorksSectionProps {
   title: React.ReactNode;
   description: string;
   timelineData: TimelineItemData[];
-  variant?: "alternate" | "vertical";
+  variant?: "alternate" | "left" | "right" | "opposite";
   className?: string;
   backgroundClassName?: string;
 }
