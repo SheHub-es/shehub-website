@@ -43,6 +43,7 @@ export default function WhyCollaborator() {
       button={{
         text: "Become a collaborator",
         variant: "secondary-primary",
+        href: "/auth",
       }}
       backgroundClassName="bg-purple-100"
       layout="left-aligned"

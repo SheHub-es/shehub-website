@@ -76,20 +76,55 @@ export const authFormTranslations: TranslationObject = {
     en: 'Select your role',
     ca: 'Selecciona el teu rol',
   },
-  'auth.field.desiredRole.option.miembro': {
-    es: 'Miembro',
-    en: 'Member',
-    ca: 'Membre',
+  'auth.field.desiredRole.option.frontend': {
+    es: 'Desarrolladora Frontend',
+    en: 'Frontend Developer',
+    ca: 'Desenvolupadora Frontend',
   },
-  'auth.field.desiredRole.option.mentora': {
-    es: 'Mentora',
-    en: 'Mentor',
-    ca: 'Mentora',
+  'auth.field.desiredRole.option.backend': {
+    es: 'Desarrolladora Backend',
+    en: 'Backend Developer',
+    ca: 'Desenvolupadora Backend',
   },
-  'auth.field.desiredRole.option.colaboradora': {
-    es: 'Colaboradora',
-    en: 'Collaborator',
-    ca: 'Col·laboradora',
+  'auth.field.desiredRole.option.fullstack': {
+    es: 'Desarrolladora Full Stack',
+    en: 'Full Stack Developer',
+    ca: 'Desenvolupadora Full Stack',
+  },
+  'auth.field.desiredRole.option.designer': {
+    es: 'Diseñadora de Producto',
+    en: 'Product Designer',
+    ca: 'Dissenyadora de Producte',
+  },
+  'auth.field.desiredRole.option.uxui': {
+    es: 'Diseñadora UX/UI',
+    en: 'UX/UI Designer',
+    ca: 'Dissenyadora UX/UI',
+  },
+  'auth.field.desiredRole.option.product': {
+    es: 'Product Manager',
+    en: 'Product Manager',
+    ca: 'Product Manager',
+  },
+  'auth.field.desiredRole.option.project': {
+    es: 'Project Manager',
+    en: 'Project Manager',
+    ca: 'Project Manager',
+  },
+  'auth.field.desiredRole.option.data': {
+    es: 'Analista de Datos',
+    en: 'Data Analyst',
+    ca: 'Analista de Dades',
+  },
+  'auth.field.desiredRole.option.qa': {
+    es: 'Tester de QA',
+    en: 'QA Tester',
+    ca: 'Tester de QA',
+  },
+  'auth.field.desiredRole.option.marketing': {
+    es: 'Marketing',
+    en: 'Marketing',
+    ca: 'Marketing',
   },
 
   // Checkboxes

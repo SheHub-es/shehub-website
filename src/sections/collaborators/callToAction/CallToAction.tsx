@@ -5,7 +5,7 @@ export default function CollaboratorsCallToAction() {
     <CallToActionLayout
       title="Connect. Create. Break Barriers."
       buttonText="Join as a collaborator"
-      buttonHref="/contact"
+      buttonHref="/auth"
       buttonVariant="secondary-primary"
     />
   );

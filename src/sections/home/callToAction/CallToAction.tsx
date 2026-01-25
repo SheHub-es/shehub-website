@@ -5,7 +5,7 @@ export const CallToAction = () => {
     <CallToActionLayout
       title="Ready to grow and give back?"
       buttonText="Join the community"
-      buttonHref="/contact"
+      buttonHref="/auth"
       buttonVariant="secondary-primary"
     />
   )

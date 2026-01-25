@@ -22,8 +22,8 @@ export default function Hero() {
       }
       paragraph="SheHub connects early-career talent and experienced mentors to work on real-world, collaborative projects that are built and shipped — just like in a tech company."
       buttons={[
-        { text: "Join a real project", variant: "primary-primary" },
-        { text: "Mentor a team", variant: "secondary-primary" },
+        { text: "Join a real project", variant: "primary-primary", href: "/auth" },
+        { text: "Mentor a team", variant: "secondary-primary", href: "/mentors" },
       ]}
       imageComponent={
         <div

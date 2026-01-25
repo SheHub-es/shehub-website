@@ -24,8 +24,8 @@ export default function PartnersHero() {
         mainImage={HeroImage.src}
         alt="SheHub partners collaborating"
         buttons={[
-          { text: "Sponsor", variant: "primary-primary" },
-          { text: "Find talent", variant: "secondary-primary" },
+          { text: "Sponsor", variant: "primary-primary", href: "/contact" },
+          { text: "Find talent", variant: "secondary-primary", href: "/contact" },
         ]}
       />
       <SectionWrapper>
