@@ -7,7 +7,7 @@ export default function AuthTextV1() {
 
   return (
     <div className="font-primary">
-      <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[color:var(--color-black)] mb-4 md:mb-12">
+      <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-(--color-black) mb-4 md:mb-12">
         {t('authText.title.line1')}
         <br />
         {t('authText.title.line2')}{" "}

@@ -1,8 +1,8 @@
 'use client';
 
-import { useTranslation } from '@/hooks/useTranslation';
 import logoShehub from '@/assets/images/logos/sheHub/logo_shehub.png';
 import { usePasswordReset } from '@/hooks/usePasswordReset';
+import { useTranslation } from '@/hooks/useTranslation';
 import { Eye, EyeOff, X } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -173,7 +173,7 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
                   <button
                     type="button"
                     onClick={() => setShowNewPassword(!showNewPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-700)]"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-neutral-700"
                     aria-label={showNewPassword ? t('passwordReset.a11y.hidePassword') : t('passwordReset.a11y.showPassword')}
                   >
                     {showNewPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -199,7 +199,7 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-700)]"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-neutral-500)] hover:text-neutral-700"
                     aria-label={showConfirmPassword ? t('passwordReset.a11y.hidePassword') : t('passwordReset.a11y.showPassword')}
                   >
                     {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}

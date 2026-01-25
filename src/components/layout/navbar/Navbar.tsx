@@ -10,6 +10,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { useTranslation } from "@/hooks/useTranslation";
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper";
 import { Language } from "@/translations";
+import Link from "next/link";
 import { useState } from "react";
 
 export const Navbar = () => {
@@ -59,9 +60,16 @@ export const Navbar = () => {
                 selected={language}
                 onChange={(value: string) => setLanguage(value as Language)}
               />
-              <Button variant="gradient" size="sm" shape="rounded" className="rounded-full min-w-[180px]">
-                {t("menu_button.button")}
-              </Button>
+              <Link href="/auth">
+                <Button 
+                  variant="gradient" 
+                  size="sm" 
+                  shape="rounded" 
+                  className="rounded-full min-w-[180px]"
+                >
+                  {t("menu_button.button")}
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -78,14 +86,15 @@ export const Navbar = () => {
                   onChange={(value: string) => setLanguage(value as Language)}
                 />
               </div>
-              <Button
-                variant="gradient"
-                size="lg"
-                shape="rounded"
-                onClick={() => setOpen(false)}
-              >
-                {t('menu_button.button')}
-              </Button>
+              <Link href="/auth" onClick={() => setOpen(false)}>
+                <Button
+                  variant="gradient"
+                  size="lg"
+                  shape="rounded"
+                >
+                  {t('menu_button.button')}
+                </Button>
+              </Link>
             </div>
           )}
         </div>

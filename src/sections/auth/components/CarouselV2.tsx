@@ -1,8 +1,8 @@
 "use client";
 
-import { useTranslation } from "@/hooks/useTranslation";
 import avatarLaura from "@/assets/images/avatars/avatar_lauraGracia.webp";
 import avatarMarta from "@/assets/images/avatars/avatar_martaV.webp";
+import { useTranslation } from "@/hooks/useTranslation";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 

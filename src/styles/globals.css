@@ -185,6 +185,7 @@
   --color-button-primary-primary-bg-focus: var(--color-primary);
   --color-button-primary-primary-text: var(--color-white);
   --color-button-primary-primary-text-hover: var(--color-black);
+  --color-button-primary-primary-focus-outline: var(--color-purple-600);
 
   --color-button-secondary-primary-bg-default: var(--color-background-light);
   --color-button-secondary-primary-bg-hover: var(--color-primary-hover);

@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import React, { ChangeEvent, useId, useRef, useState } from 'react';
 
 interface CheckboxProps {
-  label?: string;
+  label?: string | React.ReactNode;
   checked?: boolean;
   disabled?: boolean;
   required?: boolean;
@@ -33,15 +33,16 @@ const Checkbox: React.FC<CheckboxProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2" style={{ minWidth: 0, overflow: 'visible' }}>
       <label
         htmlFor={checkboxId}
         tabIndex={disabled ? -1 : 0}
         className={cn(
-          'flex items-center gap-2 select-none rounded-sm transition-shadow outline-none',
+          'flex items-start gap-2 select-none rounded-sm transition-shadow outline-none w-full',
           disabled ? 'cursor-not-allowed opacity-70' : 'cursor-pointer',
           'focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary'
         )}
+        style={{ minWidth: 0, overflow: 'visible' }}
       >
         <input
           type="checkbox"
@@ -90,11 +91,19 @@ const Checkbox: React.FC<CheckboxProps> = ({
         <span
           className={cn(
             // Mobile (default) → Figma specs
-            'font-secondary text-size-300 leading-line-height-heading-6 font-normal text-content-primary',
+            'font-secondary text-size-300 leading-line-height-heading-6 font-normal',
             // Desktop → original tokens
-            'sm:font-secondary sm:text-size-400 sm:leading-line-height-body-3 sm:text-neutral-900',
-            disabled && 'text-neutral-200'
+            'sm:font-secondary sm:text-size-400 sm:leading-line-height-body-3',
+            disabled && 'text-neutral-200',
+            'flex-1'
           )}
+          style={{ 
+            minWidth: 0, 
+            wordBreak: 'break-word', 
+            overflowWrap: 'break-word',
+            overflow: 'visible',
+            color: disabled ? 'var(--color-neutral-200)' : 'var(--color-foreground)'
+          }}
         >
           {label}
           {required && <span aria-label="required"> *</span>}
