@@ -21,7 +21,7 @@ export default function MentorsHero() {
       mainImage={HeroImage.src}
       alt="SheHub mentors collaborating"
       buttons={[
-        { text: "Become a mentor", variant: "primary-primary" },
+        { text: "Become a mentor", variant: "primary-primary", href: "/auth" },
       ]}
     />
   )

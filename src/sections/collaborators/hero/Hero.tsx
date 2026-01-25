@@ -19,7 +19,7 @@ export default function CollaboratorsHero() {
       mainImage={HeroImage.src}
       alt="Collaborators working together"
       buttons={[
-        { text: "Become a collaborator", variant: "primary-primary" },
+        { text: "Become a collaborator", variant: "primary-primary", href: "/auth" },
       ]}
     />
   )

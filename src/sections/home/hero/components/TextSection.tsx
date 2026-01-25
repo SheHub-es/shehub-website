@@ -1,5 +1,6 @@
 import Button from '@/components/ui/Button'
 import HeroText from '@/sections/home/hero/components/TypewriterAnimation'
+import Link from 'next/link'
 
 const TextSection = () => {
   return (
@@ -72,25 +73,29 @@ const TextSection = () => {
           gap-[16px]
         "
       >
-        <Button
-          variant="primary-primary"
-          size="sm"
-          shape="rounded"
-          className="w-full sm:w-auto min-w-[188px] min-h-[48px] font-[var(--font-weight-default)]"
-          style={{ fontFamily: 'var(--font-secondary)' }}
-        >
-          Join a real project
-        </Button>
+        <Link href="/auth">
+          <Button
+            variant="primary-primary"
+            size="sm"
+            shape="rounded"
+            className="w-full sm:w-auto min-w-[188px] min-h-[48px] font-[var(--font-weight-default)]"
+            style={{ fontFamily: 'var(--font-secondary)' }}
+          >
+            Join a real project
+          </Button>
+        </Link>
 
-        <Button
-          variant="secondary-primary"
-          size="sm"
-          shape="rounded"
-          className="w-full sm:w-auto text-black min-w-[166px] min-h-[48px]"
-          style={{ fontFamily: 'var(--font-secondary)' }}
-        >
-          Mentor a team
-        </Button>
+        <Link href="/mentors">
+          <Button
+            variant="secondary-primary"
+            size="sm"
+            shape="rounded"
+            className="w-full sm:w-auto text-black min-w-[166px] min-h-[48px]"
+            style={{ fontFamily: 'var(--font-secondary)' }}
+          >
+            Mentor a team
+          </Button>
+        </Link>
       </div>
     </div>
   )

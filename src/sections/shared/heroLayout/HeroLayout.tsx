@@ -6,6 +6,7 @@ import { cn } from "@/lib/cn"
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
 import clsx from "clsx"
 import NextImage from "next/image"
+import Link from "next/link"
 
 type ButtonVariant =
   | "primary-primary"
@@ -79,21 +80,30 @@ export default function HeroLayout({
 
         {buttons.length > 0 && (
           <div className="flex flex-col sm:flex-row gap-5 sm:gap-4 mb-12">
-            {buttons.map((btn, index) => (
-              <Button
-                key={index}
-                variant={btn.variant || "primary-primary"}
-                size="sm"
-                shape="rounded"
-                onClick={btn.onClick}
-                className={clsx(
-                  "w-full sm:w-auto h-[40px] sm:h-[48px] min-w-[170px] min-h-[48px] font-(--font-weight-default) transition-colors duration-200",
-                  btn.variant === "secondary-primary" && "!text-black hover:!text-black" // hardcoded so as not to touch Button.tsx
-                )}
-              >
-                {btn.text}
-              </Button>
-            ))}
+            {buttons.map((btn, index) => {
+              const buttonContent = (
+                <Button
+                  variant={btn.variant || "primary-primary"}
+                  size="sm"
+                  shape="rounded"
+                  onClick={btn.onClick}
+                  className={clsx(
+                    "w-full sm:w-auto h-[40px] sm:h-[48px] min-w-[170px] min-h-[48px] font-(--font-weight-default) transition-colors duration-200",
+                    btn.variant === "secondary-primary" && "!text-black hover:!text-black" // hardcoded so as not to touch Button.tsx
+                  )}
+                >
+                  {btn.text}
+                </Button>
+              );
+
+              return btn.href ? (
+                <Link key={index} href={btn.href}>
+                  {buttonContent}
+                </Link>
+              ) : (
+                <div key={index}>{buttonContent}</div>
+              );
+            })}
           </div>
         )}
       </div>

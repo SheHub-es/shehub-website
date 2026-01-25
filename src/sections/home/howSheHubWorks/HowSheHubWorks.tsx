@@ -4,6 +4,7 @@ import IconFilePen from "@/components/icons/IconFilePen";
 import IconHeartHandshake from "@/components/icons/IconHeartHandshake";
 import IconUserPlus from "@/components/icons/IconUserPlus";
 import IconCalendarCheck from "@/components/icons/IconCalendarCheck";
+import Link from "next/link";
 
 export default function HowSheHubWorks() {
   const steps = [
@@ -58,13 +59,15 @@ export default function HowSheHubWorks() {
       </div>
 
       <div className="mt-16 flex justify-center">
-        <Button
-          variant="primary-primary"
-          size="sm"
-          shape="rounded"
-          className="hover:!text-black transition-colors duration-200" >
-          Join a real project
-        </Button>
+        <Link href="/auth">
+          <Button
+            variant="primary-primary"
+            size="sm"
+            shape="rounded"
+            className="hover:!text-black transition-colors duration-200" >
+            Join a real project
+          </Button>
+        </Link>
       </div>
     </SectionWrapper>
   );

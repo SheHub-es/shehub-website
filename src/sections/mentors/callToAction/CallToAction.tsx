@@ -5,7 +5,7 @@ export default function MentorsCallToAction() {
     <CallToActionLayout
       title="Ready to support and grow?"
       buttonText="Join as a mentor"
-      buttonHref="/contact"
+      buttonHref="/auth"
       buttonVariant="secondary-primary"
     />
   );

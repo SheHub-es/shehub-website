@@ -1,4 +1,5 @@
 import Button from "@/components/ui/Button"
+import Link from "next/link"
 
 interface TextSectionProps {
   sectionHeading: string,
@@ -52,13 +53,15 @@ function TextSection({
         </div>
           <div className="w-full flex justify-center md:justify-start">
             <div className="w-full flex justify-center md:justify-start">
-              <Button
-                variant="secondary-primary"
-                shape="rounded"
-                className="text-black w-full md:w-auto text-sm md:text-base py-2 md:py-3"
-              >
-                {buttonText}
-              </Button>
+              <Link href={buttonText === "Become a collaborator" ? "/collaborators" : "/mentors"}>
+                <Button
+                  variant="secondary-primary"
+                  shape="rounded"
+                  className="text-black w-full md:w-auto text-sm md:text-base py-2 md:py-3"
+                >
+                  {buttonText}
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

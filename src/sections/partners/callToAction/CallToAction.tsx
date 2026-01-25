@@ -5,7 +5,7 @@ export default function PartnersCallToAction() {
     <CallToActionLayout
       title="Want to collaborate?"
       buttonText="Join as a partner"
-      buttonHref="/contact"
+      buttonHref="/auth"
       buttonVariant="secondary-primary"
     />
   );

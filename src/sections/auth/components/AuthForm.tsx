@@ -3,6 +3,12 @@
 import GoogleLogo from '@/components/icons/custom/GoogleLogo';
 import LinkedinLogo from '@/components/icons/custom/LinkedinLogo';
 import Checkbox from '@/components/ui/Checkbox';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTriggerButton,
+} from '@/components/ui/dropdown-menu';
 import { useLoginForm } from "@/hooks/useLoginForm";
 import { useRegisterForm } from "@/hooks/useRegisterForm";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -357,18 +363,116 @@ export default function AuthForm() {
 
             <div>
               <label htmlFor="desiredRole" className="input-label">{t('auth.field.desiredRole')}</label>
-              <select 
-                id="desiredRole" 
-                name="desiredRole" 
-                className="input-base cursor-pointer" 
-                value={registerHook.form.desiredRole} 
-                onChange={registerHook.handleChange}
-              >
-                <option value="">{t('auth.field.desiredRole.placeholder')}</option>
-                <option value="Miembro">{t('auth.field.desiredRole.option.miembro')}</option>
-                <option value="Mentora">{t('auth.field.desiredRole.option.mentora')}</option>
-                <option value="Colaboradora">{t('auth.field.desiredRole.option.colaboradora')}</option>
-              </select>
+              <DropdownMenu>
+                <DropdownMenuTriggerButton
+                  id="desiredRole"
+                  placeholder={t('auth.field.desiredRole.placeholder')}
+                  selected={registerHook.form.desiredRole || null}
+                  className="input-base cursor-pointer w-full"
+                />
+                <DropdownMenuContent className="w-[var(--radix-dropdown-menu-trigger-width)]">
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      const value = t('auth.field.desiredRole.option.frontend');
+                      registerHook.handleChange({
+                        currentTarget: { name: 'desiredRole', value }
+                      } as React.ChangeEvent<HTMLInputElement>);
+                    }}
+                  >
+                    {t('auth.field.desiredRole.option.frontend')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      const value = t('auth.field.desiredRole.option.backend');
+                      registerHook.handleChange({
+                        currentTarget: { name: 'desiredRole', value }
+                      } as React.ChangeEvent<HTMLInputElement>);
+                    }}
+                  >
+                    {t('auth.field.desiredRole.option.backend')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      const value = t('auth.field.desiredRole.option.fullstack');
+                      registerHook.handleChange({
+                        currentTarget: { name: 'desiredRole', value }
+                      } as React.ChangeEvent<HTMLInputElement>);
+                    }}
+                  >
+                    {t('auth.field.desiredRole.option.fullstack')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      const value = t('auth.field.desiredRole.option.designer');
+                      registerHook.handleChange({
+                        currentTarget: { name: 'desiredRole', value }
+                      } as React.ChangeEvent<HTMLInputElement>);
+                    }}
+                  >
+                    {t('auth.field.desiredRole.option.designer')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      const value = t('auth.field.desiredRole.option.uxui');
+                      registerHook.handleChange({
+                        currentTarget: { name: 'desiredRole', value }
+                      } as React.ChangeEvent<HTMLInputElement>);
+                    }}
+                  >
+                    {t('auth.field.desiredRole.option.uxui')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      const value = t('auth.field.desiredRole.option.product');
+                      registerHook.handleChange({
+                        currentTarget: { name: 'desiredRole', value }
+                      } as React.ChangeEvent<HTMLInputElement>);
+                    }}
+                  >
+                    {t('auth.field.desiredRole.option.product')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      const value = t('auth.field.desiredRole.option.project');
+                      registerHook.handleChange({
+                        currentTarget: { name: 'desiredRole', value }
+                      } as React.ChangeEvent<HTMLInputElement>);
+                    }}
+                  >
+                    {t('auth.field.desiredRole.option.project')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      const value = t('auth.field.desiredRole.option.data');
+                      registerHook.handleChange({
+                        currentTarget: { name: 'desiredRole', value }
+                      } as React.ChangeEvent<HTMLInputElement>);
+                    }}
+                  >
+                    {t('auth.field.desiredRole.option.data')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      const value = t('auth.field.desiredRole.option.qa');
+                      registerHook.handleChange({
+                        currentTarget: { name: 'desiredRole', value }
+                      } as React.ChangeEvent<HTMLInputElement>);
+                    }}
+                  >
+                    {t('auth.field.desiredRole.option.qa')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onSelect={() => {
+                      const value = t('auth.field.desiredRole.option.marketing');
+                      registerHook.handleChange({
+                        currentTarget: { name: 'desiredRole', value }
+                      } as React.ChangeEvent<HTMLInputElement>);
+                    }}
+                  >
+                    {t('auth.field.desiredRole.option.marketing')}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             <div className="pt-1 w-full" style={{ minWidth: 0, overflow: 'visible' }}>
