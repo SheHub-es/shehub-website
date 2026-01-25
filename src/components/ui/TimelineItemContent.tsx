@@ -23,7 +23,8 @@ export interface TimelineItemContentProps extends VariantProps<typeof timelineIt
     title: string;
     description?: string;
     className?: string;
-    headingLevel?: keyof React.JSX.IntrinsicElements
+    headingLevel?: keyof React.JSX.IntrinsicElements;
+    id?: string;
 }
 
 export const TimelineItemContent: React.FC<TimelineItemContentProps> = ({
@@ -33,26 +34,41 @@ export const TimelineItemContent: React.FC<TimelineItemContentProps> = ({
     align,
     className,
     headingLevel = "h4",
+    id,
 }) => {
     const HeadingTag = headingLevel;
+    const descriptionId = id ? `${id}-description` : undefined;
 
     return (
-        <div className={cn(timelineItemContentVariants({ align }), className)}>
-            <div className='font-secondary text-size-500 text-neutral-600 leading-line-height-body-1 font-heavy'>
+        <article 
+            className={cn(timelineItemContentVariants({ align }), className)}
+            id={id}
+            aria-labelledby={id ? `${id}-title` : undefined}
+            aria-describedby={description && descriptionId ? descriptionId : undefined}
+        >
+            <time 
+                className='font-secondary text-size-500 text-neutral-600 leading-line-height-body-1 font-heavy'
+                dateTime={date}
+            >
                 {date}
-            </div>
+            </time>
             <HeadingTag
+                id={id ? `${id}-title` : undefined}
                 className={cn(
                     'font-primary font-heavy dark:text-black text-black text-size-700 leading-line-height-heading-4 '
-                )}>
+                )}
+            >
                 {title}
             </HeadingTag>
             {description ? (
-                <p className='font-secondary text-black text-size-400 leading-line-height-body-2 pt-2'>
+                <p 
+                    id={descriptionId}
+                    className='font-secondary text-black text-size-400 leading-line-height-body-2 pt-2'
+                >
                     {description}
                 </p>
             ) : null}
-        </div>
+        </article>
 
     )
 }
