@@ -1,8 +1,8 @@
 "use client";
 
+import { useTranslation } from "@/hooks/useTranslation";
 import AuthFormV1 from "@/sections/auth/components/AuthForm";
 import CarouselV2 from "@/sections/auth/components/CarouselV2";
-import { useTranslation } from "@/hooks/useTranslation";
 
 export default function AuthSectionV2() {
   const { t } = useTranslation();
@@ -22,8 +22,8 @@ export default function AuthSectionV2() {
             <h2
               className="
                 font-medium
-                text-[length:var(--text-size-600)]
-                leading-[var(--spacing-line-height-heading-4)]
+                text-size-600
+                leading-line-height-heading-4
                 text-[var(--carousel-text-sub)]
                 text-center
                 mb-4 md:mb-12

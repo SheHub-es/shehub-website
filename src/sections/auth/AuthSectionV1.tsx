@@ -71,6 +71,35 @@ function AuthSectionV1Content() {
             <p className="text-[color:var(--color-black)] text-lg md:text-xl tracking-tight leading-relaxed mt-6">
               {t("auth.sectionV1.description")}
             </p>
+
+            {/* Benefits list */}
+            <ul className="mt-8 space-y-4" aria-label={t('auth.sectionV1.benefits.ariaLabel') || 'Benefits list'}>
+              {[1, 2, 3, 4].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="shrink-0 mt-0.5"
+                    style={{ color: "var(--color-primary)" }}
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20 6L9 17l-5-5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="text-[color:var(--color-black)] text-base md:text-lg">
+                    {t(`auth.sectionV1.benefits.item${item}`)}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 

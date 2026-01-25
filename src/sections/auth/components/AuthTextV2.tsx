@@ -21,9 +21,9 @@ export default function AuthTextV2() {
       <h2
         className="
           font-medium
-          text-[length:var(--text-size-600)]
-          leading-[var(--spacing-line-height-heading-4)]
-          text-[var(--carousel-text-sub)]
+          text-size-600
+          leading-line-height-heading-4
+          text-[var(--carousel-text-sub)
           text-center
           mb-4 md:mb-12
         "
