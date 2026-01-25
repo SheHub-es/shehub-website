@@ -1,5 +1,5 @@
-import React, { CSSProperties } from "react"
 import { cn } from "@/lib/utils"
+import React, { CSSProperties } from "react"
 
 interface SectionWrapperProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode

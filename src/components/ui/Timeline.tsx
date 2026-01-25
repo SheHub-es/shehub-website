@@ -28,6 +28,8 @@ export const timelineVariants = cva("relative mx-auto w-full max-w-4xl", {
 export interface TimelineProps extends VariantProps<typeof timelineVariants> {
     items: TimelineItemData[];
     className?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
 }
 
 const resolveSideFromVariant = (
@@ -52,6 +54,8 @@ export const Timeline: React.FC<TimelineProps> = ({
     items,
     variant = "alternate",
     className,
+    ariaLabel,
+    ariaLabelledBy,
 }) => {
     const groupedItems =
         variant === "opposite"
@@ -61,100 +65,167 @@ export const Timeline: React.FC<TimelineProps> = ({
             : [];
 
     return (
-        <div className={cn(timelineVariants({ variant }), "p-5", className)}>
+        <div 
+            className={cn(timelineVariants({ variant }), "p-5", className)}
+            role="list"
+            aria-label={ariaLabel || "Timeline de eventos"}
+            aria-labelledby={ariaLabelledBy}
+            style={{ minHeight: '1px' }}
+        >
             {variant === "opposite" ? (
-                <ol className="relative flex flex-col">
-                    {groupedItems.map((pair, pairIndex) => (
-                        <li
-                            key={pairIndex}
-                            className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-start"
-                        >
-                            <div className="flex justify-end">
-                                {pair[0] && (
-                                    <TimelineItemContent
-                                        date={pair[0].date}
-                                        title={pair[0].title}
-                                        description={pair[0].description}
-                                        align="right"
-                                        headingLevel={pair[0].headingLevel ?? "h4"}
-                                    />
-                                )}
-                            </div>
-
-                            <div className="flex justify-center">
-                                <div className="relative flex flex-col items-center">
-                                    <div className="w-0.5 bg-[var(--color-neutral-300)] h-4" />
-                                    <span
-                                        aria-hidden="true"
-                                        className="m-1.5 h-3 w-3 rounded-full bg-accent"
-                                    />
-                                    <div className="w-0.5 bg-[var(--color-neutral-300)] h-[196px]" />
-                                </div>
-                            </div>
-
-                            <div className="flex justify-start">
-                                {pair[1] && (
-                                    <TimelineItemContent
-                                        date={pair[1].date}
-                                        title={pair[1].title}
-                                        description={pair[1].description}
-                                        align="left"
-                                        headingLevel={pair[1].headingLevel ?? "h4"}
-                                    />
-                                )}
-                            </div>
-                        </li>
-                    ))}
-                </ol>
-            ) : (
-                <ol className="relative flex flex-col">
-                    {items.map((item, index) => {
-                        const side = resolveSideFromVariant(variant, index);
-                        const isLeft = side === "left";
-
+                <ol className="relative flex flex-col" role="list">
+                    {groupedItems.map((pair, pairIndex) => {
+                        const isLast = pairIndex === groupedItems.length - 1;
                         return (
                             <li
-                                key={item.id ?? index}
-                                className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-start"
+                                key={pairIndex}
+                                className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-start gap-4 md:gap-0"
+                                role="listitem"
+                                aria-posinset={pairIndex + 1}
+                                aria-setsize={groupedItems.length}
                             >
-                                {isLeft ? (
-                                    <div className="flex justify-end">
-                                        <TimelineItemContent
-                                            date={item.date}
-                                            title={item.title}
-                                            description={item.description}
-                                            align="right"
-                                            headingLevel={item.headingLevel ?? "h4"}
-                                        />
-                                    </div>
-                                ) : (
-                                    <div />
+                                {/* Mobile: First item */}
+                                {pair[0] && (
+                                    <>
+                                        <div className="flex justify-center md:hidden mb-2" aria-hidden="true">
+                                            <div className="relative flex flex-col items-center w-full max-w-md">
+                                                <div className="w-0.5 bg-[var(--color-neutral-300)] h-4" />
+                                                <span
+                                                    aria-hidden="true"
+                                                    className="m-1.5 h-3 w-3 rounded-full bg-accent"
+                                                    role="presentation"
+                                                />
+                                                {!isLast && (
+                                                    <div className="w-0.5 bg-[var(--color-neutral-300)] flex-1 min-h-[80px]" />
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div className="flex justify-center md:justify-end md:col-span-1 px-4 md:px-0">
+                                            <div className="w-full max-w-md md:max-w-none md:w-auto">
+                                                <TimelineItemContent
+                                                    id={pair[0].id ? `timeline-item-${pair[0].id}` : `timeline-item-${pairIndex}-0`}
+                                                    date={pair[0].date}
+                                                    title={pair[0].title}
+                                                    description={pair[0].description}
+                                                    align="left"
+                                                    headingLevel={pair[0].headingLevel ?? "h4"}
+                                                />
+                                            </div>
+                                        </div>
+                                    </>
                                 )}
 
-                                <div className="flex justify-center">
+                                {/* Desktop: Central line */}
+                                <div className="hidden md:flex justify-center" aria-hidden="true">
                                     <div className="relative flex flex-col items-center">
                                         <div className="w-0.5 bg-[var(--color-neutral-300)] h-4" />
                                         <span
                                             aria-hidden="true"
                                             className="m-1.5 h-3 w-3 rounded-full bg-accent"
+                                            role="presentation"
                                         />
-                                        <div className="w-0.5 bg-[var(--color-neutral-300)] h-[196px]" />
+                                        {!isLast && (
+                                            <div className="w-0.5 bg-[var(--color-neutral-300)] h-[196px]" />
+                                        )}
                                     </div>
                                 </div>
 
-                                {!isLeft ? (
-                                    <div className="flex justify-start">
-                                        <TimelineItemContent
-                                            date={item.date}
-                                            title={item.title}
-                                            description={item.description}
-                                            align="left"
-                                            headingLevel={item.headingLevel ?? "h4"}
-                                        />
+                                {/* Mobile: Second item */}
+                                {pair[1] && (
+                                    <div className="flex justify-center md:justify-start md:col-span-1 px-4 md:px-0">
+                                        <div className="w-full max-w-md md:max-w-none md:w-auto">
+                                            <TimelineItemContent
+                                                id={pair[1].id ? `timeline-item-${pair[1].id}` : `timeline-item-${pairIndex}-1`}
+                                                date={pair[1].date}
+                                                title={pair[1].title}
+                                                description={pair[1].description}
+                                                align="left"
+                                                headingLevel={pair[1].headingLevel ?? "h4"}
+                                            />
+                                        </div>
                                     </div>
-                                ) : (
-                                    <div />
                                 )}
+                            </li>
+                        );
+                    })}
+                </ol>
+            ) : (
+                <ol className="relative flex flex-col" role="list">
+                    {items.map((item, index) => {
+                        const side = resolveSideFromVariant(variant, index);
+                        const isLeft = side === "left";
+                        const isLast = index === items.length - 1;
+
+                        return (
+                            <li
+                                key={item.id ?? index}
+                                className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-start"
+                                role="listitem"
+                                aria-posinset={index + 1}
+                                aria-setsize={items.length}
+                            >
+                                {/* Mobile: Single column layout, centered */}
+                                <div className="flex justify-center md:hidden mb-2" aria-hidden="true">
+                                    <div className="relative flex flex-col items-center w-full max-w-md">
+                                        <div className="w-0.5 bg-[var(--color-neutral-300)] h-4" />
+                                        <span
+                                            aria-hidden="true"
+                                            className="m-1.5 h-3 w-3 rounded-full bg-accent"
+                                            role="presentation"
+                                        />
+                                        {!isLast && (
+                                            <div className="w-0.5 bg-[var(--color-neutral-300)] flex-1 min-h-[80px]" />
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="flex justify-center md:justify-end md:col-span-1 px-4 md:px-0">
+                                    <div className="w-full max-w-md md:max-w-none md:w-auto">
+                                        {isLeft ? (
+                                            <TimelineItemContent
+                                                id={item.id ? `timeline-item-${item.id}` : `timeline-item-${index}`}
+                                                date={item.date}
+                                                title={item.title}
+                                                description={item.description}
+                                                align="left"
+                                                headingLevel={item.headingLevel ?? "h4"}
+                                            />
+                                        ) : (
+                                            <div className="hidden md:block" />
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Desktop: Central line */}
+                                <div className="hidden md:flex justify-center" aria-hidden="true">
+                                    <div className="relative flex flex-col items-center">
+                                        <div className="w-0.5 bg-[var(--color-neutral-300)] h-4" />
+                                        <span
+                                            aria-hidden="true"
+                                            className="m-1.5 h-3 w-3 rounded-full bg-accent"
+                                            role="presentation"
+                                        />
+                                        {!isLast && (
+                                            <div className="w-0.5 bg-[var(--color-neutral-300)] h-[196px]" />
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-center md:justify-start md:col-span-1 px-4 md:px-0">
+                                    <div className="w-full max-w-md md:max-w-none md:w-auto">
+                                        {!isLeft ? (
+                                            <TimelineItemContent
+                                                id={item.id ? `timeline-item-${item.id}` : `timeline-item-${index}`}
+                                                date={item.date}
+                                                title={item.title}
+                                                description={item.description}
+                                                align="left"
+                                                headingLevel={item.headingLevel ?? "h4"}
+                                            />
+                                        ) : (
+                                            <div className="hidden md:block" />
+                                        )}
+                                    </div>
+                                </div>
                             </li>
                         );
                     })}
