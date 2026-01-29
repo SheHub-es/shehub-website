@@ -181,44 +181,46 @@
 
   /* Buttons */
   --color-button-primary-primary-bg-default: var(--color-primary);
---color-button-primary-primary-bg-hover: var(--color-primary-hover);
---color-button-primary-primary-bg-focus: var(--color-primary);
---color-button-primary-primary-text: var(--color-white);
---color-button-primary-primary-text-hover: var(--color-black);
+  --color-button-primary-primary-bg-hover: var(--color-primary-hover);
+  --color-button-primary-primary-bg-focus: var(--color-primary);
+  --color-button-primary-primary-text: var(--color-white);
+  --color-button-primary-primary-text-hover: var(--color-black);
+  --color-button-primary-primary-focus-outline: var(--color-purple-600);
 
---color-button-secondary-primary-bg-default: var(--color-background-light);
---color-button-secondary-primary-bg-hover: var(--color-primary-hover);
---color-button-secondary-primary-bg-focus: var(--color-background-light);
---color-button-secondary-primary-text: var(--color-foreground);
---color-button-secondary-primary-border: var(--color-primary);
+  --color-button-secondary-primary-bg-default: var(--color-background-light);
+  --color-button-secondary-primary-bg-hover: var(--color-primary-hover);
+  --color-button-secondary-primary-bg-focus: var(--color-background-light);
+  --color-button-secondary-primary-text: var(--color-foreground);
+  --color-button-secondary-primary-text-hover: var(--color-black);
+  --color-button-secondary-primary-border: var(--color-primary);
 
---color-button-primary-secondary-bg-default: var(--color-secondary);
---color-button-primary-secondary-bg-hover: var(--color-secondary-hover);
---color-button-primary-secondary-bg-focus: var(--color-primary);
---color-button-primary-secondary-text: var(--color-foreground);
+  --color-button-primary-secondary-bg-default: var(--color-secondary);
+  --color-button-primary-secondary-bg-hover: var(--color-secondary-hover);
+  --color-button-primary-secondary-bg-focus: var(--color-primary);
+  --color-button-primary-secondary-text: var(--color-foreground);
 
---color-button-secondary-secondary-bg-default: var(--color-background-light);
---color-button-secondary-secondary-bg-hover: var(--color-secondary-hover);
---color-button-secondary-secondary-bg-focus: var(--color-background-light);
---color-button-secondary-secondary-text: var(--color-foreground);
---color-button-secondary-secondary-border: var(--color-secondary);
+  --color-button-secondary-secondary-bg-default: var(--color-background-light);
+  --color-button-secondary-secondary-bg-hover: var(--color-secondary-hover);
+  --color-button-secondary-secondary-bg-focus: var(--color-background-light);
+  --color-button-secondary-secondary-text: var(--color-foreground);
+  --color-button-secondary-secondary-border: var(--color-secondary);
 
---color-button-primary-tertiary-bg-default: var(--color-tertiary);
---color-button-primary-tertiary-bg-hover: var(--color-tertiary-hover);
---color-button-primary-tertiary-bg-focus: var(--color-tertiary);
---color-button-primary-tertiary-text: var(--color-foreground);
+  --color-button-primary-tertiary-bg-default: var(--color-tertiary);
+  --color-button-primary-tertiary-bg-hover: var(--color-tertiary-hover);
+  --color-button-primary-tertiary-bg-focus: var(--color-tertiary);
+  --color-button-primary-tertiary-text: var(--color-foreground);
 
---color-button-secondary-tertiary-bg-default: var(--color-background-light);
---color-button-secondary-tertiary-bg-hover: var(--color-tertiary-hover);
---color-button-secondary-tertiary-bg-focus: var(--color-background-light);
---color-button-secondary-tertiary-text: var(--color-foreground);
---color-button-secondary-tertiary-border: var(--color-tertiary);
+  --color-button-secondary-tertiary-bg-default: var(--color-background-light);
+  --color-button-secondary-tertiary-bg-hover: var(--color-tertiary-hover);
+  --color-button-secondary-tertiary-bg-focus: var(--color-background-light);
+  --color-button-secondary-tertiary-text: var(--color-foreground);
+  --color-button-secondary-tertiary-border: var(--color-tertiary);
 
---color-button-disabled-bg: var(--color-disabled);
---color-button-disabled-text: var(--color-neutral-600);
---color-button-disabled-border: var(--color-neutral-300);
+  --color-button-disabled-bg: var(--color-disabled);
+  --color-button-disabled-text: var(--color-neutral-600);
+  --color-button-disabled-border: var(--color-neutral-300);
 
---color-button-bg-gradient: var(--color-gradient-brand);
+  --color-button-bg-gradient: var(--color-gradient-brand);
   /* To use it for example in the navbar button (which is the case for now) this is the way to apply it in the className "bg-[image:var(--color-button-bg-gradient)]"
 
   /* Toggle */
@@ -290,6 +292,47 @@
 
   --color-card-shadow-default: 0px 4px 16px rgba(var(--color-black-rgb), 0.08);
   --color-card-shadow-hover: 0px 4px 16px rgba(var(--color-black-rgb), 0.16);
+
+  /* ========================================
+     TEXT INPUT COMPONENT TOKENS (Login/Register Forms)
+     ======================================== */
+
+  /* Input States */
+  --input-bg-default: var(--color-white);
+  --input-bg-disabled: var(--color-disabled);
+
+  --input-border-default: var(--color-neutral-300);
+  --input-border-hover: var(--color-neutral-400);
+  --input-border-focus: var(--color-primary);
+  --input-border-error: var(--color-error);
+  --input-border-success: var(--color-success);
+
+  --input-text-default: var(--color-foreground);
+  --input-text-placeholder: var(--color-neutral-400);
+  --input-text-disabled: var(--color-neutral-600);
+  --input-text-helper: var(--color-neutral-600);
+
+  --input-label-text: var(--color-foreground);
+
+  /* Input Focus Ring */
+  --input-ring-focus: rgba(120, 88, 255, 0.1);
+  --input-ring-error: rgba(219, 51, 39, 0.1);
+  --input-ring-success: rgba(13, 135, 94, 0.1);
+
+  /* Input Dimensions */
+  --input-border-radius: 12px;
+  --input-padding-vertical: 12px;
+  --input-padding-horizontal-left: 20px;
+  --input-padding-horizontal-right: 16px;
+  --input-border-width-default: 1px;
+  --input-border-width-focus: 2px;
+  --input-ring-width: 4px;
+
+  /* Input Typography */
+  --input-font-size: 16px;
+  --input-label-font-size: 14px;
+  --input-helper-font-size: 14px;
+  --input-label-font-weight: 500;
 
   /* Image Placeholder */
   --color-image-container-bg: var(--color-purple-200);
@@ -375,45 +418,79 @@
   --font-weight-heavy: 700;
 
   /*Spacing*/
---space-0: 0rem;          /* 0px  */
---space-025: 0.125rem;    /* 2px  */
---space-050: 0.25rem;     /* 4px  */
---space-075: 0.375rem;    /* 6px  */
---space-100: 0.5rem;      /* 8px  */
---space-150: 0.75rem;     /* 12px */
---space-200: 1rem;        /* 16px */
---space-250: 1.25rem;     /* 20px */
---space-300: 1.5rem;      /* 24px */
---space-400: 2rem;        /* 32px */
---space-500: 2.5rem;      /* 40px */
---space-600: 3rem;        /* 48px */
---space-800: 4rem;        /* 64px */
---space-1000: 5rem;       /* 80px */
+  --space-0: 0rem;
+  /* 0px  */
+  --space-025: 0.125rem;
+  /* 2px  */
+  --space-050: 0.25rem;
+  /* 4px  */
+  --space-075: 0.375rem;
+  /* 6px  */
+  --space-100: 0.5rem;
+  /* 8px  */
+  --space-150: 0.75rem;
+  /* 12px */
+  --space-200: 1rem;
+  /* 16px */
+  --space-250: 1.25rem;
+  /* 20px */
+  --space-300: 1.5rem;
+  /* 24px */
+  --space-400: 2rem;
+  /* 32px */
+  --space-500: 2.5rem;
+  /* 40px */
+  --space-600: 3rem;
+  /* 48px */
+  --space-800: 4rem;
+  /* 64px */
+  --space-1000: 5rem;
+  /* 80px */
 
-/*Breakpoints*/
---breakpoint-xxs: 320px;   /* 2 cols */
---breakpoint-xs: 480px;    /* 6 cols */
---breakpoint-s: 768px;     /* 6 cols */
---breakpoint-m: 1024px;    /* 12 cols */
---breakpoint-l: 1440px;    /* 12 cols */
---breakpoint-xl: 1768px;   /* 12 cols */
+  /*Breakpoints*/
+  --breakpoint-xxs: 320px;
+  /* 2 cols */
+  --breakpoint-xs: 480px;
+  /* 6 cols */
+  --breakpoint-s: 768px;
+  /* 6 cols */
+  --breakpoint-m: 1024px;
+  /* 12 cols */
+  --breakpoint-l: 1440px;
+  /* 12 cols */
+  --breakpoint-xl: 1768px;
+  /* 12 cols */
 
-/*Gutters & Margins */
---grid-gutter-s: 12px;
---grid-gutter-m: 16px;
---grid-margin-s: 16px;
---grid-margin-m: 32px;
+  /*Gutters & Margins */
+  --grid-gutter-s: 12px;
+  --grid-gutter-m: 16px;
+  --grid-margin-s: 16px;
+  --grid-margin-m: 32px;
 }
 
-.grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); }
-.gutters-s { column-gap: var(--grid-gutter-s); }
-.gutters-m { column-gap: var(--grid-gutter-m); }
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.gutters-s {
+  column-gap: var(--grid-gutter-s);
+}
+
+.gutters-m {
+  column-gap: var(--grid-gutter-m);
+}
+
 .container-margins {
   padding-left: var(--grid-margin-m);
   padding-right: var(--grid-margin-m);
 }
+
 @media (max-width: 1023px) {
-  .container-margins { padding-left: var(--grid-margin-s); padding-right: var(--grid-margin-s); }
+  .container-margins {
+    padding-left: var(--grid-margin-s);
+    padding-right: var(--grid-margin-s);
+  }
 }
 
 html {
@@ -428,9 +505,9 @@ html {
 }
 
 :focus-visible {
-  outline: 0.25rem solid var(--color-purple-300);
+  outline: 0.25rem solid var(--color-purple-600);
   outline-offset: 0.125rem;
-  position: relative;     
+  position: relative;
 }
 
 .focus-square:focus-visible {
@@ -445,7 +522,136 @@ html {
   left: -0.25rem;
   right: -0.25rem;
   bottom: -0.60rem;
-  border: 0.25rem solid var(--color-purple-300);
+  border: 0.25rem solid var(--color-purple-600);
   border-radius: 0;
   pointer-events: none;
+}
+
+/* ========================================
+   INPUT COMPONENT STYLES (Login/Register Forms)
+   ======================================== */
+
+@layer components {
+  /* Base Input */
+  .input-base {
+    width: 100%;
+    padding: var(--input-padding-vertical) var(--input-padding-horizontal-right) 
+             var(--input-padding-vertical) var(--input-padding-horizontal-left);
+    font-size: var(--input-font-size);
+    color: var(--input-text-default);
+    background-color: var(--input-bg-default);
+    border: var(--input-border-width-default) solid var(--input-border-default);
+    border-radius: var(--input-border-radius);
+    transition: all 150ms ease-in-out;
+  }
+
+  .input-base::placeholder {
+    color: var(--input-text-placeholder);
+  }
+
+  /* Hover State */
+  .input-base:hover:not(:disabled) {
+    border-color: var(--input-border-hover);
+  }
+
+  /* Focus State */
+  .input-base:focus {
+    outline: none;
+    border-width: var(--input-border-width-focus);
+    border-color: var(--input-border-focus);
+    box-shadow: none;
+  }
+
+  /* Error State */
+  .input-error {
+    border-width: var(--input-border-width-focus);
+    border-color: var(--input-border-error);
+  }
+
+  .input-error:focus {
+    box-shadow: 0 0 0 var(--input-ring-width) var(--input-ring-error);
+  }
+
+  /* Success State */
+  .input-success {
+    border-width: var(--input-border-width-focus);
+    border-color: var(--input-border-success);
+  }
+
+  .input-success:focus {
+    box-shadow: 0 0 0 var(--input-ring-width) var(--input-ring-success);
+  }
+
+  /* Disabled State */
+  .input-base:disabled {
+    background-color: var(--input-bg-disabled);
+    color: var(--input-text-disabled);
+    cursor: not-allowed;
+  }
+
+  /* Label */
+  .input-label {
+    display: block;
+    font-size: var(--input-label-font-size);
+    font-weight: var(--input-label-font-weight);
+    color: var(--input-label-text);
+    margin-bottom: 8px;
+  }
+
+  /* Helper Text */
+  .input-helper {
+    font-size: var(--input-helper-font-size);
+    color: var(--input-text-helper);
+    margin-top: 8px;
+  }
+
+  .input-helper.error {
+    color: var(--input-border-error);
+  }
+
+  .input-helper.success {
+    color: var(--input-border-success);
+  }
+}
+
+@layer components {
+  .auth-hero-title {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-heavy);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+
+    /* EN por defecto */
+    font-size: clamp(2.75rem, 5vw, 3.75rem);
+  }
+
+  .auth-hero-word {
+    color: var(--color-black);
+  }
+
+  /* Desktop: queremos exactamente 3 líneas.
+     Línea 1 NO se parte. Línea 2 NO se parte.
+     La línea 3 la fuerza el <br/> interno del gradiente. */
+  @media (min-width: 768px) {
+    .auth-hero-line1 {
+      white-space: nowrap;
+    }
+    .auth-hero-line2 {
+      white-space: nowrap;
+    }
+  }
+
+  /* ES/CA: bajamos un pelín para evitar “al” colgando */
+  html:lang(es) .auth-hero-title,
+  html:lang(ca) .auth-hero-title {
+    font-size: clamp(2.35rem, 4.2vw, 3.25rem);
+    line-height: 1.08;
+  }
+
+  .text-gradient-steps {
+    background: linear-gradient(90deg, #f83c85 0%, #7858ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }

@@ -1,10 +1,7 @@
-import { cva } from "class-variance-authority";
-import { LucideProps } from "lucide-react";
-
-import { useId, useRef, useState } from "react";
-
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
+import { cva } from "class-variance-authority";
+import { useId, useRef, useState } from "react";
 
 interface InputProps {
   id?: string;
@@ -12,7 +9,7 @@ interface InputProps {
   label: string;
   helperText?: string;
   placeholder?: string;
-  icon?: React.FC<LucideProps>;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   iconAriaLabel?: string;
   status?: "default" | "error" | "success";
   disabled?: boolean;
@@ -24,7 +21,7 @@ interface InputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const containerClasses = "flex flex-col items-start gap-2 w-[584px]";
+const containerClasses = "flex flex-col items-start gap-2 w-full";
 const helperTextClasses =
   "text-neutral-500 font-secondary text-base font-400 leading-6";
 
@@ -92,17 +89,17 @@ export const Input: React.FC<InputProps> = ({
   const [isSelected, setIsSelected] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const generatedId = useId(); //id for
-  const inputId = id || generatedId; //if for input
-  const helperId = helperText ? `${inputId}-helper` : undefined; //id if helper exists
+  const generatedId = useId();
+  const inputId = id || generatedId;
+  const helperId = helperText ? `${inputId}-helper` : undefined;
 
   const selectedClasses =
     isSelected && !disabled
       ? {
-          default: "border-purple-800",
-          error: "border-error",
-          success: "border-success",
-        }[status]
+        default: "border-purple-800",
+        error: "border-error",
+        success: "border-success",
+      }[status]
       : "";
 
   const labelClasses = `${disabled ? "text-neutral-600" : "text-black"} font-secondary text-base font-bold leading-6`;
@@ -139,7 +136,7 @@ export const Input: React.FC<InputProps> = ({
 
   return (
     <div className={cn(containerClasses, className)}>
-      <label htmlFor={id} className={labelClasses}>
+      <label htmlFor={inputId} className={labelClasses}>
         {label}
         {required && <span aria-label="required"> *</span>}
       </label>
@@ -173,15 +170,21 @@ export const Input: React.FC<InputProps> = ({
           }}
           aria-describedby={helperId}
           aria-invalid={status === "error"}
+          aria-required={required}
+          required={required}
           {...props}
         />
         {icon && (
-          <Icon
-            icon={icon}
-            size="sm"
-            aria-label={iconAriaLabel}
-            className={disabled ? "text-neutral-300" : ""}
-          />
+          (() => {
+            return (
+              <Icon
+                icon={icon}
+                size="sm"
+                aria-label={iconAriaLabel}
+                className={disabled ? "text-neutral-300" : ""}
+              />
+            );
+          })()
         )}
       </div>
 

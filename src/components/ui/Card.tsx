@@ -1,18 +1,17 @@
-import Avatar, { type AvatarSize, type AvatarVariant } from '@/components/ui/Avatar';
-import { Icon } from '@/components/ui/Icon';
+import Avatar, { AvatarItem, type AvatarSize } from '@/components/ui/Avatar';
+import { AvatarGroup, AvatarGroupVariants } from '@/components/ui/AvatarGroup';
+import { Icon, IconProps } from '@/components/ui/Icon';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { LucideProps } from 'lucide-react';
 import Image, { type StaticImageData } from 'next/image';
 import * as React from 'react';
 
 interface CardVariantProps extends VariantProps<typeof cardVariants> {
-  title?: string;
-  description?: string;
-  icon?: React.ElementType<LucideProps>;
-  className?: string;
+    title?: string;
+    description?: string;
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    className?: string;
 }
-
 
 const cardVariants = cva(
     'transition-all box-border',
@@ -23,13 +22,13 @@ const cardVariants = cva(
                     [
                         'w-[13.5rem] h-[7rem] inline-flex items-center justify-center gap-7 p-8 cursor-pointer !rounded-[8px]',
                     ].join(' '),
-                nonClickable: ['flex flex-col items-start gap-2.5 p-10 w-[18.5rem]',
+                nonClickable: ['flex flex-col items-start gap-2.5 p-[30px] md:p-10 w-[18rem] md:w-[18.5rem]',
                 ].join(' '),
-                nonClickableWithIcon: ['flex flex-col items-start gap-7 p-10 w-[24.375rem] h-[18rem]'
+                nonClickableWithIcon: ['flex flex-col items-start gap-4 md:gap-7 p-[30px] md:p-10 w-[17.938rem] md:w-[24.25rem] h-[20.25rem] md:h-[20rem]'
                 ].join(' '),
-                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-7 p-8 w-auto h-auto '
+                nonClickableWithIconAndCorner: ['flex flex-col items-start self-start gap-0.5 md:gap-7 p-4 md:p-8 w-[9.0625rem] md:w-[14.1875rem] h-auto '
                 ].join(' '),
-                nonClickableWithAvatarAndCorner: ['flex flex-col items-start self-start gap-7 px-8 py-6 w-[11.25rem]'
+                nonClickableWithAvatarAndCorner: ['flex flex-col items-start self-start gap-1 md:gap-3 p-4 md:px-8 md:py-6 w-[6.5rem] md:w-[11.25rem] h-[6rem] md:h-[11.25rem] !rounded-[4px_24px_24px_24px] md:rounded-[48px]'
                 ].join(' ')
             },
             color: {
@@ -125,8 +124,8 @@ const cardContentVariants = cva('flex flex-col text-left', {
             clickable: 'gap-2',
             nonClickable: 'gap-3',
             nonClickableWithIcon: 'gap-4',
-            nonClickableWithIconAndCorner: 'gap-2',
-            nonClickableWithAvatarAndCorner: 'gap-2'
+            nonClickableWithIconAndCorner: 'gap-1 md:gap-2',
+            nonClickableWithAvatarAndCorner: 'gap-1 md:gap-2'
         },
         hasIcon: {
             true: '',
@@ -143,10 +142,10 @@ const cardTitleVariants = cva('font-heavy', {
     variants: {
         type: {
             clickable: 'text-size-500',
-            nonClickable: 'text-size-900 font-primary',
+            nonClickable: 'text-size-800 md:text-size-900 leading-[2.75rem] md:leading-[3.75rem] font-primary',
             nonClickableWithIcon: 'text-size-500 font-secondary',
-            nonClickableWithIconAndCorner: 'text-size-900 font-primary',
-            nonClickableWithAvatarAndCorner: 'text-size-900 font-primary'
+            nonClickableWithIconAndCorner: 'text-size-400 md:text-size-900 leading-tight font-primary',
+            nonClickableWithAvatarAndCorner: 'text-size-400 md:text-size-900 leading-tight font-primary'
         },
         color: {
             white: 'text-[var(--color-card-white-title)]',
@@ -162,17 +161,16 @@ const cardTitleVariants = cva('font-heavy', {
 
 const cardDescriptionVariants = cva(
     [
-        'text-size-300',
         'font-secondary'
     ].join(' '),
     {
         variants: {
             type: {
                 clickable: '',
-                nonClickable: '',
-                nonClickableWithIcon: '',
-                nonClickableWithIconAndCorner: '',
-                nonClickableWithAvatarAndCorner: '',
+                nonClickable: 'text-size-300',
+                nonClickableWithIcon: 'text-size-300',
+                nonClickableWithIconAndCorner: 'text-size-100 md:text-size-300 md:font-heavy',
+                nonClickableWithAvatarAndCorner: 'text-size-100 md:text-size-300 md:font-heavy',
             },
             color: {
                 white: 'text-[var(--color-card-white-description)]',
@@ -188,12 +186,12 @@ const cardDescriptionVariants = cva(
             {
                 type: ['nonClickableWithIconAndCorner', 'nonClickableWithAvatarAndCorner'],
                 color: 'white',
-                class: 'text-[var(--color-card-white-title)]'
+                class: 'text-card-white-title'
             },
             {
                 tone: 'impact',
                 color: 'white',
-                class: 'text-[var(--color-card-white-title)]'
+                class: 'text-card-white-title'
             }
         ],
         defaultVariants: {
@@ -227,9 +225,10 @@ type ClickableCardProps = {
     logoAlt?: string;
 };
 
+
 type IconCardProps = BaseProps & {
     type: 'nonClickableWithIcon' | 'nonClickableWithIconAndCorner';
-    icon: React.FC<LucideProps>;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     iconArialLabel?: string;
 };
 
@@ -246,19 +245,10 @@ type AvatarCardProps = BaseProps & {
     avatarSize?: AvatarSize;
     overlap?: boolean;
     maxAvatars?: number;
+    avatarGroupVariant?: AvatarGroupVariants
+    groupSize?: number
     icon?: never;
 };
-
-type AvatarItem = {
-    name: string;
-    imageUrl?: string;
-    initials?: string;
-    disabled?: boolean;
-    variant?: AvatarVariant;
-};
-
-const getInitials = (name: string) =>
-    name.trim().split(/\s+/).map(p => p[0] || '').slice(0, 2).join('').toUpperCase();
 
 export type CardProps = IconCardProps | ClickableCardProps | SimpleCardProps | AvatarCardProps;
 
@@ -273,7 +263,16 @@ export const Card: React.FC<CardProps> = (props) => {
         description,
         icon,
         className,
-        tone='default',
+        tone = 'default',
+        avatarsData,
+        avatarSize,
+        overlap,
+        maxAvatars,
+        avatarGroupVariant,
+        groupSize,
+        logoSrc,
+        logoAlt,
+        iconArialLabel,
         ...rest
     } = props as any;
 
@@ -299,32 +298,24 @@ export const Card: React.FC<CardProps> = (props) => {
             )}
 
             {(type === 'nonClickableWithIcon' || type === 'nonClickableWithIconAndCorner') && icon && (
-                <div>
+                
                     <Icon
                         icon={icon}
                         size="xl"
-                        aria-label={(props as any).iconArielLabel ?? 'Card icon'}
+                        aria-label={(props as any).
+                        iconArielLabel ?? "Card icon"}
                     />
-                </div>
+                
             )}
 
             {type === 'nonClickableWithAvatarAndCorner' && (
-                <div className={(props as AvatarCardProps).overlap === false ? 'flex space-x-2' : 'flex -space-x-2'}>
-                    {(props as AvatarCardProps).avatarsData
-                        ?.slice(0, (props as AvatarCardProps).maxAvatars ?? Number.POSITIVE_INFINITY)
-                        .map((u, i) => (
-                            <Avatar
-                                key={`${u.name}-${i}`}
-                                type={u.imageUrl ? 'image' : 'initials'}
-                                size={(props as AvatarCardProps).avatarSize ?? 'xs'}
-                                initials={u.imageUrl ? undefined : (u.initials ?? getInitials(u.name))}
-                                imageUrl={u.imageUrl}
-                                disabled={u.disabled}
-                                variant={u.variant}
-                                className="ring-2 ring-white"
-                            />
-                        ))}
-                </div>
+                <AvatarGroup
+                avatars={(props as AvatarCardProps).avatarsData}
+                size={(props as AvatarCardProps).avatarSize ?? 'sm'}
+                overlap={(props as AvatarCardProps).overlap ?? true}
+                maxAvatars={(props as AvatarCardProps).maxAvatars}
+                variant={(props as AvatarCardProps).avatarGroupVariant}
+                />
             )}
 
             {(type !== 'clickable' && (title || description)) && (

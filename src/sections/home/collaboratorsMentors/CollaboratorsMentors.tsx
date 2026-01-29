@@ -1,17 +1,17 @@
-import CollaboratorArrowOrange from '@/assets/images/icons/icon_collaboratorOrange.svg'
-import DiamondImage from '@/assets/images/icons/icon_diamond.svg'
-import MentorArrowPink from '@/assets/images/icons/icon_mentorPink.svg'
-import PurpleRectangle from '@/assets/images/icons/icon_purpleRectangle.svg'
-import PurpleTrianglesIcon from '@/assets/images/icons/icon_purpleTriangles.svg'
-import SmileIcon from '@/assets/images/icons/icon_smile.svg'
-import SwirlArrowImage from '@/assets/images/icons/icon_swirlArrow.svg'
+import CollaboratorArrowOrange from '@/assets/images/graphics/icon_collaboratorOrange.svg'
+import DiamondImage from '@/assets/images/graphics/icon_diamond.svg'
+import MentorArrowPink from '@/assets/images/graphics/icon_mentorPink.svg'
+import PurpleRectangle from '@/assets/images/graphics/icon_purpleRectangle.svg'
+import PurpleTrianglesIcon from '@/assets/images/graphics/icon_purpleTriangles.svg'
+import SmileIcon from '@/assets/images/graphics/icon_smile.svg'
+import SwirlArrowImage from '@/assets/images/graphics/icon_swirlArrow.svg'
 import CollaboratorPlaceholder from '@/assets/images/photos/photo_collaboratorPlaceholder.webp'
 import CollaboratorComputerClockImage from '@/assets/images/photos/photo_computerClockPlaceholder.webp'
 import CollaboratorComputerImage from '@/assets/images/photos/photo_computerPlaceholder.webp'
 import MentorPlaceholder from '@/assets/images/photos/photo_mentorPlaceholder.webp'
-import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper'
 import ImageSection from '@/sections/home/collaboratorsMentors/components/ImageSection'
 import TextSection from '@/sections/home/collaboratorsMentors/components/TextSection'
+import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
 import clsx from 'clsx'
 
 const CollaboratorsMentorsCopyProps = [
@@ -57,17 +57,22 @@ const CollaboratorsMentorsImagesProps = [
 
 function CollaboratorsMentors() {
   return (
-    <SectionWrapper className="flex flex-col gap-[80px]">
+    <SectionWrapper className="flex flex-col py-12 md:py-10 gap-[40px] md:gap-[80px]">
       {CollaboratorsMentorsCopyProps.map((copy, i) => {
         const img = CollaboratorsMentorsImagesProps[i];
         return (
           <section
             key={i}
-            className={clsx("flex w-full py-[64px]", copy.reverse ? "flex-row-reverse" : "flex-row")} >
-            <div className="flex-1 flex items-center justify-center">
-              <TextSection {...copy} />
+            className={clsx(
+              "flex flex-col md:flex-row w-full py-[24px] md:py-[64px] gap-10 md:gap-16",
+              copy.reverse ? "md:flex-row-reverse" : ""
+            )} >
+            <div className="flex-1 flex items-start md:items-center justify-start w-full md:w-auto px-4 md:px-0 order-2 md:order-0 min-w-0">
+              <div className="w-full max-w-full">
+                <TextSection {...copy} />
+              </div>
             </div>
-            <div className="flex-1 flex items-cente justify-center">
+            <div className="flex-1 flex items-center justify-center w-full md:w-auto order-1 md:order-0 mb-10 md:mb-0">
               <ImageSection {...img} />
             </div>
           </section>

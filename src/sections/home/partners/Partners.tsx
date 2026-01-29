@@ -1,100 +1,66 @@
-import LogoDatacamp from '@/assets/images/logos/partners/logo_datacamp.png'
-import LogFemcodersClub from '@/assets/images/logos/partners/logo_femcodersClub.png'
-import LogoGenway from '@/assets/images/logos/partners/logo_genway.png'
-import LogoInnoit from '@/assets/images/logos/partners/logo_innoit.png'
-import LogoNotion from '@/assets/images/logos/partners/logo_notion.png'
-import LogoSheLeads from '@/assets/images/logos/partners/logo_sheLeadsProduct.png'
-import LogoStep4ward from '@/assets/images/logos/partners/logo_step4ward.png'
-import SectionWrapper from '@/components/layout/sectionWrapper/SectionWrapper'
-import Button from '@/components/ui/Button'
-import Image, { StaticImageData } from 'next/image'
+import PartnerLogosCarousel from '@/components/shared/PartnerLogosCarousel';
+import PartnerLogosGrid from '@/components/shared/PartnerLogosGrid';
+import Button from '@/components/ui/Button';
+import SectionWrapper from '@/sections/shared/sectionWrapper/SectionWrapper';
+import Link from "next/link";
 
-export type Partner = {
-  id: string;
-  image: string | StaticImageData;
-  alt: string;
-};
-
-const partnersData: Partner[] = [
-  {
-    id: '1',
-    image: LogoNotion,
-    alt: "logo-notion"
-  },
-  {
-    id: '2',
-    image: LogoStep4ward,
-    alt: "logo-step4ward"
-  },
-  {
-    id: '3',
-    image: LogoDatacamp,
-    alt: "logo-datacamp"
-  },
-  {
-    id: '4',
-    image: LogoSheLeads,
-    alt: "logo-she-leads-product"
-  },
-  {
-    id: '5',
-    image: LogFemcodersClub,
-    alt: "logo-femcoders-club"
-  },
-  {
-    id: '6',
-    image: LogoInnoit,
-    alt: "logo-innoit"
-  },
-  {
-    id: '7',
-    image: LogoGenway,
-    alt: "logo-genway"
-  }
-];
-
-const PartnerLogo = ({ src, alt }: { src: string | StaticImageData; alt: string }) => (
-  <Image
-    src={src}
-    alt={alt}
-    height={48}
-    className="block !h-[50px] !w-auto max-h-[48px] object-contain"
-    loading='lazy'
-  />
-)
-
-export const Partners = () => {
+const Partners = () => {
   return (
-    <SectionWrapper id="partners" className="flex flex-col justify-center items-center gap-12 py-14 bg-background-footer">
-      <div className='flex flex-col gap-6 w-[768px]'>
-        <h2 className='text-black text-size-900 font-primary font-heavy leading-line-height-heading-2 text-center'>
-          Our sponsors and
-          <span className='text-primary'> partners</span>
+    <SectionWrapper
+      id="partners"
+      aria-labelledby="partners-heading"
+      className="flex flex-col items-center text-center gap-8 md:gap-10 lg:gap-12 py-12 md:py-16 lg:py-20 bg-background-footer"
+    >
+      {/* HEADER */}
+      <header className="flex flex-col gap-4 md:gap-6 lg:gap-8 w-full mx-auto px-4 md:px-0 md:max-w-3xl">
+        <h2
+          id="partners-heading"
+          className="text-black text-size-600 md:text-size-800 lg:text-size-900 font-primary font-heavy tracking-tight mb-4 md:mb-6"
+        >
+          Our sponsors and <span className="text-primary">partners</span>
         </h2>
-        <p className='text-black font-secondary text-size-500 leading-line-height-body-1 self-stretch text-center'>
-          At SheHub, we're proud to be backed by an incredible network of sponsors and partners who share our mission to empower women in tech, design, and digital innovation. If your organization believes in creating real change and wants to help shape the next generation of digital talent, get in touch.
+
+        <p className="text-black font-secondary text-size-300 md:text-size-400 lg:text-size-500 leading-line-height-body-1">
+          At SheHub, we&apos;re proud to be backed by an incredible network of sponsors
+          and partners who share our mission to empower women in tech, design,
+          and digital innovation. If your organization believes in creating real
+          change and wants to help shape the next generation of digital talent,
+          get in touch.
         </p>
-      </div>
-      <div className='mx-auto w-full'>
-        <div className='flex justify-center items-center gap-10 p-8 pl-16 h-[70px]'>
-          {partnersData.map((partner) => (
-            <div key={partner.id} className="shrink-0 flex items-center">
-              <PartnerLogo
-                src={partner.image}
-                alt={partner.alt}
-              />
-            </div>
-          ))}
+      </header>
+
+      {/* LOGOS - Grid en móvil/tablet, Carousel en desktop */}
+      <div className="w-full my-8 md:my-10 lg:my-16">
+        {/* Mobile & Tablet: Grid responsivo */}
+        <div className="block lg:hidden px-4 sm:px-6 md:px-0">
+          <PartnerLogosGrid />
+        </div>
+        
+        {/* Desktop: Carousel */}
+        <div className="hidden lg:block">
+          <PartnerLogosCarousel 
+            autoPlay={true}
+            size="large"
+          />
         </div>
       </div>
-      <Button
-      variant='primary-primary'
-      size='sm'
-      shape='rounded'> 
-      Become a partner
-      </Button>
-    </SectionWrapper>
-  )
-}
 
-export default Partners
+      {/* CTA */}
+      <div className="px-4 md:px-0">
+        <Link href="/partners" aria-label="Go to Partners page">
+          <Button
+            variant="primary-primary"
+            size="sm"
+            shape="rounded"
+            className="hover:!text-black transition-colors duration-200 w-full sm:w-auto"
+          >
+            Become a partner
+          </Button>
+        </Link>
+      </div>
+    </SectionWrapper>
+  );
+};
+
+export default Partners;
+
