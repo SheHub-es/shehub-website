@@ -212,6 +212,12 @@ export const authFormTranslations: TranslationObject = {
     ca: 'Inicia sessió',
   },
 
+  'auth.unavailable': {
+    es: 'Inicio de sesión y registro no disponibles por el momento.',
+    en: 'Login and registration are not available at the moment.',
+    ca: 'Inici de sessió i registre no disponibles de moment.',
+  },
+
   // Accessibility
   'auth.a11y.hidePassword': {
     es: 'Ocultar contraseña',

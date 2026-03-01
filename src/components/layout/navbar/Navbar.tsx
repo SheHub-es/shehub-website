@@ -60,7 +60,7 @@ export const Navbar = () => {
                 selected={language}
                 onChange={(value: string) => setLanguage(value as Language)}
               />
-              <Link href="/auth">
+              <Link href="/join">
                 <Button 
                   variant="gradient" 
                   size="sm" 
@@ -86,7 +86,7 @@ export const Navbar = () => {
                   onChange={(value: string) => setLanguage(value as Language)}
                 />
               </div>
-              <Link href="/auth" onClick={() => setOpen(false)}>
+              <Link href="/join" onClick={() => setOpen(false)}>
                 <Button
                   variant="gradient"
                   size="lg"

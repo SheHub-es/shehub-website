@@ -119,57 +119,10 @@ export function useRegisterForm() {
     }
 
     setIsLoading(true);
-
-    try {
-      // Excluir confirmPassword y acceptTerms antes de enviar al backend
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { confirmPassword, acceptTerms, ...registerData } = form;
-
-      const response = await fetch(
-        "http://localhost:8080/auth/user/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(registerData),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        const errorMessage = data.message || data.error || t('register.error.failed');
-        
-        setPopupMessage(errorMessage);
-        setPopupType("error");
-        setShowPopup(true);
-        return;
-      }
-
-      setPopupMessage(data.message || t('register.success'));
-      setPopupType("success");
-      setShowPopup(true);
-      setTimeout(() => {
-        setForm({
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-          desiredRole: "",
-          wantToBeMentor: false,
-          acceptTerms: false,
-        });
-      }, 2000);
-
-    } catch {
-      setPopupMessage(t('register.error.connection'));
-      setPopupType("error");
-      setShowPopup(true);
-    } finally {
-      setIsLoading(false);
-    }
+    setPopupMessage(t("auth.unavailable"));
+    setPopupType("error");
+    setShowPopup(true);
+    setIsLoading(false);
   };
 
   return {

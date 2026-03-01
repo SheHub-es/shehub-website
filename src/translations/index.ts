@@ -9,6 +9,7 @@ import { passwordIndicatorsTranslations } from '@/translations/auth/passwordIndi
 import { passwordResetModalTranslations } from '@/translations/auth/passwordResetModalTranslations'
 import { passwordResetTranslations } from '@/translations/auth/passwordResetTranslations'
 import { registerFormTranslations } from '@/translations/auth/registerFormTranslations'
+import { waitlistTranslations } from '@/translations/auth/waitlistTranslations'
 import { navigationMenuButtonTranslations } from '@/translations/layout/navbar/navigationMenuButtonTranslations'
 import { navigationMenuTranslations } from '@/translations/layout/navbar/navigationMenuTranslations'
 import { testTranslations } from '@/translations/testTranslations'
@@ -29,6 +30,7 @@ export const translations: TranslationObject = {
   ...loginFormTranslations,
   ...passwordResetTranslations,
   ...registerFormTranslations,
+  ...waitlistTranslations,
 }
 
 export type { Language } from '@/translations/types'
