@@ -1,8 +1,3 @@
-/**
- * Validadores reutilizables para formularios.
- * Solo letras, espacios, guiones y apóstrofes (nombres tipo "María", "O'Connor", "Jean-Pierre").
- * Incluye letras con acentos y ñ.
- */
 const NAME_PATTERN = /^[\p{L}\s'-]+$/u;
 
 export const NAME_MAX_LENGTH = 100;
@@ -14,10 +9,6 @@ export function isValidName(value: string): boolean {
   return NAME_PATTERN.test(trimmed);
 }
 
-/**
- * Filtra el valor para que solo contenga caracteres permitidos en nombre/apellido.
- * Evita que se puedan escribir números u otros caracteres no válidos.
- */
 export function sanitizeNameInput(value: string): string {
   return value
     .split("")
@@ -25,7 +16,7 @@ export function sanitizeNameInput(value: string): string {
     .join("");
 }
 
-/** Validación básica de formato email (RFC 5322 simplificado). */
+/** Basic email format validation (simplified RFC 5322). */
 const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
@@ -35,7 +26,6 @@ export function isValidEmail(value: string): boolean {
   return EMAIL_REGEX.test(trimmed);
 }
 
-/** Trim y límite de longitud para enviar al backend (evitar payloads enormes). */
 export function sanitizeForSubmit(value: string, maxLength: number): string {
   return value.trim().slice(0, maxLength);
 }

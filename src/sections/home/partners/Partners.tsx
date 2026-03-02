@@ -29,7 +29,7 @@ const Partners = () => {
         </p>
       </header>
 
-      {/* LOGOS - Grid en móvil/tablet, Carousel en desktop */}
+      {/* LOGOS - Grid on mobile/tablet, Carousel on desktop */}
       <div className="w-full my-8 md:my-10 lg:my-16">
         {/* Mobile & Tablet: Grid responsivo */}
         <div className="block lg:hidden px-4 sm:px-6 md:px-0">

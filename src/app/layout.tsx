@@ -1,5 +1,6 @@
 import Footer from "@/components/layout/footer/Footer";
 import Navbar from "@/components/layout/navbar/Navbar";
+import ScrollToTop from "@/components/layout/ScrollToTop";
 import { AppProviders } from "@/lib/providers";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
@@ -45,8 +46,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${ubuntu.variable} ${nunito.variable}`} suppressHydrationWarning>
-      <body>
+      <body className="overflow-x-hidden">
         <AppProviders>
+          <ScrollToTop />
           <Navbar/>
           {children}
           <Footer/>

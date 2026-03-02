@@ -28,10 +28,7 @@ function getFirebaseApp(): FirebaseApp | null {
 
 const app = getFirebaseApp();
 
-/** Firebase Auth; null en servidor o si faltan variables de entorno */
 export const auth: Auth | null = app ? getAuth(app) : null;
-
-/** Firestore; null en servidor o si faltan variables de entorno */
 export const db: Firestore | null = app ? getFirestore(app) : null;
 
 export { app as firebaseApp };

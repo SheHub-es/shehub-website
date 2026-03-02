@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useMemo } from "react";
 import WaitlistForm from "./components/WaitlistForm";
 
 export default function WaitlistSection() {
@@ -22,14 +22,19 @@ export default function WaitlistSection() {
 
   return (
     <section
-      className="w-full min-h-screen flex justify-center px-2 font-primary"
+      className="w-full max-w-[100vw] min-h-screen flex justify-center px-6 md:px-8 pt-10 md:pt-12 font-primary overflow-x-hidden box-border"
       style={{ backgroundColor: "var(--color-background-light)" }}
     >
-      <div className="max-w-[1280px] w-full grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center py-12">
-        {/* LEFT side text section */}
-        <div className="w-full flex justify-center md:justify-start md:-mt-20">
-          <div className="w-full max-w-xl text-left">
-            <h1 className="auth-hero-title mb-4 md:mb-12 text-[color:var(--color-black)]">
+      <div className="max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 lg:gap-12 items-start justify-items-stretch pt-14 sm:pt-16 md:pt-20 lg:pt-24 pb-10 sm:pb-12 md:pb-12 lg:pb-16 min-w-0">
+        <div className="w-full min-w-0 md:-mt-20 relative z-0 overflow-hidden">
+          <div className="w-full min-w-0 text-left overflow-hidden">
+            <span
+              className="block text-base md:text-lg font-semibold tracking-wide my-8 md:my-8"
+              style={{ color: "var(--color-primary)" }}
+            >
+              {t("waitlist.heroIntro")}
+            </span>
+            <h1 className="auth-hero-title auth-hero-title--wrap mb-4 md:mb-12 text-[color:var(--color-black)] break-words">
               <span className="auth-hero-line1">
                 {t("auth.sectionV1.title.line1")}
               </span>
@@ -79,9 +84,8 @@ export default function WaitlistSection() {
           </div>
         </div>
 
-        {/* RIGHT side form - solo lista de espera */}
-        <div className="w-full flex justify-center md:justify-end md:-mt-8">
-          <div className="w-full max-w-xl">
+        <div className="w-full min-w-0 md:-mt-8 relative z-10">
+          <div className="w-full min-w-0">
             <WaitlistForm />
           </div>
         </div>

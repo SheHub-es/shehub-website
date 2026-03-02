@@ -13,7 +13,7 @@ export type Partner = {
   id: string;
   image: string | StaticImageData;
   alt: string;
-  isWide?: boolean; // Logos largos/horizontales que ocupan más espacio
+  isWide?: boolean; // Wide/horizontal logos that take more space
 };
 
 export const partnersData: Partner[] = [

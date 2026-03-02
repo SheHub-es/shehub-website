@@ -653,8 +653,6 @@ html {
     font-weight: var(--font-weight-heavy);
     letter-spacing: -0.02em;
     line-height: 1.05;
-
-    /* EN por defecto */
     font-size: clamp(2.75rem, 5vw, 3.75rem);
   }
 
@@ -662,9 +660,6 @@ html {
     color: var(--color-black);
   }
 
-  /* Desktop: queremos exactamente 3 líneas.
-     Línea 1 NO se parte. Línea 2 NO se parte.
-     La línea 3 la fuerza el <br/> interno del gradiente. */
   @media (min-width: 768px) {
     .auth-hero-line1 {
       white-space: nowrap;
@@ -674,7 +669,14 @@ html {
     }
   }
 
-  /* ES/CA: bajamos un pelín para evitar “al” colgando */
+  .auth-hero-title--wrap {
+    text-wrap: balance;
+  }
+  .auth-hero-title--wrap .auth-hero-line1,
+  .auth-hero-title--wrap .auth-hero-line2 {
+    white-space: normal;
+  }
+
   html:lang(es) .auth-hero-title,
   html:lang(ca) .auth-hero-title {
     font-size: clamp(2.35rem, 4.2vw, 3.25rem);

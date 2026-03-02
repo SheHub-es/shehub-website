@@ -14,7 +14,6 @@ function LinkedInCallbackContent() {
       const state = searchParams.get('state');
       const error = searchParams.get('error');
 
-      // Verificar si hay error de LinkedIn
       if (error) {
         setStatus('error');
         setMessage(`Error de LinkedIn: ${error}`);
@@ -24,7 +23,7 @@ function LinkedInCallbackContent() {
         return;
       }
 
-      // Verificar que tenemos el código
+      // Ensure we have the code
       if (!code) {
         setStatus('error');
         setMessage('No se recibió código de autorización');
@@ -34,7 +33,6 @@ function LinkedInCallbackContent() {
         return;
       }
 
-      // Verificar state para prevenir CSRF
       const savedState = sessionStorage.getItem('linkedin_oauth_state');
       if (state !== savedState) {
         setStatus('error');
@@ -48,7 +46,7 @@ function LinkedInCallbackContent() {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
         
-        // Enviar código al backend
+        // Send code to backend
         const response = await fetch(`${apiUrl}/auth/user/oauth/linkedin`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -65,7 +63,6 @@ function LinkedInCallbackContent() {
 
         const data = await response.json();
         
-        // Guardar token y usuario
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
 
@@ -75,7 +72,6 @@ function LinkedInCallbackContent() {
         setStatus('success');
         setMessage(`¡Bienvenido ${data.user.firstName}!`);
         
-        // Redirigir al home
         setTimeout(() => {
           window.location.href = '/';
         }, 1500);

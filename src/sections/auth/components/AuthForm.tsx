@@ -48,10 +48,8 @@ export default function AuthForm() {
       return;
     }
 
-    // Guardar state para validar después
     sessionStorage.setItem('linkedin_oauth_state', state);
 
-    // Redirigir a LinkedIn OAuth
     window.location.href =
       `https://www.linkedin.com/oauth/v2/authorization` +
       `?response_type=code` +
@@ -106,7 +104,6 @@ export default function AuthForm() {
         aria-label={isLogin ? (t('auth.form.login.ariaLabel') || 'Login form') : (t('auth.form.signup.ariaLabel') || 'Sign up form')}
       >
         {isLogin ? (
-          /* Login Form */
           <div role="tabpanel" id="login-panel" aria-labelledby="login-tab">
             <div>
               <label htmlFor="login-email" className="input-label">{t('auth.field.email')}</label>
@@ -191,7 +188,6 @@ export default function AuthForm() {
             </button>
           </div>
         ) : (
-          /* Register Form */
           <div role="tabpanel" id="signup-panel" aria-labelledby="signup-tab">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1 w-full">

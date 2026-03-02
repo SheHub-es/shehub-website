@@ -1,6 +1,11 @@
 import type { TranslationObject } from "@/translations/types";
 
 export const waitlistTranslations: TranslationObject = {
+  "waitlist.heroIntro": {
+    es: "Empieza aquí",
+    en: "Get started",
+    ca: "Comença aquí",
+  },
   "waitlist.title": {
     es: "¿LISTA PARA UNIRTE?",
     en: "READY TO JOIN?",

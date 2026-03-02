@@ -1,3 +1,4 @@
+import { useLanguage } from "@/hooks/useLanguage";
 import { useTranslation } from "@/hooks/useTranslation";
 import { db } from "@/lib/firebase";
 import {
@@ -8,10 +9,10 @@ import {
   sanitizeForSubmit,
   sanitizeNameInput,
 } from "@/lib/formValidators";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useCallback, useState } from "react";
 
-const WAITLIST_COLLECTION = "waitlist";
+const WAITLIST_COLLECTION = "applicants_v2";
 
 export interface WaitlistFormState {
   firstName: string;
@@ -30,8 +31,13 @@ export interface WaitlistFormErrors {
   terms?: string;
 }
 
+function emailToDocId(email: string): string {
+  return email.trim().toLowerCase();
+}
+
 export function useWaitlistForm() {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const [form, setForm] = useState<WaitlistFormState>({
     firstName: "",
     lastName: "",
@@ -152,13 +158,28 @@ export function useWaitlistForm() {
           return;
         }
 
-        await addDoc(collection(db, WAITLIST_COLLECTION), {
+        const emailNormalized = sanitizeForSubmit(form.email, EMAIL_MAX_LENGTH).trim().toLowerCase();
+        const docId = emailToDocId(form.email);
+
+        await setDoc(doc(db, WAITLIST_COLLECTION, docId), {
+          availability: null,
+          bootcamp: null,
+          currentRole: null,
+          desiredRole: form.desiredRole.trim() || null,
+          email: emailNormalized,
           firstName: sanitizeForSubmit(form.firstName, NAME_MAX_LENGTH),
           lastName: sanitizeForSubmit(form.lastName, NAME_MAX_LENGTH),
-          email: sanitizeForSubmit(form.email, EMAIL_MAX_LENGTH),
-          desiredRole: form.desiredRole.trim() || null,
-          wantToBeMentor: form.wantToBeMentor,
+          github: null,
+          language: language,
+          linkedin: null,
+          mentor: form.wantToBeMentor,
+          timestamp: new Date().toISOString(),
           createdAt: serverTimestamp(),
+          utm: {
+            campaign: null,
+            medium: null,
+            source: null,
+          },
         });
 
         setPopupMessage(t("waitlist.success"));
@@ -180,7 +201,7 @@ export function useWaitlistForm() {
         setIsLoading(false);
       }
     },
-    [form, t, validateForm]
+    [form, language, t, validateForm]
   );
 
   return {
