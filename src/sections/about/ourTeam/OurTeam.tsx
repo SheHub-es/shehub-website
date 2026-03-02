@@ -2,6 +2,7 @@
 
 import { MemberCarouselCard } from "@/components/ui/carousel/CarouselCard"
 import { Carousel } from "@/components/ui/carousel/index"
+import { useTranslation } from "@/hooks/useTranslation"
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
 
 const teamMembers: MemberCarouselCard[] = [
@@ -48,6 +49,8 @@ const teamMembers: MemberCarouselCard[] = [
 ]
 
 export default function OurTeam() {
+  const { t } = useTranslation();
+
   return (
     <SectionWrapper
       id="our-team"
@@ -69,6 +72,9 @@ export default function OurTeam() {
         </h2>
         <p className="font-secondary text-size-400 md:text-size-500 text-black leading-line-height-body-1 max-w-3xl">
           Meet the passionate team behind SheHub—builders, mentors, and dreamers working together to make purposeful growth possible.
+        </p>
+        <p className="font-secondary text-size-300 md:text-size-400 text-purple-700 italic" role="status">
+          {t("underConstruction.teamComingSoon")}
         </p>
       </header>
 

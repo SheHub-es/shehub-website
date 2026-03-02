@@ -1,3 +1,5 @@
+"use client";
+
 import CollaboratorArrowOrange from '@/assets/images/graphics/icon_collaboratorOrange.svg'
 import DiamondImage from '@/assets/images/graphics/icon_diamond.svg'
 import MentorArrowPink from '@/assets/images/graphics/icon_mentorPink.svg'
@@ -12,27 +14,9 @@ import MentorPlaceholder from '@/assets/images/photos/photo_mentorPlaceholder.we
 import ImageSection from '@/sections/home/collaboratorsMentors/components/ImageSection'
 import TextSection from '@/sections/home/collaboratorsMentors/components/TextSection'
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
+import { useTranslation } from '@/hooks/useTranslation'
 import clsx from 'clsx'
 
-const CollaboratorsMentorsCopyProps = [
-    {
-        sectionHeading: "Collaborators",
-        primaryHeading: <>Work as a <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'var(--color-gradient-brand)' }}>collaborator</span> in a real tech project and build your portfolio</>,
-        paragraphText: "Collaborate in multidisciplinary teams to design, build, and deliver real product features. Gain hands-on experience and create a portfolio that showcases your skills, process, and tangible results.",
-        whatYouBringText: "As a collaborator, you can share your expertise, tools, or projects with a highly engaged community — and grow your impact while doing it.",
-        whatWeOfferText: "We support you with visibility, feedback loops, mentorships and a trusted space to co-create with purpose-driven women.",
-        buttonText: "Become a collaborator",
-        reverse: true
-    },
-    {
-        sectionHeading: "Mentors",
-        primaryHeading: <><span className="bg-clip-text text-transparent" style={{ backgroundImage: 'var(--color-gradient-brand)' }}>Mentor a team</span> and grow as a leader</>,
-        paragraphText: "You’ve walked the path — now help someone take their next step. SheHub connects experienced professionals with emerging talent in tech and digital fields.",
-        whatWeOfferText: "We make it easy and rewarding, offering a structured yet flexible experience, ongoing support, and a community that values mutual learning and care.",
-        whatYouBringText: "As a mentor, your insights can spark real growth in someone’s journey — and you’ll grow too.",
-        buttonText: 'Become a mentor',
-    },
-]
 
 const CollaboratorsMentorsImagesProps = [
     {
@@ -55,7 +39,38 @@ const CollaboratorsMentorsImagesProps = [
     },
 ]
 
+const gradientSpan = (children: React.ReactNode) => (
+  <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'var(--color-gradient-brand)' }}>{children}</span>
+);
+
 function CollaboratorsMentors() {
+  const { t } = useTranslation();
+  const CollaboratorsMentorsCopyProps = [
+    {
+      sectionHeading: t('home.collabMentors.sectionCollaborators'),
+      primaryHeading: <>{t('home.collabMentors.collabHeadingBefore')} {gradientSpan(t('home.collabMentors.collabHeadingWord'))} {t('home.collabMentors.collabHeadingAfter')}</>,
+      paragraphText: t('home.collabMentors.collabParagraph'),
+      whatYouBringText: t('home.collabMentors.collabWhatYouBring'),
+      whatWeOfferText: t('home.collabMentors.collabWhatWeOffer'),
+      whatYouBringLabel: t('home.collabMentors.whatYouBring'),
+      whatWeOfferLabel: t('home.collabMentors.whatWeOffer'),
+      buttonText: t('home.collabMentors.ctaCollaborator'),
+      buttonHref: '/collaborators',
+      reverse: true as const,
+    },
+    {
+      sectionHeading: t('home.collabMentors.sectionMentors'),
+      primaryHeading: <>{gradientSpan(t('home.collabMentors.mentorHeadingHighlight'))} {t('home.collabMentors.mentorHeadingAfter')}</>,
+      paragraphText: t('home.collabMentors.mentorParagraph'),
+      whatWeOfferText: t('home.collabMentors.mentorWhatWeOffer'),
+      whatYouBringText: t('home.collabMentors.mentorWhatYouBring'),
+      whatYouBringLabel: t('home.collabMentors.whatYouBring'),
+      whatWeOfferLabel: t('home.collabMentors.whatWeOffer'),
+      buttonText: t('home.collabMentors.ctaMentor'),
+      buttonHref: '/mentors',
+    },
+  ];
+
   return (
     <SectionWrapper className="flex flex-col py-12 md:py-10 gap-[40px] md:gap-[80px]">
       {CollaboratorsMentorsCopyProps.map((copy, i) => {

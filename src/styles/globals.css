@@ -497,25 +497,32 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Scrollbar con colores SheHub (lila) */
+/* SheHub scrollbar (purple thumb), transparent track */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-purple-400) var(--color-purple-100);
+  scrollbar-color: var(--color-purple-400) transparent;
 }
 
 *::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 2px;
+  height: 2px;
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--color-purple-100);
-  border-radius: 4px;
+  background: transparent;
+  border-radius: 1px;
 }
 
 *::-webkit-scrollbar-thumb {
   background: var(--color-purple-400);
-  border-radius: 4px;
+  border-radius: 1px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+html.scrollbar-visible *::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
 }
 
 *::-webkit-scrollbar-thumb:hover {
@@ -541,6 +548,16 @@ html {
   outline: 0.25rem solid var(--color-purple-600);
   outline-offset: 0.125rem;
   position: relative;
+}
+
+/* Checkbox: focus ring on the box only, not the whole label; hidden input without outline */
+.checkbox-input-sr-only:focus-visible {
+  outline: none;
+}
+
+.checkbox-label:focus-within .checkbox-box {
+  outline: 0.25rem solid var(--color-purple-600);
+  outline-offset: 0;
 }
 
 .focus-square:focus-visible {

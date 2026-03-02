@@ -12,13 +12,17 @@ import { registerFormTranslations } from '@/translations/auth/registerFormTransl
 import { waitlistTranslations } from '@/translations/auth/waitlistTranslations'
 import { navigationMenuButtonTranslations } from '@/translations/layout/navbar/navigationMenuButtonTranslations'
 import { navigationMenuTranslations } from '@/translations/layout/navbar/navigationMenuTranslations'
+import { homeTranslations } from '@/translations/home/homeTranslations'
+import { underConstructionTranslations } from '@/translations/layout/underConstructionTranslations'
 import { testTranslations } from '@/translations/testTranslations'
 import type { TranslationObject } from '@/translations/types'
 
 export const translations: TranslationObject = {
   ...testTranslations,
+  ...homeTranslations,
   ...navigationMenuTranslations,
   ...navigationMenuButtonTranslations,
+  ...underConstructionTranslations,
   ...authFormTranslations,
   ...authTextV1Translations,
   ...authTextV2Translations,

@@ -1,9 +1,12 @@
 import Footer from "@/components/layout/footer/Footer";
 import Navbar from "@/components/layout/navbar/Navbar";
 import ScrollToTop from "@/components/layout/ScrollToTop";
+import ScrollbarVisibility from "@/components/layout/ScrollbarVisibility";
+import UnderConstructionBanner from "@/components/layout/UnderConstructionBanner";
 import { AppProviders } from "@/lib/providers";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { Nunito, Ubuntu } from "next/font/google";
 
 
@@ -43,13 +46,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const langCookie = cookieStore.get("language")?.value;
+  const initialLanguage = (langCookie === "en" || langCookie === "ca" ? langCookie : "es") as "es" | "en" | "ca";
+
   return (
-    <html lang="en" className={`${ubuntu.variable} ${nunito.variable}`} suppressHydrationWarning>
+    <html lang={initialLanguage} className={`${ubuntu.variable} ${nunito.variable}`} suppressHydrationWarning>
       <body className="overflow-x-hidden">
-        <AppProviders>
+        <AppProviders initialLanguage={initialLanguage}>
           <ScrollToTop />
+          <ScrollbarVisibility />
+          <div className="pt-10" aria-hidden />
           <Navbar/>
+          <UnderConstructionBanner />
           {children}
           <Footer/>
         </AppProviders>

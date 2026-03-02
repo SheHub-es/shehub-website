@@ -1,30 +1,32 @@
+"use client";
+
 import MentorHomeImage from "@/assets/images/photos/photo_mentorHome.webp"
 import TextSection from "@/sections/home/collaboratorsMentors/components/TextSection"
+import { useTranslation } from "@/hooks/useTranslation"
 import NextImage from "next/image"
 
 export default function Mentor() {
+  const { t } = useTranslation();
   const copy = {
-    sectionHeading: "Mentors",
+    sectionHeading: t("home.collabMentors.sectionMentors"),
     primaryHeading: (
-  <span className="leading-tight block">
-    <span
-      className="bg-clip-text text-transparent tracking-tight leading-tight font-bold"
-      style={{ backgroundImage: "var(--color-gradient-brand)" }}
-    >
-      Mentor a team
-    </span>{" "}
-    and grow<br />
-    as a leader
-  </span>
-),
-
-    paragraphText:
-      "You’ve walked the path — now help someone take their next step. SheHub connects experienced professionals with emerging talent in tech and digital fields.",
-    whatWeOfferText:
-      "We make it easy and rewarding, offering a structured yet flexible experience, ongoing support, and a community that values mutual learning and care.",
-    whatYouBringText:
-      "As a mentor, your insights can spark real growth in someone's journey — and you'll grow too.",
-    buttonText: "Become a mentor",
+      <span className="leading-tight block">
+        <span
+          className="bg-clip-text text-transparent tracking-tight leading-tight font-bold"
+          style={{ backgroundImage: "var(--color-gradient-brand)" }}
+        >
+          {t("home.collabMentors.mentorHeadingHighlight")}
+        </span>{" "}
+        {t("home.collabMentors.mentorHeadingAfter")}
+      </span>
+    ),
+    paragraphText: t("home.collabMentors.mentorParagraph"),
+    whatWeOfferText: t("home.collabMentors.mentorWhatWeOffer"),
+    whatYouBringText: t("home.collabMentors.mentorWhatYouBring"),
+    whatYouBringLabel: t("home.collabMentors.whatYouBring"),
+    whatWeOfferLabel: t("home.collabMentors.whatWeOffer"),
+    buttonText: t("home.collabMentors.ctaMentor"),
+    buttonHref: "/mentors",
   }
 
   return (

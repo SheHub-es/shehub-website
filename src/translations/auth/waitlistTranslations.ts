@@ -11,6 +11,16 @@ export const waitlistTranslations: TranslationObject = {
     en: "READY TO JOIN?",
     ca: "LLESTA PER UNIR-TE?",
   },
+  "waitlist.field.lastName": {
+    es: "Apellidos",
+    en: "Last Names",
+    ca: "Cognoms",
+  },
+  "waitlist.field.lastName.placeholder": {
+    es: "Apellidos",
+    en: "Last Names",
+    ca: "Cognoms",
+  },
   "waitlist.button": {
     es: "Unirme a la lista de espera",
     en: "Join the waiting list",

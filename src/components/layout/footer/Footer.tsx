@@ -25,7 +25,7 @@ const Footer = () => {
             aria-label="SheHub homepage"
             className="block shrink-0 transition-opacity hover:opacity-90 px-6 lg:px-0"
           >
-            {/* Logo más pequeño en mobile, tamaño completo en md+ */}
+            {/* Smaller logo on mobile, full size on md+ */}
             <span className="inline-block origin-left max-md:scale-[0.5] md:scale-100">
               <FooterLogo width={262} height={72} />
             </span>

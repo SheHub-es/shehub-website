@@ -66,7 +66,7 @@ function LinkedInCallbackContent() {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
 
-        // Limpiar state
+        // Clear state
         sessionStorage.removeItem('linkedin_oauth_state');
 
         setStatus('success');

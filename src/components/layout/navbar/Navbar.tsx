@@ -28,7 +28,12 @@ export const Navbar = () => {
   return (
     <header className="sticky top-0 z-50">
       <SectionWrapper className="py-0">
-        <div className={`sticky top-0 bg-white mt-6 md:mt-10 md:static w-full max-w-[1248px] md:h-[92px] mx-auto flex flex-col md:flex-row justify-start md:justify-between md:items-center gap-4 md:gap-6 px-8 md:py-6 md:shadow-[0_4px_16px_0_rgba(0,0,0,0.08)] md:rounded-3xl ${open ? 'h-[568px] shadow-none rounded-none' : 'h-[75px] shadow-[0_4px_16px_0_rgba(0,0,0,0.08)] rounded-3xl'}`}>
+        <div
+          className={`sticky top-0 md:static w-full max-w-[1248px] md:h-[92px] mx-auto flex flex-col md:flex-row justify-start md:justify-between md:items-center gap-4 md:gap-[92px] px-8 md:py-6 rounded-[24px] isolation-isolate ${open ? 'h-[568px] shadow-none rounded-none bg-white' : 'h-[75px] bg-[#FEFEFE]'}`}
+          style={{
+            boxShadow: open ? undefined : '0 0 0 1px rgba(14, 14, 14, 0.04), 0 2px 8px rgba(14, 14, 14, 0.06), 0 4px 16px rgba(14, 14, 14, 0.08)',
+          }}
+        >
           <div className="h-[75px] flex items-center justify-between md:hidden">
             <div aria-label="Shehub" className={`flex items-center justify-start transition-all duration-300 ${open ? 'w-[145px]' : 'w-[135px]'}`}>
               <div className="w-full">

@@ -1,28 +1,19 @@
+"use client";
+
 import LauraImg from "@/assets/images/avatars/avatar_lauraGracia.webp"
 import MartaImg from "@/assets/images/avatars/avatar_martaV.webp"
 import { Avatar } from "@/components/ui/Avatar"
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
+import { useTranslation } from "@/hooks/useTranslation"
 
-const testimonials = [
-  {
-    id: 1,
-    quote: `"Before SheHub, I felt stuck between theory and the real world. Working on an actual product with a supportive team and a mentor who challenged me changed everything. I finally feel ready — and confident — to apply for jobs in tech."`,
-    name: "Marta V., Collaborator",
-    role: "UX/UI Designer",
-    image: MartaImg,
-    alt: "Avatar of Marta"
-  },
-  {
-    id: 2,
-    quote: `"Being a mentor at SheHub has been one of the most fulfilling experiences in my career. Watching contributors grow, gain confidence, and land their first tech roles — while I honed my own leadership skills — reminded me why I love this industry."`,
-    name: "Laura Gracia, Mentor",
-    role: "Project Manager / Team Lead",
-    image: LauraImg,
-    alt: "Avatar of Laura"
-  }
-]
+const TESTIMONIAL_IMAGES = [MartaImg, LauraImg];
+const QUOTE_KEYS = ['home.testimonials.quote1', 'home.testimonials.quote2'] as const;
+const NAME_KEYS = ['home.testimonials.name1', 'home.testimonials.name2'] as const;
+const ROLE_KEYS = ['home.testimonials.role1', 'home.testimonials.role2'] as const;
+const ALT_KEYS = ['home.testimonials.alt1', 'home.testimonials.alt2'] as const;
 
 export const Testimonials = () => {
+  const { t } = useTranslation();
   return (
     <SectionWrapper
       id="testimonials"
@@ -35,7 +26,6 @@ export const Testimonials = () => {
         md:gap-24
       "
     >
-      {/* HEADLINE */}
       <header
         className="
           flex flex-col 
@@ -50,7 +40,7 @@ export const Testimonials = () => {
       >
         <div className="flex flex-col leading-tight">
           <h2 className="font-primary font-heavy text-size-800 md:text-size-900 tracking-tight text-black">
-            Because when you build with us,
+            {t('home.testimonials.line1')}
           </h2>
 
           <h2
@@ -65,16 +55,15 @@ export const Testimonials = () => {
             "
             style={{ backgroundImage: "var(--color-gradient-brand)" }}
           >
-            you build for change
+            {t('home.testimonials.line2')}
           </h2>
         </div>
 
         <p className="mt-4 font-secondary text-size-400 md:text-size-500 text-black leading-line-height-body-1">
-          At SheHub we empower women who want to build their career in tech
+          {t('home.testimonials.subtitle')}
         </p>
       </header>
 
-      {/* GRID */}
       <div
         className="
           grid
@@ -87,9 +76,9 @@ export const Testimonials = () => {
           px-4
         "
       >
-        {testimonials.map((t) => (
+        {[0, 1].map((id) => (
           <article
-            key={t.id}
+            key={id}
             className="
               flex
               flex-col
@@ -101,22 +90,22 @@ export const Testimonials = () => {
             "
           >
             <p className="font-secondary text-black text-size-500 leading-relaxed">
-              {t.quote}
+              {t(QUOTE_KEYS[id])}
             </p>
 
             <Avatar
               type="image"
               size="xl"
-              imageUrl={t.image}
-              alt={t.alt}
+              imageUrl={TESTIMONIAL_IMAGES[id]}
+              alt={t(ALT_KEYS[id])}
             />
 
             <div className="flex flex-col gap-1">
               <p className="font-primary font-bold text-black text-size-500">
-                {t.name}
+                {t(NAME_KEYS[id])}
               </p>
               <p className="font-secondary text-black text-size-400">
-                {t.role}
+                {t(ROLE_KEYS[id])}
               </p>
             </div>
           </article>

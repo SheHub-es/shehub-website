@@ -1,30 +1,33 @@
+"use client";
+
 import CollaboratorHomeImage from "@/assets/images/photos/photo_collaboratorHome.webp"
 import TextSection from "@/sections/home/collaboratorsMentors/components/TextSection"
+import { useTranslation } from "@/hooks/useTranslation"
 import NextImage from "next/image"
 
 export default function Collaborator() {
+  const { t } = useTranslation();
   const copy = {
-    sectionHeading: "Collaborators",
+    sectionHeading: t("home.collabMentors.sectionCollaborators"),
     primaryHeading: (
       <span className="leading-tight block">
-        Work as a{" "}
+        {t("home.collabMentors.collabHeadingBefore")}{" "}
         <span
           className="bg-clip-text text-transparent text-size-800 md:text-size-900 font-bold tracking-tight leading-tight"
           style={{ backgroundImage: "var(--color-gradient-brand)" }}
         >
-          collaborator
+          {t("home.collabMentors.collabHeadingWord")}
         </span>{" "}
-        in a real tech project and build your portfolio
+        {t("home.collabMentors.collabHeadingAfter")}
       </span>
     ),
-
-    paragraphText:
-      "Collaborate in multidisciplinary teams to design, build, and deliver real product features. Gain hands-on experience and create a portfolio that showcases your skills, process, and tangible results.",
-    whatYouBringText:
-      "As a collaborator, you can share your expertise, tools, or projects with a highly engaged community — and grow your impact while doing it.",
-    whatWeOfferText:
-      "We support you with visibility, feedback loops, mentorships and a trusted space to co-create with purpose-driven women.",
-    buttonText: "Become a collaborator",
+    paragraphText: t("home.collabMentors.collabParagraph"),
+    whatYouBringText: t("home.collabMentors.collabWhatYouBring"),
+    whatWeOfferText: t("home.collabMentors.collabWhatWeOffer"),
+    whatYouBringLabel: t("home.collabMentors.whatYouBring"),
+    whatWeOfferLabel: t("home.collabMentors.whatWeOffer"),
+    buttonText: t("home.collabMentors.ctaCollaborator"),
+    buttonHref: "/collaborators",
   }
 
   return (

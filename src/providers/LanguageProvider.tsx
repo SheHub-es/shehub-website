@@ -20,20 +20,36 @@ export type LanguageContextType = {
 
 export const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguageState] = useState<Language>('es')
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 365 // 1 year
+
+export const LanguageProvider = ({
+  children,
+  initialLanguage,
+}: {
+  children: ReactNode;
+  initialLanguage?: Language;
+}) => {
+  const [language, setLanguageState] = useState<Language>(initialLanguage ?? 'es')
   const scrollRestoreRef = useRef<{ x: number; y: number } | null>(null)
 
-  // Sincronizar con localStorage solo en el primer mount; evitar re-render extra si ya es 'es'
+  // On first mount: if language is in localStorage but server sent 'es' (no cookie), sync cookie and state to avoid flash on next load
   useEffect(() => {
     if (typeof window === 'undefined') return
+    document.documentElement.lang = language
     const stored = localStorage.getItem('language')
-    const lang = (['es', 'en', 'ca'].includes(stored || '') ? stored : 'es') as Language
-    document.documentElement.lang = lang
-    if (lang !== 'es') setLanguageState(lang)
+    const storedLang = (['es', 'en', 'ca'].includes(stored || '') ? stored : 'es') as Language
+    if (storedLang !== language) {
+      localStorage.setItem('language', language)
+    }
+    if (initialLanguage === 'es' && storedLang !== 'es') {
+      document.cookie = `language=${storedLang}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`
+      document.documentElement.lang = storedLang
+      setLanguageState(storedLang)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- run only on mount, initialLanguage is stable
   }, [])
 
-  // Restaurar scroll después de un cambio de idioma por el usuario (evita saltos)
+  // Restore scroll after user-triggered language change (avoids jump)
   useEffect(() => {
     if (scrollRestoreRef.current) {
       const { x, y } = scrollRestoreRef.current
@@ -45,12 +61,13 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const setLanguage = useCallback((lang: Language) => {
     if (typeof window !== 'undefined') {
       scrollRestoreRef.current = { x: window.scrollX, y: window.scrollY }
+      localStorage.setItem('language', lang)
+      document.cookie = `language=${lang}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`
     }
+    document.documentElement.lang = lang
     startTransition(() => {
       setLanguageState(lang)
     })
-    localStorage.setItem('language', lang)
-    document.documentElement.lang = lang
   }, [])
 
   const t = (key: string): string => {

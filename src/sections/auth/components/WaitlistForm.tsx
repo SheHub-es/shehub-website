@@ -60,12 +60,12 @@ export default function WaitlistForm() {
           </div>
           <div className="flex-1 w-full">
             <label htmlFor="waitlist-lastName" className="input-label">
-              {t("auth.field.lastName")} *
+              {t("waitlist.field.lastName")} *
             </label>
             <input
               id="waitlist-lastName"
               type="text"
-              placeholder={t("auth.field.lastName.placeholder")}
+              placeholder={t("waitlist.field.lastName.placeholder")}
               name="lastName"
               className={`input-base ${errors.lastName ? "input-error" : ""}`}
               value={form.lastName}
@@ -278,7 +278,7 @@ export default function WaitlistForm() {
           type="submit"
           disabled={hook.isLoading}
           aria-busy={hook.isLoading}
-          className="w-full py-2.5 rounded-lg font-bold text-base transition-all hover:opacity-90 active:scale-[0.98] mt-4 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+          className="w-full py-2.5 rounded-full font-bold text-base transition-all hover:opacity-90 active:scale-[0.98] mt-4 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           style={{
             backgroundColor: "var(--color-primary)",
             color: "var(--color-white)",

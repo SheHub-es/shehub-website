@@ -1,29 +1,40 @@
+"use client";
+
 import HeroLayout from "@/sections/shared/heroLayout/HeroLayout";
 import ImageSection from "@/sections/home/hero/components/ImageSection";
 import HeroText from "@/sections/home/hero/components/TypewriterAnimation";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function Hero() {
+  const { t } = useTranslation();
   return (
     <HeroLayout
       id="home"
-      eyebrow="Join SheHub as a collaborator"
+      eyebrow={t("home.hero.eyebrow")}
       title={
         <>
           <p className="whitespace-pre-line">
-            {`Real tech
-            experience for
-            women in`}
+            {t("home.hero.titlePrefix")}
           </p>
 
           <div className="mb-10 relative">
-            <HeroText />
+            <HeroText
+              roleStrings={[
+                t("home.hero.roleDev"),
+                t("home.hero.roleUX"),
+                t("home.hero.rolePM"),
+                t("home.hero.roleData"),
+                t("home.hero.roleMarketing"),
+                t("home.hero.roleQA"),
+              ]}
+            />
           </div>
         </>
       }
-      paragraph="SheHub connects early-career talent and experienced mentors to work on real-world, collaborative projects that are built and shipped — just like in a tech company."
+      paragraph={t("home.hero.paragraph")}
       buttons={[
-        { text: "Join a real project", variant: "primary-primary", href: "/auth" },
-        { text: "Mentor a team", variant: "secondary-primary", href: "/mentors" },
+        { text: t("home.hero.ctaProject"), variant: "primary-primary", href: "/auth" },
+        { text: t("home.hero.ctaMentor"), variant: "secondary-primary", href: "/mentors" },
       ]}
       imageComponent={
         <div
