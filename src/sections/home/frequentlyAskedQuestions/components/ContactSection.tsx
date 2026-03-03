@@ -1,7 +1,11 @@
+"use client";
+
 import Button from "@/components/ui/Button"
 import Link from "next/link"
+import { useTranslation } from "@/hooks/useTranslation"
 
 const ContactSection = () => {
+  const { t } = useTranslation();
   return (
     <div
       className="
@@ -17,7 +21,7 @@ const ContactSection = () => {
       "
     >
       <h2 className="font-[var(--font-weight-heavy)] text-size-600 md:text-text-size-700 leading-[var(--spacing-line-height-heading-4)]">
-        Still have questions?
+        {t('home.faq.contactTitle')}
       </h2>
 
       <p
@@ -29,7 +33,7 @@ const ContactSection = () => {
           font-secondary
         "
       >
-        We are here to help, do not hesitate and write us!
+        {t('home.faq.contactText')}
       </p>
       <Link href="/contact">
         <Button
@@ -38,7 +42,7 @@ const ContactSection = () => {
           shape="rounded"
           className="w-[234px]"
         >
-          Contact us
+          {t('home.faq.contactCta')}
         </Button>
       </Link>
 

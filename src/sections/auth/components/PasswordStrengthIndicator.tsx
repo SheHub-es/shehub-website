@@ -27,10 +27,8 @@ export function PasswordStrengthIndicator({ password }: PasswordStrengthIndicato
     { label: t('password.strength.special'), met: checks.special },
   ];
 
-  // No mostrar nada si no hay contraseña
   if (!password) return null;
 
-  // Desaparecer cuando todo está correcto
   if (allMet) return null;
 
   return (

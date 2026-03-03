@@ -1,26 +1,14 @@
+"use client";
+
 import { Card } from '@/components/ui/Card'
 import SectionWrapper from '@/sections/shared/sectionWrapper/SectionWrapper'
+import { useTranslation } from '@/hooks/useTranslation'
 
-const impactProps = [
-  {
-    title: "100+",
-    description: "Women joined the community in our first month"
-  },
-  {
-    title: "3+",
-    description: "Active teams working across design, dev, product, and more"
-  },
-  {
-    title: "760+",
-    description: "Hours invested by contributors in real workflows"
-  },
-  {
-    title: "5+",
-    description: "Interviews landed by contributors in our first month"
-  }
-]
+const IMPACT_TITLES = ['100+', '3+', '760+', '5+'];
+const IMPACT_KEYS = ['home.impact.stat1', 'home.impact.stat2', 'home.impact.stat3', 'home.impact.stat4'] as const;
 
 export const Impact = () => {
+  const { t } = useTranslation();
   return (
     <SectionWrapper
       id="our-impact"
@@ -29,11 +17,11 @@ export const Impact = () => {
       {/* HEADER */}
       <div className="flex flex-col justify-center items-center gap-3 md:gap-4 text-center">
         <h2 className="text-white text-size-800 md:text-size-900 font-bold tracking-tight font-primary">
-          Our Impact So Far
+          {t('home.impact.title')}
         </h2>
 
         <p className="font-secondary text-size-400 md:text-size-500 leading-line-height-body-1 text-white">
-          SheHub is already helping women build confidence, portfolios and real experience.
+          {t('home.impact.subtitle')}
         </p>
       </div>
 
@@ -52,12 +40,12 @@ export const Impact = () => {
           justify-items-center
         "
       >
-        {impactProps.map((item, index) => (
+        {IMPACT_TITLES.map((title, index) => (
           <Card
             key={index}
             type="nonClickable"
-            title={item.title}
-            description={item.description}
+            title={title}
+            description={t(IMPACT_KEYS[index])}
             color="white"
             radius="lg"
             tone="impact"

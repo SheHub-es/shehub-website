@@ -1,8 +1,12 @@
+"use client";
+
 import Button from '@/components/ui/Button'
 import HeroText from '@/sections/home/hero/components/TypewriterAnimation'
+import { useTranslation } from '@/hooks/useTranslation'
 import Link from 'next/link'
 
 const TextSection = () => {
+  const { t } = useTranslation();
   return (
     <div
       className="
@@ -29,7 +33,7 @@ const TextSection = () => {
             md:text-[length:var(--text-size-500)]
           "
         >
-          Join SheHub as a collaborator
+          {t('home.hero.eyebrow')}
         </span>
 
         <h1
@@ -42,10 +46,19 @@ const TextSection = () => {
             flex flex-col
           "
         >
-          <div>Real tech experience for women in</div>
+          <div>{t('home.hero.titlePrefix')}</div>
 
           <div className="relative h-[60px] md:h-[80px]">
-            <HeroText />
+            <HeroText
+              roleStrings={[
+                t('home.hero.roleDev'),
+                t('home.hero.roleUX'),
+                t('home.hero.rolePM'),
+                t('home.hero.roleData'),
+                t('home.hero.roleMarketing'),
+                t('home.hero.roleQA'),
+              ]}
+            />
           </div>
         </h1>
 
@@ -60,9 +73,7 @@ const TextSection = () => {
           "
           style={{ fontFamily: 'var(--font-secondary)' }}
         >
-          SheHub connects early-career talent and experienced mentors to work on
-          real-world, collaborative projects that are built and shipped — just
-          like in a tech company.
+          {t('home.hero.paragraph')}
         </p>
       </div>
 
@@ -81,7 +92,7 @@ const TextSection = () => {
             className="w-full sm:w-auto min-w-[188px] min-h-[48px] font-[var(--font-weight-default)]"
             style={{ fontFamily: 'var(--font-secondary)' }}
           >
-            Join a real project
+            {t('home.hero.ctaProject')}
           </Button>
         </Link>
 
@@ -93,7 +104,7 @@ const TextSection = () => {
             className="w-full sm:w-auto text-black min-w-[166px] min-h-[48px]"
             style={{ fontFamily: 'var(--font-secondary)' }}
           >
-            Mentor a team
+            {t('home.hero.ctaMentor')}
           </Button>
         </Link>
       </div>

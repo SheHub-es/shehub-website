@@ -1,15 +1,18 @@
 import Typewriter from 'typewriter-effect';
 
-export default function HeroText() {
+type HeroTextProps = {
+  roleStrings?: string[];
+};
 
-  const roleStrings = [
+export default function HeroText({ roleStrings }: HeroTextProps) {
+  const strings = roleStrings?.length ? roleStrings : [
     "development",
     "UX/UI Design",
     "Product Management",
     "Data",
     "Product Marketing",
     "QA",
-  ]
+  ];
 
   return (
     <div
@@ -27,7 +30,7 @@ export default function HeroText() {
     >
       <Typewriter
         options={{
-          strings: roleStrings,
+          strings,
           autoStart: true,
           loop: true,
           delay: 30,

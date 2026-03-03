@@ -19,15 +19,12 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   
   const {
-    // Forgot Password
     forgotEmail,
     setForgotEmail,
     forgotLoading,
     forgotMessage,
     forgotType,
     handleForgotPassword,
-    
-    // Reset Password
     newPassword,
     setNewPassword,
     confirmPassword,
@@ -38,10 +35,8 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
     handleResetPassword,
   } = usePasswordReset();
 
-  // Auto-submit cuando viene con token válido
   useEffect(() => {
     if (token && isOpen) {
-      // Validar token al abrir
       validateToken(token);
     }
   }, [token, isOpen]);
@@ -88,7 +83,6 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
           <X className="w-6 h-6" />
         </button>
 
-        {/* Logo */}
         <div className="flex justify-center mb-4">
           <Image
             src={logoShehub}
@@ -99,7 +93,6 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
           />
         </div>
 
-        {/* Título dinámico */}
         <h3 className="text-2xl font-bold text-center mb-2" style={{ color: 'var(--color-foreground)' }}>
           {token ? t('passwordReset.reset.title') : t('passwordReset.forgot.title')}
         </h3>
@@ -110,7 +103,6 @@ export default function PasswordResetModal({ isOpen, onClose, token }: PasswordR
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {!token ? (
-            /* ===== FORGOT PASSWORD FORM ===== */
             <>
               <div>
                 <label htmlFor="forgot-email" className="input-label">

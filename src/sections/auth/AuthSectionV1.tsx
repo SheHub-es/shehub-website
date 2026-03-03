@@ -18,9 +18,6 @@ function AuthSectionV1Content() {
     if (token) setShowResetModal(true);
   }, [token]);
 
-  // - firstWord: "women" / "mujeres" / "dones" (NEGRO)
-  // - gradLine2: resto de la primera línea (GRADIENTE)
-  // - gradLine3: segunda línea (GRADIENTE)
   const { firstWord, gradLine2, gradLine3 } = useMemo(() => {
     const raw = String(t("auth.sectionV1.title.highlight") ?? "").trim();
 
@@ -47,14 +44,12 @@ function AuthSectionV1Content() {
         <div className="w-full flex justify-center md:justify-start md:-mt-20">
           <div className="w-full max-w-xl text-left">
             <h1 className="auth-hero-title mb-4 md:mb-12 text-[color:var(--color-black)]">
-              {/* Línea 1 */}
               <span className="auth-hero-line1">
                 {t("auth.sectionV1.title.line1")}
               </span>
 
               <br />
 
-              {/* Línea 2 + 3 */}
               <span className="auth-hero-line2">
                 <span className="auth-hero-word">{firstWord}</span>{" "}
                 <span
