@@ -22,10 +22,10 @@ export default function WaitlistSection() {
 
   return (
     <section
-      className="w-full max-w-[100vw] min-h-screen flex justify-center px-6 md:px-8 pt-10 md:pt-12 font-primary overflow-x-hidden box-border"
+      className="w-full max-w-[100vw] min-h-screen flex justify-center px-6 md:px-4 pt-4 md:pt-10 font-primary overflow-x-hidden box-border"
       style={{ backgroundColor: "var(--color-background-light)" }}
     >
-      <div className="max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 lg:gap-12 items-start justify-items-stretch pt-14 sm:pt-16 md:pt-20 lg:pt-24 pb-10 sm:pb-12 md:pb-12 lg:pb-16 min-w-0">
+      <div className="max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 lg:gap-12 items-start justify-items-stretch sm:pt-10 md:pt-12 lg:pt-16 pb-10 sm:pb-12 md:pb-12 lg:pb-16 min-w-0">
         <div className="w-full min-w-0 md:-mt-20 relative z-0 overflow-hidden">
           <div className="w-full min-w-0 text-left overflow-hidden">
             <span

@@ -333,19 +333,19 @@ export const homeTranslations: TranslationObject = {
 
   // Partners
   'home.partners.title': {
-    es: 'Nuestros sponsors y socios',
+    es: 'Nuestras alianzas y sponsors',
     en: 'Our sponsors and partners',
-    ca: 'Els nostres sponsors i socis',
+    ca: 'Les nostres aliances i sponsors',
   },
   'home.partners.paragraph': {
-    es: 'En SheHub estamos orgullosas de contar con una red de sponsors y socios que comparten nuestra misión de empoderar a mujeres en tech, diseño e innovación digital. Si tu organización cree en el cambio real y quiere ayudar a formar la próxima generación de talento digital, contacta con nosotras.',
+    es: 'En SheHub estamos orgullosas de contar con una red de organizaciones aliadas y sponsors que comparten nuestra misión de empoderar a mujeres en tech, diseño e innovación digital. Si tu organización cree en el cambio real y quiere ayudar a formar la próxima generación de talento digital, contacta con nosotras.',
     en: "At SheHub, we're proud to be backed by an incredible network of sponsors and partners who share our mission to empower women in tech, design, and digital innovation. If your organization believes in creating real change and wants to help shape the next generation of digital talent, get in touch.",
-    ca: "A SheHub estem orgulloses de comptar amb una xarxa de sponsors i socis que comparteixen la nostra missió d'empoderar dones en tech, disseny i innovació digital. Si la teva organització creu en el canvi real i vol ajudar a formar la propera generació de talent digital, contacta amb nosaltres.",
+    ca: "A SheHub estem orgulloses de comptar amb una xarxa d'organitzacions aliades i sponsors que comparteixen la nostra missió d'empoderar dones en tech, disseny i innovació digital. Si la teva organització creu en el canvi real i vol ajudar a formar la propera generació de talent digital, contacta amb nosaltres.",
   },
   'home.partners.cta': {
-    es: 'Ser socio',
+    es: 'Ser aliada o aliado',
     en: 'Become a partner',
-    ca: 'Ser soci',
+    ca: 'Ser aliada o aliat',
   },
 
   // Testimonials

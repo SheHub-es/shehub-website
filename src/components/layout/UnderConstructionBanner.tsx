@@ -2,13 +2,9 @@
 
 import { useTranslation } from "@/hooks/useTranslation";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function UnderConstructionBanner() {
   const { t } = useTranslation();
-  const pathname = usePathname();
-
-  if (pathname === "/join") return null;
 
   return (
     <div

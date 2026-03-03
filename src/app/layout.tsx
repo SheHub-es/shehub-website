@@ -1,13 +1,13 @@
 import Footer from "@/components/layout/footer/Footer";
 import Navbar from "@/components/layout/navbar/Navbar";
-import ScrollToTop from "@/components/layout/ScrollToTop";
 import ScrollbarVisibility from "@/components/layout/ScrollbarVisibility";
+import ScrollToTop from "@/components/layout/ScrollToTop";
 import UnderConstructionBanner from "@/components/layout/UnderConstructionBanner";
 import { AppProviders } from "@/lib/providers";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
 import { Nunito, Ubuntu } from "next/font/google";
+import { cookies } from "next/headers";
 
 
 const ubuntu = Ubuntu({
@@ -24,13 +24,26 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shehub.es"),
-  title: "SheHub",
+  title: {
+    default: "SheHub — Comunidad tech para mujeres",
+    template: "%s | SheHub",
+  },
   description:
-    "Reusable components, styles, and documentation for building SheHub’s digital products.",
+    "SheHub conecta a recién graduadas y profesionales que buscan su primera experiencia en tech con mentoras con experiencia para trabajar en proyectos reales. Mentoría, experiencia y comunidad sin coste. Empoderamos a mujeres en tech, diseño e innovación digital.",
+  keywords: [
+    "mujeres en tech",
+    "mentoría tech",
+    "comunidad tech",
+    "proyectos colaborativos",
+    "carrera tech",
+    "SheHub",
+  ],
+  authors: [{ name: "SheHub", url: "https://shehub.es" }],
+  creator: "SheHub",
   openGraph: {
-    title: "SheHub",
+    title: "SheHub — Comunidad tech para mujeres",
     description:
-      "A centralized system of UI components and design guidelines for SheHub projects.",
+      "Conectamos a recién graduadas y a quienes buscan su primera experiencia en tech con mentoras para proyectos reales. Mentoría, experiencia y comunidad sin coste. Únete a SheHub.",
     url: "https://shehub.es",
     siteName: "SheHub",
     images: [
@@ -38,11 +51,21 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "SheHub Preview",
+        alt: "SheHub — Comunidad tech para mujeres",
       },
     ],
-    locale: "en_US",
+    locale: "es_ES",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SheHub — Comunidad tech para mujeres",
+    description:
+      "Conectamos a recién graduadas y a quienes buscan su primera experiencia en tech con mentoras para proyectos reales. Mentoría, experiencia y comunidad sin coste.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

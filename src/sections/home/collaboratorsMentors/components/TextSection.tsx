@@ -47,7 +47,7 @@ function TextSection({
         <div className="text-black font-(--font-weight-heavy) text-size-300 md:text-size-400">
           {sectionHeading}
         </div>
-        <div className="text-black font-(--font-weight-heavy) text-size-500 md:text-size-900 tracking-tight">
+        <div className="text-black font-(--font-weight-heavy) text-size-500 md:text-size-900 tracking-tight leading-tight">
           {primaryHeading}
         </div>
         <div className="text-black font-(--font-weight-default) leading-[var(--spacing-line-height-body-2)] text-size-300 md:text-size-400 mt-[12px]" style={{ fontFamily: 'var(--font-secondary)' }}>

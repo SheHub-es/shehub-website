@@ -21,4 +21,34 @@ export const underConstructionTranslations: TranslationObject = {
     en: "Coming soon",
     ca: "Properament",
   },
+  "underConstruction.legalPlaceholder": {
+    es: "Esta página está en construcción. Estará disponible muy pronto.",
+    en: "This page is under construction. It will be available soon.",
+    ca: "Aquesta pàgina està en construcció. Estarà disponible molt aviat.",
+  },
+  "legal.privacyPolicy": {
+    es: "Política de privacidad",
+    en: "Privacy Policy",
+    ca: "Política de privacitat",
+  },
+  "legal.termsOfService": {
+    es: "Términos de uso",
+    en: "Terms of Service",
+    ca: "Termes d'ús",
+  },
+  "legal.privacyAndTerms": {
+    es: "Privacidad y términos",
+    en: "Privacy and terms",
+    ca: "Privacitat i termes",
+  },
+  "legal.backToHome": {
+    es: "Volver al inicio",
+    en: "Back to home",
+    ca: "Tornar a l'inici",
+  },
+  "legal.cookieSettings": {
+    es: "Configuración de cookies",
+    en: "Cookie settings",
+    ca: "Configuració de galetes",
+  },
 };

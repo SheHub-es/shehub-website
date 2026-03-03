@@ -84,9 +84,12 @@ const Footer = () => {
                 {link.label}
               </Link>
             ))}
-            <button className="text-purple-700 underline hover:text-purple-600 pb-4 lg:pb-0 text-size-200 lg:text-size-300">
-              Cookies Settings
-            </button>
+            <Link
+              href="/cookie-settings"
+              className="text-purple-700 underline hover:text-purple-600 visited:text-textlink-visited text-size-200 lg:text-size-300 pb-4 lg:pb-0 cursor-pointer"
+            >
+              Cookie settings
+            </Link>
           </div>
         </div>
       </div>
