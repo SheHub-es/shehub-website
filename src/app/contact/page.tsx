@@ -6,10 +6,13 @@ import Checkbox from "@/components/ui/Checkbox";
 import { Icon } from "@/components/ui/Icon";
 import { Input } from "@/components/ui/Input";
 import { TextArea } from "@/components/ui/TextArea";
+import { useTranslation } from "@/hooks/useTranslation";
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper";
 import { useState } from "react";
 
 export default function ContactPage() {
+  const { t } = useTranslation();
+  const comingSoonPlaceholder = t("underConstruction.comingSoon");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -98,9 +101,10 @@ export default function ContactPage() {
                 type="text"
                 value={formData.fullName}
                 onChange={handleInputChange}
-                placeholder=""
+                placeholder={comingSoonPlaceholder}
                 className="w-full"
                 required
+                disabled
               />
 
               <Input
@@ -109,9 +113,10 @@ export default function ContactPage() {
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                placeholder=""
+                placeholder={comingSoonPlaceholder}
                 className="w-full"
                 required
+                disabled
               />
 
               <TextArea
@@ -119,9 +124,10 @@ export default function ContactPage() {
                 name="message"
                 value={formData.message}
                 onChange={handleTextAreaChange}
-                placeholder="Type your message..."
+                placeholder={comingSoonPlaceholder}
                 className="w-full"
                 required
+                disabled
               />
 
               <Checkbox
@@ -129,6 +135,7 @@ export default function ContactPage() {
                 checked={formData.acceptTerms}
                 onChange={handleCheckboxChange}
                 required
+                disabled
                 checkboxProps={{ name: "acceptTerms" }}
               />
 
@@ -138,6 +145,7 @@ export default function ContactPage() {
                 size="lg"
                 shape="rounded"
                 className="w-full md:w-auto h-12 lg:h-[48px] lg:w-[106px] lg:min-w-[106px] lg:max-w-[106px]"
+                disabled
               >
                 Submit
               </Button>

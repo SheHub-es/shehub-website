@@ -497,6 +497,46 @@ html {
   scroll-behavior: smooth;
 }
 
+/* SheHub scrollbar (purple thumb), transparent track */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-purple-400) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 1px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-purple-400);
+  border-radius: 1px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+html.scrollbar-visible *::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-purple-500);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: var(--color-purple-600);
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+}
+
 @layer base {
   body {
     @apply font-primary;
@@ -508,6 +548,16 @@ html {
   outline: 0.25rem solid var(--color-purple-600);
   outline-offset: 0.125rem;
   position: relative;
+}
+
+/* Checkbox: focus ring on the box only, not the whole label; hidden input without outline */
+.checkbox-input-sr-only:focus-visible {
+  outline: none;
+}
+
+.checkbox-label:focus-within .checkbox-box {
+  outline: 0.25rem solid var(--color-purple-600);
+  outline-offset: 0;
 }
 
 .focus-square:focus-visible {
@@ -620,8 +670,6 @@ html {
     font-weight: var(--font-weight-heavy);
     letter-spacing: -0.02em;
     line-height: 1.05;
-
-    /* EN por defecto */
     font-size: clamp(2.75rem, 5vw, 3.75rem);
   }
 
@@ -629,9 +677,6 @@ html {
     color: var(--color-black);
   }
 
-  /* Desktop: queremos exactamente 3 líneas.
-     Línea 1 NO se parte. Línea 2 NO se parte.
-     La línea 3 la fuerza el <br/> interno del gradiente. */
   @media (min-width: 768px) {
     .auth-hero-line1 {
       white-space: nowrap;
@@ -641,7 +686,14 @@ html {
     }
   }
 
-  /* ES/CA: bajamos un pelín para evitar “al” colgando */
+  .auth-hero-title--wrap {
+    text-wrap: balance;
+  }
+  .auth-hero-title--wrap .auth-hero-line1,
+  .auth-hero-title--wrap .auth-hero-line2 {
+    white-space: normal;
+  }
+
   html:lang(es) .auth-hero-title,
   html:lang(ca) .auth-hero-title {
     font-size: clamp(2.35rem, 4.2vw, 3.25rem);

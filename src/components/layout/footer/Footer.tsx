@@ -25,8 +25,10 @@ const Footer = () => {
             aria-label="SheHub homepage"
             className="block shrink-0 transition-opacity hover:opacity-90 px-6 lg:px-0"
           >
-            {/* FIX: Using the new FooterLogo with the correct size. */}
-            <FooterLogo width={262} height={72} />
+            {/* Smaller logo on mobile, full size on md+ */}
+            <span className="inline-block origin-left max-md:scale-[0.5] md:scale-100">
+              <FooterLogo width={262} height={72} />
+            </span>
           </Link>
 
           <div className="px-6 lg:px-0">
@@ -82,9 +84,12 @@ const Footer = () => {
                 {link.label}
               </Link>
             ))}
-            <button className="text-purple-700 underline hover:text-purple-600 pb-4 lg:pb-0 text-size-200 lg:text-size-300">
-              Cookies Settings
-            </button>
+            <Link
+              href="/cookie-settings"
+              className="text-purple-700 underline hover:text-purple-600 visited:text-textlink-visited text-size-200 lg:text-size-300 pb-4 lg:pb-0 cursor-pointer"
+            >
+              Cookie settings
+            </Link>
           </div>
         </div>
       </div>

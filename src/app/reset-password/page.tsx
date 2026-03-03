@@ -17,8 +17,7 @@ function ResetPasswordContent() {
 
   const handleClose = () => {
     setIsOpen(false);
-    // Redirigir al login después de cerrar
-    window.location.href = '/auth'; // Ajusta según tu ruta de login
+    window.location.href = '/auth';
   };
 
   if (!token) {

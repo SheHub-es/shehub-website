@@ -1,6 +1,5 @@
 "use client";
 
-import GoogleLogo from '@/components/icons/custom/GoogleLogo';
 import LinkedinLogo from '@/components/icons/custom/LinkedinLogo';
 import Checkbox from '@/components/ui/Checkbox';
 import {
@@ -15,8 +14,6 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { PasswordMatchIndicator } from '@/sections/auth/components/PasswordMatchIndicator';
 import PasswordResetModal from '@/sections/auth/components/PasswordResetModal';
 import { PasswordStrengthIndicator } from '@/sections/auth/components/PasswordStrengthIndicator';
-import type { GoogleAuthError, GoogleAuthResponse } from '@/types/google-oauth';
-import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from "react";
 import Popup from "./Popup";
@@ -28,66 +25,12 @@ export default function AuthForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showPasswordResetModal, setShowPasswordResetModal] = useState(false);
   
-  // Google OAuth state
-  const [googlePopupMessage, setGooglePopupMessage] = useState("");
-  const [googlePopupType, setGooglePopupType] = useState<"success" | "error">("success");
-  const [showGooglePopup, setShowGooglePopup] = useState(false);
+  const [oauthPopupMessage, setOauthPopupMessage] = useState("");
+  const [oauthPopupType, setOauthPopupType] = useState<"success" | "error">("success");
+  const [showOauthPopup, setShowOauthPopup] = useState(false);
   
   const loginHook = useLoginForm();
   const registerHook = useRegisterForm();
-
-  const handleGoogleSuccess = async (credentialResponse: CredentialResponse) => {
-    if (!credentialResponse.credential) {
-      setGooglePopupMessage("Google login failed - no credential received");
-      setGooglePopupType("error");
-      setShowGooglePopup(true);
-      return;
-    }
-
-    try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
-      
-      const response = await fetch(`${apiUrl}/auth/user/oauth/google`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken: credentialResponse.credential }),
-      });
-
-      if (!response.ok) {
-        const errorData: GoogleAuthError = await response.json();
-        const errorMessage = errorData.message || errorData.error || "Google authentication failed";
-        setGooglePopupMessage(errorMessage);
-        setGooglePopupType("error");
-        setShowGooglePopup(true);
-        return;
-      }
-
-      const data: GoogleAuthResponse = await response.json();
-      
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
-
-      const successMessage = data.message || `Welcome ${data.user.firstName}!`;
-      setGooglePopupMessage(successMessage);
-      setGooglePopupType("success");
-      setShowGooglePopup(true);
-
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 1500);
-
-    } catch {
-      setGooglePopupMessage("Connection error. Check that the server is active.");
-      setGooglePopupType("error");
-      setShowGooglePopup(true);
-    }
-  };
-
-  const handleGoogleError = () => {
-    setGooglePopupMessage("Google authentication cancelled or failed");
-    setGooglePopupType("error");
-    setShowGooglePopup(true);
-  };
 
   const handleLinkedInLogin = () => {
     const clientId = process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID;
@@ -99,16 +42,14 @@ export default function AuthForm() {
 
     if (!clientId) {
       console.error('LinkedIn Client ID not configured in environment variables');
-      setGooglePopupMessage("LinkedIn authentication not configured");
-      setGooglePopupType("error");
-      setShowGooglePopup(true);
+      setOauthPopupMessage("LinkedIn authentication not configured");
+      setOauthPopupType("error");
+      setShowOauthPopup(true);
       return;
     }
 
-    // Guardar state para validar después
     sessionStorage.setItem('linkedin_oauth_state', state);
 
-    // Redirigir a LinkedIn OAuth
     window.location.href =
       `https://www.linkedin.com/oauth/v2/authorization` +
       `?response_type=code` +
@@ -163,7 +104,6 @@ export default function AuthForm() {
         aria-label={isLogin ? (t('auth.form.login.ariaLabel') || 'Login form') : (t('auth.form.signup.ariaLabel') || 'Sign up form')}
       >
         {isLogin ? (
-          /* Login Form */
           <div role="tabpanel" id="login-panel" aria-labelledby="login-tab">
             <div>
               <label htmlFor="login-email" className="input-label">{t('auth.field.email')}</label>
@@ -248,7 +188,6 @@ export default function AuthForm() {
             </button>
           </div>
         ) : (
-          /* Register Form */
           <div role="tabpanel" id="signup-panel" aria-labelledby="signup-tab">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1 w-full">
@@ -527,19 +466,6 @@ export default function AuthForm() {
 
         {/* OAuth providers */}
         <div className="flex gap-4 pt-1">
-          <button 
-            type="button" 
-            onClick={() => {
-              const googleBtn = document.querySelector('[aria-labelledby="button-label"]') as HTMLElement;
-              googleBtn?.click();
-            }}
-            className="flex-1 border border-[var(--color-neutral-300)] rounded-lg py-2 font-medium flex items-center justify-center gap-2 transition-all hover:bg-gray-50 active:scale-[0.98] cursor-pointer" 
-            style={{ color: "var(--color-foreground)" }}
-          >
-            <GoogleLogo className="w-5 h-5" />
-            {t('auth.social.google')}
-          </button>
-          
           <button
             type="button"
             onClick={handleLinkedInLogin}
@@ -561,17 +487,6 @@ export default function AuthForm() {
         )}
       </p>
 
-      {/* Hidden Google Login component - only render if clientId is available */}
-      {process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID && (
-        <div className="hidden">
-          <GoogleLogin
-            onSuccess={handleGoogleSuccess}
-            onError={handleGoogleError}
-            useOneTap
-          />
-        </div>
-      )}
-
       {/* Form validation popups */}
       {isLogin ? (
         <Popup 
@@ -589,12 +504,12 @@ export default function AuthForm() {
         />
       )}
 
-      {/* Google OAuth popup */}
+      {/* OAuth / LinkedIn popup */}
       <Popup 
-        message={googlePopupMessage} 
-        type={googlePopupType} 
-        show={showGooglePopup} 
-        onClose={() => setShowGooglePopup(false)} 
+        message={oauthPopupMessage} 
+        type={oauthPopupType} 
+        show={showOauthPopup} 
+        onClose={() => setShowOauthPopup(false)} 
       />
 
       {/* Password reset modal */}

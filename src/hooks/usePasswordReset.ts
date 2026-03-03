@@ -3,7 +3,6 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { useState } from 'react';
 
 interface UsePasswordResetReturn {
-  // Forgot Password (Step 1)
   forgotEmail: string;
   setForgotEmail: (email: string) => void;
   forgotLoading: boolean;
@@ -26,7 +25,6 @@ export const usePasswordReset = (): UsePasswordResetReturn => {
   const { t } = useTranslation();
   const { language } = useLanguage();
   
-  // Forgot Password State
   const [forgotEmail, setForgotEmail] = useState('');
   const [forgotLoading, setForgotLoading] = useState(false);
   const [forgotMessage, setForgotMessage] = useState('');
@@ -108,7 +106,6 @@ export const usePasswordReset = (): UsePasswordResetReturn => {
       setResetMessage(message);
       setResetType('success');
 
-      // Redirigir al login después de 2 segundos
       setTimeout(() => {
         window.location.href = '/auth';
       }, 2000);
@@ -122,15 +119,12 @@ export const usePasswordReset = (): UsePasswordResetReturn => {
   };
 
   return {
-    // Forgot Password
     forgotEmail,
     setForgotEmail,
     forgotLoading,
     forgotMessage,
     forgotType,
     handleForgotPassword,
-    
-    // Reset Password
     newPassword,
     setNewPassword,
     confirmPassword,

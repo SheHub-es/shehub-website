@@ -1,5 +1,3 @@
-// src/components/icons/custom/FooterLogo.tsx
-
 import SheHubLogo from '@/assets/images/logos/sheHub/logo_shehub.png';
 import Image from 'next/image';
 
@@ -8,7 +6,6 @@ type FooterLogoProps = {
   height?: number;
 };
 
-// This is a dedicated logo component for the footer, with the correct sizing.
 export default function FooterLogo({ width = 128, height = 32 }: FooterLogoProps) {
   return (
     <div
@@ -19,7 +16,6 @@ export default function FooterLogo({ width = 128, height = 32 }: FooterLogoProps
         src={SheHubLogo}
         alt="SheHub Logo for Footer"
         fill
-        priority
         sizes={`${width}px`}
         className="object-contain"
       />

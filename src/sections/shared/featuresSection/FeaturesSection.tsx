@@ -41,7 +41,6 @@ export default function FeaturesSection({
   backgroundClassName = "bg-background",
   layout = "centered",
 }: FeaturesSectionProps) {
-  // Mapeo de columnas a clases de Tailwind
   const gridColsMap: Record<number, string> = {
     1: "grid-cols-1",
     2: "grid-cols-2",

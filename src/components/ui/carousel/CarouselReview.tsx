@@ -40,7 +40,7 @@ export const CarouselReview: React.FC<CarouselReviewProps> = ({
       <p className="self-stretch text-size-500 font-heavy font-secondary text-black leading-line-height-body-1 text-center px-0">
         {quote}
       </p>
-      {/* Flechas en móvil - entre texto e imagen, separadas en los extremos */}
+      {/* Mobile arrows - between text and image, spaced at the ends */}
       {arrows && (
         <div className="md:hidden w-full flex items-center justify-between -mx-12 relative z-10">
           {arrows}

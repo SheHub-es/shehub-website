@@ -54,7 +54,7 @@ export function ReviewVariant(props: ReviewVariantProps) {
           "md:w-full md:max-w-[1280px] md:min-h-0 md:py-0",
         )}
       >
-        {/* Desktop: flechas a los lados */}
+        {/* Desktop: arrows on the sides */}
         <div className="hidden md:flex items-center gap-4">
           <Icon
             icon={ArrowLeft}

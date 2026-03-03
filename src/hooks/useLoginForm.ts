@@ -40,35 +40,10 @@ export function useLoginForm() {
     }
 
     setIsLoading(true);
-
-    try {
-      const response = await fetch("http://localhost:8080/auth/user/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setPopupMessage(data.message || t('login.error.failed'));
-        setPopupType("error");
-        setShowPopup(true);
-        return;
-      }
-
-      setPopupMessage(t('login.success'));
-      setPopupType("success");
-      setShowPopup(true);
-
-      
-    } catch {
-      setPopupMessage(t('login.error.connection'));
-      setPopupType("error");
-      setShowPopup(true);
-    } finally {
-      setIsLoading(false);
-    }
+    setPopupMessage(t("auth.unavailable"));
+    setPopupType("error");
+    setShowPopup(true);
+    setIsLoading(false);
   };
 
   return {

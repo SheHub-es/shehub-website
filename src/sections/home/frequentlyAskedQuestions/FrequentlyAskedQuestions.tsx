@@ -1,8 +1,12 @@
+"use client";
+
 import AccordionSection from '@/sections/home/frequentlyAskedQuestions/components/AccordionSection'
 import ContactSection from '@/sections/home/frequentlyAskedQuestions/components/ContactSection'
 import SectionWrapper from '@/sections/shared/sectionWrapper/SectionWrapper'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export const FrequentlyAskedQuestions = () => {
+  const { t } = useTranslation();
   return (
     <SectionWrapper
       id="faq"
@@ -28,7 +32,7 @@ export const FrequentlyAskedQuestions = () => {
         "
       >
         <h2 className="font-[var(--font-weight-heavy)] text-[length:var(--text-size-900)] leading-[var(--spacing-line-height-heading-2)]">
-          FAQs
+          {t('home.faq.title')}
         </h2>
 
         <h2
@@ -40,8 +44,7 @@ export const FrequentlyAskedQuestions = () => {
           "
           style={{ fontFamily: "var(--font-secondary)" }}
         >
-          Welcome to our FAQ section, your place for quick, honest answers about
-          how SheHub works, who it’s for, and how you can get involved.
+          {t('home.faq.intro')}
         </h2>
       </div>
 

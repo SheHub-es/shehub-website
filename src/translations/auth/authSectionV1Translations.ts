@@ -37,5 +37,10 @@ export const authSectionV1Translations: TranslationObject = {
     en: 'Build your portfolio and network of contacts',
     ca: 'Construeix el teu portafoli i xarxa de contactes',
   },
+  'auth.sectionV1.benefits.ariaLabel': {
+    es: 'Lista de beneficios',
+    en: 'Benefits list',
+    ca: 'Llista de beneficis',
+  },
 };
 

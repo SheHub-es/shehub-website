@@ -9,15 +9,20 @@ import { passwordIndicatorsTranslations } from '@/translations/auth/passwordIndi
 import { passwordResetModalTranslations } from '@/translations/auth/passwordResetModalTranslations'
 import { passwordResetTranslations } from '@/translations/auth/passwordResetTranslations'
 import { registerFormTranslations } from '@/translations/auth/registerFormTranslations'
+import { waitlistTranslations } from '@/translations/auth/waitlistTranslations'
 import { navigationMenuButtonTranslations } from '@/translations/layout/navbar/navigationMenuButtonTranslations'
 import { navigationMenuTranslations } from '@/translations/layout/navbar/navigationMenuTranslations'
+import { homeTranslations } from '@/translations/home/homeTranslations'
+import { underConstructionTranslations } from '@/translations/layout/underConstructionTranslations'
 import { testTranslations } from '@/translations/testTranslations'
 import type { TranslationObject } from '@/translations/types'
 
 export const translations: TranslationObject = {
   ...testTranslations,
+  ...homeTranslations,
   ...navigationMenuTranslations,
   ...navigationMenuButtonTranslations,
+  ...underConstructionTranslations,
   ...authFormTranslations,
   ...authTextV1Translations,
   ...authTextV2Translations,
@@ -29,6 +34,7 @@ export const translations: TranslationObject = {
   ...loginFormTranslations,
   ...passwordResetTranslations,
   ...registerFormTranslations,
+  ...waitlistTranslations,
 }
 
 export type { Language } from '@/translations/types'

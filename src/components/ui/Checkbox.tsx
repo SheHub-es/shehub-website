@@ -36,11 +36,9 @@ const Checkbox: React.FC<CheckboxProps> = ({
     <div className="flex flex-col gap-2" style={{ minWidth: 0, overflow: 'visible' }}>
       <label
         htmlFor={checkboxId}
-        tabIndex={disabled ? -1 : 0}
         className={cn(
-          'flex items-start gap-2 select-none rounded-sm transition-shadow outline-none w-full',
+          'checkbox-label flex items-start gap-2 select-none rounded-sm transition-shadow outline-none w-full',
           disabled ? 'cursor-not-allowed opacity-70' : 'cursor-pointer',
-          'focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:ring-primary'
         )}
         style={{ minWidth: 0, overflow: 'visible' }}
       >
@@ -55,12 +53,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
           aria-describedby={helperId}
           aria-required={required}
           {...checkboxProps}
-          className="sr-only"
+          className={cn('sr-only', 'checkbox-input-sr-only', checkboxProps?.className)}
         />
 
       <span
         className={cn(
-          'relative shrink-0 w-[18px] h-[18px] rounded-sm transition-all duration-150 flex items-center justify-center',
+          'checkbox-box relative shrink-0 w-[18px] h-[18px] rounded-sm transition-all duration-150 flex items-center justify-center',
           checked
             ? 'bg-primary border-2 border-primary hover:bg-purple-600 hover:border-purple-600'
             : 'bg-background-light border-2 border-neutral-300 hover:border-purple-600',

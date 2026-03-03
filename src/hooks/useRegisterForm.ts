@@ -41,7 +41,6 @@ export function useRegisterForm() {
     }));
   };
 
-  // ✅ Función para validar contraseña fuerte
   const validatePassword = (password: string): { isValid: boolean; error: string } => {
     if (password.length < 8) {
       return { isValid: false, error: t('register.error.password.minLength') };
@@ -67,7 +66,7 @@ export function useRegisterForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // ✅ Validación de campos vacíos
+    // Empty fields validation
     if (!form.firstName.trim() || !form.lastName.trim() || 
         !form.email.trim() || !form.password) {
       setPopupMessage(t('register.error.required'));
@@ -76,7 +75,6 @@ export function useRegisterForm() {
       return;
     }
 
-    // ✅ Validación de aceptación de política de privacidad
     if (!form.acceptTerms) {
       setPopupMessage(t('register.error.terms'));
       setPopupType("error");
@@ -84,7 +82,7 @@ export function useRegisterForm() {
       return;
     }
 
-    // ✅ Validación de nombre y apellido
+    // First and last name validation
     const namePattern = /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+(?:[\s'-][a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+)*$/;
     
     if (!namePattern.test(form.firstName.trim())) {
@@ -101,7 +99,6 @@ export function useRegisterForm() {
       return;
     }
 
-    // ✅ Validación de contraseña fuerte
     const passwordValidation = validatePassword(form.password);
     if (!passwordValidation.isValid) {
       setPopupMessage(passwordValidation.error);
@@ -110,7 +107,6 @@ export function useRegisterForm() {
       return;
     }
 
-    // ✅ Validación de coincidencia
     if (form.password !== form.confirmPassword) {
       setPopupMessage(t('register.error.password.mismatch'));
       setPopupType("error");
@@ -119,57 +115,10 @@ export function useRegisterForm() {
     }
 
     setIsLoading(true);
-
-    try {
-      // Excluir confirmPassword y acceptTerms antes de enviar al backend
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { confirmPassword, acceptTerms, ...registerData } = form;
-
-      const response = await fetch(
-        "http://localhost:8080/auth/user/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(registerData),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        const errorMessage = data.message || data.error || t('register.error.failed');
-        
-        setPopupMessage(errorMessage);
-        setPopupType("error");
-        setShowPopup(true);
-        return;
-      }
-
-      setPopupMessage(data.message || t('register.success'));
-      setPopupType("success");
-      setShowPopup(true);
-      setTimeout(() => {
-        setForm({
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-          desiredRole: "",
-          wantToBeMentor: false,
-          acceptTerms: false,
-        });
-      }, 2000);
-
-    } catch {
-      setPopupMessage(t('register.error.connection'));
-      setPopupType("error");
-      setShowPopup(true);
-    } finally {
-      setIsLoading(false);
-    }
+    setPopupMessage(t("auth.unavailable"));
+    setPopupType("error");
+    setShowPopup(true);
+    setIsLoading(false);
   };
 
   return {
