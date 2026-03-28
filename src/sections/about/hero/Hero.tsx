@@ -22,7 +22,7 @@ export default function AboutHero() {
       mainImage={HeroImage.src}
       alt="Women collaborating and innovating in tech, representing the SheHub community"
       buttons={[
-        { text: "Join a real project", variant: "primary-primary" },
+        { text: "Join a real project", variant: "primary-primary", href: "/join" },
       ]}
     />
   )

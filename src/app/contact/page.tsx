@@ -2,6 +2,7 @@
 
 import IconMail from "@/components/icons/IconMail";
 import Button from "@/components/ui/Button";
+import { CopyEmailTrigger } from "@/components/ui/CopyEmailTrigger";
 import Checkbox from "@/components/ui/Checkbox";
 import { Icon } from "@/components/ui/Icon";
 import { Input } from "@/components/ui/Input";
@@ -78,13 +79,10 @@ export default function ContactPage() {
             </p>
 
             <div className="flex items-center justify-center md:justify-start gap-3">
-              <Icon icon={IconMail} size="md" className="text-icon-default" aria-hidden="true" />
-              <a
-                href="mailto:info@shehub.es"
-                className="text-primary font-medium hover:underline"
-              >
-                info@shehub.es
-              </a>
+              <CopyEmailTrigger className="inline-flex items-center gap-3 cursor-pointer bg-transparent border-0 p-0 text-left font-inherit text-primary font-medium hover:underline">
+                <Icon icon={IconMail} size="md" className="text-icon-default shrink-0" aria-hidden="true" />
+                <span>info@shehub.es</span>
+              </CopyEmailTrigger>
             </div>
           </div>
 

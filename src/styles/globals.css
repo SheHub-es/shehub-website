@@ -303,6 +303,9 @@
 
   --input-border-default: var(--color-neutral-300);
   --input-border-hover: var(--color-neutral-400);
+  /* Figma: hover campo texto — borde 2px #6230F7, fondo #FEFEFE */
+  --input-border-hover-figma: #6230f7;
+  --input-bg-hover-figma: #fefefe;
   --input-border-focus: var(--color-primary);
   --input-border-error: var(--color-error);
   --input-border-success: var(--color-success);
@@ -318,6 +321,22 @@
   --input-ring-focus: rgba(120, 88, 255, 0.1);
   --input-ring-error: rgba(219, 51, 39, 0.1);
   --input-ring-success: rgba(13, 135, 94, 0.1);
+
+  /* Figma: foco teclado — trazo exterior 5px #6230F7, separación 2px blanca, campo 2px #D1D1D1, fondo #FEFEFE */
+  --input-focus-stroke-figma: #6230f7;
+  --input-focus-gap-figma: #ffffff;
+  --input-border-field-figma: #d1d1d1;
+  --input-bg-field-figma: #fefefe;
+  --input-focus-gap-width: 2px;
+  --input-focus-stroke-width: 5px;
+
+  /* Figma: dropdown ghost — trazo exterior 3px #6230F7, gap 2px blanco, radio interior 12px / marco 14px */
+  --dropdown-focus-stroke-width: 3px;
+  --dropdown-focus-gap-width: 2px;
+  --dropdown-focus-radius: 12px;
+  --dropdown-focus-outer-radius: 14px;
+  --dropdown-menu-bg-figma: #fefefe;
+  --dropdown-item-highlight-bg-figma: #e9e8ff;
 
   /* Input Dimensions */
   --input-border-radius: 12px;
@@ -544,18 +563,33 @@ html.scrollbar-visible *::-webkit-scrollbar-thumb,
   }
 }
 
-:focus-visible {
+/*
+ * Foco visible solo con teclado: <html class="user-is-tabbing"> (UserTabbingClass).
+ * Con ratón no debe aparecer anillo al hacer clic ni al hover.
+ */
+html:not(.user-is-tabbing) *:focus {
+  outline: none !important;
+}
+
+html.user-is-tabbing *:focus {
   outline: 0.25rem solid var(--color-purple-600);
   outline-offset: 0.125rem;
   position: relative;
 }
 
-/* Checkbox: focus ring on the box only, not the whole label; hidden input without outline */
-.checkbox-input-sr-only:focus-visible {
-  outline: none;
+/* Tailwind ring = box-shadow: quitar con ratón en botones */
+html:not(.user-is-tabbing) button:focus {
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  box-shadow: none !important;
 }
 
-.checkbox-label:focus-within .checkbox-box {
+/* Checkbox: sin outline en el input oculto; caja marcada solo con teclado */
+.checkbox-input-sr-only:focus {
+  outline: none !important;
+}
+
+html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
   outline: 0.25rem solid var(--color-purple-600);
   outline-offset: 0;
 }
@@ -589,27 +623,46 @@ html.scrollbar-visible *::-webkit-scrollbar-thumb,
              var(--input-padding-vertical) var(--input-padding-horizontal-left);
     font-size: var(--input-font-size);
     color: var(--input-text-default);
-    background-color: var(--input-bg-default);
-    border: var(--input-border-width-default) solid var(--input-border-default);
+    background-color: var(--input-bg-field-figma);
+    border: 2px solid var(--input-border-field-figma);
     border-radius: var(--input-border-radius);
-    transition: all 150ms ease-in-out;
+    transition: border-color 150ms ease-in-out, background-color 150ms ease-in-out,
+      box-shadow 150ms ease-in-out;
   }
 
   .input-base::placeholder {
     color: var(--input-text-placeholder);
   }
 
-  /* Hover State */
+  /* Hover State (Figma: 2px #6230F7, fondo #FEFEFE) */
   .input-base:hover:not(:disabled) {
-    border-color: var(--input-border-hover);
+    border-color: var(--input-border-hover-figma);
+    background-color: var(--input-bg-hover-figma);
   }
 
-  /* Focus State */
+  /* Foco con ratón: mismo borde que reposo; con teclado (user-is-tabbing): borde de foco */
   .input-base:focus {
-    outline: none;
-    border-width: var(--input-border-width-focus);
-    border-color: var(--input-border-focus);
+    outline: none !important;
     box-shadow: none;
+  }
+
+  html:not(.user-is-tabbing) .input-base:focus {
+    border-width: 2px;
+    border-color: var(--input-border-field-figma);
+    background-color: var(--input-bg-field-figma);
+  }
+
+  /* Figma focus: anillo morado + gap blanco (box-shadow); borde interior 2px gris (no aplica al select: .shehub-dropdown-trigger) */
+  html.user-is-tabbing
+    .input-base:focus:not(.input-error):not(.input-success):not(.shehub-dropdown-trigger) {
+    outline: none !important;
+    border-width: 2px;
+    border-color: var(--input-border-field-figma);
+    background-color: var(--input-bg-field-figma);
+    box-shadow:
+      0 0 0 var(--input-focus-gap-width) var(--input-focus-gap-figma),
+      0 0 0 calc(var(--input-focus-gap-width) + var(--input-focus-stroke-width))
+        var(--input-focus-stroke-figma);
   }
 
   /* Error State */
@@ -618,8 +671,48 @@ html.scrollbar-visible *::-webkit-scrollbar-thumb,
     border-color: var(--input-border-error);
   }
 
-  .input-error:focus {
-    box-shadow: 0 0 0 var(--input-ring-width) var(--input-ring-error);
+  html:not(.user-is-tabbing) .input-error:focus {
+    box-shadow: none !important;
+  }
+
+  html.user-is-tabbing .input-error:focus:not(.shehub-dropdown-trigger) {
+    outline: none !important;
+    border-width: 2px;
+    border-color: var(--input-border-error);
+    background-color: var(--input-bg-field-figma);
+    box-shadow:
+      0 0 0 var(--input-focus-gap-width) var(--input-focus-gap-figma),
+      0 0 0 calc(var(--input-focus-gap-width) + var(--input-focus-stroke-width))
+        var(--input-border-error);
+  }
+
+  /* Dropdown (input-base + shehub-dropdown-trigger): trazo 3px Figma */
+  html:not(.user-is-tabbing) .shehub-dropdown-trigger:focus {
+    box-shadow: none !important;
+  }
+
+  html.user-is-tabbing .shehub-dropdown-trigger:focus:not(.input-error) {
+    outline: none !important;
+    border-radius: var(--dropdown-focus-radius);
+    border-width: 2px;
+    border-color: var(--input-border-field-figma);
+    background-color: var(--input-bg-field-figma);
+    box-shadow:
+      0 0 0 var(--dropdown-focus-gap-width) var(--input-focus-gap-figma),
+      0 0 0 calc(var(--dropdown-focus-gap-width) + var(--dropdown-focus-stroke-width))
+        var(--input-focus-stroke-figma);
+  }
+
+  html.user-is-tabbing .shehub-dropdown-trigger.input-error:focus {
+    outline: none !important;
+    border-radius: var(--dropdown-focus-radius);
+    border-width: 2px;
+    border-color: var(--input-border-error);
+    background-color: var(--input-bg-field-figma);
+    box-shadow:
+      0 0 0 var(--dropdown-focus-gap-width) var(--input-focus-gap-figma),
+      0 0 0 calc(var(--dropdown-focus-gap-width) + var(--dropdown-focus-stroke-width))
+        var(--input-border-error);
   }
 
   /* Success State */
@@ -628,8 +721,19 @@ html.scrollbar-visible *::-webkit-scrollbar-thumb,
     border-color: var(--input-border-success);
   }
 
-  .input-success:focus {
-    box-shadow: 0 0 0 var(--input-ring-width) var(--input-ring-success);
+  html:not(.user-is-tabbing) .input-success:focus {
+    box-shadow: none !important;
+  }
+
+  html.user-is-tabbing .input-success:focus {
+    outline: none !important;
+    border-width: 2px;
+    border-color: var(--input-border-success);
+    background-color: var(--input-bg-field-figma);
+    box-shadow:
+      0 0 0 var(--input-focus-gap-width) var(--input-focus-gap-figma),
+      0 0 0 calc(var(--input-focus-gap-width) + var(--input-focus-stroke-width))
+        var(--input-border-success);
   }
 
   /* Disabled State */
@@ -661,6 +765,56 @@ html.scrollbar-visible *::-webkit-scrollbar-thumb,
 
   .input-helper.success {
     color: var(--input-border-success);
+  }
+
+  /* Contact / Input.tsx: el <input> interno nunca muestra outline (el marco es el wrapper) */
+  .sh-input-wrap input:focus {
+    outline: none !important;
+  }
+
+  /* Contact / Input.tsx: borde fuerte solo con teclado */
+  html:not(.user-is-tabbing) .sh-input-wrap:has(input:focus) {
+    box-shadow: none !important;
+  }
+
+  html:not(.user-is-tabbing) .sh-input-wrap--default:has(input:focus) {
+    border-color: rgb(212 212 212);
+  }
+
+  /* Input.tsx: hover Figma (borde #6230F7, fondo #FEFEFE) — no si está enfocado o deshabilitado */
+  .sh-input-wrap--default:hover:not(:has(input:focus)):not(:has(input:disabled)) {
+    border-color: var(--input-border-hover-figma);
+    background-color: var(--input-bg-hover-figma);
+  }
+
+  html.user-is-tabbing .sh-input-wrap--default:has(input:focus) {
+    border-width: 2px;
+    border-color: var(--input-border-field-figma);
+    background-color: var(--input-bg-field-figma);
+    box-shadow:
+      0 0 0 var(--input-focus-gap-width) var(--input-focus-gap-figma),
+      0 0 0 calc(var(--input-focus-gap-width) + var(--input-focus-stroke-width))
+        var(--input-focus-stroke-figma);
+  }
+
+  html.user-is-tabbing .sh-input-wrap--error:has(input:focus) {
+    border-width: 2px;
+    border-color: var(--input-border-error);
+    background-color: var(--input-bg-field-figma);
+    box-shadow:
+      0 0 0 var(--input-focus-gap-width) var(--input-focus-gap-figma),
+      0 0 0 calc(var(--input-focus-gap-width) + var(--input-focus-stroke-width))
+        var(--input-border-error);
+  }
+
+  html.user-is-tabbing .sh-input-wrap--success:has(input:focus) {
+    border-width: 2px;
+    border-color: var(--input-border-success);
+    background-color: var(--input-bg-field-figma);
+    box-shadow:
+      0 0 0 var(--input-focus-gap-width) var(--input-focus-gap-figma),
+      0 0 0 calc(var(--input-focus-gap-width) + var(--input-focus-stroke-width))
+        var(--input-border-success);
   }
 }
 

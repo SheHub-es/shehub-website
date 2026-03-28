@@ -21,8 +21,8 @@ const features = [
     icon: IconMapPinHouse,
   },
   {
-    title: "Zero cost, global reach",
-    description: "Join for free and work with peers from around the world.",
+    title: "Global community",
+    description: "Connect and collaborate with peers from around the world.",
     icon: IconEarth,
   },
 ];

@@ -9,6 +9,7 @@ const NavigationMenu = () => {
   const pathname = usePathname();
   const { t } = useTranslation();
 
+  // Recorrido: para volver a mostrarlo, añade { key: 'heritage.navLink', href: '/heritage' } al final del array (ruta viva: /heritage).
   const navItems = [
     { key: 'menu.item-1', href: '/collaborators' },
     { key: 'menu.item-2', href: '/mentors' },

@@ -6,6 +6,7 @@ import IconLinkedIn from '@/components/icons/IconLinkedIn';
 import IconMail from '@/components/icons/IconMail';
 import { Icon } from '@/components/ui/Icon';
 import NavigationMenu from '@/components/ui/NavigationMenu';
+import { CopyEmailTrigger } from '@/components/ui/CopyEmailTrigger';
 import Link from 'next/link';
 
 const legalLinks = [
@@ -36,13 +37,10 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center lg:gap-2 px-4 lg:px-0">
-            <a
-              href="mailto:info@shehub.es"
-              className="group flex items-center lg:gap-1 text-base text-purple-700 underline hover:text-purple-600 pb-1 lg:pb-0"
-            >
-              <Icon icon={IconMail} size="md" className="text-icon-default group-hover:text-icon-hover"/>
-              <span className='font-secondary text-size-300 mr-4'>info@shehub.es</span>
-            </a>
+            <CopyEmailTrigger className="group inline-flex items-center lg:gap-1 text-base text-purple-700 underline hover:text-purple-600 pb-1 lg:pb-0 cursor-pointer bg-transparent border-0 p-0 text-left font-inherit">
+              <Icon icon={IconMail} size="md" className="text-icon-default group-hover:text-icon-hover shrink-0" aria-hidden />
+              <span className="font-secondary text-size-300 mr-4">info@shehub.es</span>
+            </CopyEmailTrigger>
 
             <div className="flex gap-2 pb-4 lg:pb-0">
               <a

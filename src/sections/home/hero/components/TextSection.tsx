@@ -84,7 +84,7 @@ const TextSection = () => {
           gap-[16px]
         "
       >
-        <Link href="/auth">
+        <Link href="/join">
           <Button
             variant="primary-primary"
             size="sm"

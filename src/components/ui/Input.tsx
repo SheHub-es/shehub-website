@@ -1,7 +1,7 @@
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 import { cva } from "class-variance-authority";
-import { useId, useRef, useState } from "react";
+import { useId, useRef } from "react";
 
 interface InputProps {
   id?: string;
@@ -39,13 +39,6 @@ const inputWrapperVariants = cva(
         false: "",
       },
     },
-    compoundVariants: [
-      {
-        status: "default",
-        disabled: false,
-        class: "hover:border-purple-600",
-      },
-    ],
     defaultVariants: {
       status: "default",
       disabled: false,
@@ -86,39 +79,20 @@ export const Input: React.FC<InputProps> = ({
   onChange,
   ...props
 }) => {
-  const [isSelected, setIsSelected] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const generatedId = useId();
   const inputId = id || generatedId;
   const helperId = helperText ? `${inputId}-helper` : undefined;
 
-  const selectedClasses =
-    isSelected && !disabled
-      ? {
-        default: "border-purple-800",
-        error: "border-error",
-        success: "border-success",
-      }[status]
-      : "";
+  const wrapStatus =
+    status === "default"
+      ? "sh-input-wrap--default"
+      : status === "error"
+        ? "sh-input-wrap--error"
+        : "sh-input-wrap--success";
 
   const labelClasses = `${disabled ? "text-neutral-600" : "text-black"} font-secondary text-base font-bold leading-6`;
-
-  const handleMouseDown = () => {
-    if (!disabled) {
-      setIsSelected(true);
-    }
-  };
-
-  const handleBlur = () => {
-    setIsSelected(false);
-  };
-
-  const handleFocus = () => {
-    if (!disabled) {
-      setIsSelected(true);
-    }
-  };
 
   //when tabbing the component the wrapper gets focused and pressing space/enter will focus the input
   const handleWrapperKeyDown = (e: React.KeyboardEvent) => {
@@ -143,10 +117,10 @@ export const Input: React.FC<InputProps> = ({
 
       <div
         className={cn(
+          "sh-input-wrap",
+          wrapStatus,
           inputWrapperVariants({ status, disabled }),
-          selectedClasses,
         )}
-        onMouseDown={handleMouseDown}
         onClick={handleWrapperClick}
         tabIndex={disabled ? -1 : 0} //make the wrapper focusable
         onKeyDown={handleWrapperKeyDown}
@@ -159,8 +133,6 @@ export const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
           disabled={disabled}
           className={cn(inputFieldVariants({ disabled }), inputClassName)}
           style={{
