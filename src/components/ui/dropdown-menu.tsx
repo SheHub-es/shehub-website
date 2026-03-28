@@ -36,22 +36,22 @@ const DropdownMenuTriggerButton = React.forwardRef<
           ref={ref}
           {...props}
           className={cn(
+            "shehub-dropdown-trigger",
             "inline-flex w-full items-center justify-between gap-2",
-            "h-10 rounded-md border bg-transparent px-3 text-sm",
+            "min-h-11 h-12 rounded-[12px] border bg-transparent px-3 text-base",
             "border-[var(--color-neutral-300)] text-[var(--color-foreground)]",
+            "font-secondary font-normal leading-6 text-[#0e0e0e]",
             "hover:border-[var(--color-primary)]/80",
-            "focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/60",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]",
-            "data-[state=open]:ring-2 data-[state=open]:ring-[var(--color-primary)]",
-            "data-[state=open]:ring-offset-2 data-[state=open]:ring-offset-background",
-            "transition-colors",
+            "outline-none focus:outline-none",
+            "data-[state=open]:border-[var(--color-primary)] data-[state=open]:border-2",
+            "transition-[border-color,box-shadow,background-color] duration-150",
             className
           )}
         >
           <span className={cn(!label && "text-[var(--color-neutral-500)]")}>
             {label || placeholder}
           </span>
-          <ChevronDown className="h-4 w-4 shrink-0 opacity-80" />
+          <ChevronDown className="h-6 w-6 shrink-0 opacity-80 text-[#0e0e0e]" aria-hidden />
         </button>
       </DropdownMenuTrigger>
     );
@@ -89,7 +89,7 @@ const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-[var(--color-neutral-300)] bg-white",
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-[var(--color-neutral-300)] bg-[var(--dropdown-menu-bg-figma)]",
       "text-[var(--color-foreground)] shadow-lg",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -111,7 +111,13 @@ const DropdownMenuContent = React.forwardRef<
   }
 >(
   (
-    { className, sideOffset = 4, scrollMaxHeight = "max-h-60", ...props },
+    {
+      className,
+      sideOffset = 8,
+      scrollMaxHeight = "max-h-80",
+      children,
+      ...props
+    },
     ref
   ) => (
     <DropdownMenuPrimitive.Portal>
@@ -120,21 +126,26 @@ const DropdownMenuContent = React.forwardRef<
         side="bottom"
         align="start"
         sideOffset={sideOffset}
-        avoidCollisions={false}
+        collisionPadding={12}
         className={cn(
-          "z-50 min-w-[12rem] overflow-hidden rounded-md border border-[var(--color-neutral-300)] bg-white p-1",
-          "text-[var(--color-foreground)] shadow-lg",
+          "z-50 outline-none",
           "data-[state=open]:animate-in data-[state=closed]:animate-out",
           "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
           "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
-          "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-          className
+          "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2"
         )}
         {...props}
       >
-        <div className={cn("overflow-y-auto", scrollMaxHeight)}>
-          {props.children}
+        <div
+          className={cn(
+            "min-w-[12rem] overflow-y-auto overflow-x-hidden rounded-md border border-[var(--color-neutral-300)] bg-[var(--dropdown-menu-bg-figma)] py-1.5 px-1 shadow-lg",
+            "text-[var(--color-foreground)]",
+            scrollMaxHeight,
+            className
+          )}
+        >
+          {children}
         </div>
       </DropdownMenuPrimitive.Content>
     </DropdownMenuPrimitive.Portal>
@@ -143,9 +154,9 @@ const DropdownMenuContent = React.forwardRef<
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 
 const baseItem =
-  "relative flex cursor-default select-none items-center rounded-[6px] px-2 py-1.5 text-sm outline-none transition-colors " +
-  "data-[highlighted]:bg-[var(--color-primary)]/10 focus:bg-[var(--color-primary)]/10 " +
-  "data-[disabled]:pointer-events-none data-[disabled]:opacity-50 mx-1 my-1";
+  "relative flex min-h-12 cursor-default select-none items-center gap-3 rounded px-2 py-3 font-secondary text-base font-normal leading-6 text-[#0e0e0e] outline-none transition-colors " +
+  "data-[highlighted]:bg-[var(--dropdown-item-highlight-bg-figma)] data-[highlighted]:text-[#0e0e0e] " +
+  "data-[disabled]:pointer-events-none data-[disabled]:opacity-50";
 
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,

@@ -10,8 +10,10 @@ import { passwordResetModalTranslations } from '@/translations/auth/passwordRese
 import { passwordResetTranslations } from '@/translations/auth/passwordResetTranslations'
 import { registerFormTranslations } from '@/translations/auth/registerFormTranslations'
 import { waitlistTranslations } from '@/translations/auth/waitlistTranslations'
+import { copyEmailTranslations } from '@/translations/layout/copyEmailTranslations'
 import { navigationMenuButtonTranslations } from '@/translations/layout/navbar/navigationMenuButtonTranslations'
 import { navigationMenuTranslations } from '@/translations/layout/navbar/navigationMenuTranslations'
+import { heritageTranslations } from '@/translations/heritage/heritageTranslations'
 import { homeTranslations } from '@/translations/home/homeTranslations'
 import { underConstructionTranslations } from '@/translations/layout/underConstructionTranslations'
 import { testTranslations } from '@/translations/testTranslations'
@@ -20,8 +22,10 @@ import type { TranslationObject } from '@/translations/types'
 export const translations: TranslationObject = {
   ...testTranslations,
   ...homeTranslations,
+  ...heritageTranslations,
   ...navigationMenuTranslations,
   ...navigationMenuButtonTranslations,
+  ...copyEmailTranslations,
   ...underConstructionTranslations,
   ...authFormTranslations,
   ...authTextV1Translations,

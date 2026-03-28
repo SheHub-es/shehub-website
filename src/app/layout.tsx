@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | SheHub",
   },
   description:
-    "SheHub conecta a recién graduadas y profesionales que buscan su primera experiencia en tech con mentoras con experiencia para trabajar en proyectos reales. Mentoría, experiencia y comunidad sin coste. Empoderamos a mujeres en tech, diseño e innovación digital.",
+    "SheHub conecta a recién graduadas y profesionales que buscan su primera experiencia en tech con mentoras con experiencia para trabajar en proyectos reales. Mentoría, experiencia práctica y comunidad tech. Empoderamos a mujeres en tech, diseño e innovación digital.",
   keywords: [
     "mujeres en tech",
     "mentoría tech",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SheHub — Comunidad tech para mujeres",
     description:
-      "Conectamos a recién graduadas y a quienes buscan su primera experiencia en tech con mentoras para proyectos reales. Mentoría, experiencia y comunidad sin coste. Únete a SheHub.",
+      "Conectamos a recién graduadas y a quienes buscan su primera experiencia en tech con mentoras para proyectos reales. Mentoría, experiencia práctica y comunidad tech. Únete a SheHub.",
     url: "https://shehub.es",
     siteName: "SheHub",
     images: [
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SheHub — Comunidad tech para mujeres",
     description:
-      "Conectamos a recién graduadas y a quienes buscan su primera experiencia en tech con mentoras para proyectos reales. Mentoría, experiencia y comunidad sin coste.",
+      "Conectamos a recién graduadas y a quienes buscan su primera experiencia en tech con mentoras para proyectos reales. Mentoría, experiencia práctica y comunidad tech.",
   },
   robots: {
     index: true,

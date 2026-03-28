@@ -43,7 +43,7 @@ export default function WhyMentor() {
       button={{
         text: "Become a mentor",
         variant: "secondary-primary",
-        href: "/auth",
+        href: "/join",
       }}
       backgroundClassName="bg-purple-100"
       layout="left-aligned"

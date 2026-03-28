@@ -1,9 +1,9 @@
 "use client";
 
-import HeroLayout from "@/sections/shared/heroLayout/HeroLayout";
+import { useTranslation } from "@/hooks/useTranslation";
 import ImageSection from "@/sections/home/hero/components/ImageSection";
 import HeroText from "@/sections/home/hero/components/TypewriterAnimation";
-import { useTranslation } from "@/hooks/useTranslation";
+import HeroLayout from "@/sections/shared/heroLayout/HeroLayout";
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -33,7 +33,7 @@ export default function Hero() {
       }
       paragraph={t("home.hero.paragraph")}
       buttons={[
-        { text: t("home.hero.ctaProject"), variant: "primary-primary", href: "/auth" },
+        { text: t("home.hero.ctaProject"), variant: "primary-primary", href: "/join" },
         { text: t("home.hero.ctaMentor"), variant: "secondary-primary", href: "/mentors" },
       ]}
       imageComponent={

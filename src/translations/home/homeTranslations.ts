@@ -115,14 +115,14 @@ export const homeTranslations: TranslationObject = {
     ca: "Cada projecte és 100% remot i a temps parcial, pensat per compaginar amb feina, estudis o vida personal.",
   },
   'home.valueProp.free.title': {
-    es: 'Gratis',
-    en: 'Free',
-    ca: 'Gratuït',
+    es: 'Experiencia completa',
+    en: 'The full experience',
+    ca: 'Experiència completa',
   },
   'home.valueProp.free.desc': {
-    es: 'Las colaboradoras no pagan por formar parte de SheHub. Mentoría, experiencia real y comunidad — todo sin coste.',
-    en: "Contributors never pay to be part of SheHub. Access mentorship, real-world experience, and a supportive tech community — all at zero cost.",
-    ca: "Les col·laboradores no paguen per formar part de SheHub. Mentorització, experiència real i comunitat — tot sense cost.",
+    es: 'Mentoría, proyecto real y comunidad en un mismo recorrido, para ganar confianza, habilidades y un portfolio alineado con el mercado.',
+    en: 'Guided mentorship, a real project, and community in one pathway—so you build confidence, skills, and a market-ready portfolio.',
+    ca: "Mentorització, projecte real i comunitat en un mateix recorregut, per guanyar confiança, habilitats i un portafoli alineat amb el mercat.",
   },
   'home.valueProp.international.title': {
     es: 'Entorno internacional',
@@ -437,14 +437,14 @@ export const homeTranslations: TranslationObject = {
     ca: "Col·laboradores: Dones que pivoten cap a tech, normalment de bootcamps o autodidactes, amb habilitats tècniques o de disseny per contribuir en un equip de producte real. Mentores: Dones en tech que volen retornar, donar suport a altres o créixer en lideratge mentre es preparen per al proper pas (ex. management, team lead, estratègia).",
   },
   'home.faq.q3': {
-    es: '¿Es gratis?',
-    en: 'Is it free?',
-    ca: 'És gratuït?',
+    es: '¿Qué incluye participar en SheHub?',
+    en: 'What does taking part in SheHub include?',
+    ca: 'Què inclou participar a SheHub?',
   },
   'home.faq.a3': {
-    es: 'Sí — SheHub es 100% gratis para colaboradoras y mentoras. Nuestra misión es hacer el acceso a experiencia real y desarrollo de liderazgo más equitativo.',
-    en: 'Yes — SheHub is 100% free for both contributors and mentors. Our mission is to make access to real experience and leadership development more equitable.',
-    ca: "Sí — SheHub és 100% gratuït per a col·laboradores i mentores. La nostra missió és fer l'accés a experiència real i desenvolupament de lideratge més equitatiu.",
+    es: 'Mentoría guiada, trabajo en equipo en un proyecto real con entregas y feedback, y una comunidad tech. El objetivo es que ganes experiencia práctica y material sólido para tu portfolio.',
+    en: 'Guided mentorship, teamwork on a real project with deliverables and feedback, and a tech community. The goal is practical experience and strong portfolio material.',
+    ca: "Mentorització guiada, treball en equip en un projecte real amb lliuraments i feedback, i una comunitat tech. L'objectiu és guanyar experiència pràctica i material sòlid per al teu portafoli.",
   },
   'home.faq.q4': {
     es: '¿Cuánto duran los proyectos?',

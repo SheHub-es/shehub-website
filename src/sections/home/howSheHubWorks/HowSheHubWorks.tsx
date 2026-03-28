@@ -1,12 +1,12 @@
 "use client";
 
-import Button from "@/components/ui/Button";
-import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper";
+import IconCalendarCheck from "@/components/icons/IconCalendarCheck";
 import IconFilePen from "@/components/icons/IconFilePen";
 import IconHeartHandshake from "@/components/icons/IconHeartHandshake";
 import IconUserPlus from "@/components/icons/IconUserPlus";
-import IconCalendarCheck from "@/components/icons/IconCalendarCheck";
+import Button from "@/components/ui/Button";
 import { useTranslation } from "@/hooks/useTranslation";
+import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper";
 import Link from "next/link";
 
 const STEP_ICONS = [IconFilePen, IconHeartHandshake, IconUserPlus, IconCalendarCheck];
@@ -44,7 +44,7 @@ export default function HowSheHubWorks() {
       </div>
 
       <div className="mt-16 flex justify-center">
-        <Link href="/auth">
+        <Link href="/join">
           <Button
             variant="primary-primary"
             size="sm"

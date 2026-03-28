@@ -1,7 +1,7 @@
 "use client";
 
-import CallToActionLayout from "@/sections/shared/callToAction/CallToActionLayout"
-import { useTranslation } from "@/hooks/useTranslation"
+import { useTranslation } from "@/hooks/useTranslation";
+import CallToActionLayout from "@/sections/shared/callToAction/CallToActionLayout";
 
 export const CallToAction = () => {
   const { t } = useTranslation();
@@ -9,7 +9,7 @@ export const CallToAction = () => {
     <CallToActionLayout
       title={t('home.cta.title')}
       buttonText={t('home.cta.button')}
-      buttonHref="/auth"
+      buttonHref="/join"
       buttonVariant="secondary-primary"
     />
   )
