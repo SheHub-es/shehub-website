@@ -1,5 +1,5 @@
-import { useLanguage } from '@/providers/LanguageProvider';
 import { useTranslation } from '@/hooks/useTranslation';
+import { useLanguage } from '@/providers/LanguageProvider';
 import { useState } from 'react';
 
 interface UsePasswordResetReturn {
@@ -107,7 +107,7 @@ export const usePasswordReset = (): UsePasswordResetReturn => {
       setResetType('success');
 
       setTimeout(() => {
-        window.location.href = '/auth';
+        window.location.href = '/join';
       }, 2000);
 
     } catch (error) {
