@@ -17,7 +17,7 @@ function ResetPasswordContent() {
 
   const handleClose = () => {
     setIsOpen(false);
-    window.location.href = '/auth';
+    window.location.href = '/join';
   };
 
   if (!token) {
@@ -31,7 +31,7 @@ function ResetPasswordContent() {
             No se encontró un token válido en la URL.
           </p>
           <a
-            href="/auth"
+            href="/join"
             className="inline-block px-6 py-2.5 rounded-lg font-bold text-base transition-all hover:opacity-90"
             style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-white)' }}
           >

@@ -18,7 +18,7 @@ function LinkedInCallbackContent() {
         setStatus('error');
         setMessage(`Error de LinkedIn: ${error}`);
         setTimeout(() => {
-          window.location.href = '/auth';
+          window.location.href = '/join';
         }, 3000);
         return;
       }
@@ -27,7 +27,7 @@ function LinkedInCallbackContent() {
         setStatus('error');
         setMessage('No se recibió código de autorización');
         setTimeout(() => {
-          window.location.href = '/auth';
+          window.location.href = '/join';
         }, 3000);
         return;
       }
@@ -37,7 +37,7 @@ function LinkedInCallbackContent() {
         setStatus('error');
         setMessage('Error de seguridad: state no coincide');
         setTimeout(() => {
-          window.location.href = '/auth';
+          window.location.href = '/join';
         }, 3000);
         return;
       }
@@ -77,7 +77,7 @@ function LinkedInCallbackContent() {
         setStatus('error');
         setMessage(error instanceof Error ? error.message : 'Error al conectar con el servidor');
         setTimeout(() => {
-          window.location.href = '/auth';
+          window.location.href = '/join';
         }, 3000);
       }
     };
