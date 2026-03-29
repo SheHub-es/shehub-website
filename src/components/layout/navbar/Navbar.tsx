@@ -81,7 +81,12 @@ export const Navbar = () => {
           {/* Mobile Drawer*/}
           {open && (
             <div className="md:hidden flex flex-1 flex-col gap-[31px]" id="mobile-menu">
-              <nav onClick={() => setOpen(false)}>
+              <nav
+                onClick={(e) => {
+                  const el = e.target as HTMLElement
+                  if (el.closest('a[href]')) setOpen(false)
+                }}
+              >
                 <NavigationMenu />
               </nav>
               <div className="inline-flex w-auto mb-2">

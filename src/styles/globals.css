@@ -303,7 +303,7 @@
 
   --input-border-default: var(--color-neutral-300);
   --input-border-hover: var(--color-neutral-400);
-  /* Figma: hover campo texto — borde 2px #6230F7, fondo #FEFEFE */
+  /* Figma: text field hover — 2px border #6230F7, background #FEFEFE */
   --input-border-hover-figma: #6230f7;
   --input-bg-hover-figma: #fefefe;
   --input-border-focus: var(--color-primary);
@@ -322,7 +322,7 @@
   --input-ring-error: rgba(219, 51, 39, 0.1);
   --input-ring-success: rgba(13, 135, 94, 0.1);
 
-  /* Figma: foco teclado — trazo exterior 5px #6230F7, separación 2px blanca, campo 2px #D1D1D1, fondo #FEFEFE */
+  /* Figma: keyboard focus — outer stroke 5px #6230F7, 2px white gap, field 2px #D1D1D1, background #FEFEFE */
   --input-focus-stroke-figma: #6230f7;
   --input-focus-gap-figma: #ffffff;
   --input-border-field-figma: #d1d1d1;
@@ -330,7 +330,7 @@
   --input-focus-gap-width: 2px;
   --input-focus-stroke-width: 5px;
 
-  /* Figma: dropdown ghost — trazo exterior 3px #6230F7, gap 2px blanco, radio interior 12px / marco 14px */
+  /* Figma: dropdown ghost — outer stroke 3px #6230F7, 2px white gap, inner radius 12px / outer frame 14px */
   --dropdown-focus-stroke-width: 3px;
   --dropdown-focus-gap-width: 2px;
   --dropdown-focus-radius: 12px;
@@ -577,14 +577,14 @@ html.user-is-tabbing *:focus {
   position: relative;
 }
 
-/* Tailwind ring = box-shadow: quitar con ratón en botones */
+/* Tailwind ring = box-shadow: suppress on mouse focus for buttons */
 html:not(.user-is-tabbing) button:focus {
   --tw-ring-offset-shadow: 0 0 #0000 !important;
   --tw-ring-shadow: 0 0 #0000 !important;
   box-shadow: none !important;
 }
 
-/* Checkbox: sin outline en el input oculto; caja marcada solo con teclado */
+/* Checkbox: no outline on hidden input; checked box focus ring only with keyboard */
 .checkbox-input-sr-only:focus {
   outline: none !important;
 }
@@ -640,7 +640,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
     background-color: var(--input-bg-hover-figma);
   }
 
-  /* Foco con ratón: mismo borde que reposo; con teclado (user-is-tabbing): borde de foco */
+  /* Mouse focus: same border as idle; keyboard (user-is-tabbing): focus border treatment */
   .input-base:focus {
     outline: none !important;
     box-shadow: none;
@@ -652,7 +652,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
     background-color: var(--input-bg-field-figma);
   }
 
-  /* Figma focus: anillo morado + gap blanco (box-shadow); borde interior 2px gris (no aplica al select: .shehub-dropdown-trigger) */
+  /* Figma focus: purple ring + white gap (box-shadow); inner 2px gray border (not for select: .shehub-dropdown-trigger) */
   html.user-is-tabbing
     .input-base:focus:not(.input-error):not(.input-success):not(.shehub-dropdown-trigger) {
     outline: none !important;
@@ -767,7 +767,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
     color: var(--input-border-success);
   }
 
-  /* Contact / Input.tsx: el <input> interno nunca muestra outline (el marco es el wrapper) */
+  /* Contact / Input.tsx: inner <input> never shows outline (wrapper is the frame) */
   .sh-input-wrap input:focus {
     outline: none !important;
   }
@@ -781,7 +781,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
     border-color: rgb(212 212 212);
   }
 
-  /* Input.tsx: hover Figma (borde #6230F7, fondo #FEFEFE) — no si está enfocado o deshabilitado */
+  /* Input.tsx: Figma hover (border #6230F7, background #FEFEFE) — skip when focused or disabled */
   .sh-input-wrap--default:hover:not(:has(input:focus)):not(:has(input:disabled)) {
     border-color: var(--input-border-hover-figma);
     background-color: var(--input-bg-hover-figma);

@@ -1,3 +1,4 @@
+import { GRADIENT_PRIMARY_SURFACE_CLASS } from "@/lib/brandUi";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
@@ -48,9 +49,7 @@ const variants = {
     "bg-[var(--color-button-disabled-bg)] text-[var(--color-button-disabled-text)] " +
     "border border-[var(--color-button-disabled-border)] cursor-not-allowed opacity-50",
 
-  gradient:
-    "bg-gradient-to-r from-[#f76702] via-[#f83c85] to-[#7858ff] !text-[var(--color-button-primary-primary-text)] " +
-    "hover:opacity-90",
+  gradient: GRADIENT_PRIMARY_SURFACE_CLASS,
 };
  
 
