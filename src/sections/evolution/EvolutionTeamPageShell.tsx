@@ -3,10 +3,10 @@
 import DocumentTitle from '@/components/layout/DocumentTitle'
 import type { EvolutionContributor, EvolutionEraSlug, EvolutionRoleGroup } from '@/data/evolution/types'
 import { useTranslation } from '@/hooks/useTranslation'
-import EvolutionArchiveCta from './EvolutionArchiveCta'
-import EvolutionContributorCard from './EvolutionContributorCard'
 import SectionWrapper from '@/sections/shared/sectionWrapper/SectionWrapper'
 import Link from 'next/link'
+import EvolutionArchiveCta from './EvolutionArchiveCta'
+import EvolutionContributorCard from './EvolutionContributorCard'
 
 const TITLE_KEYS: Record<EvolutionEraSlug, string> = {
   teaser: 'evolution.team.title.teaser',
@@ -38,12 +38,12 @@ function EvolutionRoleSection({
         >
           <div className="flex min-w-0 items-start gap-3 md:items-center md:gap-4">
             <span className="mt-1 h-9 w-1 shrink-0 rounded-full bg-purple-400/90 md:mt-0 md:h-10" aria-hidden />
-            <h2
+            <h3
               id={`evolution-group-${group}`}
               className="font-primary text-lg font-bold leading-tight tracking-tight text-black md:text-xl"
             >
               {t(`evolution.roleGroup.${group}`)}
-            </h2>
+            </h3>
           </div>
           <p className="shrink-0 pl-4 text-sm text-purple-950/55 font-secondary md:pl-0 md:text-right">
             <span className="font-semibold tabular-nums text-purple-900">{people.length}</span>
@@ -82,7 +82,7 @@ export default function EvolutionTeamPageShell({ era, sections, archiveHref }: P
     <main className="bg-background text-foreground">
       <DocumentTitle translationKey={TITLE_KEYS[era]} />
       <SectionWrapper className="bg-background-footer py-6 md:py-10">
-        <div className="mx-auto max-w-3xl lg:max-w-5xl">
+        <header className="mx-auto max-w-3xl lg:max-w-5xl">
           <Link
             href="/evolution"
             className="group mb-4 inline-flex items-center gap-2 font-secondary text-sm font-semibold text-purple-700 transition-colors hover:text-purple-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 rounded-md -ml-0.5 pl-0.5"
@@ -96,9 +96,11 @@ export default function EvolutionTeamPageShell({ era, sections, archiveHref }: P
             {t('evolution.hero.eyebrow')}
           </p>
 
-          <span className="mt-2 inline-flex rounded-full border border-purple-200/80 bg-purple-50 px-4 py-1.5 text-xs font-bold tracking-wide text-purple-900 shadow-sm">
-            {t(ERA_BADGE_KEYS[era])}
-          </span>
+          <p className="mt-2">
+            <span className="inline-flex rounded-full border border-purple-200/80 bg-purple-50 px-4 py-1.5 text-xs font-bold tracking-wide text-purple-900 shadow-sm">
+              {t(ERA_BADGE_KEYS[era])}
+            </span>
+          </p>
 
           <h1 className="mt-3 max-w-3xl font-primary text-3xl font-bold leading-[1.15] tracking-tight text-black md:text-4xl lg:text-5xl">
             {t(TITLE_KEYS[era])}
@@ -111,13 +113,22 @@ export default function EvolutionTeamPageShell({ era, sections, archiveHref }: P
               </EvolutionArchiveCta>
             </div>
           ) : null}
-        </div>
+        </header>
       </SectionWrapper>
 
-      <SectionWrapper className="bg-(--color-neutral-50) py-6 md:py-10">
+      <SectionWrapper
+        className="bg-(--color-neutral-50) py-6 md:py-10"
+        aria-labelledby={`evolution-team-${era}-contributors`}
+      >
         <div className="mx-auto max-w-3xl lg:max-w-5xl">
+          <h2 id={`evolution-team-${era}-contributors`} className="sr-only">
+            {t('evolution.team.contributorsSectionHeading')}
+          </h2>
           {sections.length === 0 ? (
-            <p className="rounded-2xl border border-black/5 bg-white px-6 py-10 text-center text-base leading-relaxed text-gray-600 font-secondary shadow-sm">
+            <p
+              role="status"
+              className="rounded-2xl border border-black/5 bg-white px-6 py-10 text-center text-base leading-relaxed text-gray-600 font-secondary shadow-sm"
+            >
               {t('evolution.team.emptyEra')}
             </p>
           ) : (

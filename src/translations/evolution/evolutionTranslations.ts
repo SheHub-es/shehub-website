@@ -96,6 +96,16 @@ export const evolutionTranslations: TranslationObject = {
     en: 'See the stage-by-stage timeline below',
     ca: 'Veure el recorregut per etapes més avall',
   },
+  'evolution.timeline.sectionHeading': {
+    es: 'Recorrido por etapas',
+    en: 'Stage-by-stage timeline',
+    ca: 'Recorregut per etapes',
+  },
+  'evolution.a11y.opensInNewTab': {
+    es: 'Se abre en una pestaña nueva.',
+    en: 'Opens in a new tab.',
+    ca: 'S’obre en una pestanya nova.',
+  },
   'evolution.hero.previewHeading': {
     es: 'Así avanzó el sitio',
     en: 'How the site evolved',
@@ -300,5 +310,10 @@ export const evolutionTranslations: TranslationObject = {
     es: 'Volver al recorrido',
     en: 'Back to site history',
     ca: 'Tornar al recorregut',
+  },
+  'evolution.team.contributorsSectionHeading': {
+    es: 'Colaboradoras por rol',
+    en: 'Contributors by role',
+    ca: 'Col·laboradores per rol',
   },
 }

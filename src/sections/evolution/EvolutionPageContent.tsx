@@ -58,7 +58,7 @@ export default function EvolutionPageContent() {
       <DocumentTitle translationKey="evolution.metaTitle" />
       <SectionWrapper className="bg-background-footer py-14 md:py-20">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <div>
+          <header>
             <p className="text-accent text-base font-semibold tracking-wide md:text-lg">
               {t('evolution.hero.eyebrow')}
             </p>
@@ -74,10 +74,13 @@ export default function EvolutionPageContent() {
             <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-800 font-secondary md:text-lg">
               {t('evolution.hero.intro')}
             </p>
-            <p className="mt-8 text-xs font-semibold uppercase tracking-wider text-gray-500 font-secondary">
+            <p
+              id="evolution-profiles-heading"
+              className="mt-8 text-xs font-semibold uppercase tracking-wider text-gray-500 font-secondary"
+            >
               {t('evolution.hero.rolesCaption')}
             </p>
-            <ul className="mt-3 flex max-w-2xl flex-wrap gap-2" aria-label={t('evolution.hero.rolesCaption')}>
+            <ul className="mt-3 flex max-w-2xl flex-wrap gap-2" aria-labelledby="evolution-profiles-heading">
               {HERO_PROFILE_KEYS.map((key) => (
                 <li key={key}>
                   <span className="inline-block rounded-full border border-black/8 bg-white/90 px-3 py-1.5 text-xs font-medium text-gray-800 shadow-sm backdrop-blur-sm font-secondary md:text-sm">
@@ -92,16 +95,22 @@ export default function EvolutionPageContent() {
             >
               {t('evolution.hero.skipToTimeline')}
             </a>
-          </div>
+          </header>
 
-          <div className="relative overflow-hidden rounded-3xl border border-black/6 bg-white/70 p-8 shadow-[0_8px_30px_rgba(88,28,135,0.06)] backdrop-blur-md md:p-10">
+          <aside
+            className="relative overflow-hidden rounded-3xl border border-black/6 bg-white/70 p-8 shadow-[0_8px_30px_rgba(88,28,135,0.06)] backdrop-blur-md md:p-10"
+            aria-labelledby="evolution-preview-heading"
+          >
             <div
               className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-purple-400/20 blur-3xl"
               aria-hidden
             />
-            <p className="relative font-primary text-sm font-bold uppercase tracking-wider text-gray-500">
+            <h2
+              id="evolution-preview-heading"
+              className="relative font-primary text-sm font-bold uppercase tracking-wider text-gray-500"
+            >
               {t('evolution.hero.previewHeading')}
-            </p>
+            </h2>
             <ol className="relative mt-6 space-y-0">
               {ERA_SLUGS.map((slug, index) => {
                 const Icon = ERA_ICONS[slug]
@@ -118,18 +127,26 @@ export default function EvolutionPageContent() {
                     </div>
                     <div className={isLast ? 'pb-0' : 'pb-2'}>
                       <p className="text-xs font-bold tracking-wide text-gray-500 font-secondary">{t(`evolution.timeline.${slug}.label`)}</p>
-                      <p className="mt-1 font-primary text-base font-bold text-black md:text-lg">{t(`evolution.timeline.${slug}.title`)}</p>
+                      <h3 className="mt-1 font-primary text-base font-bold text-black md:text-lg">{t(`evolution.timeline.${slug}.title`)}</h3>
                     </div>
                   </li>
                 )
               })}
             </ol>
-          </div>
+          </aside>
         </div>
       </SectionWrapper>
 
-      <SectionWrapper id="evolution-timeline" className="scroll-mt-8 py-16 md:py-20">
-        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
+      <SectionWrapper
+        id="evolution-timeline"
+        className="scroll-mt-8 py-16 md:py-20"
+        aria-labelledby="evolution-timeline-heading"
+      >
+        <div className="mx-auto max-w-6xl">
+          <h2 id="evolution-timeline-heading" className="sr-only">
+            {t('evolution.timeline.sectionHeading')}
+          </h2>
+          <div className="grid gap-8 md:grid-cols-3">
           {timeline.map((item) => {
             const Icon = ERA_ICONS[item.slug]
             return (
@@ -141,7 +158,7 @@ export default function EvolutionPageContent() {
                 <Icon className="size-6" strokeWidth={2} aria-hidden />
               </div>
               <span className={eraBadgeClass}>{item.label}</span>
-              <h2 className="font-primary text-xl font-bold text-black md:text-2xl">{item.title}</h2>
+              <h3 className="font-primary text-xl font-bold text-black md:text-2xl">{item.title}</h3>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-700 font-secondary md:text-base">
                 {item.body}
               </p>
@@ -157,6 +174,7 @@ export default function EvolutionPageContent() {
             </article>
             )
           })}
+          </div>
         </div>
       </SectionWrapper>
     </main>

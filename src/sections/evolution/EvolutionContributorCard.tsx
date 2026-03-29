@@ -43,8 +43,10 @@ export default function EvolutionContributorCard({ person }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className={iconSlotClass}
-              aria-label={`${linkedinAria} ${fullName}`}
             >
+              <span className="sr-only">
+                {linkedinAria} {fullName}. {t('evolution.a11y.opensInNewTab')}
+              </span>
               <LinkedinLogo className="h-[22px] w-[22px]" aria-hidden />
             </a>
           ) : (
@@ -63,8 +65,10 @@ export default function EvolutionContributorCard({ person }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={iconSlotClass}
-                aria-label={`${githubAria} ${fullName}`}
               >
+                <span className="sr-only">
+                  {githubAria} {fullName}. {t('evolution.a11y.opensInNewTab')}
+                </span>
                 <IconGitHub className="h-[22px] w-[22px]" aria-hidden />
               </a>
             ) : (

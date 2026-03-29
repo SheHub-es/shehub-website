@@ -41,9 +41,9 @@ export const Icon: React.FC<IconProps> = ({
             onClick={disabled ? undefined : onClick}
             aria-disabled={interactive ? disabled : undefined}
             className={clsx(
-                "flex items-center justify-center rounded-full text-[var(--color-icon-default)]",
+                "shehub-icon-hit-target flex items-center justify-center rounded-full text-[var(--color-icon-default)]",
                 interactive &&
-                "cursor-pointer hover:text-icon-hover focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-icon-hover",
+                "cursor-pointer hover:text-icon-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-icon-hover",
                 disabled && "opacity-40 pointer-events-none",
                 className
             )}

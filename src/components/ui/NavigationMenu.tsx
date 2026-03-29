@@ -28,10 +28,19 @@ const HEADER_TRAILING = [
   { key: 'evolution.navLink', href: '/evolution' },
 ] as const
 
-function linkClassName(isActive: boolean) {
+/** Design System L1 + frame — only for `<a>` items (not Únete trigger). */
+function anchorLinkClassName(isActive: boolean) {
   return cn(
-    'whitespace-nowrap cursor-pointer nav-item hover:text-navigationmenu-hover transition-colors',
-    isActive ? 'text-(--color-primary)' : 'text-black',
+    'nav-menu-text-link relative cursor-pointer',
+    isActive && 'nav-menu-text-link--active',
+  )
+}
+
+/** Same label typography as nav links; no bordered frame (dropdown control). */
+function joinTriggerClassName(isActive: boolean) {
+  return cn(
+    'nav-join-trigger-label whitespace-nowrap cursor-pointer bg-transparent border-0 p-0',
+    isActive && 'nav-join-trigger-label--active',
   )
 }
 
@@ -55,7 +64,7 @@ function NavMenuItems({ items, pathname }: { items: readonly NavMenuItem[]; path
   const { t } = useTranslation()
   return items.map(({ key, href }) => (
     <li key={key}>
-      <a href={href} className={linkClassName(isActiveHref(pathname, href))} tabIndex={0}>
+      <a href={href} className={anchorLinkClassName(isActiveHref(pathname, href))} tabIndex={0}>
         {t(key)}
       </a>
     </li>
@@ -107,8 +116,8 @@ function FooterDesktopJoinDropdown({
         ref={triggerRef}
         type="button"
         className={cn(
-          linkClassName(joinOpen || joinGroupActive),
-          'flex w-auto items-center justify-start gap-1 rounded-sm bg-transparent p-0 font-inherit text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-navigationmenu-focus-outline)',
+          joinTriggerClassName(joinOpen || joinGroupActive),
+          'flex w-auto items-center justify-start gap-2 rounded-full px-3 py-1.5 -mx-1',
         )}
         aria-expanded={joinOpen}
         aria-describedby={hintId}
@@ -120,7 +129,7 @@ function FooterDesktopJoinDropdown({
         <span className="whitespace-nowrap">{t('menu.joinMenu')}</span>
         <IconChevronDown
           className={cn(
-            'size-[14px] shrink-0 text-current transition-transform duration-200',
+            'size-4 shrink-0 text-current transition-transform duration-200',
             joinOpen && 'rotate-180',
           )}
           aria-hidden
@@ -186,7 +195,7 @@ const NavigationMenu = ({ placement = 'header' }: NavigationMenuProps) => {
         <ul className="list-none flex flex-col gap-6 md:hidden">
           <NavMenuItems items={FOOTER_FLAT_ITEMS} pathname={pathname} />
         </ul>
-        <ul className="list-none hidden md:flex md:flex-row md:gap-8 md:items-center md:flex-wrap">
+        <ul className="list-none hidden md:flex md:flex-row md:items-center md:flex-wrap md:gap-8">
           <NavMenuItems items={HEADER_START} pathname={pathname} />
           <FooterDesktopJoinDropdown
             pathname={pathname}
@@ -204,7 +213,7 @@ const NavigationMenu = ({ placement = 'header' }: NavigationMenuProps) => {
 
   return (
     <nav aria-label={t('menu.navAria')}>
-      <ul className="list-none flex flex-col gap-6 md:flex-row md:items-center md:gap-5 lg:gap-6 md:flex-wrap">
+      <ul className="list-none flex flex-col gap-6 md:flex-row md:items-center md:flex-wrap md:gap-8">
         <NavMenuItems items={HEADER_START} pathname={pathname} />
         <li className="relative">
           <span id="nav-join-hint-header" className="sr-only">
@@ -214,8 +223,8 @@ const NavigationMenu = ({ placement = 'header' }: NavigationMenuProps) => {
             ref={join.triggerRef}
             type="button"
             className={cn(
-              linkClassName(join.joinOpen || join.joinGroupActive),
-              'flex w-full md:w-auto items-center justify-between md:justify-start gap-1 rounded-sm bg-transparent p-0 font-inherit text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-navigationmenu-focus-outline)',
+              joinTriggerClassName(join.joinOpen || join.joinGroupActive),
+              'flex w-full md:w-auto items-center justify-between md:justify-center gap-1 px-0 py-0 md:px-0',
             )}
             aria-expanded={join.joinOpen}
             aria-describedby="nav-join-hint-header"
@@ -227,7 +236,7 @@ const NavigationMenu = ({ placement = 'header' }: NavigationMenuProps) => {
             <span className="whitespace-nowrap">{t('menu.joinMenu')}</span>
             <IconChevronDown
               className={cn(
-                'size-[14px] shrink-0 text-current transition-transform duration-200',
+                'size-6 shrink-0 text-current transition-transform duration-200',
                 join.joinOpen && 'rotate-180',
               )}
               aria-hidden

@@ -243,6 +243,15 @@
   --color-navigationmenu-current-underline: var(--color-foreground);
   --color-navigationmenu-focus-outline: var(--color-purple-300);
   --color-navigationmenu-container-bg: transparent;
+  /* Navbar header — Figma L1 + focus (state default + focus A) */
+  --nav-menu-link-text: #0e0e0e;
+  --nav-menu-link-inner-gap: 4px;
+  --nav-menu-row-gap: 32px;
+  --nav-menu-focus-purple: #6230f7;
+  --nav-menu-focus-gap-fill: #fefefe;
+  /* Focus frame: extra air around label (tighter Figma insets felt cramped on real text) */
+  --nav-menu-focus-inset-x: 12px;
+  --nav-menu-focus-inset-y: 4px;
 
   /* =Header */
   --color-header-bg: #fefefe;
@@ -575,6 +584,133 @@ html.user-is-tabbing *:focus {
   outline: 0.25rem solid var(--color-purple-600);
   outline-offset: 0.125rem;
   position: relative;
+}
+
+/*
+ * Buttons: outline often ignores border-radius (looks square on rounded CTAs).
+ * box-shadow follows the element shape. Skip icon hit targets (they use Tailwind ring).
+ */
+html.user-is-tabbing
+  button:focus-visible:not(.shehub-icon-hit-target):not(.nav-join-trigger-label) {
+  outline: none !important;
+  box-shadow:
+    0 0 0 2px var(--color-background-light),
+    0 0 0 calc(2px + 0.25rem) var(--color-purple-600);
+}
+
+/* Same ring when Button uses asChild + Link (focus is on <a class="btn">) */
+html.user-is-tabbing a.btn:focus-visible {
+  outline: none !important;
+  box-shadow:
+    0 0 0 2px var(--color-background-light),
+    0 0 0 calc(2px + 0.25rem) var(--color-purple-600);
+}
+
+html.user-is-tabbing .shehub-icon-hit-target:focus-visible {
+  outline: none !important;
+}
+
+/* Navbar text links — default: L1 #0E0E0E, 44px hit, no border (Figma header) */
+a.nav-menu-text-link {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--nav-menu-link-inner-gap);
+  padding: 0 12px;
+  min-width: 44px;
+  min-height: 44px;
+  box-sizing: border-box;
+  isolation: isolate;
+  position: relative;
+  font-family: var(--font-secondary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--nav-menu-link-text);
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  transition: color 0.2s ease;
+}
+
+a.nav-menu-text-link:hover {
+  color: var(--color-navigationmenu-hover);
+}
+
+a.nav-menu-text-link.nav-menu-text-link--active {
+  color: var(--nav-menu-link-text);
+  font-weight: 400;
+}
+
+/* Únete: same L1; min 44×44; Figma row gap 4px label–chevron */
+.nav-join-trigger-label {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--nav-menu-link-inner-gap);
+  min-width: 44px;
+  min-height: 44px;
+  font-family: var(--font-secondary);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--nav-menu-link-text);
+}
+
+.nav-join-trigger-label:hover {
+  color: var(--color-navigationmenu-hover);
+}
+
+.nav-join-trigger-label.nav-join-trigger-label--active {
+  color: var(--nav-menu-link-text);
+}
+
+/* Focus A: 5px #6230F7 + 2px #FEFEFE gap, insets, radius 4px (keyboard only) */
+html.user-is-tabbing a.nav-menu-text-link:focus,
+html.user-is-tabbing button.nav-join-trigger-label:focus {
+  outline: none !important;
+}
+
+html.user-is-tabbing a.nav-menu-text-link:focus-visible,
+html.user-is-tabbing button.nav-join-trigger-label:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+html.user-is-tabbing a.nav-menu-text-link:focus-visible::before,
+html.user-is-tabbing button.nav-join-trigger-label:focus-visible::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--nav-menu-focus-inset-x));
+  right: calc(-1 * var(--nav-menu-focus-inset-x));
+  top: var(--nav-menu-focus-inset-y);
+  bottom: var(--nav-menu-focus-inset-y);
+  border: 5px solid var(--nav-menu-focus-purple);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: -2;
+  box-sizing: border-box;
+}
+
+html.user-is-tabbing a.nav-menu-text-link:focus-visible::after,
+html.user-is-tabbing button.nav-join-trigger-label:focus-visible::after {
+  content: "";
+  position: absolute;
+  /* Inner white stroke: inset by the 5px purple border */
+  left: calc(-1 * var(--nav-menu-focus-inset-x) + 5px);
+  right: calc(-1 * var(--nav-menu-focus-inset-x) + 5px);
+  top: calc(var(--nav-menu-focus-inset-y) + 5px);
+  bottom: calc(var(--nav-menu-focus-inset-y) + 5px);
+  border: 2px solid var(--nav-menu-focus-gap-fill);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: -1;
+  box-sizing: border-box;
 }
 
 /* Tailwind ring = box-shadow: suppress on mouse focus for buttons */

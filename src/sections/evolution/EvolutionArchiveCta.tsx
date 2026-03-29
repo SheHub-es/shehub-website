@@ -1,6 +1,7 @@
 'use client'
 
 import { GRADIENT_PRIMARY_SURFACE_CLASS } from '@/lib/brandUi'
+import { useTranslation } from '@/hooks/useTranslation'
 import { cn, isHttpUrl } from '@/lib/utils'
 import Link from 'next/link'
 import type { ReactNode } from 'react'
@@ -16,10 +17,13 @@ type Props = {
 }
 
 export default function EvolutionArchiveCta({ href, children }: Props) {
+  const { t } = useTranslation()
+
   if (isHttpUrl(href)) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={evolutionArchiveCtaClassName}>
         {children}
+        <span className="sr-only"> {t('evolution.a11y.opensInNewTab')}</span>
       </a>
     )
   }

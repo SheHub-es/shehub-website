@@ -65,16 +65,15 @@ export const Navbar = () => {
                 selected={language}
                 onChange={(value: string) => setLanguage(value as Language)}
               />
-              <Link href="/join">
-                <Button 
-                  variant="gradient" 
-                  size="sm" 
-                  shape="rounded" 
-                  className="rounded-full min-w-[180px]"
-                >
-                  {t("menu_button.button")}
-                </Button>
-              </Link>
+              <Button
+                asChild
+                variant="gradient"
+                size="sm"
+                shape="rounded"
+                className="rounded-full min-w-[180px]"
+              >
+                <Link href="/join">{t("menu_button.button")}</Link>
+              </Button>
             </div>
           </div>
 
@@ -96,15 +95,11 @@ export const Navbar = () => {
                   onChange={(value: string) => setLanguage(value as Language)}
                 />
               </div>
-              <Link href="/join" onClick={() => setOpen(false)}>
-                <Button
-                  variant="gradient"
-                  size="lg"
-                  shape="rounded"
-                >
+              <Button asChild variant="gradient" size="lg" shape="rounded">
+                <Link href="/join" onClick={() => setOpen(false)}>
                   {t('menu_button.button')}
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           )}
         </div>
