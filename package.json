@@ -36,13 +36,15 @@
     "typewriter-effect": "^2.22.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
     "@eslint/eslintrc": "^3",
     "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "@types/node": "^20",
+    "@types/node": "^20.19.41",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "axe-html-reporter": "^2.2.11",
     "eslint": "^9",
     "eslint-config-next": "^16.1.1",
     "tailwindcss": "^4.1.18",
