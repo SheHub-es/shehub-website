@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💜 SheHub
 
-## Getting Started
+SheHub is a community-driven initiative created by and for women who have completed a tech bootcamp or training program.
 
-First, run the development server:
+Its goal is to highlight female tech talent, support job placement, and build a collaborative and empowering network within the tech industry.
+
+
+## 📁 Table of Contents
+
+- [💜 SheHub](#-shehub)
+- [📁 Table of Contents](#-table-of-contents)
+- [💼 Tech Stack](#-tech-stack)
+- [🛠️ Getting Started / Prerequisites](#️-getting-started--prerequisites)
+- [⚙️ Installation](#️-installation)
+- [🔐 Environment Variables](#-environment-variables)
+- [💻 Run the Development Server](#-run-the-development-server)
+- [📂 Project Structure](#-project-structure)
+- [🌐 Language Support](#-language-support)
+
+---
+
+## 💼 Tech Stack
+
+| Category | Technologies |
+|---|---|
+| **Framework** | Next.js 15, React 19, TypeScript |
+| **Styling** | Tailwind CSS 4, shadcn/ui, Radix UI |
+| **Fonts** | Nunito, Ubuntu (via @fontsource) |
+| **Backend** | Firebase (Auth + Firestore), Google OAuth |
+| **State Management** | Redux Toolkit |
+| **Theme** | next-themes (dark mode support) |
+| **Testing** | Playwright, axe-core (accessibility) |
+| **Tooling** | ESLint, Prettier |
+
+---
+
+## 🛠️ Getting Started / Prerequisites
+
+Before running the project, make sure you have:
+
+- **Node.js** v20+
+- **npm** v10+
+- A **Firebase** project with Auth and Firestore enabled
+- **Google OAuth** credentials
+- **LinkedIn OAuth** credentials
+
+---
+
+## ⚙️ Installation
+
+```bash
+git clone https://github.com/SheHub-es/shehub-website.git
+cd shehub-website
+npm install
+```
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env.local` file in the root of the project and add the following variables:
+
+```env
+# Firebase
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+
+# LinkedIn OAuth
+NEXT_PUBLIC_LINKEDIN_CLIENT_ID=
+NEXT_PUBLIC_LINKEDIN_REDIRECT_URI=
+
+# API
+NEXT_PUBLIC_API_URL=
+```
+
+---
+
+## 💻 Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+Visit https://localhost:3000 in your browser
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+├── app/            # Next.js App Router pages and routes
+├── components/     # React components
+│   ├── ui/         # shadcn/ui base components
+│   ├── icons/      # Icon components
+│   ├── layout/     # Navbar, Footer, and layout components
+│   └── shared/     # Shared reusable components
+├── sections/       # Page-level sections (home, auth, heritage, etc.)
+├── translations/   # i18n translation files (by page/feature)
+├── store/          # Redux store and feature slices
+├── providers/      # React context providers
+├── hooks/          # Custom React hooks
+├── lib/            # Utility functions
+├── services/       # External service integrations
+├── interfaces/     # TypeScript interfaces
+├── types/          # TypeScript type definitions
+└── assets/         # Images and static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌐 Language Support
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+SheHub supports three languages:
 
-## Learn More
+| Language | Code | Status |
+|---|---|---|
+| Spanish | `es` | Default |
+| English | `en` | Supported |
+| Catalan | `ca` | Supported |
 
-To learn more about Next.js, take a look at the following resources:
+Language is managed through a custom React Context-based i18n system — no external library required. The selected language is persisted via browser cookies and `localStorage`. Translation files are organised by feature under `src/translations/`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Made with 💜 by the SheHub team.
