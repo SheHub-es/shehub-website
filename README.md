@@ -4,6 +4,10 @@ SheHub is a community-driven initiative created by and for women who have comple
 
 Its goal is to highlight female tech talent, support job placement, and build a collaborative and empowering network within the tech industry.
 
+This repository contains the main SheHub website, developed with React + Vite, designed as a landing page for the project.
+
+It includes information, resources, and contact forms for potential collaborators, partner companies, and new participants.
+
 
 ## 📁 Table of Contents
 
@@ -53,7 +57,6 @@ git clone https://github.com/SheHub-es/shehub-website.git
 cd shehub-website
 npm install
 ```
-
 ---
 
 ## 🔐 Environment Variables
@@ -109,7 +112,6 @@ src/
 ├── types/          # TypeScript type definitions
 └── assets/         # Images and static assets
 ```
-
 ---
 
 ## 🌐 Language Support
@@ -124,4 +126,5 @@ SheHub supports three languages:
 
 Language is managed through a custom React Context-based i18n system — no external library required. The selected language is persisted via browser cookies and `localStorage`. Translation files are organised by feature under `src/translations/`.
 
+---
 ### Made with 💜 by the SheHub team.
