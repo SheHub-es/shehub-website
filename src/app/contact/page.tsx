@@ -60,22 +60,21 @@ export default function ContactPage() {
           {/* Left side - Information */}
           <div className="flex flex-col gap-6 md:gap-8 text-center md:text-left">
             <h1 className="font-primary text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-[color:var(--color-black)]">
-              Let's{" "}
+              {t('contact.title.before')}{" "}
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: "var(--color-gradient-brand)" }}
               >
-                connect!
+                {t('contact.title.highlight')}
               </span>
             </h1>
 
             <p className="text-gray-700 text-lg leading-relaxed">
-              Either you want to collaborate, mentor, partner with us or just know more
-              about SheHub, please fill in the form or send us an email.
+              {t('contact.paragraph')}
             </p>
 
             <p className="text-[color:var(--color-black)] font-semibold text-lg leading-relaxed">
-              We'd love to hear from you
+              {t('contact.cta')}
             </p>
 
             <div className="flex items-center justify-center md:justify-start gap-3">
@@ -88,13 +87,13 @@ export default function ContactPage() {
 
           {/* Right side - Contact Form */}
           <div className="w-full flex justify-center md:justify-start">
-            <form 
-              onSubmit={handleSubmit} 
+            <form
+              onSubmit={handleSubmit}
               className="flex flex-col gap-6 w-full md:max-w-full lg:max-w-[584px]"
-              aria-label="Contact form"
+              aria-label={t('contact.form.ariaLabel')}
             >
               <Input
-                label="Full name"
+                label={t('contact.form.fullName')}
                 name="fullName"
                 type="text"
                 value={formData.fullName}
@@ -106,7 +105,7 @@ export default function ContactPage() {
               />
 
               <Input
-                label="Email"
+                label={t('contact.form.email')}
                 name="email"
                 type="email"
                 value={formData.email}
@@ -118,7 +117,7 @@ export default function ContactPage() {
               />
 
               <TextArea
-                label="Message"
+                label={t('contact.form.message')}
                 name="message"
                 value={formData.message}
                 onChange={handleTextAreaChange}
@@ -129,7 +128,7 @@ export default function ContactPage() {
               />
 
               <Checkbox
-                label="I accept the terms"
+                label={t('contact.form.acceptTerms')}
                 checked={formData.acceptTerms}
                 onChange={handleCheckboxChange}
                 required
@@ -145,7 +144,7 @@ export default function ContactPage() {
                 className="w-full md:w-auto h-12 lg:h-[48px] lg:w-[106px] lg:min-w-[106px] lg:max-w-[106px]"
                 disabled
               >
-                Submit
+                {t('contact.form.submit')}
               </Button>
             </form>
           </div>
