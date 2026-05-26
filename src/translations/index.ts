@@ -15,6 +15,7 @@ import { navigationMenuButtonTranslations } from '@/translations/layout/navbar/n
 import { navigationMenuTranslations } from '@/translations/layout/navbar/navigationMenuTranslations'
 import { heritageTranslations } from '@/translations/heritage/heritageTranslations'
 import { collaboratorsTranslations } from '@/translations/collaborators/collaboratorsTranslations'
+import { contactTranslations } from '@/translations/contact/contactTranslations'
 import { mentorsTranslations } from '@/translations/mentors/mentorsTranslations'
 import { homeTranslations } from '@/translations/home/homeTranslations'
 import { underConstructionTranslations } from '@/translations/layout/underConstructionTranslations'
@@ -26,6 +27,7 @@ export const translations: TranslationObject = {
   ...homeTranslations,
   ...heritageTranslations,
   ...collaboratorsTranslations,
+  ...contactTranslations,
   ...mentorsTranslations,
   ...navigationMenuTranslations,
   ...navigationMenuButtonTranslations,
