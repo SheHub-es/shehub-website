@@ -8,7 +8,7 @@ export default function UnderConstructionBanner() {
 
   return (
     <div
-      className="border-b-2 border-purple-200 bg-white py-2 px-4 shadow-[0_6px_16px_-8px_rgba(55,24,158,0.18)] sm:py-2.5 sm:px-5 md:py-2.5 md:px-6"
+      className="mt-3 sm:mt-4 bg-purple-100 border-b border-purple-200/60 py-2 px-4 sm:py-2.5 sm:px-5 md:py-2.5 md:px-6"
       role="status"
       aria-live="polite"
     >
