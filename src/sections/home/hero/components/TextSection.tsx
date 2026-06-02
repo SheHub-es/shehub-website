@@ -84,29 +84,27 @@ const TextSection = () => {
           gap-[16px]
         "
       >
-        <Link href="/join">
-          <Button
-            variant="primary-primary"
-            size="sm"
-            shape="rounded"
-            className="w-full sm:w-auto min-w-[188px] min-h-[48px] font-[var(--font-weight-default)]"
-            style={{ fontFamily: 'var(--font-secondary)' }}
-          >
-            {t('home.hero.ctaProject')}
-          </Button>
-        </Link>
+        <Button
+          asChild
+          variant="primary-primary"
+          size="sm"
+          shape="rounded"
+          className="w-full sm:w-auto min-w-[188px] min-h-[48px] font-[var(--font-weight-default)]"
+          style={{ fontFamily: 'var(--font-secondary)' }}
+        >
+          <Link href="/join">{t('home.hero.ctaProject')}</Link>
+        </Button>
 
-        <Link href="/mentors">
-          <Button
-            variant="secondary-primary"
-            size="sm"
-            shape="rounded"
-            className="w-full sm:w-auto text-black min-w-[166px] min-h-[48px]"
-            style={{ fontFamily: 'var(--font-secondary)' }}
-          >
-            {t('home.hero.ctaMentor')}
-          </Button>
-        </Link>
+        <Button
+          asChild
+          variant="secondary-primary"
+          size="sm"
+          shape="rounded"
+          className="w-full sm:w-auto text-black min-w-[166px] min-h-[48px]"
+          style={{ fontFamily: 'var(--font-secondary)' }}
+        >
+          <Link href="/mentors">{t('home.hero.ctaMentor')}</Link>
+        </Button>
       </div>
     </div>
   )

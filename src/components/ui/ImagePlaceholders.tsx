@@ -78,7 +78,7 @@ const ImagePlaceholder = ({
       : iconSizes[size]);
 
   return (
-    <div className={clsx(commonStyles, "relative")} tabIndex={0} style={isCustom ? {width: widthPx, height: heightPx} : undefined}>
+    <div className={clsx(commonStyles, "relative")} style={isCustom ? {width: widthPx, height: heightPx} : undefined}>
       {imageUrl ? (
         <NextImage
           src={imageUrl}

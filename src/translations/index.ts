@@ -13,7 +13,7 @@ import { waitlistTranslations } from '@/translations/auth/waitlistTranslations'
 import { copyEmailTranslations } from '@/translations/layout/copyEmailTranslations'
 import { navigationMenuButtonTranslations } from '@/translations/layout/navbar/navigationMenuButtonTranslations'
 import { navigationMenuTranslations } from '@/translations/layout/navbar/navigationMenuTranslations'
-import { heritageTranslations } from '@/translations/heritage/heritageTranslations'
+import { evolutionTranslations } from '@/translations/evolution/evolutionTranslations'
 import { homeTranslations } from '@/translations/home/homeTranslations'
 import { underConstructionTranslations } from '@/translations/layout/underConstructionTranslations'
 import { testTranslations } from '@/translations/testTranslations'
@@ -22,7 +22,7 @@ import type { TranslationObject } from '@/translations/types'
 export const translations: TranslationObject = {
   ...testTranslations,
   ...homeTranslations,
-  ...heritageTranslations,
+  ...evolutionTranslations,
   ...navigationMenuTranslations,
   ...navigationMenuButtonTranslations,
   ...copyEmailTranslations,
