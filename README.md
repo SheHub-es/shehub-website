@@ -28,7 +28,7 @@ It includes information, resources, and contact forms for potential collaborator
 | Category | Technologies |
 |---|---|
 | **Framework** | Next.js 15, React 19, TypeScript |
-| **Styling** | Tailwind CSS 4, shadcn/ui, Radix UI |
+| **Styling** | Tailwind CSS 4, Radix UI |
 | **Fonts** | Nunito, Ubuntu (via @fontsource) |
 | **Backend** | Firebase (Auth + Firestore), Google OAuth |
 | **State Management** | Redux Toolkit |
@@ -45,8 +45,6 @@ Before running the project, make sure you have:
 - **Node.js** v20+
 - **npm** v10+
 - A **Firebase** project with Auth and Firestore enabled
-- **Google OAuth** credentials
-- **LinkedIn OAuth** credentials
 
 ---
 
