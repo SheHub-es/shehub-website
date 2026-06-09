@@ -1,18 +1,45 @@
+"use client"
+
 import HowItWorksSection from "@/sections/shared/howItWorksSection/HowItWorksSection";
-import { mentorsTimelineData } from "@/components/data/mentorsTimelineData";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function MentorsHowItWorks() {
+  const { t } = useTranslation();
+
+  const timelineData = [
+    {
+      date: t('mentors.timeline.step1.date'),
+      title: t('mentors.timeline.step1.title'),
+      description: t('mentors.timeline.step1.description'),
+    },
+    {
+      date: t('mentors.timeline.step2.date'),
+      title: t('mentors.timeline.step2.title'),
+      description: t('mentors.timeline.step2.description'),
+    },
+    {
+      date: t('mentors.timeline.step3.date'),
+      title: t('mentors.timeline.step3.title'),
+      description: t('mentors.timeline.step3.description'),
+    },
+    {
+      date: t('mentors.timeline.step4.date'),
+      title: t('mentors.timeline.step4.title'),
+      description: t('mentors.timeline.step4.description'),
+    },
+  ];
+
   return (
     <HowItWorksSection
-      eyebrow="How SheHub works"
+      eyebrow={t('mentors.howItWorks.eyebrow')}
       title={
         <>
-          Your journey as a mentor{"\n"}
-          <span className="text-gradient-steps">in just 4 steps</span>
+          {t('mentors.howItWorks.title.before')}{"\n"}
+          <span className="text-gradient-steps">{t('mentors.howItWorks.title.highlight')}</span>
         </>
       }
-      description="From joining the community to guiding your first team, SheHub makes it easy to share your expertise, empower emerging talent, and make a real impact—step by step."
-      timelineData={mentorsTimelineData}
+      description={t('mentors.howItWorks.description')}
+      timelineData={timelineData}
       variant="alternate"
       backgroundClassName="bg-white"
     />

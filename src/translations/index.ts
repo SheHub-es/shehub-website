@@ -14,6 +14,10 @@ import { copyEmailTranslations } from '@/translations/layout/copyEmailTranslatio
 import { navigationMenuButtonTranslations } from '@/translations/layout/navbar/navigationMenuButtonTranslations'
 import { navigationMenuTranslations } from '@/translations/layout/navbar/navigationMenuTranslations'
 import { evolutionTranslations } from '@/translations/evolution/evolutionTranslations'
+import { collaboratorsTranslations } from '@/translations/collaborators/collaboratorsTranslations'
+import { contactTranslations } from '@/translations/contact/contactTranslations'
+import { partnersTranslations } from '@/translations/partners/partnersTranslations'
+import { mentorsTranslations } from '@/translations/mentors/mentorsTranslations'
 import { homeTranslations } from '@/translations/home/homeTranslations'
 import { underConstructionTranslations } from '@/translations/layout/underConstructionTranslations'
 import { testTranslations } from '@/translations/testTranslations'
@@ -23,6 +27,10 @@ export const translations: TranslationObject = {
   ...testTranslations,
   ...homeTranslations,
   ...evolutionTranslations,
+  ...collaboratorsTranslations,
+  ...contactTranslations,
+  ...partnersTranslations,
+  ...mentorsTranslations,
   ...navigationMenuTranslations,
   ...navigationMenuButtonTranslations,
   ...copyEmailTranslations,

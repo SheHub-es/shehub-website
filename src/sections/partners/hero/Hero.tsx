@@ -1,31 +1,36 @@
+"use client"
+
 import HeroImage from "@/assets/images/photos/photo_heroPartners.webp"
 import HeroLayout from "@/sections/shared/heroLayout/HeroLayout"
 import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
 import PartnerLogosCarousel from "./components/PartnerLogosCarousel"
+import { useTranslation } from "@/hooks/useTranslation"
 
 export default function PartnersHero() {
+  const { t } = useTranslation()
+
   return (
     <>
       <HeroLayout
         id="partners"
-        eyebrow="Join SheHub as a partner"
+        eyebrow={t('partners.hero.eyebrow')}
         title={
           <>
-            Join the movement shaping the{" "}
+            {t('partners.hero.title.before')}{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "var(--color-gradient-brand)" }}
             >
-              future of tech
+              {t('partners.hero.title.highlight')}
             </span>
           </>
         }
-        paragraph="Partner with SheHub to support diverse talent, drive real impact, and connect with the next generation of women in tech."
+        paragraph={t('partners.hero.paragraph')}
         mainImage={HeroImage.src}
-        alt="SheHub partners collaborating"
+        alt={t('partners.hero.image.alt')}
         buttons={[
-          { text: "Sponsor", variant: "primary-primary", href: "/contact" },
-          { text: "Find talent", variant: "secondary-primary", href: "/contact" },
+          { text: t('partners.hero.button.sponsor'), variant: "primary-primary", href: "/contact" },
+          { text: t('partners.hero.button.findTalent'), variant: "secondary-primary", href: "/contact" },
         ]}
       />
       <SectionWrapper>

@@ -1,25 +1,30 @@
+"use client"
+
 import HeroImage from "@/assets/images/photos/photo_heroCollaborator.webp"
 import HeroLayout from "@/sections/shared/heroLayout/HeroLayout"
+import { useTranslation } from "@/hooks/useTranslation"
 
 export default function CollaboratorsHero() {
+  const { t } = useTranslation()
+
   return (
     <HeroLayout
       id="collaborators"
-      eyebrow="Join SheHub as a collaborator"
+      eyebrow={t('collaborators.hero.eyebrow')}
       title={
         <>
-          Gain{" "}
+          {t('collaborators.hero.title.before')}{" "}
           <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--color-gradient-brand)" }}>
-            real tech experience
+            {t('collaborators.hero.title.highlight')}
           </span>{" "}
-          and grow your portfolio
+          {t('collaborators.hero.title.after')}
         </>
       }
-      paragraph="At SheHub, you’ll join real tech teams where you can gain hands-on experience, grow with peers, and build your portfolio. Whether you're exploring product management, UX design, development, data, QA or marketing, you’ll work on impactful projects with support from mentors and a community that empowers you."
+      paragraph={t('collaborators.hero.paragraph')}
       mainImage={HeroImage.src}
-      alt="Collaborators working together"
+      alt={t('collaborators.hero.image.alt')}
       buttons={[
-        { text: "Become a collaborator", variant: "primary-primary", href: "/join" },
+        { text: t('collaborators.hero.button'), variant: "primary-primary", href: "/join" },
       ]}
     />
   )
