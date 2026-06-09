@@ -129,15 +129,14 @@ export default function FeaturesSection({
       {button && (
         <div className={`flex ${isLeftAligned ? "justify-start" : "justify-center"} max-w-7xl mx-auto px-4`}>
           {button.href ? (
-            <Link href={button.href}>
-              <Button
-                variant={button.variant || "secondary-secondary"}
-                size="sm"
-                shape="rounded"
-              >
-                {button.text}
-              </Button>
-            </Link>
+            <Button
+              asChild
+              variant={button.variant || "secondary-secondary"}
+              size="sm"
+              shape="rounded"
+            >
+              <Link href={button.href}>{button.text}</Link>
+            </Button>
           ) : (
             <Button
               variant={button.variant || "secondary-secondary"}

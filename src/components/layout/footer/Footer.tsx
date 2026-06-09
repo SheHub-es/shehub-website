@@ -33,7 +33,7 @@ const Footer = () => {
           </Link>
 
           <div className="px-6 lg:px-0">
-            <NavigationMenu />
+            <NavigationMenu placement="footer" />
           </div>
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center lg:gap-2 px-4 lg:px-0">

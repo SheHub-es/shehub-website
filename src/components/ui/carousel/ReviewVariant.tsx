@@ -110,7 +110,7 @@ export function ReviewVariant(props: ReviewVariantProps) {
           />
         </div>
 
-        {/* Mobile: flechas entre texto e imagen */}
+        {/* Mobile: arrows between text and image */}
         <div className="md:hidden">
           {/* Scroll */}
           <div ref={viewportRef} className="overflow-hidden w-full">
