@@ -6,7 +6,8 @@ const config = {
   importOrder: ['^react', '^@/', '^[./]'],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
-  semi: true
+  semi: true,
+  singleQuote: true
 };
 
 export default config;
