@@ -13,13 +13,13 @@ export const contactTranslations: TranslationObject = {
   },
   'contact.paragraph': {
     es: 'Tanto si quieres colaborar, ser mentora, asociarte con nosotras o simplemente saber más sobre SheHub, rellena el formulario o envíanos un correo.',
-    en: 'Either you want to collaborate, mentor, partner with us or just know more about SheHub, please fill in the form or send us an email.',
+    en: 'Would you like to collaborate, mentor, partner with us, or just find out more about SheHub? Please fill in the form or send us an email.',
     ca: "Tant si vols col·laborar, ser mentora, associar-te amb nosaltres o simplement saber més sobre SheHub, omple el formulari o envia'ns un correu.",
   },
   'contact.cta': {
-    es: 'Nos encantaría saber de ti',
-    en: "We'd love to hear from you",
-    ca: 'Ens encantaria saber de tu',
+    es: 'Nos encantaría saber de ti.',
+    en: 'We\'d love to hear from you.',
+    ca: 'Ens encantaria saber de tu.',
   },
   'contact.form.ariaLabel': {
     es: 'Formulario de contacto',
@@ -43,7 +43,7 @@ export const contactTranslations: TranslationObject = {
   },
   'contact.form.acceptTerms': {
     es: 'Acepto los términos',
-    en: 'I accept the terms',
+    en: 'I accept the terms and conditions',
     ca: 'Accepto els termes',
   },
   'contact.form.submit': {

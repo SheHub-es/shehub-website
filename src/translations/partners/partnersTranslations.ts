@@ -56,7 +56,7 @@ export const partnersTranslations: TranslationObject = {
   },
   'partners.why.description': {
     es: 'Únete a un movimiento que está dando forma al futuro de la tecnología a través de la innovación inclusiva y un impacto real. Patrocinar o colaborar con SheHub te conecta con talento tecnológico emergente, fortalece tu impacto en DEI y posiciona tu marca en el corazón de una próspera comunidad de mujeres en tecnología.',
-    en: "Join a movement that's shaping the future of tech through inclusive innovation and real impact. Sponsoring or partnering with SheHub connects you with emerging tech talent, strengthens your DEI impact, and positions your brand at the heart of a thriving women-in-tech community.",
+    en: "Join the movement that's shaping the future of tech through inclusive innovation and real impact. Sponsoring or partnering with SheHub connects you with emerging tech talent, strengthens your DEI impact, and positions your brand at the heart of a thriving women-in-tech community.",
     ca: "Uneix-te a un moviment que està donant forma al futur de la tecnologia a través de la innovació inclusiva i un impacte real. Patrocinar o col·laborar amb SheHub et connecta amb talent tecnològic emergent, enforteix el teu impacte en DEI i posiciona la teva marca al cor d'una pròspera comunitat de dones en tecnologia.",
   },
   'partners.why.button': {
@@ -81,7 +81,7 @@ export const partnersTranslations: TranslationObject = {
   },
   'partners.why.feature2.description': {
     es: 'Conecta con mujeres junior y de nivel medio en tecnología con ganas de crecer y contribuir.',
-    en: 'Connect with junior and mid-level women in tech eager to grow and contribute.',
+    en: 'Connect with junior and mid-level women in tech who are eager to grow and contribute.',
     ca: 'Connecta amb dones junior i de nivell mitjà en tecnologia amb ganes de créixer i contribuir.',
   },
   'partners.why.feature3.title': {

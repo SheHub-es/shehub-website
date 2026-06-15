@@ -24,7 +24,7 @@ export const collaboratorsTranslations: TranslationObject = {
   },
   'collaborators.hero.paragraph': {
     es: 'En SheHub, te unirás a equipos tecnológicos reales donde podrás adquirir experiencia práctica, crecer junto a tus compañeras y construir tu portafolio. Tanto si te interesa la gestión de producto, el diseño UX, el desarrollo, los datos, QA o marketing, trabajarás en proyectos con impacto, con el apoyo de mentoras y una comunidad que te empodera.',
-    en: "At SheHub, you'll join real tech teams where you can gain hands-on experience, grow with peers, and build your portfolio. Whether you're exploring product management, UX design, development, data, QA or marketing, you'll work on impactful projects with support from mentors and a community that empowers you.",
+    en: "At SheHub, you'll join real tech teams where you can gain hands-on experience, grow alongside peers, and build your portfolio. Whether you're exploring product management, UX design, development, data, QA or marketing, you'll work on impactful projects with support from mentors and join a community that empowers you.",
     ca: "A SheHub, t'uniràs a equips tecnològics reals on podràs adquirir experiència pràctica, créixer amb les teves companyes i construir el teu portafolis. Tant si t'interessa la gestió de producte, el disseny UX, el desenvolupament, les dades, QA o màrqueting, treballaràs en projectes amb impacte, amb el suport de mentores i una comunitat que t'empodera.",
   },
   'collaborators.hero.button': {
@@ -41,7 +41,7 @@ export const collaboratorsTranslations: TranslationObject = {
   // Why Collaborator
   'collaborators.why.title.before': {
     es: '¿Por qué ser',
-    en: 'Why be a',
+    en: 'Why join as a',
     ca: 'Per què ser',
   },
   'collaborators.why.title.highlight': {
@@ -56,7 +56,7 @@ export const collaboratorsTranslations: TranslationObject = {
   },
   'collaborators.why.description': {
     es: 'Adquiere experiencia real en un entorno seguro y de apoyo mientras haces crecer tu carrera tecnológica. En SheHub, trabajarás en equipos reales, construirás tu portafolio y te conectarás con una red global de mentoras y compañeras.',
-    en: "Gain real experience in a safe, supportive environment while growing your tech career. At SheHub, you'll work in real teams, build your portfolio, and connect with a global network of mentors and peers.",
+    en: "Gain real experience in a safe, supportive environment while advancing your career in tech. At SheHub, you'll work in real teams, build your portfolio, and connect with a global network of mentors and peers.",
     ca: 'Adquireix experiència real en un entorn segur i de suport mentre fas créixer la teva carrera tecnològica. A SheHub, treballaràs en equips reals, construiràs el teu portafolis i et connectaràs amb una xarxa global de mentores i companyes.',
   },
   'collaborators.why.button': {
@@ -91,7 +91,7 @@ export const collaboratorsTranslations: TranslationObject = {
   },
   'collaborators.why.feature3.description': {
     es: 'Flexible, en remoto y a tiempo parcial, diseñado para adaptarse a tu vida.',
-    en: 'Flexible, remote, and part-time—designed to fit your life.',
+    en: 'Flexible, remote, and part-time. Designed to fit your life.',
     ca: 'Flexible, en remot i a temps parcial, dissenyat per adaptar-se a la teva vida.',
   },
   'collaborators.why.feature4.title': {
@@ -128,7 +128,7 @@ export const collaboratorsTranslations: TranslationObject = {
   },
   'collaborators.howItWorks.description': {
     es: 'Desde el registro hasta el lanzamiento de tu primer proyecto, SheHub te facilita hacer crecer tus habilidades, conectar con un equipo con propósito y generar un impacto real, paso a paso.',
-    en: 'From signing up to launching your first project, SheHub makes it easy to grow your skills, connect with a purpose-driven team, and make a real impact—step by step.',
+    en: 'From signing up to launching your first project, SheHub makes it easy to sharpen your skills, connect with a purpose-driven team, and make a real impact. Step by step.',
     ca: 'Des del registre fins al llançament del teu primer projecte, SheHub et facilita fer créixer les teves habilitats, connectar amb un equip amb propòsit i generar un impacte real, pas a pas.',
   },
 
@@ -145,7 +145,7 @@ export const collaboratorsTranslations: TranslationObject = {
   },
   'collaborators.timeline.step1.description': {
     es: 'Cuéntanos sobre tu rol, experiencia y disponibilidad. No necesitas un CV formal, solo cuéntanos cómo te gustaría contribuir y cuándo. Envía tu solicitud para unirte a SheHub. Entrarás en nuestra lista de espera y serás considerada en el próximo ciclo de selección.',
-    en: "Tell us about your role, experience, and availability. No formal CV needed—just let us know how you'd like to contribute and when. Submit your application to join SheHub. You'll enter our waitlist and be considered in the next selection cycle.",
+    en: "Tell us about your role, experience, and availability. No formal CV is needed, just let us know how you'd like to contribute and when, and submit your application to join SheHub. You'll join our waitlist to be considered in the next selection cycle.",
     ca: "Explica'ns sobre el teu rol, experiència i disponibilitat. No necessites un CV formal, només indica'ns com t'agradaria contribuir i quan. Envia la teva sol·licitud per unir-te a SheHub. Entraràs a la nostra llista d'espera i seràs considerada en el proper cicle de selecció.",
   },
   'collaborators.timeline.step2.date': {
@@ -160,7 +160,7 @@ export const collaboratorsTranslations: TranslationObject = {
   },
   'collaborators.timeline.step2.description': {
     es: 'Revisamos tu perfil para encontrarte la oportunidad adecuada. La asignación se basa en tus intereses, tu disponibilidad y las necesidades actuales de los proyectos.',
-    en: 'We review your profile to match you with the right opportunity. Matching is based on your interests, your availability and current project needs.',
+    en: 'We review your profile to match you with the right opportunity. Matching is based on your interests and availability as well as current project needs.',
     ca: "Revisem el teu perfil per trobar-te l'oportunitat adequada. L'assignació es basa en els teus interessos, la teva disponibilitat i les necessitats actuals dels projectes.",
   },
   'collaborators.timeline.step3.date': {
@@ -197,12 +197,12 @@ export const collaboratorsTranslations: TranslationObject = {
   // Testimonials
   'collaborators.testimonials.item1.name': {
     es: 'Marta V., Colaboradora',
-    en: 'Marta V., Collaborator',
+    en: 'Marta V, Collaborator',
     ca: 'Marta V., Col·laboradora',
   },
   'collaborators.testimonials.item1.quote': {
     es: 'Formar parte de SheHub ha sido un cambio total. He conectado con personas con mucho talento, he trabajado en proyectos reales que importan y he crecido más en unos meses de lo que jamás imaginé. No es solo experiencia, es crecimiento con propósito.',
-    en: "Being part of SheHub has been a game-changer. I've connected with talented people, worked on real projects that matter, and grown more in a few months than I ever imagined. It's not just experience—it's purpose-driven growth.",
+    en: "Being part of SheHub has been a game-changer. I've connected with talented people, worked on real projects that matter, and grown more in a few months than I ever imagined. More than just experience, it's purpose-driven growth.",
     ca: 'Formar part de SheHub ha estat un canvi total. He connectat amb persones amb molt de talent, he treballat en projectes reals que importen i he crescut més en uns mesos del que mai havia imaginat. No és només experiència, és creixement amb propòsit.',
   },
   'collaborators.testimonials.item1.role': {
@@ -239,12 +239,12 @@ export const collaboratorsTranslations: TranslationObject = {
   // FAQ
   'collaborators.faq.title': {
     es: '¿Aún tienes dudas?',
-    en: 'Still unsure?',
+    en: 'Still not sure?',
     ca: 'Encara tens dubtes?',
   },
   'collaborators.faq.description': {
     es: 'Estas respuestas rápidas te ayudarán a sentirte preparada para unirte a tu primer equipo de SheHub.',
-    en: 'These quick answers will help to feel ready to join your first SheHub team.',
+    en: 'Get the answers you need before joining your first SheHub team.',
     ca: "Aquestes respostes ràpides t'ajudaran a sentir-te preparada per unir-te al teu primer equip de SheHub.",
   },
   'collaborators.faq.item1.header': {
@@ -254,12 +254,12 @@ export const collaboratorsTranslations: TranslationObject = {
   },
   'collaborators.faq.item1.text': {
     es: 'No, no necesitas experiencia profesional. SheHub está pensado para mujeres en transición hacia la tecnología, ya sea desde bootcamps, formación autodidacta o cambios de carrera. Lo más importante es tu disposición a aprender, colaborar y contribuir en proyectos reales.',
-    en: "No, you don't need professional experience. SheHub is designed for women who are transitioning into tech, whether from bootcamps, self-taught backgrounds, or career changes. What matters most is your willingness to learn, collaborate, and contribute to real projects.",
+    en: "No, you don't need professional experience. SheHub is designed for women who are transitioning into tech, whether you have completed a bootcamp, are learning on your own, or are changing careers.",
     ca: 'No, no necessites experiència professional. SheHub està pensat per a dones en transició cap a la tecnologia, ja sigui des de bootcamps, formació autodidacta o canvis de carrera. El més important és la teva disposició a aprendre, col·laborar i contribuir en projectes reals.',
   },
   'collaborators.faq.item2.header': {
     es: '¿Como qué tipo de rol puedo unirme?',
-    en: 'What kind of roles can I join as?',
+    en: 'What kind of roles are available?',
     ca: "Com a quin tipus de rol puc unir-m'hi?",
   },
   'collaborators.faq.item2.text': {
@@ -291,7 +291,7 @@ export const collaboratorsTranslations: TranslationObject = {
   // Call To Action
   'collaborators.cta.title': {
     es: 'Conecta. Crea. Rompe barreras.',
-    en: 'Connect. Create. Break Barriers.',
+    en: 'Connect. Create. Break barriers.',
     ca: 'Connecta. Crea. Trenca barreres.',
   },
   'collaborators.cta.button': {

@@ -19,7 +19,7 @@ export const mentorsTranslations: TranslationObject = {
   },
   'mentors.hero.paragraph': {
     es: 'En SheHub, guiarás a mujeres emergentes en el sector tecnológico mientras trabajan en proyectos reales, ganan confianza y dan sus primeros pasos en la industria. Como mentora, compartirás tu experiencia, fortalecerás tus habilidades de liderazgo y generarás un impacto duradero, todo mientras creces en una comunidad flexible y de apoyo.',
-    en: "At SheHub, you'll guide emerging women in tech as they work on real projects, build confidence, and take their first steps in the industry. As a mentor, you'll share your expertise, strengthen your leadership skills, and make a lasting impact—all while growing in a flexible, supportive community.",
+    en: "At SheHub, you'll guide emerging women in tech as they work on real projects, build confidence, and take their first steps in the industry. As a mentor, you'll share your expertise, strengthen your leadership skills, and make a lasting impact. All this while growing as part of a flexible, supportive community.",
     ca: 'A SheHub, guiaràs dones emergents en el sector tecnològic mentre treballen en projectes reals, guanyen confiança i fan els primers passos en la indústria. Com a mentora, compartiràs la teva experiència, enfortiràs les teves habilitats de lideratge i generaràs un impacte durador, tot mentre creixes en una comunitat flexible i de suport.',
   },
   'mentors.hero.button': {
@@ -51,7 +51,7 @@ export const mentorsTranslations: TranslationObject = {
   },
   'mentors.why.description': {
     es: 'Ser mentora no es solo dar algo a cambio, es crecer con propósito. SheHub es un espacio flexible y de baja presión donde puedes apoyar a nuevo talento, ganar confianza y fortalecer tu liderazgo, todo mientras generas un impacto real.',
-    en: "Mentoring isn't just about giving back—it's about growing with purpose. SheHub is a flexible, low-pressure space where you can support new talent, build your confidence, and strengthen your leadership—all while making a real impact.",
+    en: "Mentoring isn't just about giving back. It's about growing with purpose. SheHub is a flexible, low-pressure space where you can support new talent, build your confidence, and strengthen your leadership while making a real impact.",
     ca: 'Ser mentora no és només donar alguna cosa a canvi, és créixer amb propòsit. SheHub és un espai flexible i de baixa pressió on pots donar suport a nou talent, guanyar confiança i enfortir el teu lideratge, tot mentre generes un impacte real.',
   },
   'mentors.why.button': {
@@ -66,17 +66,17 @@ export const mentorsTranslations: TranslationObject = {
   },
   'mentors.why.feature1.description': {
     es: 'Apoya a mujeres emergentes en tecnología mientras trabajan en proyectos reales, ganan confianza y dan sus primeros pasos en la industria, con tu guía generando un impacto duradero.',
-    en: 'Support emerging women in tech as they work on real projects, build confidence, and take their first steps in the industry—with your guidance making a lasting impact.',
+    en: 'Support emerging women in tech as they work on real projects, build confidence, and take their first steps in the industry. Your guidance will make a lasting impact.',
     ca: 'Dona suport a dones emergents en tecnologia mentre treballen en projectes reals, guanyen confiança i fan els primers passos en la indústria, amb la teva guia generant un impacte durador.',
   },
   'mentors.why.feature2.title': {
     es: 'Desarrolla tu liderazgo',
-    en: 'Grow your leadership',
+    en: 'Strengthen your leadership',
     ca: 'Desenvolupa el teu lideratge',
   },
   'mentors.why.feature2.description': {
     es: 'Practica la guía de equipos y la mentoría asíncrona. Fortalece tus habilidades de liderazgo mientras enriqueces tu CV.',
-    en: 'Practice guiding teams, and mentoring asynchronously. Strengthen your leadership skills while building your CV.',
+    en: 'Practice guiding teams and mentoring asynchronously. Develop your leadership skills while building up your own CV.',
     ca: "Practica la guia d'equips i la mentoria asíncrona. Enforteix les teves habilitats de lideratge mentre enriqueixes el teu CV.",
   },
   'mentors.why.feature3.title': {
@@ -86,17 +86,17 @@ export const mentorsTranslations: TranslationObject = {
   },
   'mentors.why.feature3.description': {
     es: 'Sé mentora de un equipo durante 2-3 meses con un liderazgo ligero, solo 4-8 horas/semana. Flexible y asíncrono, ideal si compaginas trabajo o vuelves tras un parón.',
-    en: "Mentor a team for 2-3 months with light leadership—just 4-8 hours/week. Flexible and async, ideal if you're balancing work or returning after a break.",
+    en: 'Mentor a team for 2-3 months with a flexible, async commitment of just 4-8 hours a week. Ideal if you\'re planning around other responsibilities or a career comeback.',
     ca: "Sigues mentora d'un equip durant 2-3 mesos amb un lideratge lleuger, només 4-8 hores/setmana. Flexible i asíncron, ideal si compagines feina o tornes després d'una pausa.",
   },
   'mentors.why.feature4.title': {
     es: 'Comunidad de iguales',
-    en: 'Peer community',
+    en: 'Community of peers',
     ca: "Comunitat d'iguals",
   },
   'mentors.why.feature4.description': {
     es: 'Únete a una red de mentoras para compartir prácticas, apoyaros mutuamente y reconstruir la confianza a través de una colaboración significativa.',
-    en: 'Join a network of mentors to share practices, support one another, and rebuild confidence through meaningful collaboration.',
+    en: 'Join a network of mentors to share practices, offer mutual support, and rebuild confidence through meaningful collaboration.',
     ca: "Uneix-te a una xarxa de mentores per compartir pràctiques, donar-vos suport mútuament i reconstruir la confiança a través d'una col·laboració significativa.",
   },
 
@@ -118,7 +118,7 @@ export const mentorsTranslations: TranslationObject = {
   },
   'mentors.howItWorks.description': {
     es: 'Desde unirte a la comunidad hasta guiar a tu primer equipo, SheHub te facilita compartir tu experiencia, empoderar al talento emergente y generar un impacto real, paso a paso.',
-    en: 'From joining the community to guiding your first team, SheHub makes it easy to share your expertise, empower emerging talent, and make a real impact—step by step.',
+    en: 'From joining the community to guiding your first team, SheHub makes it easy to share your expertise, empower emerging talent, and make a real impact. Step by step.',
     ca: "Des d'unir-te a la comunitat fins a guiar el teu primer equip, SheHub et facilita compartir la teva experiència, empoderar el talent emergent i generar un impacte real, pas a pas.",
   },
 
@@ -135,7 +135,7 @@ export const mentorsTranslations: TranslationObject = {
   },
   'mentors.timeline.step1.description': {
     es: 'Cuéntanos sobre tu rol, experiencia y disponibilidad. No necesitas un CV formal, solo cuéntanos cómo te gustaría contribuir y cuándo.',
-    en: "Tell us about your role, experience, and availability. No formal CV needed—just let us know how you'd like to contribute and when.",
+    en: "Tell us about your role, experience, and availability. No formal CV needed, just let us know how you'd like to contribute and when.",
     ca: "Explica'ns sobre el teu rol, experiència i disponibilitat. No necessites un CV formal, només indica'ns com t'agradaria contribuir i quan.",
   },
   'mentors.timeline.step2.date': {
@@ -165,7 +165,7 @@ export const mentorsTranslations: TranslationObject = {
   },
   'mentors.timeline.step3.description': {
     es: 'Tendrás acceso a materiales de incorporación, canales asíncronos y una red de otras mentoras dispuestas a apoyarte y compartir buenas prácticas.',
-    en: "You'll access onboarding materials, async channels, and a peer network of other mentors ready to support you and share best practices.",
+    en: "You'll access onboarding materials, our async channels, and a peer network of other mentors ready to support you and share best practices.",
     ca: "Tindràs accés a materials d'incorporació, canals asíncrons i una xarxa d'altres mentores disposades a donar-te suport i compartir bones pràctiques.",
   },
   'mentors.timeline.step4.date': {
@@ -175,24 +175,24 @@ export const mentorsTranslations: TranslationObject = {
   },
   'mentors.timeline.step4.title': {
     es: 'Empieza a ser mentora',
-    en: 'Being mentoring',
+    en: 'Begin mentoring',
     ca: 'Comença a ser mentora',
   },
   'mentors.timeline.step4.description': {
     es: 'Apoya a tu equipo durante un ciclo completo (2-3 meses). Ya sea dando feedback ocasional o guiando a un equipo semanalmente, tu presencia marca la diferencia. Requiere 4-8 horas/semana.',
-    en: "Support your team throughout one full cycle (2–3 months). Whether you're giving occasional feedback or guiding a team weekly, your presence makes a difference. Requires 4–8 hours/week",
+    en: "Support your team throughout one full cycle (2-3 months). Whether you're giving occasional feedback or guiding a team weekly, your presence makes a difference. Requires 4-8 hours/week.",
     ca: 'Dona suport al teu equip durant un cicle complet (2-3 mesos). Ja sigui donant feedback ocasional o guiant un equip setmanalment, la teva presència marca la diferència. Requereix 4-8 hores/setmana.',
   },
 
   // Testimonials
   'mentors.testimonials.item1.name': {
     es: 'Laura G., Mentora',
-    en: 'Laura G., Mentor',
+    en: 'Laura G, Mentor',
     ca: 'Laura G., Mentora',
   },
   'mentors.testimonials.item1.quote': {
     es: 'Ser mentora en SheHub ha sido una de las experiencias más gratificantes de mi carrera. Apoyar a mujeres que dan sus primeros pasos en tecnología me ha recordado el poder de impulsarnos mutuamente. En SheHub, no se trata solo de aprender habilidades técnicas, sino de construir comunidad, encontrar referentes y darte cuenta de que no estás sola en este camino.',
-    en: "Being a mentor at SheHub has been one of the most rewarding experiences of my career. Supporting women who are taking their first steps in tech has reminded me of the power of lifting each other up. At SheHub, it's not just about learning technical skills — it's about building community, finding role models, and realizing you're not alone on this journey.",
+    en: "Being a mentor at SheHub has been one of the most rewarding experiences of my career. Supporting women who are taking their first steps in tech has reminded me of the power of lifting each other up. At SheHub, it's not just about learning technical skills. We're building community, finding role models, and realizing that we're not alone on this journey.",
     ca: "Ser mentora a SheHub ha estat una de les experiències més gratificants de la meva carrera. Donar suport a dones que fan els primers passos en tecnologia m'ha recordat el poder d'impulsar-nos mútuament. A SheHub, no es tracta només d'aprendre habilitats tècniques, sinó de construir comunitat, trobar referents i adonar-te que no estàs sola en aquest camí.",
   },
   'mentors.testimonials.item1.role': {
@@ -212,7 +212,7 @@ export const mentorsTranslations: TranslationObject = {
   },
   'mentors.testimonials.item2.quote': {
     es: 'Ser mentora en SheHub ha sido una de las experiencias más enriquecedoras de mi carrera. Ver a las colaboradoras crecer, ganar confianza y conseguir sus primeros puestos en tecnología, mientras yo perfeccionaba mis propias habilidades de liderazgo, me recordó por qué amo esta industria.',
-    en: 'Being a mentor at SheHub has been one of the most fulfilling experiences in my career. Watching contributors grow, gain confidence, and land their first tech roles — while I honed my own leadership skills — reminded me why I love this industry.',
+    en: 'Being a mentor at SheHub has been one of the most fulfilling experiences in my career. Watching contributors grow, gain confidence, and land their first tech roles - while I honed my own leadership skills - reminded me why I love this industry.',
     ca: 'Ser mentora a SheHub ha estat una de les experiències més enriquidores de la meva carrera. Veure les col·laboradores créixer, guanyar confiança i aconseguir els seus primers llocs en tecnologia, mentre jo perfeccionava les meves pròpies habilitats de lideratge, em va recordar per què estimo aquesta indústria.',
   },
   'mentors.testimonials.item2.role': {
@@ -229,12 +229,12 @@ export const mentorsTranslations: TranslationObject = {
   // FAQ
   'mentors.faq.title': {
     es: '¿Aún tienes dudas?',
-    en: 'Still unsure?',
+    en: 'Still not sure?',
     ca: 'Encara tens dubtes?',
   },
   'mentors.faq.description': {
     es: 'Aquí tienes respuestas rápidas para que te sientas preparada para liderar tu primer equipo en SheHub.',
-    en: 'Here are quick answers to help you feel ready to lead your first SheHub team.',
+    en: 'Get the answers you need before mentoring your first SheHub team.',
     ca: 'Aquí tens respostes ràpides perquè et sentis preparada per liderar el teu primer equip a SheHub.',
   },
   'mentors.faq.item1.header': {
@@ -254,7 +254,7 @@ export const mentorsTranslations: TranslationObject = {
   },
   'mentors.faq.item2.text': {
     es: 'La mayoría de las mentoras dedican 4-8 horas/semana en formato asíncrono. Puedes ser mentora durante un ciclo (2-3 meses), hacer una pausa y volver cuando se ajuste a tu horario.',
-    en: 'Most mentors dedicate 4-8 hours/week in an async format. You can mentor one cycle (2-3 months), pause, and return when it fits your schedule.',
+    en: 'Most mentors dedicate 4-8 hours/week in an async format. You can mentor one cycle (2-3 months), pause, and then return when it fits your schedule.',
     ca: "La majoria de les mentores dediquen 4-8 hores/setmana en format asíncron. Pots ser mentora durant un cicle (2-3 mesos), fer una pausa i tornar quan s'ajusti al teu horari.",
   },
   'mentors.faq.item3.header': {
@@ -274,14 +274,14 @@ export const mentorsTranslations: TranslationObject = {
   },
   'mentors.faq.item4.text': {
     es: 'No, SheHub es una comunidad de voluntariado. Pero ganarás experiencia de liderazgo, conectarás con otras personas y verás tu impacto en tiempo real.',
-    en: "No—SheHub is a volunteer community. But you'll gain leadership experience, connect with peers, and see your impact in real time.",
+    en: "No, SheHub is a volunteer community. But you'll gain leadership experience, connect with peers, and see your impact in real time.",
     ca: 'No, SheHub és una comunitat de voluntariat. Però guanyaràs experiència de lideratge, connectaràs amb altres persones i veuràs el teu impacte en temps real.',
   },
 
   // Call To Action
   'mentors.cta.title': {
     es: '¿Lista para apoyar y crecer?',
-    en: 'Ready to support and grow?',
+    en: 'Ready to guide and grow?',
     ca: 'Preparada per donar suport i créixer?',
   },
   'mentors.cta.button': {
