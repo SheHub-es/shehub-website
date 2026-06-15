@@ -1,6 +1,27 @@
 import type { TranslationObject } from '@/translations/types';
 
 export const navigationMenuTranslations: TranslationObject = {
+  'menu.navAria': {
+    es: 'Navegación principal',
+    en: 'Main navigation',
+    ca: 'Navegació principal',
+  },
+  'menu.home': {
+    es: 'Inicio',
+    en: 'Home',
+    ca: 'Inici',
+  },
+  /** Collaborators, mentors, and partners (header dropdown) */
+  'menu.joinMenu': {
+    es: 'Únete',
+    en: 'Join',
+    ca: 'Uneix-te',
+  },
+  'menu.joinMenuAria': {
+    es: 'Formar parte de SheHub: colaboradoras, mentoras y alianzas',
+    en: 'Be part of SheHub: collaborators, mentors and partners',
+    ca: 'Formar part de SheHub: col·laboradores, mentores i aliances',
+  },
   'menu.item-1': {
     es: 'Colaboradoras',
     en: 'Collaborators',
@@ -26,7 +47,7 @@ export const navigationMenuTranslations: TranslationObject = {
     en: 'Contact',
     ca: 'Contacte',
   },
-  /**Login V1 y V2 */
+  /** Login V1 and V2 */
     'menu.loginV1': {
     es: 'Login V1',
     en: 'Login V1',

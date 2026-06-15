@@ -81,4 +81,14 @@ export const waitlistTranslations: TranslationObject = {
     en: "Firebase is not configured. Check .env.local",
     ca: "Firebase no està configurat. Revisa .env.local",
   },
+  "ui.dropdown.placeholder": {
+    es: "Selecciona una opción",
+    en: "",
+    ca: "",
+  },
+  "ui.checkbox.required.ariaLabel": {
+    es: "obligatorio",
+    en: "",
+    ca: "",
+  },
 };

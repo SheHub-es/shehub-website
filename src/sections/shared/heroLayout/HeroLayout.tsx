@@ -81,27 +81,33 @@ export default function HeroLayout({
         {buttons.length > 0 && (
           <div className="flex flex-col sm:flex-row gap-5 sm:gap-4 mb-12">
             {buttons.map((btn, index) => {
-              const buttonContent = (
+              const buttonClassName = clsx(
+                "w-full sm:w-auto h-[40px] sm:h-[48px] min-w-[170px] min-h-[48px] font-(--font-weight-default) transition-colors duration-200",
+                btn.variant === "secondary-primary" && "!text-black hover:!text-black",
+              );
+
+              return btn.href ? (
                 <Button
+                  key={index}
+                  asChild
+                  variant={btn.variant || "primary-primary"}
+                  size="sm"
+                  shape="rounded"
+                  className={buttonClassName}
+                >
+                  <Link href={btn.href}>{btn.text}</Link>
+                </Button>
+              ) : (
+                <Button
+                  key={index}
                   variant={btn.variant || "primary-primary"}
                   size="sm"
                   shape="rounded"
                   onClick={btn.onClick}
-                  className={clsx(
-                    "w-full sm:w-auto h-[40px] sm:h-[48px] min-w-[170px] min-h-[48px] font-(--font-weight-default) transition-colors duration-200",
-                    btn.variant === "secondary-primary" && "!text-black hover:!text-black" // hardcoded so as not to touch Button.tsx
-                  )}
+                  className={buttonClassName}
                 >
                   {btn.text}
                 </Button>
-              );
-
-              return btn.href ? (
-                <Link key={index} href={btn.href}>
-                  {buttonContent}
-                </Link>
-              ) : (
-                <div key={index}>{buttonContent}</div>
               );
             })}
           </div>

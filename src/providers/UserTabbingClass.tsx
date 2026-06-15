@@ -3,8 +3,8 @@
 import { useEffect } from 'react'
 
 /**
- * Añade `user-is-tabbing` en <html> al usar Tab (u otras teclas de foco).
- * Cualquier pointer la quita: el anillo/borde de “foco” solo con teclado.
+ * Adds `user-is-tabbing` on <html> when using Tab (or other focus keys).
+ * Any pointer removes it: focus ring/border styling applies only for keyboard users.
  */
 export function UserTabbingClass() {
   useEffect(() => {

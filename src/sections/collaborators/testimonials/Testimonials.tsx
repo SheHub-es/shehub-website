@@ -1,27 +1,32 @@
+"use client"
+
 import TestimonialsCarousel from "@/sections/shared/testimonialsCarousel/TestimonialsCarousel"
 import MartaImg from "@/assets/images/avatars/avatar_martaV.webp"
 import { Review } from "@/components/ui/carousel/CarouselReview"
-
-const collaboratorsTestimonials: Review[] = [
-  {
-    id: '1',
-    image: MartaImg,
-    name: 'Marta V., Collaborator',
-    quote: 'Being part of SheHub has been a game-changer. I\'ve connected with talented people, worked on real projects that matter, and grown more in a few months than I ever imagined. It\'s not just experience—it\'s purpose-driven growth.',
-    role: 'UX/UI Designer',
-    alt: 'Avatar of a female collaborator, UX/UI designer'
-  },
-  {
-    id: '2',
-    image: MartaImg,
-    name: 'Julia, Collaborator',
-    quote: 'Before SheHub, I felt stuck between theory and the real world. Working on an actual product with a supportive team and a mentor who challenged me changed everything. I finally feel ready — and confident — to apply for jobs in tech.',
-    role: 'Frontend Developer',
-    alt: 'Avatar of a female collaborator, frontend developer'
-  }
-]
+import { useTranslation } from "@/hooks/useTranslation"
 
 export default function CollaboratorsTestimonials() {
+  const { t } = useTranslation()
+
+  const collaboratorsTestimonials: Review[] = [
+    {
+      id: '1',
+      image: MartaImg,
+      name: t('collaborators.testimonials.item1.name'),
+      quote: t('collaborators.testimonials.item1.quote'),
+      role: t('collaborators.testimonials.item1.role'),
+      alt: t('collaborators.testimonials.item1.alt'),
+    },
+    {
+      id: '2',
+      image: MartaImg,
+      name: t('collaborators.testimonials.item2.name'),
+      quote: t('collaborators.testimonials.item2.quote'),
+      role: t('collaborators.testimonials.item2.role'),
+      alt: t('collaborators.testimonials.item2.alt'),
+    },
+  ]
+
   return (
     <TestimonialsCarousel
       id="collaborators-testimonials"

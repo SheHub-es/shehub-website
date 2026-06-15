@@ -49,16 +49,17 @@ const Partners = () => {
 
       {/* CTA */}
       <div className="px-4 md:px-0">
-        <Link href="/partners" aria-label="Go to Partners page">
-          <Button
-            variant="primary-primary"
-            size="sm"
-            shape="rounded"
-            className="hover:!text-black transition-colors duration-200 w-full sm:w-auto"
-          >
+        <Button
+          asChild
+          variant="primary-primary"
+          size="sm"
+          shape="rounded"
+          className="hover:!text-black transition-colors duration-200 w-full sm:w-auto"
+        >
+          <Link href="/partners" aria-label="Go to Partners page">
             {t('home.partners.cta')}
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
     </SectionWrapper>
   );
