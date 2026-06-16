@@ -1,54 +1,54 @@
-import type { TranslationObject } from '@/translations/types'
+import type { TranslationObject } from '@/translations/types';
 
 export const contactTranslations: TranslationObject = {
   'contact.title.before': {
-    es: "",
+    es: 'Vamos a',
     en: "Let's",
-    ca: "",
+    ca: 'Anem a',
   },
   'contact.title.highlight': {
-    es: "",
-    en: "connect!",
-    ca: "",
+    es: 'conectar!',
+    en: 'connect!',
+    ca: 'connectar!',
   },
   'contact.paragraph': {
-    es: "",
-    en: "Either you want to collaborate, mentor, partner with us or just know more about SheHub, please fill in the form or send us an email.",
-    ca: "",
+    es: 'Tanto si quieres colaborar, ser mentora, asociarte con nosotras o simplemente saber más sobre SheHub, rellena el formulario o envíanos un correo.',
+    en: 'Would you like to collaborate, mentor, partner with us, or just find out more about SheHub? Please fill in the form or send us an email.',
+    ca: "Tant si vols col·laborar, ser mentora, associar-te amb nosaltres o simplement saber més sobre SheHub, omple el formulari o envia'ns un correu.",
   },
   'contact.cta': {
-    es: "",
-    en: "We'd love to hear from you",
-    ca: "",
+    es: 'Nos encantaría saber de ti.',
+    en: 'We\'d love to hear from you.',
+    ca: 'Ens encantaria saber de tu.',
   },
   'contact.form.ariaLabel': {
-    es: "",
-    en: "Contact form",
-    ca: "",
+    es: 'Formulario de contacto',
+    en: 'Contact form',
+    ca: 'Formulari de contacte',
   },
   'contact.form.fullName': {
-    es: "",
-    en: "Full name",
-    ca: "",
+    es: 'Nombre completo',
+    en: 'Full name',
+    ca: 'Nom complet',
   },
   'contact.form.email': {
-    es: "",
-    en: "Email",
-    ca: "",
+    es: 'Correo electrónico',
+    en: 'Email',
+    ca: 'Correu electrònic',
   },
   'contact.form.message': {
-    es: "",
-    en: "Message",
-    ca: "",
+    es: 'Mensaje',
+    en: 'Message',
+    ca: 'Missatge',
   },
   'contact.form.acceptTerms': {
-    es: "",
-    en: "I accept the terms",
-    ca: "",
+    es: 'Acepto los términos',
+    en: 'I accept the terms and conditions',
+    ca: 'Accepto els termes',
   },
   'contact.form.submit': {
-    es: "",
-    en: "Submit",
-    ca: "",
+    es: 'Enviar',
+    en: 'Submit',
+    ca: 'Envia',
   },
-}
+};

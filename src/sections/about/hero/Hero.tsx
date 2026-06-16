@@ -1,29 +1,38 @@
-import HeroImage from "@/assets/images/photos/photo_heroAbout.webp"
-import HeroLayout from "@/sections/shared/heroLayout/HeroLayout"
+'use client';
+
+import HeroImage from '@/assets/images/photos/photo_heroAbout.webp';
+import { useTranslation } from '@/hooks/useTranslation';
+import HeroLayout from '@/sections/shared/heroLayout/HeroLayout';
 
 export default function AboutHero() {
+  const { t } = useTranslation();
+
   return (
     <HeroLayout
       id="about"
       reverse
-      eyebrow="Who we are"
+      eyebrow={t('about.hero.eyebrow')}
       title={
         <>
-          Powering the tech future with{" "}
+          {t('about.hero.titleBefore')}
           <span
             className="bg-clip-text text-transparent"
-            style={{ backgroundImage: "var(--color-gradient-brand)" }}
+            style={{ backgroundImage: 'var(--color-gradient-brand)' }}
           >
-            female talent
+            {t('about.hero.titleHighlight')}
           </span>
         </>
       }
-      paragraph="SheHub is a women led community for early career women in tech, where real collaboration and product building come first. We create hands on opportunities to grow, connect, and stand out, so more female talent gets hired, recognized, and empowered."
+      paragraph={t('about.hero.paragraph')}
       mainImage={HeroImage.src}
-      alt="Women collaborating and innovating in tech, representing the SheHub community"
+      alt={t('about.hero.alt')}
       buttons={[
-        { text: "Join a real project", variant: "primary-primary", href: "/join" },
+        {
+          text: t('about.hero.joinButton'),
+          variant: 'primary-primary',
+          href: '/join',
+        },
       ]}
     />
-  )
+  );
 }
