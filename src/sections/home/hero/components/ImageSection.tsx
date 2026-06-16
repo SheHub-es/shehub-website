@@ -18,10 +18,11 @@ const floatingImages = [
     alt: "Collaborator image",
     width: 153,
     height: 66,
-    className: `
+      className: `
       absolute 
       -bottom-12 -left-18
       lg:-bottom-[65px] lg:-left-[70px]
+      h-auto w-auto
     `
   },
   {
@@ -29,10 +30,11 @@ const floatingImages = [
     alt: "Mentor image",
     width: 113,
     height: 66,
-    className: `
+      className: `
       absolute 
       top-[210px] -right-15 -translate-y-1/2
       lg:top-[253px] lg:-right-[60px]
+      h-auto w-auto
     `
   },
   {
@@ -40,10 +42,11 @@ const floatingImages = [
     alt: "Star image",
     width: 86,
     height: 86,
-    className: `
+      className: `
       absolute 
       top-10 -right-10 -translate-y-1/2
       lg:top-[15px] lg:-right-[25px]
+      h-auto w-auto
     `
   },
   {
@@ -51,10 +54,11 @@ const floatingImages = [
     alt: "Bubbles background",
     width: 227,
     height: 227,
-    className: `
+      className: `
       absolute 
       top-[280px] -left-30 -translate-y-1/2 z-[-1]
       lg:top-[253px] lg:-left-[110px]
+      h-auto w-auto
     `
   }
 ];
