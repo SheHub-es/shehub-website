@@ -125,4 +125,25 @@ SheHub supports three languages:
 Language is managed through a custom React Context-based i18n system — no external library required. The selected language is persisted via browser cookies and `localStorage`. Translation files are organised by feature under `src/translations/`.
 
 ---
+
+## 💜 Accessibility (a11y) Tests
+
+These tests use [Playwright](https://playwright.dev/) with [axe-core](https://github.com/dequelabs/axe-core)
+(via `@axe-core/playwright`) to automatically scan pages for accessibility
+issues against the WCAG 2 standard at levels A, AA, and AAA.
+
+- `about.spec.ts`, `contact.spec.ts`, etc. — run against the live deployed
+  site (`https://shehub.es/...`).
+- `dev-page.spec.ts` — run against your local dev server
+  (`http://localhost:3000`) for whatever page you're currently working on,
+  via the `PAGE_PATH` environment variable.
+
+Automated scans catch common issues (alt text, contrast, labels, ARIA, etc.)
+but don't replace manual testing (keyboard nav, screen readers) for full WCAG
+compliance.
+
+For installation, running tests, and how to interpret results, see
+the provided documentation.
+
+---
 ### Made with 💜 by the SheHub team.
