@@ -91,12 +91,12 @@ export const homeTranslations: TranslationObject = {
   },
   'home.valueProp.crossFunctional.desc': {
     es: 'Los equipos incluyen UX/UI, Dev, Producto, Marketing y Datos — como en empresas reales.',
-    en: 'Teams include UX/UI, Dev, Product, Marketing, and Data — like in real companies.',
+    en: 'Teams include UX/UI, Dev, Product, Marketing, and Data — just like a real company.',
     ca: "Els equips inclouen UX/UI, Dev, Producte, Marketing i Dades — com en empreses reals.",
   },
   'home.valueProp.mentorship.title': {
     es: 'Networking y mentoría',
-    en: 'Networking & Mentorship',
+    en: 'Networking & mentorship',
     ca: 'Networking i mentorització',
   },
   'home.valueProp.mentorship.desc': {
@@ -106,12 +106,12 @@ export const homeTranslations: TranslationObject = {
   },
   'home.valueProp.remote.title': {
     es: 'Remoto y flexible',
-    en: 'Remote & Flexible',
+    en: 'Remote & flexible',
     ca: 'Remot i flexible',
   },
   'home.valueProp.remote.desc': {
     es: 'Cada proyecto es 100% remoto y a tiempo parcial, pensado para compaginar con trabajo, estudios o vida personal.',
-    en: 'Every project is fully remote and part-time, designed to fit around your job, studies, or personal life, so you can grow on your terms.',
+    en: 'Every project is fully remote and part-time, designed to fit around your job, studies, or personal life, so you can grow on your own terms.',
     ca: "Cada projecte és 100% remot i a temps parcial, pensat per compaginar amb feina, estudis o vida personal.",
   },
   'home.valueProp.free.title': {
@@ -121,7 +121,7 @@ export const homeTranslations: TranslationObject = {
   },
   'home.valueProp.free.desc': {
     es: 'Mentoría, proyecto real y comunidad en un mismo recorrido, para ganar confianza, habilidades y un portfolio alineado con el mercado.',
-    en: 'Guided mentorship, a real project, and community in one pathway—so you build confidence, skills, and a market-ready portfolio.',
+    en: 'Guided mentorship, a real project, and community in one pathway. You\'ll build confidence, skills, and a market-ready portfolio.',
     ca: "Mentorització, projecte real i comunitat en un mateix recorregut, per guanyar confiança, habilitats i un portafoli alineat amb el mercat.",
   },
   'home.valueProp.international.title': {
@@ -473,7 +473,7 @@ export const homeTranslations: TranslationObject = {
   },
   'home.faq.contactText': {
     es: 'Estamos aquí para ayudarte, no dudes en escribirnos.',
-    en: 'We are here to help, do not hesitate and write us!',
+    en: 'We are here to help, get in touch!',
     ca: 'Som aquí per ajudar-te, no dubtis i escriu-nos!',
   },
   'home.faq.contactCta': {

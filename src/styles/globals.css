@@ -407,9 +407,9 @@
   --carousel-arrow-default: var(--color-foreground);
   --carousel-arrow-disabled: var(--color-disabled);
 
-  /*Font Family*/
-  --font-primary: 'Ubuntu', sans-serif;
-  --font-secondary: 'Nunito', sans-serif;
+  /*Font Family — stacks use next/font variables from layout.tsx */
+  --font-primary: var(--font-ubuntu), sans-serif;
+  --font-secondary: var(--font-nunito), sans-serif;
 
   /*Font Size*/
   --text-size-1000: 60px;

@@ -29,12 +29,12 @@ It includes information, resources, and contact forms for potential collaborator
 |---|---|
 | **Framework** | Next.js 15, React 19, TypeScript |
 | **Styling** | Tailwind CSS 4, Radix UI |
-| **Fonts** | Nunito, Ubuntu (via @fontsource) |
+| **Fonts** | Nunito, Ubuntu (via next/font) |
 | **Backend** | Firebase (Auth + Firestore), Google OAuth |
 | **State Management** | Redux Toolkit |
 | **Theme** | next-themes (dark mode support) |
 | **Testing** | Playwright, axe-core (accessibility) |
-| **Tooling** | ESLint, Prettier |
+| **Tooling** | pnpm, ESLint, Prettier |
 
 ---
 
@@ -43,7 +43,7 @@ It includes information, resources, and contact forms for potential collaborator
 Before running the project, make sure you have:
 
 - **Node.js** v20+
-- **npm** v10+
+- **pnpm** v10+ (`corepack enable` recommended)
 - A **Firebase** project with Auth and Firestore enabled
 
 ---
@@ -53,7 +53,7 @@ Before running the project, make sure you have:
 ```bash
 git clone https://github.com/SheHub-es/shehub-website.git
 cd shehub-website
-npm install
+pnpm install
 ```
 ---
 
@@ -83,7 +83,7 @@ NEXT_PUBLIC_API_URL=
 ## 💻 Run the Development Server
 
 ```bash
-npm run dev
+pnpm dev
 ```
 Visit https://localhost:3000 in your browser
 

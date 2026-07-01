@@ -13,13 +13,13 @@ import { cookies } from "next/headers";
 const ubuntu = Ubuntu({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-  variable: "--font-primary",
+  variable: "--font-ubuntu",
 });
 
 const nunito = Nunito({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-  variable: "--font-secondary",
+  variable: "--font-nunito",
 });
 
 export const metadata: Metadata = {
@@ -75,7 +75,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const initialLanguage = (langCookie === "en" || langCookie === "ca" ? langCookie : "es") as "es" | "en" | "ca";
 
   return (
-    <html lang={initialLanguage} className={`${ubuntu.variable} ${nunito.variable}`} suppressHydrationWarning>
+    <html
+      lang={initialLanguage}
+      className={`${ubuntu.variable} ${nunito.variable}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body className="overflow-x-hidden">
         <AppProviders initialLanguage={initialLanguage}>
           <ScrollToTop />

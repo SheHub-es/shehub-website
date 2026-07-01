@@ -2,6 +2,7 @@
   "name": "shehub-website",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.16.1",
   "scripts": {
     "dev": "next dev",
     "dev:lan": "next dev --hostname 0.0.0.0",
@@ -12,8 +13,6 @@
     "export:accessibility-pdfs": "tsx scripts/export-reports-pdf.ts"
   },
   "dependencies": {
-    "@fontsource/nunito": "^5.2.6",
-    "@fontsource/ubuntu": "^5.2.6",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
     "@radix-ui/react-navigation-menu": "^1.2.13",
