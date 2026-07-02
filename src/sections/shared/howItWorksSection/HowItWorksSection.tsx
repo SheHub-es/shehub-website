@@ -9,6 +9,9 @@ interface HowItWorksSectionProps {
   variant?: "alternate" | "left" | "right" | "opposite";
   className?: string;
   backgroundClassName?: string;
+  extendLastLine?: boolean;
+  revealOnScroll?: boolean;
+  centerAlign?: boolean;
 }
 
 export default function HowItWorksSection({
@@ -19,6 +22,9 @@ export default function HowItWorksSection({
   variant = "alternate",
   className = "",
   backgroundClassName = "bg-white",
+  extendLastLine = false,
+  revealOnScroll = false,
+  centerAlign = false,
 }: HowItWorksSectionProps) {
   return (
     <SectionWrapper className={`text-black ${backgroundClassName} py-24 font-primary ${className}`}>
@@ -41,7 +47,13 @@ export default function HowItWorksSection({
       </div>
 
       <div className="max-w-4xl mx-auto px-4">
-        <Timeline items={timelineData} variant={variant} />
+        <Timeline
+          items={timelineData}
+          variant={variant}
+          extendLastLine={extendLastLine}
+          revealOnScroll={revealOnScroll}
+          centerAlign={centerAlign}
+        />
       </div>
     </SectionWrapper>
   );
