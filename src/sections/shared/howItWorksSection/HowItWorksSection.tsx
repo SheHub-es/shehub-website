@@ -12,6 +12,7 @@ interface HowItWorksSectionProps {
   extendLastLine?: boolean;
   revealOnScroll?: boolean;
   centerAlign?: boolean;
+  mobileLeftLine?: boolean;
 }
 
 export default function HowItWorksSection({
@@ -25,6 +26,7 @@ export default function HowItWorksSection({
   extendLastLine = false,
   revealOnScroll = false,
   centerAlign = false,
+  mobileLeftLine = false,
 }: HowItWorksSectionProps) {
   return (
     <SectionWrapper className={`text-black ${backgroundClassName} py-24 font-primary ${className}`}>
@@ -53,6 +55,7 @@ export default function HowItWorksSection({
           extendLastLine={extendLastLine}
           revealOnScroll={revealOnScroll}
           centerAlign={centerAlign}
+          mobileLeftLine={mobileLeftLine}
         />
       </div>
     </SectionWrapper>

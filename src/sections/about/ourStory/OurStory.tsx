@@ -1,13 +1,10 @@
 'use client';
 
 import { useTranslation } from '@/hooks/useTranslation';
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
-import { cn } from '@/lib/utils';
 import HowItWorksSection from '@/sections/shared/howItWorksSection/HowItWorksSection';
 
 export default function OurHistory() {
   const { t } = useTranslation();
-  const [presentRef, isPresentVisible] = useIntersectionObserver();
 
   const timelineData = [
     {
@@ -35,10 +32,15 @@ export default function OurHistory() {
       title: t('about.timeline.step5.title'),
       description: t('about.timeline.step5.description'),
     },
+    {
+      date: t('about.timeline.present.label'),
+      title: t('about.timeline.present.title'),
+      description: t('about.timeline.present.description'),
+      variant: 'final' as const,
+    },
   ];
 
   return (
-    <>
     <HowItWorksSection
       title={
         <>
@@ -48,28 +50,9 @@ export default function OurHistory() {
       }
       timelineData={timelineData}
       variant="alternate"
-      extendLastLine={true}
       revealOnScroll={true}
       centerAlign={true}
+      mobileLeftLine={true}
     />
-    <div
-        ref={presentRef}
-        className={cn(
-          "flex flex-col items-center text-center gap-6 px-4 mx-auto -mt-20 fade-on-scroll",
-          isPresentVisible && "visible"
-        )}
-        style={{ transitionDelay: "200ms" }}
-      >
-      <p className="font-secondary text-size-500 leading-line-height-body-1 font-heavy text-neutral-600">
-        {t('about.timeline.present.label')}
-      </p>
-      <h2 className="font-primary text-size-700 leading-line-height-heading-4 font-heavy text-primary">
-        {t('about.timeline.present.title')}
-      </h2>
-      <p className="font-secondary text-size-400 leading-line-height-body-2 text-black">
-        {t('about.timeline.present.description')}
-      </p>
-    </div>
-    </>
   );
 }
