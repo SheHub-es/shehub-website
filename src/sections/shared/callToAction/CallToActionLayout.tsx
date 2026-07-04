@@ -37,15 +37,9 @@ export const CallToActionLayout = ({
             {title}
           </h2>
 
-          <Link href={buttonHref}>
-            <Button
-              variant={buttonVariant}
-              shape="rounded"
-              className="w-52 h-10 !text-black"
-            >
-              {buttonText}
-            </Button>
-          </Link>
+          <Button asChild variant={buttonVariant} shape="rounded" className="w-52 h-10 !text-black">
+            <Link href={buttonHref}>{buttonText}</Link>
+          </Button>
         </div>
       </SectionWrapper>
     </div>

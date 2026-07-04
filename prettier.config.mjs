@@ -1,12 +1,13 @@
-import prettierPluginSortImports from '@trivago/prettier-plugin-sort-imports';
+import prettierPluginSortImports from "@trivago/prettier-plugin-sort-imports";
 
 /** @type {import("prettier").Config} */
 const config = {
   plugins: [prettierPluginSortImports],
-  importOrder: ['^react', '^@/', '^[./]'],
+  importOrder: ["^react", "^@/", "^[./]"],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
-  semi: true
+  semi: true,
+  singleQuote: false,
 };
 
 export default config;

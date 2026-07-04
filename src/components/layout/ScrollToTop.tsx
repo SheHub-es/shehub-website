@@ -4,8 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 /**
- * Hace scroll al inicio de la página cuando cambia la ruta,
- * para que al navegar se vea la página desde arriba con la barra de navegación.
+ * Scrolls to the top when the route changes so navigation shows the page from the top with the navbar.
  */
 export default function ScrollToTop() {
   const pathname = usePathname();

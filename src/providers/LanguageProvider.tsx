@@ -76,6 +76,7 @@ export const LanguageProvider = ({
 
     if (translationObj[key]?.[langToUse]) return translationObj[key][langToUse]
     if (translationObj[key]?.['es']) return translationObj[key]['es']
+    if (translationObj[key]?.['en']) return translationObj[key]['en']
 
     console.warn(`⚠️ Missing translation for key: "${key}"`)
     return ''

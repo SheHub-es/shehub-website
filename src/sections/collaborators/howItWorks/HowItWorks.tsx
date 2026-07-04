@@ -1,19 +1,46 @@
+"use client"
+
 import HowItWorksSection from "@/sections/shared/howItWorksSection/HowItWorksSection";
-import { collaboratorsTimelineData } from "@/components/data/collaboratorsTimelineData";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function HowItWorks() {
+  const { t } = useTranslation();
+
+  const timelineData = [
+    {
+      date: t('collaborators.timeline.step1.date'),
+      title: t('collaborators.timeline.step1.title'),
+      description: t('collaborators.timeline.step1.description'),
+    },
+    {
+      date: t('collaborators.timeline.step2.date'),
+      title: t('collaborators.timeline.step2.title'),
+      description: t('collaborators.timeline.step2.description'),
+    },
+    {
+      date: t('collaborators.timeline.step3.date'),
+      title: t('collaborators.timeline.step3.title'),
+      description: t('collaborators.timeline.step3.description'),
+    },
+    {
+      date: t('collaborators.timeline.step4.date'),
+      title: t('collaborators.timeline.step4.title'),
+      description: t('collaborators.timeline.step4.description'),
+    },
+  ];
+
   return (
     <HowItWorksSection
-      eyebrow="How SheHub works"
+      eyebrow={t('collaborators.howItWorks.eyebrow')}
       title={
         <>
-          Join, connect, and start building{" "}
-          <span className="text-black">real experience</span>{" "}
-          <span className="text-gradient-steps">in just 4 steps</span>
+          {t('collaborators.howItWorks.title.before')}{" "}
+          <span className="text-black">{t('collaborators.howItWorks.title.middle')}</span>{" "}
+          <span className="text-gradient-steps">{t('collaborators.howItWorks.title.highlight')}</span>
         </>
       }
-      description="From signing up to launching your first project, SheHub makes it easy to grow your skills, connect with a purpose-driven team, and make a real impact—step by step."
-      timelineData={collaboratorsTimelineData}
+      description={t('collaborators.howItWorks.description')}
+      timelineData={timelineData}
       variant="alternate"
       backgroundClassName="bg-white"
     />

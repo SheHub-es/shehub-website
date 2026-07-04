@@ -44,15 +44,15 @@ export default function HowSheHubWorks() {
       </div>
 
       <div className="mt-16 flex justify-center">
-        <Link href="/join">
-          <Button
-            variant="primary-primary"
-            size="sm"
-            shape="rounded"
-            className="hover:!text-black transition-colors duration-200" >
-            {t('home.howItWorks.cta')}
-          </Button>
-        </Link>
+        <Button
+          asChild
+          variant="primary-primary"
+          size="sm"
+          shape="rounded"
+          className="hover:!text-black transition-colors duration-200"
+        >
+          <Link href="/join">{t('home.howItWorks.cta')}</Link>
+        </Button>
       </div>
     </SectionWrapper>
   );

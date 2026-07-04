@@ -59,15 +59,9 @@ function TextSection({
         </div>
         <div className="w-full flex justify-center md:justify-start">
           <div className="w-full flex justify-center md:justify-start">
-            <Link href={href}>
-                <Button
-                  variant="secondary-primary"
-                  shape="rounded"
-                  className="text-black w-full md:w-auto text-sm md:text-base py-2 md:py-3"
-                >
-                  {buttonText}
-                </Button>
-              </Link>
+            <Button asChild variant="secondary-primary" shape="rounded" className="text-black w-full md:w-auto text-sm md:text-base py-2 md:py-3">
+              <Link href={href}>{buttonText}</Link>
+            </Button>
             </div>
           </div>
         </div>

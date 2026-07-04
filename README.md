@@ -1,36 +1,152 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💜 SheHub
 
-## Getting Started
+SheHub is a community-driven initiative created by and for women who have completed a tech bootcamp or training program.
 
-First, run the development server:
+Its goal is to highlight female tech talent, support job placement, and build a collaborative and empowering network within the tech industry.
+
+This repository contains the main SheHub website, developed with Next.js and React.
+
+It includes information, resources, and contact forms for potential collaborators, partner companies, and new participants.
+
+
+## 📁 Table of Contents
+
+- [💜 SheHub](#-shehub)
+- [📁 Table of Contents](#-table-of-contents)
+- [💼 Tech Stack](#-tech-stack)
+- [🛠️ Getting Started / Prerequisites](#️-getting-started--prerequisites)
+- [⚙️ Installation](#️-installation)
+- [🔐 Environment Variables](#-environment-variables)
+- [💻 Development & Build](#-development--build)
+- [📂 Project Structure](#-project-structure)
+- [🌐 Language Support](#-language-support)
+
+---
+
+## 💼 Tech Stack
+
+| Category | Technologies |
+|---|---|
+| **Framework** | Next.js 16, React 19, TypeScript |
+| **Styling** | Tailwind CSS 4, Radix UI |
+| **Fonts** | Nunito, Ubuntu (via next/font) |
+| **Backend** | Firebase (Auth + Firestore), Google OAuth |
+| **State Management** | Redux Toolkit |
+| **Theme** | next-themes (dark mode support) |
+| **Testing** | Accessibility audits (Playwright + axe-core on `test/accessibility-tests`) |
+| **Tooling** | pnpm, ESLint, Prettier |
+
+---
+
+## 🛠️ Getting Started / Prerequisites
+
+Before running the project, make sure you have:
+
+- **Node.js** v20+
+- **pnpm** v10+ (`corepack enable` recommended)
+- A **Firebase** project with Auth and Firestore enabled
+
+---
+
+## ⚙️ Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/SheHub-es/shehub-website.git
+cd shehub-website
+pnpm install
+```
+---
+
+## 🔐 Environment Variables
+
+Create a `.env.local` file in the root of the project and add the following variables:
+
+```env
+# Firebase
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+
+# LinkedIn OAuth
+NEXT_PUBLIC_LINKEDIN_CLIENT_ID=
+NEXT_PUBLIC_LINKEDIN_REDIRECT_URI=
+
+# API
+NEXT_PUBLIC_API_URL=
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Development & Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm dev    # development server
+pnpm build  # production build
+pnpm start  # run production build locally
+```
 
-## Learn More
+Visit http://localhost:3000 in your browser after `pnpm dev`.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/            # Next.js App Router pages and routes
+├── components/     # React components
+│   ├── ui/         # shadcn/ui base components
+│   ├── icons/      # Icon components
+│   ├── layout/     # Navbar, Footer, and layout components
+│   └── shared/     # Shared reusable components
+├── sections/       # Page-level sections (home, auth, evolution, etc.)
+├── translations/   # i18n translation files (by page/feature)
+├── store/          # Redux store and feature slices
+├── providers/      # React context providers
+├── hooks/          # Custom React hooks
+├── lib/            # Utility functions
+├── services/       # External service integrations
+├── interfaces/     # TypeScript interfaces
+├── types/          # TypeScript type definitions
+└── assets/         # Images and static assets
+```
+---
 
-## Deploy on Vercel
+## 🌐 Language Support
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+SheHub supports three languages:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Language | Code | Status |
+|---|---|---|
+| Spanish | `es` | Default |
+| English | `en` | Supported |
+| Catalan | `ca` | Supported |
+
+Language is managed through a custom React Context-based i18n system — no external library required. The selected language is persisted via browser cookies and `localStorage`. Translation files are organised by feature under `src/translations/`.
+
+---
+
+## 💜 Accessibility (a11y) Tests
+
+These tests use [Playwright](https://playwright.dev/) with [axe-core](https://github.com/dequelabs/axe-core)
+(via `@axe-core/playwright`) to automatically scan pages for accessibility
+issues against the WCAG 2 standard at levels A, AA, and AAA.
+
+- `about.spec.ts`, `contact.spec.ts`, etc. — run against the live deployed
+  site (`https://shehub.es/...`).
+- `dev-page.spec.ts` — run against your local dev server
+  (`http://localhost:3000`) for whatever page you're currently working on,
+  via the `PAGE_PATH` environment variable.
+
+Automated scans catch common issues (alt text, contrast, labels, ARIA, etc.)
+but don't replace manual testing (keyboard nav, screen readers) for full WCAG
+compliance.
+
+For installation, running tests, and how to interpret results, see
+the provided documentation.
+
+---
+### Made with 💜 by the SheHub team.

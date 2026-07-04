@@ -243,6 +243,15 @@
   --color-navigationmenu-current-underline: var(--color-foreground);
   --color-navigationmenu-focus-outline: var(--color-purple-300);
   --color-navigationmenu-container-bg: transparent;
+  /* Navbar header — Figma L1 + focus (state default + focus A) */
+  --nav-menu-link-text: #0e0e0e;
+  --nav-menu-link-inner-gap: 4px;
+  --nav-menu-row-gap: 32px;
+  --nav-menu-focus-purple: #6230f7;
+  --nav-menu-focus-gap-fill: #fefefe;
+  /* Focus frame: extra air around label (tighter Figma insets felt cramped on real text) */
+  --nav-menu-focus-inset-x: 12px;
+  --nav-menu-focus-inset-y: 4px;
 
   /* =Header */
   --color-header-bg: #fefefe;
@@ -303,7 +312,7 @@
 
   --input-border-default: var(--color-neutral-300);
   --input-border-hover: var(--color-neutral-400);
-  /* Figma: hover campo texto — borde 2px #6230F7, fondo #FEFEFE */
+  /* Figma: text field hover — 2px border #6230F7, background #FEFEFE */
   --input-border-hover-figma: #6230f7;
   --input-bg-hover-figma: #fefefe;
   --input-border-focus: var(--color-primary);
@@ -322,7 +331,7 @@
   --input-ring-error: rgba(219, 51, 39, 0.1);
   --input-ring-success: rgba(13, 135, 94, 0.1);
 
-  /* Figma: foco teclado — trazo exterior 5px #6230F7, separación 2px blanca, campo 2px #D1D1D1, fondo #FEFEFE */
+  /* Figma: keyboard focus — outer stroke 5px #6230F7, 2px white gap, field 2px #D1D1D1, background #FEFEFE */
   --input-focus-stroke-figma: #6230f7;
   --input-focus-gap-figma: #ffffff;
   --input-border-field-figma: #d1d1d1;
@@ -330,7 +339,7 @@
   --input-focus-gap-width: 2px;
   --input-focus-stroke-width: 5px;
 
-  /* Figma: dropdown ghost — trazo exterior 3px #6230F7, gap 2px blanco, radio interior 12px / marco 14px */
+  /* Figma: dropdown ghost — outer stroke 3px #6230F7, 2px white gap, inner radius 12px / outer frame 14px */
   --dropdown-focus-stroke-width: 3px;
   --dropdown-focus-gap-width: 2px;
   --dropdown-focus-radius: 12px;
@@ -398,9 +407,9 @@
   --carousel-arrow-default: var(--color-foreground);
   --carousel-arrow-disabled: var(--color-disabled);
 
-  /*Font Family*/
-  --font-primary: 'Ubuntu', sans-serif;
-  --font-secondary: 'Nunito', sans-serif;
+  /*Font Family — stacks use next/font variables from layout.tsx */
+  --font-primary: var(--font-ubuntu), sans-serif;
+  --font-secondary: var(--font-nunito), sans-serif;
 
   /*Font Size*/
   --text-size-1000: 60px;
@@ -577,14 +586,141 @@ html.user-is-tabbing *:focus {
   position: relative;
 }
 
-/* Tailwind ring = box-shadow: quitar con ratón en botones */
+/*
+ * Buttons: outline often ignores border-radius (looks square on rounded CTAs).
+ * box-shadow follows the element shape. Skip icon hit targets (they use Tailwind ring).
+ */
+html.user-is-tabbing
+  button:focus-visible:not(.shehub-icon-hit-target):not(.nav-join-trigger-label) {
+  outline: none !important;
+  box-shadow:
+    0 0 0 2px var(--color-background-light),
+    0 0 0 calc(2px + 0.25rem) var(--color-purple-600);
+}
+
+/* Same ring when Button uses asChild + Link (focus is on <a class="btn">) */
+html.user-is-tabbing a.btn:focus-visible {
+  outline: none !important;
+  box-shadow:
+    0 0 0 2px var(--color-background-light),
+    0 0 0 calc(2px + 0.25rem) var(--color-purple-600);
+}
+
+html.user-is-tabbing .shehub-icon-hit-target:focus-visible {
+  outline: none !important;
+}
+
+/* Navbar text links — default: L1 #0E0E0E, 44px hit, no border (Figma header) */
+a.nav-menu-text-link {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--nav-menu-link-inner-gap);
+  padding: 0 12px;
+  min-width: 44px;
+  min-height: 44px;
+  box-sizing: border-box;
+  isolation: isolate;
+  position: relative;
+  font-family: var(--font-secondary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--nav-menu-link-text);
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  transition: color 0.2s ease;
+}
+
+a.nav-menu-text-link:hover {
+  color: var(--color-navigationmenu-hover);
+}
+
+a.nav-menu-text-link.nav-menu-text-link--active {
+  color: var(--nav-menu-link-text);
+  font-weight: 400;
+}
+
+/* Únete: same L1; min 44×44; Figma row gap 4px label–chevron */
+.nav-join-trigger-label {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--nav-menu-link-inner-gap);
+  min-width: 44px;
+  min-height: 44px;
+  font-family: var(--font-secondary);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--nav-menu-link-text);
+}
+
+.nav-join-trigger-label:hover {
+  color: var(--color-navigationmenu-hover);
+}
+
+.nav-join-trigger-label.nav-join-trigger-label--active {
+  color: var(--nav-menu-link-text);
+}
+
+/* Focus A: 5px #6230F7 + 2px #FEFEFE gap, insets, radius 4px (keyboard only) */
+html.user-is-tabbing a.nav-menu-text-link:focus,
+html.user-is-tabbing button.nav-join-trigger-label:focus {
+  outline: none !important;
+}
+
+html.user-is-tabbing a.nav-menu-text-link:focus-visible,
+html.user-is-tabbing button.nav-join-trigger-label:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+html.user-is-tabbing a.nav-menu-text-link:focus-visible::before,
+html.user-is-tabbing button.nav-join-trigger-label:focus-visible::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--nav-menu-focus-inset-x));
+  right: calc(-1 * var(--nav-menu-focus-inset-x));
+  top: var(--nav-menu-focus-inset-y);
+  bottom: var(--nav-menu-focus-inset-y);
+  border: 5px solid var(--nav-menu-focus-purple);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: -2;
+  box-sizing: border-box;
+}
+
+html.user-is-tabbing a.nav-menu-text-link:focus-visible::after,
+html.user-is-tabbing button.nav-join-trigger-label:focus-visible::after {
+  content: "";
+  position: absolute;
+  /* Inner white stroke: inset by the 5px purple border */
+  left: calc(-1 * var(--nav-menu-focus-inset-x) + 5px);
+  right: calc(-1 * var(--nav-menu-focus-inset-x) + 5px);
+  top: calc(var(--nav-menu-focus-inset-y) + 5px);
+  bottom: calc(var(--nav-menu-focus-inset-y) + 5px);
+  border: 2px solid var(--nav-menu-focus-gap-fill);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: -1;
+  box-sizing: border-box;
+}
+
+/* Tailwind ring = box-shadow: suppress on mouse focus for buttons */
 html:not(.user-is-tabbing) button:focus {
   --tw-ring-offset-shadow: 0 0 #0000 !important;
   --tw-ring-shadow: 0 0 #0000 !important;
   box-shadow: none !important;
 }
 
-/* Checkbox: sin outline en el input oculto; caja marcada solo con teclado */
+/* Checkbox: no outline on hidden input; checked box focus ring only with keyboard */
 .checkbox-input-sr-only:focus {
   outline: none !important;
 }
@@ -640,7 +776,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
     background-color: var(--input-bg-hover-figma);
   }
 
-  /* Foco con ratón: mismo borde que reposo; con teclado (user-is-tabbing): borde de foco */
+  /* Mouse focus: same border as idle; keyboard (user-is-tabbing): focus border treatment */
   .input-base:focus {
     outline: none !important;
     box-shadow: none;
@@ -652,7 +788,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
     background-color: var(--input-bg-field-figma);
   }
 
-  /* Figma focus: anillo morado + gap blanco (box-shadow); borde interior 2px gris (no aplica al select: .shehub-dropdown-trigger) */
+  /* Figma focus: purple ring + white gap (box-shadow); inner 2px gray border (not for select: .shehub-dropdown-trigger) */
   html.user-is-tabbing
     .input-base:focus:not(.input-error):not(.input-success):not(.shehub-dropdown-trigger) {
     outline: none !important;
@@ -767,7 +903,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
     color: var(--input-border-success);
   }
 
-  /* Contact / Input.tsx: el <input> interno nunca muestra outline (el marco es el wrapper) */
+  /* Contact / Input.tsx: inner <input> never shows outline (wrapper is the frame) */
   .sh-input-wrap input:focus {
     outline: none !important;
   }
@@ -781,7 +917,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
     border-color: rgb(212 212 212);
   }
 
-  /* Input.tsx: hover Figma (borde #6230F7, fondo #FEFEFE) — no si está enfocado o deshabilitado */
+  /* Input.tsx: Figma hover (border #6230F7, background #FEFEFE) — skip when focused or disabled */
   .sh-input-wrap--default:hover:not(:has(input:focus)):not(:has(input:disabled)) {
     border-color: var(--input-border-hover-figma);
     background-color: var(--input-bg-hover-figma);
