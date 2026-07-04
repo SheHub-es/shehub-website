@@ -12,6 +12,21 @@ export const authFormTranslations: TranslationObject = {
     en: 'Sign Up',
     ca: 'Registrar-se',
   },
+  'auth.toggle.ariaLabel': {
+    es: 'Modo de autenticación',
+    en: 'Authentication mode',
+    ca: "Mode d'autenticació",
+  },
+  'auth.form.login.ariaLabel': {
+    es: 'Formulario de inicio de sesión',
+    en: 'Login form',
+    ca: "Formulari d'inici de sessió",
+  },
+  'auth.form.signup.ariaLabel': {
+    es: 'Formulario de registro',
+    en: 'Sign up form',
+    ca: 'Formulari de registre',
+  },
 
   // Common fields
   'auth.field.email': {
