@@ -13,7 +13,7 @@ export const evolutionTranslations: TranslationObject = {
   },
   'evolution.metaDescription': {
     es: 'De la teaser que llenó la lista en semanas al sitio exprés de casi un año y la web actual con design system: la evolución online de SheHub y quienes participaron en cada etapa.',
-    en: 'From a teaser that filled waitlists in weeks to a fast-built site for almost a year, then today’s design-system web: SheHub’s online evolution and who shaped each stage.',
+    en: 'From a teaser that filled waitlists in weeks to a fast-built site for almost a year, then today’s design-system web: take a look at SheHub’s online evolution and see who shaped each stage.',
     ca: 'De la teaser que va omplir la llista en setmanes al lloc exprés de gairebé un any i el web actual amb design system: l’evolució online de SheHub i qui hi va participar.',
   },
   'evolution.hero.eyebrow': {
@@ -33,7 +33,7 @@ export const evolutionTranslations: TranslationObject = {
   },
   'evolution.hero.intro': {
     es: 'Tres momentos del sitio: la teaser, la web exprés y la web actual con design system. Los detalles de cada una están en las tarjetas de abajo; las dos primeras puedes abrirlas tal como eran.',
-    en: 'Three chapters of the site: the teaser, the express build, and today’s design-system web. Each one is broken down in the cards below—you can still open the first two as they were.',
+    en: 'Three chapters of the site: the teaser, the express build, and the design-system web you can visit today. Each one is broken down in the cards below, and you can still view the first two as they were.',
     ca: 'Tres moments del lloc: la teaser, la web exprés i el web actual amb design system. El detall de cadascuna és a les targetes de sota; les dues primeres les pots obrir tal com eren.',
   },
   'evolution.hero.rolesCaption': {
@@ -123,7 +123,7 @@ export const evolutionTranslations: TranslationObject = {
   },
   'evolution.timeline.teaser.body': {
     es: 'La primera presencia fue una teaser sencilla, como suelen serlo: poca página, mucha ilusión. El tirón fue enorme—en un mes se apuntaron más de cien personas—y dejó claro que hacía falta algo más grande detrás.',
-    en: 'Our first presence was a simple teaser, as teasers are: light on pages, heavy on intent. The response was huge—more than a hundred people signed up within a month—and made it obvious we needed something bigger behind it.',
+    en: 'Our first presence was a simple teaser that did what a teaser should: it was light on pages and heavy on intent. The response was huge, with more than a hundred people signing up within a month. It became obvious that we needed something bigger.',
     ca: 'La primera presència va ser una teaser senzilla, com solen ser-ho: poques pàgines, molta il·lusió. La resposta va ser enorme—en un mes més de cent persones s’hi van apuntar—i va deixar clar que calia alguna cosa més gran al darrere.',
   },
   'evolution.timeline.teaser.ctaArchive': {
@@ -143,7 +143,7 @@ export const evolutionTranslations: TranslationObject = {
   },
   'evolution.timeline.intermediate.body': {
     es: 'Había que moverse rápido: en una semana montamos un sitio con mucha más información para inscripciones, patrocinadores y una comunicación más completa. Durante casi un año fue la casa online de SheHub.',
-    en: 'We had to move fast: in one week we stood up a site with far more detail for sign-ups, sponsors, and fuller storytelling. For nearly a year it was SheHub’s online home.',
+    en: 'We had to move fast: in one week we built a site with far more detail for sign-ups, sponsors, and fuller storytelling. For nearly a year it was SheHub’s online home.',
     ca: 'Calia moure’s ràpid: en una setmana vam muntar un lloc amb molt més informació per a inscripcions, patrocinadors i una comunicació més completa. Durant gairebé un any va ser la casa online de SheHub.',
   },
   'evolution.timeline.intermediate.ctaArchive': {
@@ -163,7 +163,7 @@ export const evolutionTranslations: TranslationObject = {
   },
   'evolution.timeline.current.body': {
     es: 'La web exprés nació con prisa; con las cohorts ya en marcha, apostamos por replantear desde cero con design system, reutilizando lo que ya funcionaba. El resultado es esta tercera versión—la que navegas hoy—fruto de un trabajo largo previo al lanzamiento y que sigue creciendo con la comunidad.',
-    en: 'The express site was born in a hurry; with cohorts running, we chose to rebuild from the ground up around a design system, reusing what already worked. The outcome is this third version—the one you browse today—shaped by a long stretch of work before launch and still growing with the community.',
+    en: 'The express site was born in a hurry; with cohorts running, we chose to rebuild from the ground up around a design system, reusing what already worked. The outcome is this third version—the one you\'re browsing today—shaped by a long stretch of work before launch and still growing with the community.',
     ca: 'La web exprés va néixer amb pressa; amb les cohorts ja en marxa, vam apostar per replantejar des de zero amb design system, reutilitzant el que ja funcionava. El resultat és aquesta tercera versió—la que navegues avui—fruit d’un treball llarg abans del llançament i que continua creixent amb la comunitat.',
   },
   'evolution.timeline.current.ctaArchive': {
@@ -198,7 +198,7 @@ export const evolutionTranslations: TranslationObject = {
   },
   'evolution.team.metaDescription.intermediate': {
     es: 'Personas que participaron en la web exprés de SheHub, por rol.',
-    en: 'People who shaped SheHub’s express-site version, listed by role.',
+    en: 'People who shaped SheHub’s express version, listed by role.',
     ca: 'Persones que van participar en la web exprés de SheHub, per rol.',
   },
   'evolution.team.metaDescription.current': {

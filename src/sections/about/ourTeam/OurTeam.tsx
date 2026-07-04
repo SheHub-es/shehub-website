@@ -1,52 +1,52 @@
-"use client"
+'use client';
 
-import { MemberCarouselCard } from "@/components/ui/carousel/CarouselCard"
-import { Carousel } from "@/components/ui/carousel/index"
-import { useTranslation } from "@/hooks/useTranslation"
-import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper"
+import { MemberCarouselCard } from '@/components/ui/carousel/CarouselCard';
+import { Carousel } from '@/components/ui/carousel/index';
+import { useTranslation } from '@/hooks/useTranslation';
+import SectionWrapper from '@/sections/shared/sectionWrapper/SectionWrapper';
 
 const teamMembers: MemberCarouselCard[] = [
   {
-    id: "1",
-    name: "Full name",
-    role: "Job title",
+    id: '1',
+    name: 'Full name',
+    role: 'Job title',
     socials: {
-      linkedin: "https://linkedin.com/in/example"
-    }
+      linkedin: 'https://linkedin.com/in/example',
+    },
   },
   {
-    id: "2",
-    name: "Full name",
-    role: "Job title",
+    id: '2',
+    name: 'Full name',
+    role: 'Job title',
     socials: {
-      linkedin: "https://linkedin.com/in/example"
-    }
+      linkedin: 'https://linkedin.com/in/example',
+    },
   },
   {
-    id: "3",
-    name: "Full name",
-    role: "Job title",
+    id: '3',
+    name: 'Full name',
+    role: 'Job title',
     socials: {
-      linkedin: "https://linkedin.com/in/example"
-    }
+      linkedin: 'https://linkedin.com/in/example',
+    },
   },
   {
-    id: "4",
-    name: "Full name",
-    role: "Job title",
+    id: '4',
+    name: 'Full name',
+    role: 'Job title',
     socials: {
-      linkedin: "https://linkedin.com/in/example"
-    }
+      linkedin: 'https://linkedin.com/in/example',
+    },
   },
   {
-    id: "5",
-    name: "Full name",
-    role: "Job title",
+    id: '5',
+    name: 'Full name',
+    role: 'Job title',
     socials: {
-      linkedin: "https://linkedin.com/in/example"
-    }
-  }
-]
+      linkedin: 'https://linkedin.com/in/example',
+    },
+  },
+];
 
 export default function OurTeam() {
   const { t } = useTranslation();
@@ -68,13 +68,16 @@ export default function OurTeam() {
       {/* Header */}
       <header className="flex flex-col gap-4 w-full">
         <h2 className="font-primary font-heavy text-size-800 md:text-size-900 tracking-tight text-black">
-          Our team
+          {t('about.ourTeam.title')}
         </h2>
         <p className="font-secondary text-size-400 md:text-size-500 text-black leading-line-height-body-1 max-w-3xl">
-          Meet the passionate team behind SheHub—builders, mentors, and dreamers working together to make purposeful growth possible.
+          {t('about.ourTeam.paragraph')}
         </p>
-        <p className="font-secondary text-size-300 md:text-size-400 text-purple-700 italic" role="status">
-          {t("underConstruction.teamComingSoon")}
+        <p
+          className="font-secondary text-size-300 md:text-size-400 text-purple-700 italic"
+          role="status"
+        >
+          {t('underConstruction.teamComingSoon')}
         </p>
       </header>
 
@@ -83,5 +86,5 @@ export default function OurTeam() {
         <Carousel variant="cards" items={teamMembers} loop={false} />
       </div>
     </SectionWrapper>
-  )
+  );
 }

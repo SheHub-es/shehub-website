@@ -11,7 +11,7 @@ export function isEvolutionEraSlug(value: string): value is EvolutionEraSlug {
  * Current era has no button: the user is already on this site.
  */
 export const evolutionEraArchiveHref: Record<EvolutionEraSlug, string | undefined> = {
-  teaser: 'https://teaser.shehub.es/',
+  teaser: 'https://shehub-gules.vercel.app/',
   intermediate: 'https://shehub-xvlf.vercel.app/',
   current: undefined,
 }

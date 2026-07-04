@@ -14,6 +14,7 @@ export default function SheHubLogo() {
         alt="SheHub Logo"
         fill
         priority
+        loading="eager"
         sizes="(max-width: 768px) 100px, 128px"
         className="object-contain"
       />

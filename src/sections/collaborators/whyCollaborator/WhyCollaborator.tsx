@@ -1,47 +1,52 @@
+"use client"
+
 import IconEarth from "@/components/icons/IconEarth";
 import IconHandHeart from "@/components/icons/IconHandHeart";
 import IconMapPinHouse from "@/components/icons/IconMapPinHouse";
 import IconRocket from "@/components/icons/IconRocket";
 import FeaturesSection from "@/sections/shared/featuresSection/FeaturesSection";
-
-const features = [
-  {
-    title: "Build real projects",
-    description: "Practice your skills in real, iterative tech projects with impact.",
-    icon: IconRocket,
-  },
-  {
-    title: "Grow with guidance",
-    description: "Learn from experienced mentors and collaborate in cross-functional teams.",
-    icon: IconHandHeart,
-  },
-  {
-    title: "Learn on your terms",
-    description: "Flexible, remote, and part-time—designed to fit your life.",
-    icon: IconMapPinHouse,
-  },
-  {
-    title: "Global community",
-    description: "Connect and collaborate with peers from around the world.",
-    icon: IconEarth,
-  },
-];
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function WhyCollaborator() {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      title: t('collaborators.why.feature1.title'),
+      description: t('collaborators.why.feature1.description'),
+      icon: IconRocket,
+    },
+    {
+      title: t('collaborators.why.feature2.title'),
+      description: t('collaborators.why.feature2.description'),
+      icon: IconHandHeart,
+    },
+    {
+      title: t('collaborators.why.feature3.title'),
+      description: t('collaborators.why.feature3.description'),
+      icon: IconMapPinHouse,
+    },
+    {
+      title: t('collaborators.why.feature4.title'),
+      description: t('collaborators.why.feature4.description'),
+      icon: IconEarth,
+    },
+  ];
+
   return (
     <FeaturesSection
       id="why-collaborator"
       title={
         <>
-          Why be a{" "}
-          <span className="text-primary">collaborator</span> at SheHub?
+          {t('collaborators.why.title.before')}{" "}
+          <span className="text-primary">{t('collaborators.why.title.highlight')}</span> {t('collaborators.why.title.after')}
         </>
       }
-      description="Gain real experience in a safe, supportive environment while growing your tech career. At SheHub, you'll work in real teams, build your portfolio, and connect with a global network of mentors and peers."
+      description={t('collaborators.why.description')}
       features={features}
       gridCols={{ mobile: 1, tablet: 2, desktop: 4 }}
       button={{
-        text: "Become a collaborator",
+        text: t('collaborators.why.button'),
         variant: "secondary-primary",
         href: "/join",
       }}

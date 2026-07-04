@@ -1,27 +1,32 @@
+"use client"
+
 import HeroImage from "@/assets/images/photos/photo_heroMentor.webp"
 import HeroLayout from "@/sections/shared/heroLayout/HeroLayout"
+import { useTranslation } from "@/hooks/useTranslation"
 
 export default function MentorsHero() {
+  const { t } = useTranslation()
+
   return (
     <HeroLayout
       id="mentors"
-      eyebrow="Join SheHub as a mentor"
+      eyebrow={t('mentors.hero.eyebrow')}
       title={
         <>
-          Support the next generation in tech and {" "}
+          {t('mentors.hero.title.before')}{" "}
           <span
             className="bg-clip-text text-transparent"
             style={{ backgroundImage: "var(--color-gradient-brand)" }}
           >
-            grow as a leader
+            {t('mentors.hero.title.highlight')}
           </span>
         </>
       }
-      paragraph="At SheHub, you'll guide emerging women in tech as they work on real projects, build confidence, and take their first steps in the industry. As a mentor, you'll share your expertise, strengthen your leadership skills, and make a lasting impact—all while growing in a flexible, supportive community."
+      paragraph={t('mentors.hero.paragraph')}
       mainImage={HeroImage.src}
-      alt="SheHub mentors collaborating"
+      alt={t('mentors.hero.image.alt')}
       buttons={[
-        { text: "Become a mentor", variant: "primary-primary", href: "/join" },
+        { text: t('mentors.hero.button'), variant: "primary-primary", href: "/join" },
       ]}
     />
   )

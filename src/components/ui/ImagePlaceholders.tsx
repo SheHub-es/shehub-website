@@ -66,7 +66,7 @@ const ImagePlaceholder = ({
     !isCustom && sizeClasses[size],
     cornerClasses[corner],
     loading && "bg-[var(--color-image-container-bg)]",
-    className
+    className,
   );
 
   const imageRounding = cornerClasses[corner];
@@ -78,7 +78,10 @@ const ImagePlaceholder = ({
       : iconSizes[size]);
 
   return (
-    <div className={clsx(commonStyles, "relative")} style={isCustom ? {width: widthPx, height: heightPx} : undefined}>
+    <div
+      className={clsx(commonStyles, "relative")}
+      style={isCustom ? { width: widthPx, height: heightPx } : undefined}
+    >
       {imageUrl ? (
         <NextImage
           src={imageUrl}
@@ -91,7 +94,7 @@ const ImagePlaceholder = ({
         <div
           className={clsx(
             "flex items-center justify-center w-full h-full",
-            imageRounding
+            imageRounding,
           )}
         >
           <LucideImage
@@ -106,4 +109,4 @@ const ImagePlaceholder = ({
   );
 };
 
-export default ImagePlaceholder
+export default ImagePlaceholder;
