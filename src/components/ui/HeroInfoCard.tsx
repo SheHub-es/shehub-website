@@ -32,14 +32,14 @@ export default function InfoCard({
   className,
   corner = "topLeft",
   style,
-  width
+  width,
 }: InfoCardProps) {
   return (
     <div
       className={clsx(
         "relative h-[148px] box-border shadow-[0px_4px_16px_#0E0E0E14] pt-[24px] pb-[24px] pl-[32px] pr-[32px]",
         cornerClasses[corner],
-        className
+        className,
       )}
       style={{
         backgroundColor: "rgba(254, 254, 254, 0.9)",
@@ -49,11 +49,7 @@ export default function InfoCard({
     >
       {imageSrc && (
         <div>
-          <NextImage
-            src={typeof imageSrc === "string" ? imageSrc : imageSrc}
-            alt={imageAlt ?? ""}
-            priority={false}
-          />
+          <NextImage src={imageSrc} alt={imageAlt ?? ""} priority={false} />
         </div>
       )}
 
@@ -62,7 +58,7 @@ export default function InfoCard({
         style={{ zIndex: 10 }}
         aria-hidden="true"
       />
-      <div className="relative z-20 flex flex-col gap-[5px] h-full mt-[16px]" >
+      <div className="relative z-20 flex h-full flex-col gap-[5px] mt-[16px]">
         <p className="text-black font-[700] text-[30px] leading-none text-left m-0">
           {title}
         </p>
