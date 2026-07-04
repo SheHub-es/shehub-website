@@ -57,6 +57,26 @@ export const homeTranslations: TranslationObject = {
     en: 'QA',
     ca: 'QA',
   },
+  'home.hero.infoCard.teams.title': {
+    es: '3+',
+    en: '3+',
+    ca: '3+',
+  },
+  'home.hero.infoCard.teams.subtitle': {
+    es: 'equipos activos',
+    en: 'active teams',
+    ca: 'equips actius',
+  },
+  'home.hero.infoCard.hours.title': {
+    es: '760+',
+    en: '760+',
+    ca: '760+',
+  },
+  'home.hero.infoCard.hours.subtitle': {
+    es: 'horas en proyectos reales',
+    en: 'hours in real projects',
+    ca: 'hores en projectes reals',
+  },
 
   // Value Proposition
   'home.valueProp.title': {

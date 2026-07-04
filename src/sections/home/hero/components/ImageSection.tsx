@@ -1,6 +1,7 @@
 import InfoCard from "@/components/ui/HeroInfoCard";
 import ImagePlaceholder from '@/components/ui/ImagePlaceholders';
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { useTranslation } from '@/hooks/useTranslation';
 import { cn } from "@/lib/cn";
 import NextImage from "next/image";
 
@@ -64,6 +65,7 @@ const floatingImages = [
 ];
 
 const ImageSection = () => {
+  const { t } = useTranslation();
   const [heroImageRef, isHeroVisible] = useIntersectionObserver();
 
   return (
@@ -102,8 +104,8 @@ const ImageSection = () => {
       ">
         <InfoCard 
           width="180px" 
-          title="3+" 
-          subtitle="active teams" 
+          title={t('home.hero.infoCard.teams.title')}
+          subtitle={t('home.hero.infoCard.teams.subtitle')}
           corner="bottomRight" 
           imageSrc={AthenaAvatarGroup}
         />
@@ -117,8 +119,8 @@ const ImageSection = () => {
       ">
         <InfoCard 
           width="221px" 
-          title="760+" 
-          subtitle="hours in real projects" 
+          title={t('home.hero.infoCard.hours.title')}
+          subtitle={t('home.hero.infoCard.hours.subtitle')}
           imageSrc={RocketIcon}
         />
       </div>

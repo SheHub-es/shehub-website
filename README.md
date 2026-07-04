@@ -4,7 +4,7 @@ SheHub is a community-driven initiative created by and for women who have comple
 
 Its goal is to highlight female tech talent, support job placement, and build a collaborative and empowering network within the tech industry.
 
-This repository contains the main SheHub website, developed with React + Vite, designed as a landing page for the project.
+This repository contains the main SheHub website, developed with Next.js and React.
 
 It includes information, resources, and contact forms for potential collaborators, partner companies, and new participants.
 
@@ -17,7 +17,7 @@ It includes information, resources, and contact forms for potential collaborator
 - [🛠️ Getting Started / Prerequisites](#️-getting-started--prerequisites)
 - [⚙️ Installation](#️-installation)
 - [🔐 Environment Variables](#-environment-variables)
-- [💻 Run the Development Server](#-run-the-development-server)
+- [💻 Development & Build](#-development--build)
 - [📂 Project Structure](#-project-structure)
 - [🌐 Language Support](#-language-support)
 
@@ -27,13 +27,13 @@ It includes information, resources, and contact forms for potential collaborator
 
 | Category | Technologies |
 |---|---|
-| **Framework** | Next.js 15, React 19, TypeScript |
+| **Framework** | Next.js 16, React 19, TypeScript |
 | **Styling** | Tailwind CSS 4, Radix UI |
 | **Fonts** | Nunito, Ubuntu (via next/font) |
 | **Backend** | Firebase (Auth + Firestore), Google OAuth |
 | **State Management** | Redux Toolkit |
 | **Theme** | next-themes (dark mode support) |
-| **Testing** | Playwright, axe-core (accessibility) |
+| **Testing** | Accessibility audits (Playwright + axe-core on `test/accessibility-tests`) |
 | **Tooling** | pnpm, ESLint, Prettier |
 
 ---
@@ -80,12 +80,15 @@ NEXT_PUBLIC_API_URL=
 
 ---
 
-## 💻 Run the Development Server
+## 💻 Development & Build
 
 ```bash
-pnpm dev
+pnpm dev    # development server
+pnpm build  # production build
+pnpm start  # run production build locally
 ```
-Visit https://localhost:3000 in your browser
+
+Visit http://localhost:3000 in your browser after `pnpm dev`.
 
 ---
 
@@ -99,7 +102,7 @@ src/
 │   ├── icons/      # Icon components
 │   ├── layout/     # Navbar, Footer, and layout components
 │   └── shared/     # Shared reusable components
-├── sections/       # Page-level sections (home, auth, heritage, etc.)
+├── sections/       # Page-level sections (home, auth, evolution, etc.)
 ├── translations/   # i18n translation files (by page/feature)
 ├── store/          # Redux store and feature slices
 ├── providers/      # React context providers
