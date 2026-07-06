@@ -1,10 +1,12 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+
 import { Suspense, useEffect, useMemo, useState } from "react";
 
 import { useTranslation } from "@/hooks/useTranslation";
 import PasswordResetModal from "@/sections/auth/components/PasswordResetModal";
+
 import AuthForm from "./components/AuthForm";
 
 function AuthSectionV1Content() {
@@ -68,7 +70,12 @@ function AuthSectionV1Content() {
             </p>
 
             {/* Benefits list */}
-            <ul className="mt-8 space-y-4" aria-label={t('auth.sectionV1.benefits.ariaLabel') || 'Benefits list'}>
+            <ul
+              className="mt-8 space-y-4"
+              aria-label={
+                t("auth.sectionV1.benefits.ariaLabel") || "Benefits list"
+              }
+            >
               {[1, 2, 3, 4].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <svg
@@ -118,18 +125,20 @@ function AuthSectionV1Content() {
 
 export default function AuthSectionV1() {
   return (
-    <Suspense fallback={
-      <section
-        className="w-full min-h-screen flex justify-center px-2 font-primary"
-        style={{ backgroundColor: "var(--color-background-light)" }}
-      >
-        <div className="max-w-[1280px] w-full grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center py-12">
-          <div className="w-full flex justify-center items-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--color-primary)]"></div>
+    <Suspense
+      fallback={
+        <section
+          className="w-full min-h-screen flex justify-center px-2 font-primary"
+          style={{ backgroundColor: "var(--color-background-light)" }}
+        >
+          <div className="max-w-[1280px] w-full grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center py-12">
+            <div className="w-full flex justify-center items-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--color-primary)]"></div>
+            </div>
           </div>
-        </div>
-      </section>
-    }>
+        </section>
+      }
+    >
       <AuthSectionV1Content />
     </Suspense>
   );

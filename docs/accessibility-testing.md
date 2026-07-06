@@ -57,6 +57,36 @@ the production URL, and remove the `PAGE_PATH` logic.
 - **Local dev server required for `dev-page.spec.ts`.** It will fail to
   connect if `pnpm dev` isn't running on port 3000.
 
+## Quick start: test a page you're working on
+
+New to this test suite? Here's the simplest way to check a page you're
+building or editing locally.
+
+1. Install Playwright's browsers (only needed once):
+   ```bash
+   pnpm exec playwright install
+   ```
+2. Start the dev server in one terminal:
+   ```bash
+   pnpm dev
+   ```
+3. In a second terminal, run the accessibility scan against the page you're
+   working on (replace `/about` with your route):
+   ```bash
+   PAGE_PATH=/about pnpm exec playwright test tests/accessibility/dev-page.spec.ts
+   ```
+4. Turn the results into PDF reports you can open and share:
+   ```bash
+   pnpm run export:accessibility-pdfs
+   ```
+5. Open the PDFs, found in `test-results/accessibility-pdfs/`:
+   ```bash
+   open test-results/accessibility-pdfs/
+   ```
+
+Each PDF is named `results-dev-page-<level>.pdf` (one per WCAG level: A, AA,
+AAA). Fix any `critical` or `serious` violations first.
+
 ## Installing Playwright
 
 From the project root:
