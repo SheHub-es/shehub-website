@@ -8,7 +8,16 @@ import Switch from '@/components/ui/Switch';
 import { useTranslation } from '@/hooks/useTranslation';
 import { cn } from '@/lib/utils';
 import NextImage from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+const LOCKED_ELEMENT_IDS = [
+  'site-content-lockable',
+  'mobile-menu-toggle',
+  'nav-menu-desktop',
+  'nav-join-desktop',
+  'mobile-nav-drawer',
+  'mobile-join-drawer',
+];
 
 type CookieCategoryRowProps = {
   title: string;
@@ -30,12 +39,45 @@ const CookieCategoryRow = ({ title, description, disabled, defaultChecked }: Coo
 const CookieBanner = () => {
   const { t } = useTranslation();
   const [isManagingPreferences, setIsManagingPreferences] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (isDismissed) return;
+
+    const lockedElements = LOCKED_ELEMENT_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+
+    lockedElements.forEach((el) => el.setAttribute('inert', ''));
+
+    return () => {
+      lockedElements.forEach((el) => el.removeAttribute('inert'));
+    };
+  }, [isDismissed]);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setIsVisible(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  if (isDismissed) return null;
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => setIsDismissed(true), 700);
+  };
 
   return (
     <div
       role="dialog"
       aria-label={t('cookieBanner.title')}
-      className="fixed inset-x-0 bottom-0 z-50 flex max-h-[calc(100dvh-120px)] flex-col overflow-hidden rounded-t-2xl border border-neutral-200 bg-background-light shadow-lg lg:inset-x-6 lg:bottom-6 lg:max-h-none lg:rounded-2xl lg:overflow-visible"
+      className={cn(
+        'fixed inset-x-0 bottom-0 z-50 flex max-h-[calc(100dvh-120px)] flex-col overflow-hidden rounded-t-2xl border border-neutral-200 bg-background-light shadow-lg transition-transform duration-700 ease-in-out lg:inset-x-6 lg:bottom-6 lg:max-h-none lg:rounded-2xl lg:overflow-visible',
+        isVisible && !isClosing ? 'translate-y-0' : 'translate-y-[calc(100%+2rem)]',
+        isClosing && 'pointer-events-none',
+      )}
     >
       <div
         className={cn(
@@ -111,7 +153,7 @@ const CookieBanner = () => {
 
         <div className="flex flex-col gap-3 lg:shrink-0 lg:flex-row lg:items-center">
           {isManagingPreferences ? (
-            <Button variant="secondary-primary" size="sm" shape="rounded" onClick={() => setIsManagingPreferences(false)}>
+            <Button variant="secondary-primary" size="sm" shape="rounded" onClick={() => handleClose()}>
               {t('cookieBanner.savePreferences')}
             </Button>
           ) : (
@@ -119,10 +161,10 @@ const CookieBanner = () => {
               {t('cookieBanner.managePreferences')}
             </Button>
           )}
-          <Button variant="primary-primary" size="sm" shape="rounded">
+          <Button variant="primary-primary" size="sm" shape="rounded" onClick={() => handleClose()}>
             {t('cookieBanner.declineAll')}
           </Button>
-          <Button variant="primary-primary" size="sm" shape="rounded">
+          <Button variant="primary-primary" size="sm" shape="rounded" onClick={() => handleClose()}>
             {t('cookieBanner.acceptAll')}
           </Button>
         </div>

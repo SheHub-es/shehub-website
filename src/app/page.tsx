@@ -1,6 +1,5 @@
 "use client";
 
-import CookieBanner from "@/components/layout/CookieBanner";
 import CallToAction from "@/sections/home/callToAction/CallToAction";
 import CollaboratorsMentors from "@/sections/home/collaboratorsMentors/CollaboratorsMentors";
 import FrequentlyAskedQuestions from "@/sections/home/frequentlyAskedQuestions/FrequentlyAskedQuestions";
@@ -23,7 +22,6 @@ export default function Home () {
       <Partners/>
       <FrequentlyAskedQuestions/>
       <CallToAction/>
-      <CookieBanner/>
     </>
   )
 }
