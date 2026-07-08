@@ -5,68 +5,109 @@ import CookieIcon from '@/assets/images/icons/icon_cookie.svg';
 import Button from '@/components/ui/Button';
 import Link from '@/components/ui/Link';
 import Switch from '@/components/ui/Switch';
+import { useCookieConsent } from '@/hooks/useCookieConsent';
 import { useTranslation } from '@/hooks/useTranslation';
+import type { ConsentState } from '@/lib/cookieConsent';
 import { cn } from '@/lib/utils';
 import NextImage from 'next/image';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const LOCKED_ELEMENT_IDS = [
   'site-content-lockable',
-  'mobile-menu-toggle',
   'nav-menu-desktop',
   'nav-join-desktop',
   'mobile-nav-drawer',
   'mobile-join-drawer',
 ];
 
+const ROUTES_WITH_UNLOCKED_CONTENT = ['/cookie-settings'];
+
 type CookieCategoryRowProps = {
   title: string;
   description: string;
   disabled?: boolean;
-  defaultChecked?: boolean;
+  checked?: boolean;
+  onChange?: (checked: boolean) => void;
 };
 
-const CookieCategoryRow = ({ title, description, disabled, defaultChecked }: CookieCategoryRowProps) => (
+const CookieCategoryRow = ({ title, description, disabled, checked, onChange }: CookieCategoryRowProps) => (
   <div className="flex items-start justify-between gap-4 py-4">
     <div className="flex flex-col gap-2">
       <p className="font-secondary text-size-300 font-heavy leading-line-height-body-3">{title}</p>
       <p className="font-secondary text-size-300 leading-line-height-body-3 text-foreground">{description}</p>
     </div>
-    <Switch disabled={disabled} checked={defaultChecked} />
+    <Switch disabled={disabled} checked={checked} onChange={onChange} />
   </div>
 );
 
 const CookieBanner = () => {
   const { t } = useTranslation();
+  const { hasDecided, acceptAll, rejectNonEssential, updateConsent } = useCookieConsent();
+  const pathname = usePathname();
   const [isManagingPreferences, setIsManagingPreferences] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [draftConsent, setDraftConsent] = useState<Pick<ConsentState, 'analytics' | 'functional'>>({
+    analytics: false,
+    functional: false,
+  });
 
   useEffect(() => {
     if (isDismissed) return;
 
-    const lockedElements = LOCKED_ELEMENT_IDS.map((id) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => el !== null,
-    );
+    const idsToLock = ROUTES_WITH_UNLOCKED_CONTENT.includes(pathname)
+      ? LOCKED_ELEMENT_IDS.filter((id) => id !== 'site-content-lockable')
+      : LOCKED_ELEMENT_IDS;
 
-    lockedElements.forEach((el) => el.setAttribute('inert', ''));
+    const lockedElements = new Set<HTMLElement>();
+
+    const applyInert = () => {
+      idsToLock.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el && !lockedElements.has(el)) {
+          el.setAttribute('inert', '');
+          lockedElements.add(el);
+        }
+      });
+    };
+
+    applyInert();
+    const observer = new MutationObserver(applyInert);
+    observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
+      observer.disconnect();
       lockedElements.forEach((el) => el.removeAttribute('inert'));
     };
-  }, [isDismissed]);
+  }, [isDismissed, pathname]);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => setIsVisible(true));
     return () => cancelAnimationFrame(frame);
   }, []);
 
-  if (isDismissed) return null;
+  if (isDismissed || hasDecided) return null;
 
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => setIsDismissed(true), 700);
+  };
+
+  const handleAcceptAll = () => {
+    acceptAll();
+    handleClose();
+  };
+
+  const handleDeclineAll = () => {
+    rejectNonEssential();
+    handleClose();
+  };
+
+  const handleSavePreferences = () => {
+    updateConsent(draftConsent);
+    handleClose();
   };
 
   return (
@@ -115,10 +156,14 @@ const CookieBanner = () => {
             <CookieCategoryRow
               title={t('cookieBanner.categoryAnalyticsTitle')}
               description={t('cookieBanner.categoryAnalyticsDescription')}
+              checked={draftConsent.analytics}
+              onChange={(checked) => setDraftConsent((prev) => ({ ...prev, analytics: checked }))}
             />
             <CookieCategoryRow
               title={t('cookieBanner.categoryFunctionalTitle')}
               description={t('cookieBanner.categoryFunctionalDescription')}
+              checked={draftConsent.functional}
+              onChange={(checked) => setDraftConsent((prev) => ({ ...prev, functional: checked }))}
             />
           </div>
         </div>
@@ -153,7 +198,7 @@ const CookieBanner = () => {
 
         <div className="flex flex-col gap-3 lg:shrink-0 lg:flex-row lg:items-center">
           {isManagingPreferences ? (
-            <Button variant="secondary-primary" size="sm" shape="rounded" onClick={() => handleClose()}>
+            <Button variant="secondary-primary" size="sm" shape="rounded" onClick={handleSavePreferences}>
               {t('cookieBanner.savePreferences')}
             </Button>
           ) : (
@@ -161,10 +206,10 @@ const CookieBanner = () => {
               {t('cookieBanner.managePreferences')}
             </Button>
           )}
-          <Button variant="primary-primary" size="sm" shape="rounded" onClick={() => handleClose()}>
+          <Button variant="primary-primary" size="sm" shape="rounded" onClick={handleDeclineAll}>
             {t('cookieBanner.declineAll')}
           </Button>
-          <Button variant="primary-primary" size="sm" shape="rounded" onClick={() => handleClose()}>
+          <Button variant="primary-primary" size="sm" shape="rounded" onClick={handleAcceptAll}>
             {t('cookieBanner.acceptAll')}
           </Button>
         </div>
