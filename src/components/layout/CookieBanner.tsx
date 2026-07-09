@@ -11,7 +11,7 @@ import type { ConsentState } from '@/lib/cookieConsent';
 import { cn } from '@/lib/utils';
 import NextImage from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const LOCKED_ELEMENT_IDS = [
   'site-content-lockable',
@@ -37,7 +37,7 @@ const CookieCategoryRow = ({ title, description, disabled, checked, onChange }: 
       <p className="font-secondary text-size-300 font-heavy leading-line-height-body-3">{title}</p>
       <p className="font-secondary text-size-300 leading-line-height-body-3 text-foreground">{description}</p>
     </div>
-    <Switch disabled={disabled} checked={checked} onChange={onChange} />
+    <Switch disabled={disabled} checked={checked} onChange={onChange} ariaLabel={title} />
   </div>
 );
 
@@ -53,6 +53,21 @@ const CookieBanner = () => {
     analytics: false,
     functional: false,
   });
+  const closePreferencesButtonRef = useRef<HTMLButtonElement>(null);
+  const managePreferencesButtonRef = useRef<HTMLButtonElement>(null);
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (isManagingPreferences) {
+      closePreferencesButtonRef.current?.focus();
+    } else {
+      managePreferencesButtonRef.current?.focus();
+    }
+  }, [isManagingPreferences]);
 
   useEffect(() => {
     if (isDismissed) return;
@@ -121,6 +136,7 @@ const CookieBanner = () => {
       )}
     >
       <div
+        inert={!isManagingPreferences || undefined}
         className={cn(
           'flex min-h-0 flex-1 flex-col overflow-hidden lg:flex-none',
           isManagingPreferences
@@ -134,6 +150,7 @@ const CookieBanner = () => {
               {t('cookieBanner.preferencesTitle')}
             </h2>
             <button
+              ref={closePreferencesButtonRef}
               type="button"
               aria-label={t('cookieBanner.closePreferences')}
               onClick={() => setIsManagingPreferences(false)}
@@ -198,11 +215,23 @@ const CookieBanner = () => {
 
         <div className="flex flex-col gap-3 lg:shrink-0 lg:flex-row lg:items-center">
           {isManagingPreferences ? (
-            <Button variant="secondary-primary" size="sm" shape="rounded" onClick={handleSavePreferences}>
+            <Button
+              ref={managePreferencesButtonRef}
+              variant="secondary-primary"
+              size="sm"
+              shape="rounded"
+              onClick={handleSavePreferences}
+            >
               {t('cookieBanner.savePreferences')}
             </Button>
           ) : (
-            <Button variant="secondary-primary" size="sm" shape="rounded" onClick={() => setIsManagingPreferences(true)}>
+            <Button
+              ref={managePreferencesButtonRef}
+              variant="secondary-primary"
+              size="sm"
+              shape="rounded"
+              onClick={() => setIsManagingPreferences(true)}
+            >
               {t('cookieBanner.managePreferences')}
             </Button>
           )}

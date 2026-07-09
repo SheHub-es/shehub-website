@@ -1,11 +1,12 @@
 import { cn } from '@/lib/utils';
-import React, { ChangeEvent, useId, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, MouseEvent, useId, useState } from 'react';
 
 interface SwitchProps {
   checked?: boolean;
   disabled?: boolean;
   onChange?: (checked: boolean) => void;
   label?: string | React.ReactNode;
+  ariaLabel?: string;
   helperText?: string;
   id?: string;
 }
@@ -15,6 +16,7 @@ const Switch: React.FC<SwitchProps> = ({
   disabled = false,
   onChange,
   label,
+  ariaLabel,
   helperText,
   id,
 }) => {
@@ -25,10 +27,34 @@ const Switch: React.FC<SwitchProps> = ({
 
   const isOn = disabled ? true : checked;
 
+  const toggle = () => {
+    if (disabled) return;
+    setChecked((prev) => {
+      const next = !prev;
+      onChange?.(next);
+      return next;
+    });
+  };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (disabled) return;
     setChecked(e.target.checked);
     onChange?.(e.target.checked);
+  };
+
+  const handleClick = (e: MouseEvent<HTMLInputElement>) => {
+    if (disabled) {
+      e.preventDefault();
+      e.currentTarget.blur();
+    }
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (disabled) return;
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      toggle();
+    }
   };
 
   return (
@@ -45,18 +71,22 @@ const Switch: React.FC<SwitchProps> = ({
           id={switchId}
           role="switch"
           checked={isOn}
-          disabled={disabled}
+          tabIndex={disabled ? -1 : undefined}
           onChange={handleChange}
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
           aria-checked={isOn}
+          aria-disabled={disabled || undefined}
           aria-readonly={disabled || undefined}
+          aria-label={!label ? ariaLabel : undefined}
           aria-describedby={helperId}
-          className="sr-only"
+          className="peer sr-only"
         />
 
         <span
           className={cn(
             'relative inline-flex shrink-0 w-10 h-6 rounded-full transition-colors duration-150 outline-none',
-            'focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[var(--color-primary,currentColor)]',
+            'peer-focus-visible:ring-2 peer-focus-visible:ring-offset-1 peer-focus-visible:ring-[var(--color-primary,currentColor)]',
             isOn && (disabled ? 'bg-purple-300' : 'bg-toggle-bg-active'),
             !isOn && 'bg-toggle-bg-default',
             disabled && 'cursor-not-allowed',
