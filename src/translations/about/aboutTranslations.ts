@@ -185,7 +185,7 @@ export const aboutTranslations: TranslationObject = {
     ca: 'Com ens finançem',
   },
   'about.operation.funding.desc': {
-    es: 'Actividades, eventos e iniciativas. Nuestros partners nos proporcionan herramientas de software de forma gratuita. Las decisiones financieras las toma el Consejo de Administración y el equipo de liderazgo.',
+    es: 'Actividades, eventos e iniciativas. Los partners nos dan herramientas de software gratis. Las decisiones financieras las toma el Consejo y el equipo de liderazgo.',
     en: 'Activities, events and initiatives. Software tools are provided free by our partners. Financial decisions are made by the Board of Directors and the leadership team.',
     ca: 'Activitats, esdeveniments i iniciatives. Els nostres partners ens proporcionen eines de software de manera gratuïta. Les decisions financeres les pren el Consell d\'Administració i l\'equip de lideratge.',
   },
@@ -208,6 +208,6 @@ export const aboutTranslations: TranslationObject = {
   'about.cta.button': {
     es: 'Contáctanos',
     en: 'Contact us',
-    ca: 'Contacta amb nosaltres',
+    ca: 'Contacte',
   },
 };

@@ -36,11 +36,11 @@ export const Operation = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="flex flex-wrap justify-center gap-6">
         {operationItems.map((item, index) => (
           <div
             key={index}
-            className="flex justify-center w-full"
+            className="flex justify-center w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
           >
             <Card
               type="nonClickableWithIcon"
@@ -50,16 +50,18 @@ export const Operation = () => {
               color="lightPurple"
               radius="lg"
               className="
-              /* --- MOBILE FIX harcoded --- */
               w-full
               !max-w-[300px]
               !h-auto
               !p-8
-
-              /* --- DESKTOP harcoded  --- */
               lg:!max-w-[24.375rem]
               lg:!h-[18rem]
-              lg:!p-10"
+              lg:!p-10
+              items-center
+              [&_h3]:w-full
+              [&_h3]:text-center
+              [&_p]:w-full
+              [&_p]:text-center"
             />
           </div>
         ))}
