@@ -31,6 +31,23 @@ export const aboutTranslations: TranslationObject = {
     en: 'Join a real project',
     ca: 'Uneix-te a un projecte real',
   },
+
+  'about.purpose.title': {
+    es: 'Nuestro propósito',
+    en: 'Our Purpose',
+    ca: 'El nostre propòsit',
+  },
+  'about.purpose.desc1': {
+    es: 'Conectamos a mujeres con talento emergente con mentoras con experiencia para facilitar su participación en proyectos tecnológicos reales, ofreciendo la oportunidad de adquirir experiencia práctica y construir un portfolio profesional.',
+    en: 'We connect emerging talented women with experienced mentors to facilitate participation in real technology projects, offering the opportunity to gain practical experience and build a professional portfolio.',
+    ca: 'Connectem dones amb talent emergent amb mentores amb experiència per facilitar la seva participació en projectes tecnològics reals, oferint l\'oportunitat d\'adquirir experiència pràctica i construir un portfolio professional.',
+  },
+  'about.purpose.desc2': {
+    es: 'Operamos como una organización sin ánimo de lucro, y todas nuestras actividades están dirigidas a esta misión.',
+    en: 'We operate as a non-profit, and all activities are directed toward this mission.',
+    ca: 'Operem com una organització sense ànim de lucre, i totes les nostres activitats estan dirigides a aquesta missió.',
+  },
+
   'about.ourTeam.title': {
     es: 'Nuestro equipo',
     en: 'Our team',
@@ -140,5 +157,57 @@ export const aboutTranslations: TranslationObject = {
     es: '¡Estamos esperando a que te unas!',
     en: 'We are waiting for you to become part of it!',
     ca: 'Estem esperant que t’hi uneixis!',
+  },
+
+  'about.operation.title': {
+    es: 'Cómo operamos',
+    en: 'How we operate',
+    ca: 'Com operem',
+  },
+  'about.operation.subtitle': {
+    es: 'Unirse a una comunidad significa confiar en las personas que hay detrás, así que aquí tienes todo lo que deberías saber sobre cómo operamos.',
+    en: 'Joining a community means trusting the people behind it, so here is everything you should know about how we operate.',
+    ca: 'Unir-se a una comunitat significa confiar en les persones que hi ha darrere, així que aquí tens tot el que hauries de saber sobre com operem.',
+  },
+  'about.operation.volunteer.title': {
+    es: 'Impulsado por voluntariado',
+    en: 'Volunteer run',
+    ca: 'Impulsat pel voluntariat',
+  },
+  'about.operation.volunteer.desc': {
+    es: 'Nadie en el equipo fundador o de liderazgo recibe una compensación por su trabajo. SheHub funciona por completo gracias al esfuerzo voluntario.',
+    en: 'No one on the founding or leadership team receives compensation for their work. SheHub runs entirely on voluntary effort.',
+    ca: 'Ningú de l\'equip fundador o de lideratge rep cap compensació per la seva feina. SheHub funciona íntegrament gràcies a l\'esforç voluntari.',
+  },
+  'about.operation.funding.title': {
+    es: 'Cómo nos financiamos',
+    en: 'How we\'re funded',
+    ca: 'Com ens finançem',
+  },
+  'about.operation.funding.desc': {
+    es: 'Actividades, eventos e iniciativas. Nuestros partners nos proporcionan herramientas de software de forma gratuita. Las decisiones financieras las toma el Consejo de Administración y el equipo de liderazgo.',
+    en: 'Activities, events and initiatives. Software tools are provided free by our partners. Financial decisions are made by the Board of Directors and the leadership team.',
+    ca: 'Activitats, esdeveniments i iniciatives. Els nostres partners ens proporcionen eines de software de manera gratuïta. Les decisions financeres les pren el Consell d\'Administració i l\'equip de lideratge.',
+  },
+  'about.operation.decisions.title': {
+    es: 'Cómo decidimos',
+    en: 'How we decide',
+    ca: 'Com decidim',
+  },
+  'about.operation.decisions.desc': {
+    es: 'Funcionamos con confianza y propiedad compartida, y ninguna persona toma decisiones sola. Esto nos mantiene honestas, ágiles y centradas en lo que de verdad importa a la comunidad.',
+    en: 'We run on trust and shared ownership, and no one person makes decisions alone. It keeps us honest, fast, and focused on what actually matters to the community.',
+    ca: 'Funcionem amb confiança i propietat compartida, i cap persona pren decisions sola. Això ens manté honestes, àgils i centrades en allò que realment importa a la comunitat.',
+  },
+
+  'about.cta.title': { 
+    es: '¿Quieres ser parte de la comunidad?',
+    en: 'Want to be part of the community?',
+    ca: 'Vols formar part de la comunitat?',
+  },
+  'about.cta.button': {
+    es: 'Contáctanos',
+    en: 'Contact us',
+    ca: 'Contacta amb nosaltres',
   },
 };
