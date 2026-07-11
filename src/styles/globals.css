@@ -58,7 +58,7 @@
   }
 }
 
-:root {
+@theme {
   /* Primitive Tokens*/
 
   --color-purple-50: #f4f2ff;
