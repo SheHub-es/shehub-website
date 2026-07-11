@@ -15,6 +15,7 @@ import { collaboratorsTranslations } from '@/translations/collaborators/collabor
 import { contactTranslations } from '@/translations/contact/contactTranslations';
 import { evolutionTranslations } from '@/translations/evolution/evolutionTranslations';
 import { homeTranslations } from '@/translations/home/homeTranslations';
+import { cookieBannerTranslations } from '@/translations/layout/cookieBannerTranslations';
 import { copyEmailTranslations } from '@/translations/layout/copyEmailTranslations';
 import { navigationMenuButtonTranslations } from '@/translations/layout/navbar/navigationMenuButtonTranslations';
 import { navigationMenuTranslations } from '@/translations/layout/navbar/navigationMenuTranslations';
@@ -37,6 +38,7 @@ export const translations: TranslationObject = {
   ...navigationMenuButtonTranslations,
   ...copyEmailTranslations,
   ...underConstructionTranslations,
+  ...cookieBannerTranslations,
   ...authFormTranslations,
   ...authTextV1Translations,
   ...authTextV2Translations,
