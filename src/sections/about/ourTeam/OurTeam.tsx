@@ -9,7 +9,6 @@ import { useTranslation } from '@/hooks/useTranslation';
 import SectionWrapper from '@/sections/shared/sectionWrapper/SectionWrapper';
 
 import { TeamCard, TeamMember } from './TeamCard';
-import './TeamCard.css';
 
 const teamMembers: TeamMember[] = [
   {
@@ -17,6 +16,7 @@ const teamMembers: TeamMember[] = [
     name: 'Mónica Esteban',
     role: 'Partnerships & Tools',
     photo: MonicaPhoto,
+    description: 'Our founder, heart and soul behind SheHub. Manages company partnerships and sponsorship opportunities that support our mission..',
     socials: {
       linkedin: 'https://www.linkedin.com/in/monicaestebanponce/',
     },
@@ -26,6 +26,7 @@ const teamMembers: TeamMember[] = [
     name: 'Anna Sarrià',
     role: 'Product & Projects',
     photo: AnnaPhoto,
+    description: 'Oversees the roadmap of what is built in each cohort. Helps with project scopes, goals, or how to align deliverables with SheHub’s strategy.',
     socials: {
       linkedin: 'https://www.linkedin.com/in/anna-sarria/',
     },
@@ -35,6 +36,7 @@ const teamMembers: TeamMember[] = [
     name: 'Norma Díaz-V',
     role: 'Talent & Projects',
     photo: NormaPhoto,
+    description: 'Coordinates mentors, strengthens talent experience and defines development paths to improve learning and collaboration across cohorts.',
     socials: {
       linkedin: 'https://www.linkedin.com/in/normadiazvergara/',
     },
@@ -44,6 +46,7 @@ const teamMembers: TeamMember[] = [
     name: 'Jessica Arroyo',
     role: 'IT & Tech Support',
     photo: JessicaPhoto,
+    description: 'Takes care of development, GitHub, and tech stack. Supports teams with setup, troubleshooting, and keeping  technical foundation solid.',
     socials: {
       linkedin: 'https://www.linkedin.com/in/jessica-arroyo-lebron/',
     },
@@ -53,6 +56,7 @@ const teamMembers: TeamMember[] = [
     name: 'Cristina Ariso',
     role: 'Governance & Ops',
     photo: CristinaPhoto,
+    description: 'Oversees governance and operations, making sure processes, documentation, and structure stay clear, organised and aligned with our long-term vision.',
     socials: {
       linkedin: 'https://www.linkedin.com/in/cristinaariso/',
     },
