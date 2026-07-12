@@ -69,7 +69,8 @@ export default function OurTeam() {
   return (
     <SectionWrapper
       id="our-team"
-      className="bg-background-light py-24"
+      className="py-24"
+      style={{ backgroundColor: '#D6D4FF' }}
       innerClassName="flex flex-col items-center gap-8 md:gap-12"
     >
       {/* Header */}

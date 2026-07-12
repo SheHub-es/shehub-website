@@ -1056,7 +1056,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
   display: flex;
   width: 366px;
   height: 518px;
-  padding: 12px;
+  padding: 12px -;
   flex-direction: column;
   align-items: flex-start;
   cursor: pointer;
@@ -1116,7 +1116,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
   border-radius: 82px 82px 0 0;
   overflow: hidden;
   background: #ffffff;
-  margin: 0 auto;
+  margin: 24px 24px 0 24px;
 }
 
 .team-card-info {
