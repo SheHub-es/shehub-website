@@ -87,10 +87,6 @@ export function TeamCard({ member }: TeamCardProps) {
               </a>
             )}
           </div>
-
-          <span className="team-card-arrow team-card-arrow-back" aria-hidden="true">
-            <IconCircleArrowRight width={28} height={28} />
-          </span>
         </div>
       </div>
     </div>
