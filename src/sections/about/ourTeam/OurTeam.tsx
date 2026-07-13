@@ -33,7 +33,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: '3',
-    name: 'Norma Díaz-V',
+    name: 'Norma Díaz-Vergara',
     role: 'Talent & Projects',
     photo: NormaPhoto,
     description: 'Coordinates mentors, strengthens talent experience and defines development paths to improve learning and collaboration across cohorts.',
