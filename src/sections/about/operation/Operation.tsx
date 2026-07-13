@@ -18,10 +18,11 @@ export const Operation = () => {
   return (
     <SectionWrapper
       id="operation"
+      aria-labelledby="operation-heading"
       className="bg-white text-black py-16"
     >
       <div className="flex flex-col items-center text-center mb-20 gap-4">
-        <h2 className="text-size-800 md:text-size-900 font-bold font-primary leading-line-height-heading-2">
+        <h2 id="operation-heading" className="text-size-800 md:text-size-900 font-bold font-primary leading-line-height-heading-2">
           {(() => {
             const full = t("about.operation.title");
             const words = full.trim().split(/\s+/);
