@@ -1177,7 +1177,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
 }
 
 .team-card-container:hover .team-card-arrow {
-  background: var(--color-purple-600);
+  color: var(--color-purple-600);
   border-radius: 50%;
   color: var(--color-white);
   transform: translateX(2px);
