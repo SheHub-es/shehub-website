@@ -1177,7 +1177,9 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
 }
 
 .team-card-container:hover .team-card-arrow {
-  color: var(--color-primary);
+  background: var(--color-purple-600);
+  border-radius: 50%;
+  color: var(--color-white);
   transform: translateX(2px);
 }
 
@@ -1197,27 +1199,31 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
 }
 
 .team-card-back .team-card-name {
-  font-size: 30px;
+  font-size: 24px;
   font-family: var(--font-primary);
   color: var(--color-foreground);
 }
 
 .team-card-back .team-card-role {
-  font-size: 13px;
+  font-size: 18px;
   color: var(--color-primary);
+    background: linear-gradient(90deg, #F76702, #E81A60, #7858FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .team-card-description {
   font-family: var(--font-secondary);
-  font-weight: var(--font-weight-default);
-  font-size: 13px;
-  line-height: 1.5;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
   color: var(--color-neutral-700);
-  margin: 0;
+  margin: 12px 0;
 }
 
 .team-card-linkedin {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
@@ -1230,7 +1236,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
   text-decoration: none;
   transition: background-color 0.2s ease, transform 0.15s ease;
   width: fit-content;
-  margin-top: 4px;
+  margin-right: 24px 0; 
 }
 
 .team-card-linkedin:hover {

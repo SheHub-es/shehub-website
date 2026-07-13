@@ -16,7 +16,7 @@ const teamMembers: TeamMember[] = [
     name: 'Mónica Esteban',
     role: 'Partnerships & Tools',
     photo: MonicaPhoto,
-    description: 'Our founder, heart and soul behind SheHub. Manages company partnerships and sponsorship opportunities that support our mission..',
+    description: 'Our founder, heart and soul behind SheHub. Manages company partnerships and sponsorship opportunities that support our mission.',
     socials: {
       linkedin: 'https://www.linkedin.com/in/monicaestebanponce/',
     },
