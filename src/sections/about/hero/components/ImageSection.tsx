@@ -8,10 +8,12 @@ import RobotImage from "@/assets/images/photos/photo_aboutRobot.png";
 import CollabWomenImage from "@/assets/images/photos/photo_aboutCollabWomen.png";
 import LaptopImage from "@/assets/images/photos/photo_aboutLaptop.png";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { useTranslation } from "@/hooks/useTranslation";
 import { cn } from "@/lib/cn";
 
 const ImageSection = () => {
   const [containerRef, isVisible] = useIntersectionObserver();
+  const { t } = useTranslation();
 
   const fade = (stagger: "a" | "b" | "c" | "d") =>
     cn("fade-on-scroll", `stagger-${stagger}`, isVisible && "visible");
@@ -31,7 +33,7 @@ const ImageSection = () => {
       />
       <NextImage
         src={CollabWomenImage}
-        alt="Women laughing while working together on a laptop"
+        alt={t('about.hero.collabWomenAlt')}
         className={cn(
           "absolute top-2 left-2 h-auto w-[170px] rounded-3xl rounded-br-none object-cover lg:top-0 lg:left-0 lg:w-55",
           fade("b")
@@ -39,7 +41,7 @@ const ImageSection = () => {
       />
       <NextImage
         src={RobotImage}
-        alt="Social robot with a human-like design"
+        alt={t('about.hero.robotAlt')}
         className={cn(
           "absolute top-[190px] left-10 h-auto w-26.25 rounded-3xl rounded-tr-none object-cover lg:top-55 lg:left-12.5 lg:w-34.5",
           fade("b")
@@ -63,7 +65,7 @@ const ImageSection = () => {
       />
       <NextImage
         src={LaptopImage}
-        alt="A woman working on a laptop"
+        alt={t('about.hero.laptopAlt')}
         className={cn(
           "absolute right-0 bottom-0 h-auto w-[190px] rounded-[35px] rounded-tl-none object-cover shadow-lg lg:w-60 lg:rounded-[44px] lg:rounded-tl-none",
           fade("d")

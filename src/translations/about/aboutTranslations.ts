@@ -26,6 +26,21 @@ export const aboutTranslations: TranslationObject = {
     en: 'Women collaborating and innovating in tech, representing the SheHub community',
     ca: 'Dones col·laborant i innovant en tecnologia, representant la comunitat SheHub',
   },
+  'about.hero.collabWomenAlt': {
+    es: 'Mujeres riendo mientras trabajan juntas en un portátil',
+    en: 'Women laughing while working together on a laptop',
+    ca: 'Dones riure mentre treballen juntes en un portàtil',
+  },
+  'about.hero.robotAlt': {
+    es: 'Robot social con un diseño similar al de los humanos',
+    en: 'Social robot with a human-like design',
+    ca: 'Robot social amb un disseny similar al dels human',
+  },
+  'about.hero.laptopAlt': {
+    es: 'Mujer frente a un portátil, interactuando con una persona a su lado',
+    en: 'Woman in front of a laptop, interacting with a person next to her',
+    ca: 'Dona davant d’un portàtil, interactuant amb una persona al seu costat',
+  },
   'about.hero.joinButton': {
     es: 'Únete a un proyecto real',
     en: 'Join a real project',
