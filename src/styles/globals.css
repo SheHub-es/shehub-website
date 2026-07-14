@@ -1196,6 +1196,8 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: 1;
+  min-height: 0;
 }
 
 .team-card-back .team-card-name {
@@ -1220,33 +1222,30 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
   line-height: 28px;
   color: var(--color-neutral-700);
   margin: 12px 0;
+  flex: 1;
+  overflow-y: auto;
 }
 
-.team-card-linkedin {
+.team-card-linkedin-icon {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 10px;
-  background: var(--color-button-primary-primary-bg-default);
-  color: var(--color-button-primary-primary-text);
-  font-family: var(--font-secondary);
-  font-weight: var(--font-weight-medium);
-  font-size: 13px;
-  text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.15s ease;
-  width: fit-content;
-  margin-right: 24px 0; 
+  justify-content: center;
+  transition: transform 0.15s ease;
+  margin: 24px;
 }
 
-.team-card-linkedin:hover {
-  background: var(--color-purple-600);
-  transform: scale(1.03);
+.team-card-linkedin-icon:hover {
+  transform: scale(1.1);
 }
 
-.team-card-linkedin svg {
+.team-card-linkedin-icon svg {
   fill: currentColor;
 }
+
+
 
 .team-card-arrow-back {
   align-self: flex-end;
