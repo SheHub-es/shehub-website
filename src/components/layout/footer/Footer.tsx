@@ -90,6 +90,15 @@ const Footer = () => {
             </Link>
           </div>
         </div>
+
+        <div className="px-6 lg:px-0 pt-4 pb-2">
+          <p className="text-left text-size-100 lg:text-size-200 leading-relaxed text-foreground/70">
+            SheHub Association<br />
+            G22985352<br />
+            Calle Rocafort 49, 5-3, 08015 Barcelona<br />
+            Registre d&apos;Associacions de la Generalitat de Catalunya, no. 78150
+          </p>
+        </div>
       </div>
     </footer>
   );
