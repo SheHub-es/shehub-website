@@ -74,7 +74,7 @@ export function TeamCard({ member }: TeamCardProps) {
               <p className="team-card-role">{member.role}</p>
             </div>
             <span className="team-card-arrow" aria-hidden="true">
-              <IconCircleArrowRight width={28} height={28} />
+              <IconCircleArrowRight width={52} height={52} />
             </span>
           </div>
         </div>
@@ -102,6 +102,19 @@ export function TeamCard({ member }: TeamCardProps) {
               </a>
             )}
           </div>
+
+          <button
+            className="team-card-arrow-back"
+            onClick={(e) => {
+              e.stopPropagation();
+              setFlipped(false);
+            }}
+            aria-label="Go back to front"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="none" viewBox="0 0 52 52">
+              <path stroke="#0E0E0E" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M26 17.333 17.333 26m0 0L26 34.667M17.333 26h17.334m13 0c0 11.966-9.7 21.667-21.667 21.667-11.966 0-21.667-9.7-21.667-21.667 0-11.966 9.7-21.667 21.667-21.667 11.966 0 21.667 9.7 21.667 21.667Z"/>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
