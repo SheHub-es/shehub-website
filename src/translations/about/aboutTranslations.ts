@@ -74,14 +74,14 @@ export const aboutTranslations: TranslationObject = {
     ca: 'Desembre 2024',
   },
   'about.timeline.step1.title': {
-    es: 'Monica tuvo una idea',
-    en: 'Monica had an idea',
-    ca: 'Monica va tenir una idea',
+    es: 'Mónica tuvo una idea',
+    en: 'Mónica had an idea',
+    ca: 'Mónica va tenir una idea',
   },
   'about.timeline.step1.description': {
-    es: 'Monica organizó una primera reunión en una cafetería de Barcelona. Preguntó: "¿Cómo podemos conseguir la experiencia que todo el mundo nos pide si nadie nos da la oportunidad de conseguirla?" De esa reunión surgieron Ludmila, Jessica y Silvia.',
-    en: 'Monica organised a first meeting in a cafe in Barcelona. She asked: "How can we gain the experience everyone keeps asking for if no one gives us the chance to get it?" From that meeting came Ludmila, Jessica, and Silvia.',
-    ca: 'Monica va organitzar una primera trobada en una cafeteria de Barcelona. Va preguntar: "Com podem aconseguir l\'experiència que tothom ens demana si ningú ens dona l\'oportunitat d\'aconseguir-la?" D\'aquella trobada van sorgir la Ludmila, la Jessica i la Silvia.',
+    es: 'Mónica organizó una primera reunión en una cafetería de Barcelona. Preguntó: "¿Cómo podemos conseguir la experiencia que todo el mundo nos pide si nadie nos da la oportunidad de conseguirla?" De esa reunión surgieron Ludmila, Jessica y Silvia.',
+    en: 'Mónica organised a first meeting in a cafe in Barcelona. She asked: "How can we gain the experience everyone keeps asking for if no one gives us the chance to get it?" From that meeting came Ludmila, Jessica, and Silvia.',
+    ca: 'Mónica va organitzar una primera trobada en una cafeteria de Barcelona. Va preguntar: "Com podem aconseguir l\'experiència que tothom ens demana si ningú ens dona l\'oportunitat d\'aconseguir-la?" D\'aquella trobada van sorgir la Ludmila, la Jessica i la Silvia.',
   },
   'about.timeline.step2.date': {
     es: 'Principios de 2025',
@@ -94,9 +94,9 @@ export const aboutTranslations: TranslationObject = {
     ca: 'Anna s’hi uneix',
   },
   'about.timeline.step2.description': {
-    es: 'Anna se convirtió en la primera mentora, dando estructura a la idea. Ella y Monica empezaron a trabajar desde el garaje de Anna, cofundando lo que llegaría a ser SheHub.',
-    en: 'Anna became the first mentor, giving structure to the idea. She and Monica began working from Anna\'s garage, co-founding what SheHub would become.',
-    ca: 'Anna es va convertir en la primera mentora, donant estructura a la idea. Ella i Monica van començar a treballar des del garatge de l\'Anna, cofundant el que arribaria a ser SheHub.',
+    es: 'Anna se convirtió en la primera mentora, dando estructura a la idea. Ella y Mónica empezaron a trabajar desde el garaje de Anna, cofundando lo que llegaría a ser SheHub.',
+    en: 'Anna became the first mentor, giving structure to the idea. She and Mónica began working from Anna\'s garage, co-founding what SheHub would become.',
+    ca: 'Anna es va convertir en la primera mentora, donant estructura a la idea. Ella i Mónica van començar a treballar des del garatge de l\'Anna, cofundant el que arribaria a ser SheHub.',
   },
   'about.timeline.step3.date': {
     es: 'Abril 2025',
