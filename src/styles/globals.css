@@ -1088,6 +1088,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
 .team-card-face {
   position: absolute;
   inset: 0;
+  overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   border-radius: 72px;
@@ -1103,6 +1104,7 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
 
 .team-card-photo-wrapper {
   position: relative;
+  box-sizing: border-box;
   display: flex;
   width: 318px;
   height: 342px;
