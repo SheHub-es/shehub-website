@@ -9,6 +9,7 @@ export const Purpose = () => {
     <SectionWrapper
       id="purpose"
       aria-labelledby="purpose-heading"
+      tabIndex={0}
       className="flex flex-col bg-primary py-16 md:py-20 lg:py-24"
     >
       <div className="flex flex-col justify-center items-center gap-3 md:gap-4 text-center">

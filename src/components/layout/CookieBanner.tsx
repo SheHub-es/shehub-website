@@ -70,7 +70,7 @@ const CookieBanner = () => {
   }, [isManagingPreferences]);
 
   useEffect(() => {
-    if (isDismissed) return;
+    if (isDismissed || hasDecided) return;
 
     const idsToLock = ROUTES_WITH_UNLOCKED_CONTENT.includes(pathname)
       ? LOCKED_ELEMENT_IDS.filter((id) => id !== 'site-content-lockable')
@@ -96,7 +96,7 @@ const CookieBanner = () => {
       observer.disconnect();
       lockedElements.forEach((el) => el.removeAttribute('inert'));
     };
-  }, [isDismissed, pathname]);
+  }, [isDismissed, hasDecided, pathname]);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => setIsVisible(true));
