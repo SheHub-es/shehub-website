@@ -1200,6 +1200,8 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: 1;
+  min-height: 0;
 }
 
 .team-card-back .team-card-name {
