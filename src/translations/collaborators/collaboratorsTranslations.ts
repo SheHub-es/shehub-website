@@ -290,9 +290,9 @@ export const collaboratorsTranslations: TranslationObject = {
 
   // Call To Action
   'collaborators.cta.title': {
-    es: 'Conecta. Crea. Rompe barreras.',
-    en: 'Connect. Create. Break barriers.',
-    ca: 'Connecta. Crea. Trenca barreres.',
+    es: 'Conecta. Crea. Rompe Barreras.',
+    en: 'Connect. Create. Break Barriers.',
+    ca: 'Connecta. Crea. Trenca Barreres.',
   },
   'collaborators.cta.button': {
     es: 'Únete como colaboradora',
