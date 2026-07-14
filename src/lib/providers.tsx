@@ -1,5 +1,6 @@
 "use client";
 
+import { CookieConsentProvider } from "@/providers/CookieConsentProvider";
 import { LanguageProvider } from "@/providers/LanguageProvider";
 import { ReduxProvider } from "@/providers/ReduxProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
@@ -16,12 +17,14 @@ export function AppProviders({
 }) {
   return (
     <ReduxProvider>
-      <LanguageProvider initialLanguage={initialLanguage}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <UserTabbingClass />
-          {children}
-        </ThemeProvider>
-      </LanguageProvider>
+      <CookieConsentProvider>
+        <LanguageProvider initialLanguage={initialLanguage}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <UserTabbingClass />
+            {children}
+          </ThemeProvider>
+        </LanguageProvider>
+      </CookieConsentProvider>
     </ReduxProvider>
   );
 }

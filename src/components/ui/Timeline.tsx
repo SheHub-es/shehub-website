@@ -1,7 +1,30 @@
 import { TimelineItemContent } from "@/components/ui/TimelineItemContent";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
+
+const TimelineRevealOnScroll: React.FC<{ children: React.ReactNode; className?: string; enabled?: boolean }> = ({
+    children,
+    className,
+    enabled = false,
+}) => {
+    const [ref, isVisible] = useIntersectionObserver();
+
+    if (!enabled) {
+        return <div className={className}>{children}</div>;
+    }
+
+    return (
+        <div
+            ref={ref}
+            className={cn("fade-on-scroll", isVisible && "visible", className)}
+            style={{ transitionDelay: "200ms" }}
+        >
+            {children}
+        </div>
+    );
+};
 
 export type TimelineItemData = {
     id?: string;
@@ -9,6 +32,7 @@ export type TimelineItemData = {
     title: string;
     description?: string;
     headingLevel?: keyof React.JSX.IntrinsicElements;
+    variant?: "default" | "final";
 };
 
 export const timelineVariants = cva("relative mx-auto w-full max-w-4xl", {
@@ -30,6 +54,11 @@ export interface TimelineProps extends VariantProps<typeof timelineVariants> {
     className?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
+    extendLastLine?: boolean;
+    revealOnScroll?: boolean;
+    centerAlign?: boolean;
+    /** On mobile, place the connecting line/dots in a left column beside the content instead of centered above it. */
+    mobileLeftLine?: boolean;
 }
 
 const resolveSideFromVariant = (
@@ -56,6 +85,10 @@ export const Timeline: React.FC<TimelineProps> = ({
     className,
     ariaLabel,
     ariaLabelledBy,
+    extendLastLine = false,
+    revealOnScroll = false,
+    centerAlign = false,
+    mobileLeftLine = false,
 }) => {
     const groupedItems =
         variant === "opposite"
@@ -89,28 +122,29 @@ export const Timeline: React.FC<TimelineProps> = ({
                                     <>
                                         <div className="flex justify-center md:hidden mb-2" aria-hidden="true">
                                             <div className="relative flex flex-col items-center w-full max-w-md">
-                                                <div className="w-0.5 bg-[var(--color-neutral-300)] h-4" />
+                                                <div className="w-0.5 bg-(--color-neutral-300) h-4" />
                                                 <span
                                                     aria-hidden="true"
                                                     className="m-1.5 h-3 w-3 rounded-full bg-accent"
                                                     role="presentation"
                                                 />
                                                 {!isLast && (
-                                                    <div className="w-0.5 bg-[var(--color-neutral-300)] flex-1 min-h-[80px]" />
+                                                    <div className="w-0.5 bg-(--color-neutral-300) flex-1 min-h-[80px]" />
                                                 )}
                                             </div>
                                         </div>
                                         <div className="flex justify-center md:justify-end md:col-span-1 px-4 md:px-0">
-                                            <div className="w-full max-w-md md:max-w-none md:w-auto">
+                                            <TimelineRevealOnScroll className="w-full max-w-md md:max-w-none md:w-auto" enabled={revealOnScroll}>
                                                 <TimelineItemContent
                                                     id={pair[0].id ? `timeline-item-${pair[0].id}` : `timeline-item-${pairIndex}-0`}
                                                     date={pair[0].date}
                                                     title={pair[0].title}
                                                     description={pair[0].description}
                                                     align="left"
+                                                    className={centerAlign ? "md:text-right md:items-end" : undefined}
                                                     headingLevel={pair[0].headingLevel ?? "h4"}
                                                 />
-                                            </div>
+                                            </TimelineRevealOnScroll>
                                         </div>
                                     </>
                                 )}
@@ -118,14 +152,24 @@ export const Timeline: React.FC<TimelineProps> = ({
                                 {/* Desktop: Central line */}
                                 <div className="hidden md:flex justify-center" aria-hidden="true">
                                     <div className="relative flex flex-col items-center">
-                                        <div className="w-0.5 bg-[var(--color-neutral-300)] h-4" />
+                                        <div className="w-0.5 bg-(--color-neutral-300) h-4" />
                                         <span
                                             aria-hidden="true"
                                             className="m-1.5 h-3 w-3 rounded-full bg-accent"
                                             role="presentation"
                                         />
-                                        {!isLast && (
-                                            <div className="w-0.5 bg-[var(--color-neutral-300)] h-[196px]" />
+                                        {(!isLast || extendLastLine) && (
+                                            <div className="w-0.5 bg-(--color-neutral-300) h-[196px]" />
+                                        )}
+                                        {isLast && extendLastLine && (
+                                            <>
+                                                <span
+                                                    aria-hidden="true"
+                                                    className="m-1.5 h-3 w-3 rounded-full bg-accent"
+                                                    role="presentation"
+                                                />
+                                                <div className="w-0.5 bg-(--color-neutral-300) h-16" />
+                                            </>
                                         )}
                                     </div>
                                 </div>
@@ -133,7 +177,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                                 {/* Mobile: Second item */}
                                 {pair[1] && (
                                     <div className="flex justify-center md:justify-start md:col-span-1 px-4 md:px-0">
-                                        <div className="w-full max-w-md md:max-w-none md:w-auto">
+                                        <TimelineRevealOnScroll className="w-full max-w-md md:max-w-none md:w-auto" enabled={revealOnScroll}>
                                             <TimelineItemContent
                                                 id={pair[1].id ? `timeline-item-${pair[1].id}` : `timeline-item-${pairIndex}-1`}
                                                 date={pair[1].date}
@@ -142,7 +186,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                                                 align="left"
                                                 headingLevel={pair[1].headingLevel ?? "h4"}
                                             />
-                                        </div>
+                                        </TimelineRevealOnScroll>
                                     </div>
                                 )}
                             </li>
@@ -164,55 +208,108 @@ export const Timeline: React.FC<TimelineProps> = ({
                                 aria-posinset={index + 1}
                                 aria-setsize={items.length}
                             >
-                                {/* Mobile: Single column layout, centered */}
-                                <div className="flex justify-center md:hidden mb-2" aria-hidden="true">
-                                    <div className="relative flex flex-col items-center w-full max-w-md">
-                                        <div className="w-0.5 bg-[var(--color-neutral-300)] h-4" />
-                                        <span
-                                            aria-hidden="true"
-                                            className="m-1.5 h-3 w-3 rounded-full bg-accent"
-                                            role="presentation"
-                                        />
-                                        {!isLast && (
-                                            <div className="w-0.5 bg-[var(--color-neutral-300)] flex-1 min-h-[80px]" />
-                                        )}
+                                {/* Mobile: Left-aligned line with content beside it */}
+                                {mobileLeftLine && (
+                                    <div className="flex md:hidden gap-4">
+                                        <div className="flex flex-col items-center pt-1.5" aria-hidden="true">
+                                            <span
+                                                aria-hidden="true"
+                                                className="h-3 w-3 shrink-0 rounded-full bg-accent"
+                                                role="presentation"
+                                            />
+                                            {(!isLast || extendLastLine || item.variant === "final") && (
+                                                <div className="w-0.5 bg-(--color-neutral-300) flex-1 min-h-[80px] mt-1.5" />
+                                            )}
+                                            {isLast && extendLastLine && item.variant !== "final" && (
+                                                <div className="w-0.5 bg-(--color-neutral-300) h-16 mt-1.5" />
+                                            )}
+                                        </div>
+                                        <TimelineRevealOnScroll className="flex-1 pb-6" enabled={revealOnScroll}>
+                                            <TimelineItemContent
+                                                id={item.id ? `timeline-item-${item.id}-mobile` : `timeline-item-${index}-mobile`}
+                                                date={item.date}
+                                                title={item.title}
+                                                description={item.description}
+                                                align="left"
+                                                emphasizeTitle={item.variant === "final"}
+                                                headingLevel={item.headingLevel ?? "h4"}
+                                            />
+                                        </TimelineRevealOnScroll>
                                     </div>
-                                </div>
-                                <div className="flex justify-center md:justify-end md:col-span-1 px-4 md:px-0">
-                                    <div className="w-full max-w-md md:max-w-none md:w-auto">
-                                        {isLeft ? (
+                                )}
+
+                                {/* Mobile: Single column layout, centered */}
+                                {!mobileLeftLine && (
+                                    <div className="flex justify-center md:hidden mb-2" aria-hidden="true">
+                                        <div className="relative flex flex-col items-center w-full max-w-md">
+                                            <div className="w-0.5 bg-(--color-neutral-300) h-4" />
+                                            <span
+                                                aria-hidden="true"
+                                                className="m-1.5 h-3 w-3 rounded-full bg-accent"
+                                                role="presentation"
+                                            />
+                                            {(!isLast || extendLastLine) && (
+                                                <div className="w-0.5 bg-(--color-neutral-300) flex-1 min-h-[80px]" />
+                                            )}
+                                            {isLast && extendLastLine && (
+                                                <>
+                                                    <span
+                                                        aria-hidden="true"
+                                                        className="m-1.5 h-3 w-3 rounded-full bg-accent"
+                                                        role="presentation"
+                                                    />
+                                                    <div className="w-0.5 bg-(--color-neutral-300) h-16" />
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+                                <div className={cn("md:flex md:justify-end md:col-span-1 px-4 md:px-0", mobileLeftLine ? "hidden" : "flex justify-center")}>
+                                    {isLeft && item.variant !== "final" ? (
+                                        <TimelineRevealOnScroll className="w-full max-w-md md:max-w-none md:w-auto" enabled={revealOnScroll}>
                                             <TimelineItemContent
                                                 id={item.id ? `timeline-item-${item.id}` : `timeline-item-${index}`}
                                                 date={item.date}
                                                 title={item.title}
                                                 description={item.description}
                                                 align="left"
+                                                className={centerAlign ? "md:text-right md:items-end" : undefined}
                                                 headingLevel={item.headingLevel ?? "h4"}
                                             />
-                                        ) : (
-                                            <div className="hidden md:block" />
-                                        )}
-                                    </div>
+                                        </TimelineRevealOnScroll>
+                                    ) : (
+                                        <div className="hidden md:block" />
+                                    )}
                                 </div>
 
                                 {/* Desktop: Central line */}
                                 <div className="hidden md:flex justify-center" aria-hidden="true">
                                     <div className="relative flex flex-col items-center">
-                                        <div className="w-0.5 bg-[var(--color-neutral-300)] h-4" />
+                                        <div className="w-0.5 bg-(--color-neutral-300) h-4" />
                                         <span
                                             aria-hidden="true"
                                             className="m-1.5 h-3 w-3 rounded-full bg-accent"
                                             role="presentation"
                                         />
-                                        {!isLast && (
-                                            <div className="w-0.5 bg-[var(--color-neutral-300)] h-[196px]" />
+                                        {(!isLast || extendLastLine) && (
+                                            <div className="w-0.5 bg-(--color-neutral-300) h-[196px]" />
+                                        )}
+                                        {isLast && extendLastLine && (
+                                            <>
+                                                <span
+                                                    aria-hidden="true"
+                                                    className="m-1.5 h-3 w-3 rounded-full bg-accent"
+                                                    role="presentation"
+                                                />
+                                                <div className="w-0.5 bg-(--color-neutral-300) h-16" />
+                                            </>
                                         )}
                                     </div>
                                 </div>
 
-                                <div className="flex justify-center md:justify-start md:col-span-1 px-4 md:px-0">
-                                    <div className="w-full max-w-md md:max-w-none md:w-auto">
-                                        {!isLeft ? (
+                                <div className={cn("md:flex md:justify-start md:col-span-1 px-4 md:px-0", mobileLeftLine ? "hidden" : "flex justify-center")}>
+                                    {!isLeft && item.variant !== "final" ? (
+                                        <TimelineRevealOnScroll className="w-full max-w-md md:max-w-none md:w-auto" enabled={revealOnScroll}>
                                             <TimelineItemContent
                                                 id={item.id ? `timeline-item-${item.id}` : `timeline-item-${index}`}
                                                 date={item.date}
@@ -221,11 +318,27 @@ export const Timeline: React.FC<TimelineProps> = ({
                                                 align="left"
                                                 headingLevel={item.headingLevel ?? "h4"}
                                             />
-                                        ) : (
-                                            <div className="hidden md:block" />
-                                        )}
-                                    </div>
+                                        </TimelineRevealOnScroll>
+                                    ) : (
+                                        <div className="hidden md:block" />
+                                    )}
                                 </div>
+
+                                {item.variant === "final" && (
+                                    <div className="hidden md:flex md:col-span-3 md:justify-center px-4">
+                                        <TimelineRevealOnScroll className="max-w-2xl" enabled={revealOnScroll}>
+                                            <TimelineItemContent
+                                                id={item.id ? `timeline-item-${item.id}` : `timeline-item-${index}`}
+                                                date={item.date}
+                                                title={item.title}
+                                                description={item.description}
+                                                align="center"
+                                                emphasizeTitle
+                                                headingLevel={item.headingLevel ?? "h4"}
+                                            />
+                                        </TimelineRevealOnScroll>
+                                    </div>
+                                )}
                             </li>
                         );
                     })}

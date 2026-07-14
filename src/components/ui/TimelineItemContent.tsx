@@ -10,6 +10,7 @@ export const timelineItemContentVariants = cva(
             align: {
                 left: "text-left items-start",
                 right: "text-right items-end",
+                center: "text-center items-center",
             },
         },
         defaultVariants: {
@@ -25,6 +26,7 @@ export interface TimelineItemContentProps extends VariantProps<typeof timelineIt
     className?: string;
     headingLevel?: keyof React.JSX.IntrinsicElements;
     id?: string;
+    emphasizeTitle?: boolean;
 }
 
 export const TimelineItemContent: React.FC<TimelineItemContentProps> = ({
@@ -35,6 +37,7 @@ export const TimelineItemContent: React.FC<TimelineItemContentProps> = ({
     className,
     headingLevel = "h4",
     id,
+    emphasizeTitle = false,
 }) => {
     const HeadingTag = headingLevel;
     const descriptionId = id ? `${id}-description` : undefined;
@@ -55,7 +58,8 @@ export const TimelineItemContent: React.FC<TimelineItemContentProps> = ({
             <HeadingTag
                 id={id ? `${id}-title` : undefined}
                 className={cn(
-                    'font-primary font-heavy dark:text-black text-black text-size-700 leading-line-height-heading-4 '
+                    'font-primary font-heavy text-size-700 leading-line-height-heading-4',
+                    emphasizeTitle ? 'text-primary' : 'dark:text-black text-black'
                 )}
             >
                 {title}

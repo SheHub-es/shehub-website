@@ -1,3 +1,4 @@
+import CookieBanner from "@/components/layout/CookieBanner";
 import Footer from "@/components/layout/footer/Footer";
 import Navbar from "@/components/layout/navbar/Navbar";
 import ScrollbarVisibility from "@/components/layout/ScrollbarVisibility";
@@ -87,9 +88,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <ScrollbarVisibility />
           <div className="pt-10" aria-hidden />
           <Navbar/>
-          <UnderConstructionBanner />
-          {children}
-          <Footer/>
+          <div id="site-content-lockable">
+            <UnderConstructionBanner />
+            {children}
+            <Footer/>
+          </div>
+          <CookieBanner/>
         </AppProviders>
       </body>
     </html>
