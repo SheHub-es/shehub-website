@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import { useId } from 'react';
 import IconCircleArrowRight from '@/components/icons/IconCircleArrowRight';
+import { useTranslation } from '@/hooks/useTranslation';
 
 function LinkedInIcon({ width = 44, height = 44 }: { width?: number; height?: number }) {
   const clipId = useId();
@@ -25,10 +26,10 @@ function LinkedInIcon({ width = 44, height = 44 }: { width?: number; height?: nu
 export type TeamMember = {
   id: string;
   name: string;
-  role: string;
+  roleKey: string;
   photo: StaticImageData;
   socials?: { linkedin?: string };
-  description?: string;
+  descriptionKey?: string;
 };
 
 interface TeamCardProps {
@@ -37,6 +38,9 @@ interface TeamCardProps {
 
 export function TeamCard({ member }: TeamCardProps) {
   const [flipped, setFlipped] = useState(false);
+  const { t } = useTranslation();
+  const role = t(member.roleKey);
+  const description = member.descriptionKey ? t(member.descriptionKey) : undefined;
 
   return (
     <div
@@ -50,7 +54,7 @@ export function TeamCard({ member }: TeamCardProps) {
       }}
       role="button"
       tabIndex={0}
-      aria-label={`${member.name} – ${member.role}. Click to ${flipped ? 'see photo' : 'see details'}`}
+      aria-label={`${member.name} – ${role}. ${flipped ? t('about.ourTeam.card.clickToSeePhoto') : t('about.ourTeam.card.clickToSeeDetails')}`}
     >
       <div className={`team-card-inner ${flipped ? 'team-card-flipped' : ''}`}>
         {/* ── FRONT ── */}
@@ -71,7 +75,7 @@ export function TeamCard({ member }: TeamCardProps) {
           <div className="team-card-info">
             <div className="team-card-text">
               <h3 className="team-card-name">{member.name}</h3>
-              <p className="team-card-role">{member.role}</p>
+              <p className="team-card-role">{role}</p>
             </div>
             <span className="team-card-arrow" aria-hidden="true">
               <IconCircleArrowRight width={52} height={52} />
@@ -83,10 +87,10 @@ export function TeamCard({ member }: TeamCardProps) {
         <div className="team-card-face team-card-back">
           <div className="team-card-back-content">
             <h3 className="team-card-name">{member.name}</h3>
-            <p className="team-card-role">{member.role}</p>
+            <p className="team-card-role">{role}</p>
 
-            {member.description && (
-              <p className="team-card-description">{member.description}</p>
+            {description && (
+              <p className="team-card-description">{description}</p>
             )}
 
             {member.socials?.linkedin && (
@@ -96,7 +100,7 @@ export function TeamCard({ member }: TeamCardProps) {
                 rel="noreferrer"
                 className="team-card-linkedin-icon"
                 onClick={(e) => e.stopPropagation()}
-                aria-label={`${member.name} LinkedIn profile`}
+                aria-label={`${member.name} ${t('about.ourTeam.card.linkedinProfile')}`}
               >
                 <LinkedInIcon width={44} height={44} />
               </a>
@@ -109,7 +113,7 @@ export function TeamCard({ member }: TeamCardProps) {
               e.stopPropagation();
               setFlipped(false);
             }}
-            aria-label="Go back to front"
+            aria-label={t('about.ourTeam.card.goBack')}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="none" viewBox="0 0 52 52">
               <path stroke="#0E0E0E" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M26 17.333 17.333 26m0 0L26 34.667M17.333 26h17.334m13 0c0 11.966-9.7 21.667-21.667 21.667-11.966 0-21.667-9.7-21.667-21.667 0-11.966 9.7-21.667 21.667-21.667 11.966 0 21.667 9.7 21.667 21.667Z"/>

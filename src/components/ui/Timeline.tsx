@@ -217,14 +217,11 @@ export const Timeline: React.FC<TimelineProps> = ({
                                                 className="h-3 w-3 shrink-0 rounded-full bg-accent"
                                                 role="presentation"
                                             />
-                                            {(!isLast || extendLastLine || item.variant === "final") && (
+                                            {(!isLast || extendLastLine) && (
                                                 <div className="w-0.5 bg-(--color-neutral-300) flex-1 min-h-[80px] mt-1.5" />
                                             )}
-                                            {isLast && extendLastLine && item.variant !== "final" && (
-                                                <div className="w-0.5 bg-(--color-neutral-300) h-16 mt-1.5" />
-                                            )}
                                         </div>
-                                        <TimelineRevealOnScroll className="flex-1 pb-6" enabled={revealOnScroll}>
+                                        <TimelineRevealOnScroll className={cn("flex-1", isLast ? "pb-0" : "pb-6")} enabled={revealOnScroll}>
                                             <TimelineItemContent
                                                 id={item.id ? `timeline-item-${item.id}-mobile` : `timeline-item-${index}-mobile`}
                                                 date={item.date}
