@@ -200,7 +200,78 @@ export const aboutTranslations: TranslationObject = {
     ca: 'Funcionem amb confiança i propietat compartida, i cap persona pren decisions sola. Això ens manté honestes, àgils i centrades en allò que realment importa a la comunitat.',
   },
 
-  'about.cta.title': { 
+  'about.ourTeam.monica.role': {
+    es: 'Alianzas y Herramientas',
+    en: 'Partnerships & Tools',
+    ca: 'Aliances i Eines',
+  },
+  'about.ourTeam.monica.description': {
+    es: 'Nuestra fundadora, corazón y alma detrás de SheHub. Gestiona las alianzas de la empresa y las oportunidades de patrocinio que apoyan nuestra misión.',
+    en: 'Our founder, heart and soul behind SheHub. Manages company partnerships and sponsorship opportunities that support our mission.',
+    ca: 'La nostra fundadora, cor i ànima darrere de SheHub. Gestiona les aliances de l\'empresa i les oportunitats de patrocini que donen suport a la nostra missió.',
+  },
+  'about.ourTeam.anna.role': {
+    es: 'Producto y Proyectos',
+    en: 'Product & Projects',
+    ca: 'Producte i Projectes',
+  },
+  'about.ourTeam.anna.description': {
+    es: 'Supervisa la hoja de ruta de lo que se construye en cada cohorte. Ayuda con el alcance de los proyectos, los objetivos y cómo alinear los entregables con la estrategia de SheHub.',
+    en: 'Oversees the roadmap of what is built in each cohort. Helps with project scopes, goals, or how to align deliverables with SheHub’s strategy.',
+    ca: 'Supervisa el full de ruta del que es construeix a cada cohort. Ajuda amb l\'abast dels projectes, els objectius i com alinear els lliurables amb l\'estratègia de SheHub.',
+  },
+  'about.ourTeam.norma.role': {
+    es: 'Talento y Proyectos',
+    en: 'Talent & Projects',
+    ca: 'Talent i Projectes',
+  },
+  'about.ourTeam.norma.description': {
+    es: 'Coordina a las mentoras, fortalece la experiencia del talento y define itinerarios de desarrollo para mejorar el aprendizaje y la colaboración en las cohortes.',
+    en: 'Coordinates mentors, strengthens talent experience and defines development paths to improve learning and collaboration across cohorts.',
+    ca: 'Coordina les mentores, enforteix l\'experiència del talent i defineix itineraris de desenvolupament per millorar l\'aprenentatge i la col·laboració a les cohorts.',
+  },
+  'about.ourTeam.jessica.role': {
+    es: 'TI y Soporte Técnico',
+    en: 'IT & Tech Support',
+    ca: 'TI i Suport Tècnic',
+  },
+  'about.ourTeam.jessica.description': {
+    es: 'Se encarga del desarrollo, GitHub y la pila tecnológica. Apoya a los equipos con la configuración, la resolución de problemas y mantiene sólida la base técnica.',
+    en: 'Takes care of development, GitHub, and tech stack. Supports teams with setup, troubleshooting, and keeping technical foundation solid.',
+    ca: 'S\'encarrega del desenvolupament, GitHub i la pila tecnològica. Dona suport als equips amb la configuració, la resolució de problemes i manté sòlida la base tècnica.',
+  },
+  'about.ourTeam.cristina.role': {
+    es: 'Gobernanza y Operaciones',
+    en: 'Governance & Ops',
+    ca: 'Governança i Operacions',
+  },
+  'about.ourTeam.cristina.description': {
+    es: 'Supervisa la gobernanza y las operaciones, asegurando que los procesos, la documentación y la estructura se mantengan claros, organizados y alineados con nuestra visión a largo plazo.',
+    en: 'Oversees governance and operations, making sure processes, documentation, and structure stay clear, organised and aligned with our long-term vision.',
+    ca: 'Supervisa la governança i les operacions, assegurant que els processos, la documentació i l\'estructura es mantinguin clars, organitzats i alineats amb la nostra visió a llarg termini.',
+  },
+  'about.ourTeam.card.clickToSeeDetails': {
+    es: 'Haz clic para ver los detalles',
+    en: 'Click to see details',
+    ca: 'Fes clic per veure els detalls',
+  },
+  'about.ourTeam.card.clickToSeePhoto': {
+    es: 'Haz clic para ver la foto',
+    en: 'Click to see photo',
+    ca: 'Fes clic per veure la foto',
+  },
+  'about.ourTeam.card.linkedinProfile': {
+    es: 'Perfil de LinkedIn',
+    en: 'LinkedIn profile',
+    ca: 'Perfil de LinkedIn',
+  },
+  'about.ourTeam.card.goBack': {
+    es: 'Volver al frente',
+    en: 'Go back to front',
+    ca: 'Tornar al davant',
+  },
+
+  'about.cta.title': {
     es: '¿Quieres ser parte de la comunidad?',
     en: 'Want to be part of the community?',
     ca: 'Vols formar part de la comunitat?',

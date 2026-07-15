@@ -14,9 +14,9 @@ const teamMembers: TeamMember[] = [
   {
     id: '1',
     name: 'Mónica Esteban',
-    role: 'Partnerships & Tools',
+    roleKey: 'about.ourTeam.monica.role',
     photo: MonicaPhoto,
-    description: 'Our founder, heart and soul behind SheHub. Manages company partnerships and sponsorship opportunities that support our mission.',
+    descriptionKey: 'about.ourTeam.monica.description',
     socials: {
       linkedin: 'https://www.linkedin.com/in/monicaestebanponce/',
     },
@@ -24,9 +24,9 @@ const teamMembers: TeamMember[] = [
   {
     id: '2',
     name: 'Anna Sarrià',
-    role: 'Product & Projects',
+    roleKey: 'about.ourTeam.anna.role',
     photo: AnnaPhoto,
-    description: 'Oversees the roadmap of what is built in each cohort. Helps with project scopes, goals, or how to align deliverables with SheHub’s strategy.',
+    descriptionKey: 'about.ourTeam.anna.description',
     socials: {
       linkedin: 'https://www.linkedin.com/in/anna-sarria/',
     },
@@ -34,9 +34,9 @@ const teamMembers: TeamMember[] = [
   {
     id: '3',
     name: 'Norma Díaz-Vergara',
-    role: 'Talent & Projects',
+    roleKey: 'about.ourTeam.norma.role',
     photo: NormaPhoto,
-    description: 'Coordinates mentors, strengthens talent experience and defines development paths to improve learning and collaboration across cohorts.',
+    descriptionKey: 'about.ourTeam.norma.description',
     socials: {
       linkedin: 'https://www.linkedin.com/in/normadiazvergara/',
     },
@@ -44,9 +44,9 @@ const teamMembers: TeamMember[] = [
   {
     id: '4',
     name: 'Jessica Arroyo',
-    role: 'IT & Tech Support',
+    roleKey: 'about.ourTeam.jessica.role',
     photo: JessicaPhoto,
-    description: 'Takes care of development, GitHub, and tech stack. Supports teams with setup, troubleshooting, and keeping  technical foundation solid.',
+    descriptionKey: 'about.ourTeam.jessica.description',
     socials: {
       linkedin: 'https://www.linkedin.com/in/jessica-arroyo-lebron/',
     },
@@ -54,9 +54,9 @@ const teamMembers: TeamMember[] = [
   {
     id: '5',
     name: 'Cristina Ariso',
-    role: 'Governance & Ops',
+    roleKey: 'about.ourTeam.cristina.role',
     photo: CristinaPhoto,
-    description: 'Oversees governance and operations, making sure processes, documentation, and structure stay clear, organised and aligned with our long-term vision.',
+    descriptionKey: 'about.ourTeam.cristina.description',
     socials: {
       linkedin: 'https://www.linkedin.com/in/cristinaariso/',
     },
