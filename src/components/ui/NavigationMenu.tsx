@@ -32,10 +32,14 @@ function isActiveHref(pathname: string, href: string) {
   return pathname === href
 }
 
-function mainNavLinkClassName(isActive: boolean) {
+function mainNavLinkClassName(isActive: boolean, placement: 'header' | 'footer') {
   return cn(
     'flex-1 whitespace-nowrap cursor-pointer nav-item hover:text-navigationmenu-hover',
-    isActive ? 'text-[var(--color-primary)]' : 'text-black',
+    isActive
+      ? placement === 'footer'
+        ? 'text-purple-700'
+        : 'text-[var(--color-primary)]'
+      : 'text-black',
   )
 }
 
@@ -55,7 +59,7 @@ const NavigationMenu = ({ placement = 'header' }: NavigationMenuProps) => {
             const isActive = isActiveHref(pathname, href)
             return (
               <li key={key}>
-                <a href={href} className={mainNavLinkClassName(isActive)} tabIndex={0}>
+                <a href={href} className={mainNavLinkClassName(isActive, 'footer')} tabIndex={0}>
                   {t(key)}
                 </a>
               </li>
@@ -67,7 +71,7 @@ const NavigationMenu = ({ placement = 'header' }: NavigationMenuProps) => {
             const isActive = pathname === href
             return (
               <li key={key}>
-                <a href={href} className={mainNavLinkClassName(isActive)} tabIndex={0}>
+                <a href={href} className={mainNavLinkClassName(isActive, 'footer')} tabIndex={0}>
                   {t(key)}
                 </a>
               </li>
@@ -85,7 +89,7 @@ const NavigationMenu = ({ placement = 'header' }: NavigationMenuProps) => {
           const isActive = pathname === href
           return (
             <li key={key}>
-              <a href={href} className={mainNavLinkClassName(isActive)} tabIndex={0}>
+              <a href={href} className={mainNavLinkClassName(isActive, 'header')} tabIndex={0}>
                 {t(key)}
               </a>
             </li>

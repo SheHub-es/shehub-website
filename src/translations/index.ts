@@ -17,6 +17,7 @@ import { evolutionTranslations } from '@/translations/evolution/evolutionTransla
 import { homeTranslations } from '@/translations/home/homeTranslations';
 import { cookieBannerTranslations } from '@/translations/layout/cookieBannerTranslations';
 import { copyEmailTranslations } from '@/translations/layout/copyEmailTranslations';
+import { footerTranslations } from '@/translations/layout/footerTranslations';
 import { navigationMenuButtonTranslations } from '@/translations/layout/navbar/navigationMenuButtonTranslations';
 import { navigationMenuTranslations } from '@/translations/layout/navbar/navigationMenuTranslations';
 import { underConstructionTranslations } from '@/translations/layout/underConstructionTranslations';
@@ -37,6 +38,7 @@ export const translations: TranslationObject = {
   ...navigationMenuTranslations,
   ...navigationMenuButtonTranslations,
   ...copyEmailTranslations,
+  ...footerTranslations,
   ...underConstructionTranslations,
   ...cookieBannerTranslations,
   ...authFormTranslations,
