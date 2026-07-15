@@ -37,7 +37,7 @@ export default function HowItWorksSection({
           </p>
         ) : null}
 
-        <h2 className="mt-4 max-w-[768px] mx-auto text-size-900 font-bold text-center text-black leading-line-height-heading-2 whitespace-pre-line">
+        <h2 tabIndex={0} className="mt-4 max-w-[768px] mx-auto text-size-900 font-bold text-center text-black leading-line-height-heading-2 whitespace-pre-line">
           {title}
         </h2>
 

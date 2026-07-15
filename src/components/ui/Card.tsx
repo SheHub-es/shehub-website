@@ -298,14 +298,12 @@ export const Card: React.FC<CardProps> = (props) => {
             )}
 
             {(type === 'nonClickableWithIcon' || type === 'nonClickableWithIconAndCorner') && icon && (
-                
-                    <Icon
-                        icon={icon}
-                        size="xl"
-                        aria-label={(props as any).
-                        iconArielLabel ?? "Card icon"}
-                    />
-                
+                <Icon
+                    icon={icon}
+                    size="xl"
+                    aria-label={iconArialLabel}
+                    aria-hidden={iconArialLabel ? undefined : true}
+                />
             )}
 
             {type === 'nonClickableWithAvatarAndCorner' && (
