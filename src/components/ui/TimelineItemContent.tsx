@@ -43,9 +43,10 @@ export const TimelineItemContent: React.FC<TimelineItemContentProps> = ({
     const descriptionId = id ? `${id}-description` : undefined;
 
     return (
-        <article 
+        <article
             className={cn(timelineItemContentVariants({ align }), className)}
             id={id}
+            tabIndex={0}
             aria-labelledby={id ? `${id}-title` : undefined}
             aria-describedby={description && descriptionId ? descriptionId : undefined}
         >
