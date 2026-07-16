@@ -58,7 +58,7 @@ export const Operation = () => {
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap justify-center gap-6" tabIndex={0}>
         {operationItems.map((item, index) => (
           <div
             key={index}
