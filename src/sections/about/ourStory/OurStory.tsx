@@ -50,7 +50,7 @@ export default function OurHistory() {
   ];
 
   return (
-    <div ref={timelineWrapperRef}>
+    <div ref={timelineWrapperRef} className="-mt-8 -mb-16">
       <HowItWorksSection
         title={
           <>
