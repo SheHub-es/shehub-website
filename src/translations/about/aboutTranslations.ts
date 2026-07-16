@@ -236,14 +236,14 @@ export const aboutTranslations: TranslationObject = {
     ca: 'TI i Suport Tècnic',
   },
   'about.ourTeam.jessica.description': {
-    es: 'Se encarga del desarrollo, GitHub y la pila tecnológica. Apoya a los equipos con la configuración, la resolución de problemas y mantiene sólida la base técnica.',
+    es: 'Se encarga del desarrollo, GitHub y el tech stack. Apoya a los equipos con la configuración, la resolución de problemas y mantiene sólida la base técnica.',
     en: 'Takes care of development, GitHub, and tech stack. Supports teams with setup, troubleshooting, and keeping technical foundation solid.',
-    ca: 'S\'encarrega del desenvolupament, GitHub i la pila tecnològica. Dona suport als equips amb la configuració, la resolució de problemes i manté sòlida la base tècnica.',
+    ca: 'S\'encarrega del desenvolupament, GitHub i el tech stack. Dona suport als equips amb la configuració, la resolució de problemes i manté sòlida la base tècnica.',
   },
   'about.ourTeam.cristina.role': {
-    es: 'Gobernanza y Operaciones',
+    es: 'Gobernanza y Ops',
     en: 'Governance & Ops',
-    ca: 'Governança i Operacions',
+    ca: 'Governança i Ops',
   },
   'about.ourTeam.cristina.description': {
     es: 'Supervisa la gobernanza y las operaciones, asegurando que los procesos, la documentación y la estructura se mantengan claros, organizados y alineados con nuestra visión a largo plazo.',

@@ -66,7 +66,6 @@ export const Operation = () => {
           >
             <Card
               type="nonClickableWithIcon"
-              tabIndex={0}
               icon={item.icon}
               title={t(item.titleKey)}
               description={t(item.descKey)}
