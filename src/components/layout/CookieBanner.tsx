@@ -32,12 +32,12 @@ type CookieCategoryRowProps = {
 };
 
 const CookieCategoryRow = ({ title, description, disabled, checked, onChange }: CookieCategoryRowProps) => (
-  <div className="flex items-start justify-between gap-4 py-4">
-    <div className="flex flex-col gap-2">
-      <p className="font-secondary text-size-300 font-heavy leading-line-height-body-3">{title}</p>
-      <p className="font-secondary text-size-300 leading-line-height-body-3 text-foreground">{description}</p>
+  <div className="flex flex-col gap-2 py-4">
+    <div className="flex items-center justify-between gap-4">
+      <p className="font-secondary text-size-300 font-heavy leading-line-height-body-3 text-black">{title}</p>
+      <Switch disabled={disabled} checked={checked} onChange={onChange} ariaLabel={title} />
     </div>
-    <Switch disabled={disabled} checked={checked} onChange={onChange} ariaLabel={title} />
+    <p className="font-secondary text-size-300 leading-line-height-body-3 text-neutral-600">{description}</p>
   </div>
 );
 
@@ -156,7 +156,7 @@ const CookieBanner = () => {
               onClick={() => setIsManagingPreferences(false)}
               className="shrink-0 cursor-pointer rounded-full p-1 hover:bg-neutral-100"
             >
-              <NextImage src={CloseIcon} alt="" width={16} height={16} />
+              <NextImage src={CloseIcon} alt="" width={24} height={24} />
             </button>
           </div>
 
@@ -213,7 +213,7 @@ const CookieBanner = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 lg:shrink-0 lg:flex-row lg:items-center">
+        <div className="flex flex-col gap-3 lg:shrink-0 lg:flex-row lg:items-center lg:pl-8">
           {isManagingPreferences ? (
             <Button
               ref={managePreferencesButtonRef}
