@@ -15,7 +15,7 @@ const ROLE_GRADIENT =
   'bg-[image:linear-gradient(90deg,#F76702,#E81A60,#7858FF)] bg-clip-text text-transparent';
 
 const ICON_TRANSITION =
-  'transition-transform duration-150 ease-[ease] motion-reduce:transition-none';
+  'transition-[transform,color] duration-150 ease-[ease] motion-reduce:transition-none';
 
 function LinkedInIcon({ width = 44, height = 44 }: { width?: number; height?: number }) {
   const clipId = useId();
@@ -98,7 +98,7 @@ export function TeamCard({ member, className = '' }: TeamCardProps) {
               </p>
             </div>
             <span
-              className={`absolute right-3 bottom-3 m-6 flex items-center justify-center rounded-full p-0 cursor-pointer text-purple-600 group-hover:translate-x-0.5 group-hover:text-white ${ICON_TRANSITION}`}
+              className={`absolute right-3 bottom-3 m-6 flex items-center justify-center rounded-full p-0 cursor-pointer text-black group-hover:translate-x-0.5 group-hover:text-purple-600 ${ICON_TRANSITION}`}
               aria-hidden="true"
             >
               <IconCircleArrowRight width={52} height={52} />
@@ -141,7 +141,7 @@ export function TeamCard({ member, className = '' }: TeamCardProps) {
           </div>
 
           <button
-            className={`absolute bottom-3 left-3 m-5 flex items-center justify-center p-0 cursor-pointer hover:-translate-x-0.5 ${ICON_TRANSITION}`}
+            className={`absolute bottom-3 left-3 m-5 flex items-center justify-center p-0 cursor-pointer text-black hover:-translate-x-0.5 hover:text-purple-600 ${ICON_TRANSITION}`}
             onClick={(e) => {
               e.stopPropagation();
               setFlipped(false);
@@ -149,7 +149,7 @@ export function TeamCard({ member, className = '' }: TeamCardProps) {
             aria-label={t('about.ourTeam.card.goBack')}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="none" viewBox="0 0 52 52">
-              <path stroke="#0E0E0E" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M26 17.333 17.333 26m0 0L26 34.667M17.333 26h17.334m13 0c0 11.966-9.7 21.667-21.667 21.667-11.966 0-21.667-9.7-21.667-21.667 0-11.966 9.7-21.667 21.667-21.667 11.966 0 21.667 9.7 21.667 21.667Z"/>
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M26 17.333 17.333 26m0 0L26 34.667M17.333 26h17.334m13 0c0 11.966-9.7 21.667-21.667 21.667-11.966 0-21.667-9.7-21.667-21.667 0-11.966 9.7-21.667 21.667-21.667 11.966 0 21.667 9.7 21.667 21.667Z"/>
             </svg>
           </button>
         </div>
