@@ -103,6 +103,12 @@ const CookieBanner = () => {
     return () => cancelAnimationFrame(frame);
   }, []);
 
+  useEffect(() => {
+    if (isVisible) {
+      managePreferencesButtonRef.current?.focus();
+    }
+  }, [isVisible]);
+
   if (isDismissed || hasDecided) return null;
 
   const handleClose = () => {
@@ -128,6 +134,7 @@ const CookieBanner = () => {
   return (
     <div
       role="dialog"
+      aria-modal="true"
       aria-label={t('cookieBanner.title')}
       className={cn(
         'fixed inset-x-0 bottom-0 z-50 flex max-h-[calc(100dvh-120px)] flex-col overflow-hidden rounded-t-2xl border border-neutral-200 bg-background-light shadow-lg transition-transform duration-700 ease-in-out lg:inset-x-6 lg:bottom-6 lg:max-h-none lg:rounded-2xl lg:overflow-visible',

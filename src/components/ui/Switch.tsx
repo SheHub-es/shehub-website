@@ -115,6 +115,7 @@ const Switch: React.FC<SwitchProps> = ({
           )}
         >
           <span
+            aria-hidden="true"
             className={cn(
               "flex h-full w-full items-center font-secondary text-size-300 leading-line-height-heading-6 font-normal text-neutral-600",
               displayOn ? "justify-start pl-4 pr-9" : "justify-end pr-4 pl-9",
