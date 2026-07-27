@@ -8,10 +8,12 @@ export const Purpose = () => {
   return (
     <SectionWrapper
       id="purpose"
+      aria-labelledby="purpose-heading"
+      tabIndex={0}
       className="flex flex-col bg-primary py-16 md:py-20 lg:py-24"
     >
       <div className="flex flex-col justify-center items-center gap-3 md:gap-4 text-center">
-        <h2 className="text-white text-size-800 md:text-size-900 font-bold tracking-tight font-primary">
+        <h2 id="purpose-heading" className="text-white text-size-800 md:text-size-900 font-bold tracking-tight font-primary">
           {t('about.purpose.title')}
         </h2>
 

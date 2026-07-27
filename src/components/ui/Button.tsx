@@ -25,7 +25,7 @@ const variants = {
     "hover:bg-[var(--color-button-primary-primary-bg-hover)] hover:!text-[var(--color-button-primary-primary-text-hover)]",
 
   "secondary-primary":
-    "bg-[var(--color-button-secondary-primary-bg-default)] text-[var(--color-button-secondary-primary-text)] " +
+    "bg-[var(--color-button-secondary-primary-bg-default)] !text-[var(--color-button-secondary-primary-text)] " +
     "border border-[var(--color-button-secondary-primary-border)] " +
     "hover:bg-[var(--color-button-secondary-primary-bg-hover)] hover:!text-[var(--color-button-secondary-primary-text-hover)]",
 

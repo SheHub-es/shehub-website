@@ -1,33 +1,55 @@
 "use client";
 
 import IconHandHeart from "@/components/icons/IconHandHeart";
-import IconWallet from "@/components/icons/IconWallet";
 import IconMessageHeart from "@/components/icons/IconMessageHeart";
+import IconWallet from "@/components/icons/IconWallet";
 import { Card } from "@/components/ui/Card";
-import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper";
 import { useTranslation } from "@/hooks/useTranslation";
+import SectionWrapper from "@/sections/shared/sectionWrapper/SectionWrapper";
 
 export const Operation = () => {
   const { t } = useTranslation();
   const operationItems = [
-    { titleKey: "about.operation.volunteer.title", descKey: "about.operation.volunteer.desc", icon: IconHandHeart },
-    { titleKey: "about.operation.funding.title", descKey: "about.operation.funding.desc", icon: IconWallet },
-    { titleKey: "about.operation.decisions.title", descKey: "about.operation.decisions.desc", icon: IconMessageHeart },
+    {
+      titleKey: "about.operation.volunteer.title",
+      descKey: "about.operation.volunteer.desc",
+      icon: IconHandHeart,
+    },
+    {
+      titleKey: "about.operation.funding.title",
+      descKey: "about.operation.funding.desc",
+      icon: IconWallet,
+    },
+    {
+      titleKey: "about.operation.decisions.title",
+      descKey: "about.operation.decisions.desc",
+      icon: IconMessageHeart,
+    },
   ];
 
   return (
     <SectionWrapper
       id="operation"
+      aria-labelledby="operation-heading"
       className="bg-white text-black py-16"
     >
       <div className="flex flex-col items-center text-center mb-20 gap-4">
-        <h2 className="text-size-800 md:text-size-900 font-bold font-primary leading-line-height-heading-2">
+        <h2
+          id="operation-heading"
+          className="text-size-800 md:text-size-900 font-bold font-primary leading-line-height-heading-2"
+        >
           {(() => {
             const full = t("about.operation.title");
             const words = full.trim().split(/\s+/);
-            const last = words.pop() ?? '';
-            const rest = words.join(' ');
-            return rest ? <>{rest} <span className="text-primary">{last}</span></> : <span className="text-primary">{last}</span>;
+            const last = words.pop() ?? "";
+            const rest = words.join(" ");
+            return rest ? (
+              <>
+                {rest} <span className="text-primary">{last}</span>
+              </>
+            ) : (
+              <span className="text-primary">{last}</span>
+            );
           })()}
         </h2>
 
@@ -36,7 +58,7 @@ export const Operation = () => {
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap justify-center gap-6" tabIndex={0}>
         {operationItems.map((item, index) => (
           <div
             key={index}
@@ -50,18 +72,12 @@ export const Operation = () => {
               color="lightPurple"
               radius="lg"
               className="
-              w-full
-              !max-w-[300px]
-              !h-auto
-              !p-8
-              lg:!max-w-[24.375rem]
-              lg:!h-[18rem]
-              lg:!p-10
-              items-center
-              [&_h3]:w-full
-              [&_h3]:text-center
+              w-[18rem]! h-89! p-8! gap-6!
+              lg:w-97.5! lg:h-72! lg:p-10!
+              items-center lg:items-start
+              [&_h3]:w-full [&_h3]:text-center lg:[&_h3]:text-left
               [&_p]:w-full
-              [&_p]:text-center"
+              [&_p]:text-center lg:[&_p]:text-left"
             />
           </div>
         ))}
@@ -70,4 +86,4 @@ export const Operation = () => {
   );
 };
 
-export default Operation
+export default Operation;

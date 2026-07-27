@@ -1,10 +1,19 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { useTranslation } from '@/hooks/useTranslation';
 import HowItWorksSection from '@/sections/shared/howItWorksSection/HowItWorksSection';
 
 export default function OurHistory() {
   const { t } = useTranslation();
+  const timelineWrapperRef = useRef<HTMLDivElement>(null);
+
+  const timelineLabel = `${t('about.timeline.title.before')} ${t('about.timeline.title.highlight')}`.trim();
+
+  useEffect(() => {
+    const list = timelineWrapperRef.current?.querySelector('[role="list"]');
+    list?.setAttribute('aria-label', timelineLabel);
+  }, [timelineLabel]);
 
   const timelineData = [
     {
@@ -41,18 +50,20 @@ export default function OurHistory() {
   ];
 
   return (
-    <HowItWorksSection
-      title={
-        <>
-          {t('about.timeline.title.before')}
-          <span className="text-gradient-steps">{t('about.timeline.title.highlight')}</span>
-        </>
-      }
-      timelineData={timelineData}
-      variant="alternate"
-      revealOnScroll={true}
-      centerAlign={true}
-      mobileLeftLine={true}
-    />
+    <div ref={timelineWrapperRef} className="-mt-8 -mb-16">
+      <HowItWorksSection
+        title={
+          <>
+            {t('about.timeline.title.before')}
+            <span className="text-gradient-steps">{t('about.timeline.title.highlight')}</span>
+          </>
+        }
+        timelineData={timelineData}
+        variant="alternate"
+        revealOnScroll={true}
+        centerAlign={true}
+        mobileLeftLine={true}
+      />
+    </div>
   );
 }

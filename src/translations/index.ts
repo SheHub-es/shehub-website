@@ -15,7 +15,9 @@ import { collaboratorsTranslations } from '@/translations/collaborators/collabor
 import { contactTranslations } from '@/translations/contact/contactTranslations';
 import { evolutionTranslations } from '@/translations/evolution/evolutionTranslations';
 import { homeTranslations } from '@/translations/home/homeTranslations';
+import { cookieBannerTranslations } from '@/translations/layout/cookieBannerTranslations';
 import { copyEmailTranslations } from '@/translations/layout/copyEmailTranslations';
+import { footerTranslations } from '@/translations/layout/footerTranslations';
 import { navigationMenuButtonTranslations } from '@/translations/layout/navbar/navigationMenuButtonTranslations';
 import { navigationMenuTranslations } from '@/translations/layout/navbar/navigationMenuTranslations';
 import { underConstructionTranslations } from '@/translations/layout/underConstructionTranslations';
@@ -23,6 +25,7 @@ import { mentorsTranslations } from '@/translations/mentors/mentorsTranslations'
 import { partnersTranslations } from '@/translations/partners/partnersTranslations';
 import { testTranslations } from '@/translations/testTranslations';
 import type { TranslationObject } from '@/translations/types';
+import { switchTranslations } from '@/translations/ui/switchTranslations';
 
 export const translations: TranslationObject = {
   ...testTranslations,
@@ -36,7 +39,9 @@ export const translations: TranslationObject = {
   ...navigationMenuTranslations,
   ...navigationMenuButtonTranslations,
   ...copyEmailTranslations,
+  ...footerTranslations,
   ...underConstructionTranslations,
+  ...cookieBannerTranslations,
   ...authFormTranslations,
   ...authTextV1Translations,
   ...authTextV2Translations,
@@ -49,6 +54,7 @@ export const translations: TranslationObject = {
   ...passwordResetTranslations,
   ...registerFormTranslations,
   ...waitlistTranslations,
+  ...switchTranslations,
 };
 
 export type { Language } from '@/translations/types';
