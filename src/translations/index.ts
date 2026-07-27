@@ -25,6 +25,7 @@ import { mentorsTranslations } from '@/translations/mentors/mentorsTranslations'
 import { partnersTranslations } from '@/translations/partners/partnersTranslations';
 import { testTranslations } from '@/translations/testTranslations';
 import type { TranslationObject } from '@/translations/types';
+import { switchTranslations } from '@/translations/ui/switchTranslations';
 
 export const translations: TranslationObject = {
   ...testTranslations,
@@ -53,6 +54,7 @@ export const translations: TranslationObject = {
   ...passwordResetTranslations,
   ...registerFormTranslations,
   ...waitlistTranslations,
+  ...switchTranslations,
 };
 
 export type { Language } from '@/translations/types';
