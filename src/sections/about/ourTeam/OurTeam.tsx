@@ -15,6 +15,7 @@ const teamMembers: TeamMember[] = [
     id: '1',
     name: 'Mónica Esteban',
     roleKey: 'about.ourTeam.monica.role',
+    icon: 'heartHandshake',
     photo: MonicaPhoto,
     descriptionKey: 'about.ourTeam.monica.description',
     socials: {
@@ -25,6 +26,7 @@ const teamMembers: TeamMember[] = [
     id: '2',
     name: 'Anna Sarrià',
     roleKey: 'about.ourTeam.anna.role',
+    icon: 'filePen',
     photo: AnnaPhoto,
     descriptionKey: 'about.ourTeam.anna.description',
     socials: {
@@ -35,6 +37,7 @@ const teamMembers: TeamMember[] = [
     id: '3',
     name: 'Norma Díaz-Vergara',
     roleKey: 'about.ourTeam.norma.role',
+    icon: 'handHeart',
     photo: NormaPhoto,
     descriptionKey: 'about.ourTeam.norma.description',
     socials: {
@@ -45,6 +48,7 @@ const teamMembers: TeamMember[] = [
     id: '4',
     name: 'Jessica Arroyo',
     roleKey: 'about.ourTeam.jessica.role',
+    icon: 'handHeart',
     photo: JessicaPhoto,
     descriptionKey: 'about.ourTeam.jessica.description',
     socials: {
@@ -55,6 +59,7 @@ const teamMembers: TeamMember[] = [
     id: '5',
     name: 'Cristina Ariso',
     roleKey: 'about.ourTeam.cristina.role',
+    icon: 'messageHeart',
     photo: CristinaPhoto,
     descriptionKey: 'about.ourTeam.cristina.description',
     socials: {
@@ -96,6 +101,21 @@ export default function OurTeam() {
           {t('about.ourTeam.paragraph')}
         </p>
       </header>
+
+      {/*
+        Degradado de marca de los iconos de rol. Se declara una sola vez para
+        toda la sección y las cards lo referencian por id; los SVG no pueden
+        usar background-clip como el texto del rol.
+      */}
+      <svg aria-hidden="true" focusable="false" width="0" height="0" className="absolute">
+        <defs>
+          <linearGradient id="team-role-gradient" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#F76702" />
+            <stop offset="0.5" stopColor="#E81A60" />
+            <stop offset="1" stopColor="#7858FF" />
+          </linearGradient>
+        </defs>
+      </svg>
 
       {/* Team Grid */}
       <div className="grid w-full max-w-[366px] grid-cols-1 justify-center gap-6 md:max-w-none md:grid-cols-2 md:gap-8 lg:max-w-[1200px] lg:grid-cols-6">

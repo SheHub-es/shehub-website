@@ -4,7 +4,41 @@ import Image, { StaticImageData } from 'next/image';
 import { useId, useState } from 'react';
 
 import IconCircleArrowRight from '@/components/icons/IconCircleArrowRight';
+import IconFilePen from '@/components/icons/IconFilePen';
+import IconHandHeart from '@/components/icons/IconHandHeart';
+import IconHeartHandshake from '@/components/icons/IconHeartHandshake';
+import IconMessageHeart from '@/components/icons/IconMessageHeart';
 import { useTranslation } from '@/hooks/useTranslation';
+
+/**
+ * Iconos del rol del dorso. Un SVG no admite `background-clip: text` como el
+ * texto, así que el degradado se referencia desde el <linearGradient> que
+ * OurTeam declara una sola vez (id `team-role-gradient`).
+ *
+ * IconMessageHeart dibuja con trazo y el resto con relleno, de ahí las dos
+ * clases distintas. Van escritas enteras a propósito: Tailwind extrae las
+ * clases del código fuente y no vería una construida al vuelo.
+ */
+const ROLE_ICONS = {
+  heartHandshake: {
+    Icon: IconHeartHandshake,
+    paint: '[&_path]:fill-[url(#team-role-gradient)]',
+  },
+  filePen: {
+    Icon: IconFilePen,
+    paint: '[&_path]:fill-[url(#team-role-gradient)]',
+  },
+  handHeart: {
+    Icon: IconHandHeart,
+    paint: '[&_path]:fill-[url(#team-role-gradient)]',
+  },
+  messageHeart: {
+    Icon: IconMessageHeart,
+    paint: '[&_path]:stroke-[url(#team-role-gradient)]',
+  },
+} as const;
+
+export type RoleIconName = keyof typeof ROLE_ICONS;
 
 /* Cara de la card (frente/dorso). El fondo se aplica en cada cara. */
 const CARD_FACE =
@@ -40,6 +74,8 @@ export type TeamMember = {
   photo: StaticImageData;
   socials?: { linkedin?: string };
   descriptionKey?: string;
+  /** Icono que acompaña al rol en el dorso de la card. */
+  icon: RoleIconName;
 };
 
 interface TeamCardProps {
@@ -53,6 +89,7 @@ export function TeamCard({ member, className = '' }: TeamCardProps) {
   const { t } = useTranslation();
   const role = t(member.roleKey);
   const description = member.descriptionKey ? t(member.descriptionKey) : undefined;
+  const { Icon: RoleIcon, paint: rolePaint } = ROLE_ICONS[member.icon];
 
   return (
     <div
@@ -114,11 +151,20 @@ export function TeamCard({ member, className = '' }: TeamCardProps) {
             <h3 className="m-6 overflow-hidden text-ellipsis whitespace-nowrap text-left font-primary font-heavy text-size-600 leading-[1.4] text-foreground">
               {member.name}
             </h3>
-            <p
-              className={`-my-5 mx-5 h-[60px] w-[238px] text-left font-secondary font-heavy text-size-400 leading-6 ${ROLE_GRADIENT}`}
-            >
-              {role}
-            </p>
+            <div className="-my-5 mx-5 flex h-[60px] w-[238px] items-center gap-2">
+              <RoleIcon
+                width={28}
+                height={28}
+                aria-hidden="true"
+                focusable="false"
+                className={`size-7 shrink-0 ${rolePaint}`}
+              />
+              <p
+                className={`text-left font-secondary font-heavy text-size-400 leading-6 ${ROLE_GRADIENT}`}
+              >
+                {role}
+              </p>
+            </div>
 
             {description && (
               <p className="mx-6 mt-4 flex-1 overflow-y-auto font-secondary font-default text-size-400 leading-7 text-neutral-700">
