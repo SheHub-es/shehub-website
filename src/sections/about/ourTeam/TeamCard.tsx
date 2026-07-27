@@ -1,11 +1,21 @@
 'use client';
 
 import Image, { StaticImageData } from 'next/image';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
-import { useId } from 'react';
 import IconCircleArrowRight from '@/components/icons/IconCircleArrowRight';
 import { useTranslation } from '@/hooks/useTranslation';
+
+/* Cara de la card (frente/dorso). El fondo se aplica en cada cara. */
+const CARD_FACE =
+  'absolute inset-0 flex flex-col overflow-hidden rounded-[72px] backface-hidden shadow-[0_4px_4px_0_rgba(136,136,136,0.24)]';
+
+/* Gradiente de marca del rol (naranja → rosa → morado). */
+const ROLE_GRADIENT =
+  'bg-[image:linear-gradient(90deg,#F76702,#E81A60,#7858FF)] bg-clip-text text-transparent';
+
+const ICON_TRANSITION =
+  'transition-transform duration-150 ease-[ease] motion-reduce:transition-none';
 
 function LinkedInIcon({ width = 44, height = 44 }: { width?: number; height?: number }) {
   const clipId = useId();
@@ -34,9 +44,11 @@ export type TeamMember = {
 
 interface TeamCardProps {
   member: TeamMember;
+  /** Clases de colocación en la grid (col-span / col-start), inyectadas por OurTeam. */
+  className?: string;
 }
 
-export function TeamCard({ member }: TeamCardProps) {
+export function TeamCard({ member, className = '' }: TeamCardProps) {
   const [flipped, setFlipped] = useState(false);
   const { t } = useTranslation();
   const role = t(member.roleKey);
@@ -44,7 +56,7 @@ export function TeamCard({ member }: TeamCardProps) {
 
   return (
     <div
-      className="team-card-container"
+      className={`group flex w-[366px] h-[518px] flex-col items-start py-3 cursor-pointer outline-none perspective-[900px] backface-hidden [-webkit-tap-highlight-color:transparent] focus-visible:rounded-[72px] focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-card-focus)] max-md:h-auto max-md:w-[min(366px,calc(100vw_-_32px))] max-md:aspect-[366/518] ${className}`}
       onClick={() => setFlipped((f) => !f)}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -56,11 +68,13 @@ export function TeamCard({ member }: TeamCardProps) {
       tabIndex={0}
       aria-label={`${member.name} – ${role}. ${flipped ? t('about.ourTeam.card.clickToSeePhoto') : t('about.ourTeam.card.clickToSeeDetails')}`}
     >
-      <div className={`team-card-inner ${flipped ? 'team-card-flipped' : ''}`}>
+      <div
+        className={`relative h-full w-full transform-3d will-change-transform transition-transform duration-600 ease-in-out motion-reduce:transition-none ${flipped ? 'rotate-y-180' : ''}`}
+      >
         {/* ── FRONT ── */}
-        <div className="team-card-face team-card-front">
+        <div className={`${CARD_FACE} z-[2] bg-background-light`}>
           {/* Photo area */}
-          <div className="team-card-photo-wrapper">
+          <div className="relative mx-6 mt-6 flex h-[342px] w-[318px] shrink-0 flex-col items-center justify-center gap-2.5 self-stretch overflow-hidden rounded-t-[82px] bg-white px-3 py-[74px]">
             <Image
               src={member.photo}
               alt={member.name}
@@ -72,25 +86,44 @@ export function TeamCard({ member }: TeamCardProps) {
           </div>
 
           {/* Info row */}
-          <div className="team-card-info">
-            <div className="team-card-text">
-              <h3 className="team-card-name">{member.name}</h3>
-              <p className="team-card-role">{role}</p>
+          <div className="flex items-end justify-between gap-1.5 px-3.5 pt-3 pb-3.5 max-md:px-4 max-md:pt-3.5 max-md:pb-4">
+            <div className="flex min-w-0 flex-col gap-px">
+              <h3 className="m-6 overflow-hidden text-ellipsis whitespace-nowrap text-left font-secondary font-heavy text-size-600 leading-[1.4] text-foreground max-md:text-size-300">
+                {member.name}
+              </h3>
+              <p
+                className={`-my-5 mx-5 h-[60px] w-[238px] text-left font-secondary font-heavy text-size-500 leading-6 max-md:text-[13px] ${ROLE_GRADIENT}`}
+              >
+                {role}
+              </p>
             </div>
-            <span className="team-card-arrow" aria-hidden="true">
+            <span
+              className={`absolute right-3 bottom-3 m-6 flex items-center justify-center rounded-full p-0 cursor-pointer text-purple-600 group-hover:translate-x-0.5 group-hover:text-white ${ICON_TRANSITION}`}
+              aria-hidden="true"
+            >
               <IconCircleArrowRight width={52} height={52} />
             </span>
           </div>
         </div>
 
         {/* ── BACK ── */}
-        <div className="team-card-face team-card-back">
-          <div className="team-card-back-content">
-            <h3 className="team-card-name">{member.name}</h3>
-            <p className="team-card-role">{role}</p>
+        <div
+          className={`${CARD_FACE} z-[1] rotate-y-180 justify-between border border-purple-200 bg-white px-[18px] pt-6 pb-3.5`}
+        >
+          <div className="flex min-h-0 flex-1 flex-col gap-2.5">
+            <h3 className="m-6 overflow-hidden text-ellipsis whitespace-nowrap text-left font-primary font-heavy text-size-600 leading-[1.4] text-foreground">
+              {member.name}
+            </h3>
+            <p
+              className={`-my-5 mx-5 h-[60px] w-[238px] text-left font-secondary font-heavy text-size-400 leading-6 ${ROLE_GRADIENT}`}
+            >
+              {role}
+            </p>
 
             {description && (
-              <p className="team-card-description">{description}</p>
+              <p className="mx-6 mt-4 flex-1 overflow-y-auto font-secondary font-default text-size-400 leading-7 text-neutral-700">
+                {description}
+              </p>
             )}
 
             {member.socials?.linkedin && (
@@ -98,7 +131,7 @@ export function TeamCard({ member }: TeamCardProps) {
                 href={member.socials.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="team-card-linkedin-icon"
+                className={`absolute right-3 bottom-3 m-6 flex items-center justify-center hover:scale-110 [&_svg]:fill-current ${ICON_TRANSITION}`}
                 onClick={(e) => e.stopPropagation()}
                 aria-label={`${member.name} ${t('about.ourTeam.card.linkedinProfile')}`}
               >
@@ -108,7 +141,7 @@ export function TeamCard({ member }: TeamCardProps) {
           </div>
 
           <button
-            className="team-card-arrow-back"
+            className={`absolute bottom-3 left-3 m-5 flex items-center justify-center p-0 cursor-pointer hover:-translate-x-0.5 ${ICON_TRANSITION}`}
             onClick={(e) => {
               e.stopPropagation();
               setFlipped(false);

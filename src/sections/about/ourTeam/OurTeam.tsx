@@ -63,6 +63,18 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
+/**
+ * Colocación en la grid de 6 columnas (≥768px): las tres primeras ocupan 2
+ * columnas cada una; las dos últimas se centran en la fila inferior.
+ */
+const CARD_PLACEMENT = [
+  'md:col-span-2',
+  'md:col-span-2',
+  'md:col-span-2',
+  'md:col-start-2 md:col-end-4',
+  'md:col-start-4 md:col-end-6',
+];
+
 export default function OurTeam() {
   const { t } = useTranslation();
 
@@ -84,9 +96,13 @@ export default function OurTeam() {
       </header>
 
       {/* Team Grid */}
-      <div className="team-grid">
-        {teamMembers.map((member) => (
-          <TeamCard key={member.id} member={member} />
+      <div className="grid w-full max-w-[1200px] grid-cols-1 justify-center gap-6 md:grid-cols-6 md:gap-8">
+        {teamMembers.map((member, index) => (
+          <TeamCard
+            key={member.id}
+            member={member}
+            className={`max-md:justify-self-center ${CARD_PLACEMENT[index] ?? 'md:col-span-2'}`}
+          />
         ))}
       </div>
     </SectionWrapper>
