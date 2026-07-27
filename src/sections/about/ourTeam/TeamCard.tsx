@@ -56,7 +56,7 @@ export function TeamCard({ member, className = '' }: TeamCardProps) {
 
   return (
     <div
-      className={`group flex w-[366px] h-[518px] flex-col items-start py-3 cursor-pointer outline-none perspective-[900px] backface-hidden [-webkit-tap-highlight-color:transparent] focus-visible:rounded-[72px] focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-card-focus)] max-md:h-auto max-md:w-[min(366px,calc(100vw_-_32px))] max-md:aspect-[366/518] ${className}`}
+      className={`group flex aspect-[366/518] h-auto w-full max-w-[366px] flex-col items-start py-3 cursor-pointer outline-none perspective-[900px] backface-hidden [-webkit-tap-highlight-color:transparent] focus-visible:rounded-[72px] focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-card-focus)] md:max-w-none lg:max-w-[366px] ${className}`}
       onClick={() => setFlipped((f) => !f)}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -74,7 +74,7 @@ export function TeamCard({ member, className = '' }: TeamCardProps) {
         {/* ── FRONT ── */}
         <div className={`${CARD_FACE} z-[2] bg-background-light`}>
           {/* Photo area */}
-          <div className="relative mx-6 mt-6 flex h-[342px] w-[318px] shrink-0 flex-col items-center justify-center gap-2.5 self-stretch overflow-hidden rounded-t-[82px] bg-white px-3 py-[74px]">
+          <div className="relative mx-6 mt-6 flex min-h-0 w-auto flex-1 flex-col items-center justify-center gap-2.5 self-stretch overflow-hidden rounded-t-[82px] bg-white px-3 py-[74px]">
             <Image
               src={member.photo}
               alt={member.name}
@@ -86,7 +86,7 @@ export function TeamCard({ member, className = '' }: TeamCardProps) {
           </div>
 
           {/* Info row */}
-          <div className="flex items-end justify-between gap-1.5 px-3.5 pt-3 pb-3.5 max-md:px-4 max-md:pt-3.5 max-md:pb-4">
+          <div className="flex shrink-0 items-end justify-between gap-1.5 px-3.5 pt-3 pb-3.5 max-md:px-4 max-md:pt-3.5 max-md:pb-4">
             <div className="flex min-w-0 flex-col gap-px">
               <h3 className="m-6 overflow-hidden text-ellipsis whitespace-nowrap text-left font-secondary font-heavy text-size-600 leading-[1.4] text-foreground max-md:text-size-300">
                 {member.name}

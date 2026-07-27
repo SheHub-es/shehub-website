@@ -64,15 +64,17 @@ const teamMembers: TeamMember[] = [
 ];
 
 /**
- * Colocación en la grid de 6 columnas (≥768px): las tres primeras ocupan 2
- * columnas cada una; las dos últimas se centran en la fila inferior.
+ * Colocación en la grid de 6 columnas (desktop, ≥1024px): las tres primeras
+ * ocupan 2 columnas cada una; las dos últimas se centran en la fila inferior.
+ * En tablet (768–1023px) la grid es de 2 columnas y el flujo natural ya da
+ * el reparto 2 / 2 / 1, así que estas clases no aplican.
  */
 const CARD_PLACEMENT = [
-  'md:col-span-2',
-  'md:col-span-2',
-  'md:col-span-2',
-  'md:col-start-2 md:col-end-4',
-  'md:col-start-4 md:col-end-6',
+  'lg:col-span-2',
+  'lg:col-span-2',
+  'lg:col-span-2',
+  'lg:col-start-2 lg:col-end-4',
+  'lg:col-start-4 lg:col-end-6',
 ];
 
 export default function OurTeam() {
@@ -96,12 +98,12 @@ export default function OurTeam() {
       </header>
 
       {/* Team Grid */}
-      <div className="grid w-full max-w-[1200px] grid-cols-1 justify-center gap-6 md:grid-cols-6 md:gap-8">
+      <div className="grid w-full max-w-[366px] grid-cols-1 justify-center gap-6 md:max-w-none md:grid-cols-2 md:gap-8 lg:max-w-[1200px] lg:grid-cols-6">
         {teamMembers.map((member, index) => (
           <TeamCard
             key={member.id}
             member={member}
-            className={`max-md:justify-self-center ${CARD_PLACEMENT[index] ?? 'md:col-span-2'}`}
+            className={`max-lg:justify-self-center ${CARD_PLACEMENT[index] ?? 'lg:col-span-2'}`}
           />
         ))}
       </div>
