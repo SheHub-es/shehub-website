@@ -1,5 +1,19 @@
-import { cn } from '@/lib/utils';
-import React, { ChangeEvent, KeyboardEvent, MouseEvent, useId, useState } from 'react';
+import NextImage from "next/image";
+
+import React, {
+  ChangeEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useEffect,
+  useId,
+  useState,
+} from "react";
+
+import LockIcon from "@/assets/images/icons/icon_lock.svg";
+import { useTranslation } from "@/hooks/useTranslation";
+import { cn } from "@/lib/utils";
+
+const TRANSITION_DURATION_MS = 1000;
 
 interface SwitchProps {
   checked?: boolean;
@@ -20,12 +34,22 @@ const Switch: React.FC<SwitchProps> = ({
   helperText,
   id,
 }) => {
+  const { t } = useTranslation();
   const [checked, setChecked] = useState(checkedProp);
   const generatedId = useId();
   const switchId = id || generatedId;
   const helperId = helperText ? `${switchId}-helper` : undefined;
 
   const isOn = disabled ? true : checked;
+  const [displayOn, setDisplayOn] = useState(isOn);
+
+  useEffect(() => {
+    const timeout = setTimeout(
+      () => setDisplayOn(isOn),
+      TRANSITION_DURATION_MS / 2,
+    );
+    return () => clearTimeout(timeout);
+  }, [isOn]);
 
   const toggle = () => {
     if (disabled) return;
@@ -51,7 +75,7 @@ const Switch: React.FC<SwitchProps> = ({
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (disabled) return;
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       e.preventDefault();
       toggle();
     }
@@ -62,8 +86,8 @@ const Switch: React.FC<SwitchProps> = ({
       <label
         htmlFor={switchId}
         className={cn(
-          'flex items-center gap-2 select-none',
-          disabled ? 'cursor-not-allowed' : 'cursor-pointer',
+          "flex items-center gap-2 select-none",
+          disabled ? "cursor-not-allowed" : "cursor-pointer",
         )}
       >
         <input
@@ -85,26 +109,43 @@ const Switch: React.FC<SwitchProps> = ({
 
         <span
           className={cn(
-            'relative inline-flex shrink-0 w-10 h-6 rounded-full transition-colors duration-150 outline-none',
-            'peer-focus-visible:ring-2 peer-focus-visible:ring-offset-1 peer-focus-visible:ring-[var(--color-primary,currentColor)]',
-            isOn && (disabled ? 'bg-purple-300' : 'bg-toggle-bg-active'),
-            !isOn && 'bg-toggle-bg-default',
-            disabled && 'cursor-not-allowed',
+            "relative inline-flex shrink-0 items-center w-20 h-9 rounded-[50px] border border-toggle-border-default bg-white transition-colors duration-300 ease-in-out outline-none",
+            "peer-focus-visible:ring-2 peer-focus-visible:ring-offset-1 peer-focus-visible:ring-(--color-primary,currentColor)",
+            disabled && "cursor-not-allowed",
           )}
         >
           <span
+            aria-hidden="true"
             className={cn(
-              'absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-transform duration-150',
-              isOn && 'translate-x-4',
+              "flex h-full w-full items-center font-secondary text-size-300 leading-line-height-heading-6 font-normal text-neutral-600",
+              displayOn ? "justify-start pl-4 pr-9" : "justify-end pr-4 pl-9",
             )}
-          />
+          >
+            {displayOn ? t("switch.on") : t("switch.off")}
+          </span>
+
+          <span
+            className={cn(
+              "absolute top-1 left-0.5 flex size-7 shrink-0 items-center justify-center rounded-[50px] transition-all duration-1000 ease-in-out",
+              disabled
+                ? "bg-primary"
+                : isOn
+                  ? "bg-toggle-bg-active"
+                  : "bg-purple-200",
+              isOn && "translate-x-11.5",
+            )}
+          >
+            {disabled && (
+              <NextImage src={LockIcon} alt="" width={16} height={16} />
+            )}
+          </span>
         </span>
 
         {label && (
           <span
             className={cn(
-              'font-secondary text-size-300 leading-line-height-heading-6 font-normal',
-              'sm:font-secondary sm:text-size-400 sm:leading-line-height-body-3',
+              "font-secondary text-size-300 leading-line-height-heading-6 font-normal",
+              "sm:font-secondary sm:text-size-400 sm:leading-line-height-body-3",
             )}
           >
             {label}

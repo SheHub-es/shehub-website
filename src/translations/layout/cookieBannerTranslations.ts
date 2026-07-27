@@ -43,7 +43,7 @@ export const cookieBannerTranslations: TranslationObject = {
   },
   'cookieBanner.preferencesDescription': {
     es: 'Elige qué cookies permites. Las cookies estrictamente necesarias siempre están activas porque también son necesarias para que el sitio funcione.',
-    en: "Choose which cookies you allow. Strictly necessary cookies are always active as they're also required for the site to function.",
+    en: "Choose which cookies you allow. Strictly necessary cookies are always active, they are required for the site to function.",
     ca: 'Tria quines galetes permets. Les galetes estrictament necessàries sempre estan actives perquè també són necessàries perquè el lloc funcioni.',
   },
   'cookieBanner.closePreferences': {
@@ -58,7 +58,7 @@ export const cookieBannerTranslations: TranslationObject = {
   },
   'cookieBanner.categoryNecessaryDescription': {
     es: 'Mantienen el sitio funcionando. Estas cookies no se pueden desactivar.',
-    en: "Keeps the site running. These cookies can't be turned off.",
+    en: "Keeps the site running. These can't be switched off.",
     ca: 'Mantenen el lloc en funcionament. Aquestes galetes no es poden desactivar.',
   },
   'cookieBanner.categoryAnalyticsTitle': {
@@ -68,7 +68,7 @@ export const cookieBannerTranslations: TranslationObject = {
   },
   'cookieBanner.categoryAnalyticsDescription': {
     es: 'Nos dicen qué secciones se usan para que podamos mejorar el sitio.',
-    en: 'Tells us which sections get used so we can improve the site.',
+    en: 'Tells us what\'s working (and what isn\'t) so we can keep improving.',
     ca: 'Ens diuen quines seccions s\'utilitzen perquè puguem millorar el lloc.',
   },
   'cookieBanner.categoryFunctionalTitle': {
@@ -78,7 +78,7 @@ export const cookieBannerTranslations: TranslationObject = {
   },
   'cookieBanner.categoryFunctionalDescription': {
     es: 'Recuerdan pequeños detalles, como tu idioma, para no tener que repetírnoslo.',
-    en: "Remembers small things, like your language, so you don't have to tell us twice.",
+    en: "Remembers small things like your language so you don't have to set it every time.",
     ca: 'Recorden petits detalls, com el teu idioma, perquè no ens l\'hagis de tornar a dir.',
   },
   'cookieBanner.savePreferences': {
