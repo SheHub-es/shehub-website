@@ -2,7 +2,7 @@ import NextImage from "next/image";
 
 import ArrowIcon from "@/assets/images/graphics/icon_arrow.svg";
 import AsteriskIcon from "@/assets/images/graphics/icon_asterisk.svg";
-import MentorPinkImage from "@/assets/images/graphics/icon_mentorPink.svg";
+import SheHubPinkImage from "@/assets/images/graphics/icon_shehubPink.svg";
 import PurpleRectangleImage from "@/assets/images/graphics/icon_purpleRectangle.svg";
 import RobotImage from "@/assets/images/photos/photo_aboutRobot.png";
 import CollabWomenImage from "@/assets/images/photos/photo_aboutCollabWomen.png";
@@ -48,10 +48,10 @@ const ImageSection = () => {
         )}
       />
       <NextImage
-        src={MentorPinkImage}
+        src={SheHubPinkImage}
         alt=""
         className={cn(
-          "absolute bottom-4 left-0 h-auto w-[110px] lg:bottom-6 lg:-left-4 lg:w-[140px]",
+          "absolute bottom-4 left-10 h-auto w-[110px] lg:bottom-6 lg:left-6 lg:w-[140px]",
           fade("b")
         )}
       />
@@ -75,7 +75,7 @@ const ImageSection = () => {
         src={AsteriskIcon}
         alt=""
         className={cn(
-          "absolute top-40 left-47.5 h-auto w-11.25 lg:top-47.5 lg:left-56.25 lg:w-14",
+          "absolute top-[190px] left-47.5 h-auto w-11.25 lg:top-55 lg:left-56.25 lg:w-14",
           fade("d")
         )}
       />

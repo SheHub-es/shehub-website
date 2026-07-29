@@ -18,7 +18,7 @@ export const aboutTranslations: TranslationObject = {
   },
   'about.hero.paragraph': {
     es: 'SheHub es una comunidad liderada por mujeres para mujeres que empiezan su carrera en tecnología, donde la colaboración real y la construcción de productos son lo primero. Creamos oportunidades prácticas para crecer, conectar y destacar, para que más talento femenino sea contratado, reconocido y empoderado.',
-    en: 'SheHub is a women led community for early career women in tech, where real collaboration and product building come first. We create hands on opportunities to grow, connect, and stand out, so more female talent gets hired, recognized, and empowered.',
+    en: 'SheHub is a women-led community for early career women in tech, where real collaboration and product building come first. We create hands-on opportunities to grow, connect, and stand out, so more female talent gets hired, recognized, and empowered.',
     ca: 'SheHub és una comunitat liderada per dones per a dones que comencen la seva carrera en tecnologia, on la col·laboració real i la creació de productes són el primer. Creem oportunitats pràctiques per créixer, connectar i destacar, perquè més talent femení sigui contractat, reconegut i empoderat.',
   },
   'about.hero.alt': {
