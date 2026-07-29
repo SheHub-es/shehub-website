@@ -20,13 +20,13 @@ const ImageSection = () => {
   return (
     <div
       ref={containerRef}
-      className="relative z-1 mx-auto mt-8 h-[420px] w-full max-w-[420px] md:mt-16 lg:h-[480px] lg:max-w-[480px]"
+      className="relative z-1 mx-auto mb-8 h-[420px] w-full max-w-[420px] md:mt-16 lg:mb-0 lg:h-[480px] lg:max-w-[480px]"
     >
       <NextImage
         src={PurpleRectangleImage}
         alt=""
         className={cn(
-          "absolute top-1/2 left-1/2 h-auto w-[280px] -translate-x-1/2 -translate-y-1/2 lg:w-[327px]",
+          "absolute top-1/2 left-1/2 h-auto w-[66.67%] -translate-x-1/2 -translate-y-1/2",
           fade
         )}
       />
@@ -34,7 +34,7 @@ const ImageSection = () => {
         src={CollabWomenImage}
         alt={t('about.hero.collabWomenAlt')}
         className={cn(
-          "absolute top-2 left-2 h-auto w-[170px] rounded-3xl rounded-br-none object-cover lg:top-0 lg:left-0 lg:w-55",
+          "absolute top-[1.9%] left-[1.9%] h-auto w-[40.48%] rounded-3xl rounded-br-none object-cover",
           fade
         )}
       />
@@ -42,7 +42,7 @@ const ImageSection = () => {
         src={RobotImage}
         alt={t('about.hero.robotAlt')}
         className={cn(
-          "absolute top-[190px] left-10 h-auto w-26.25 rounded-3xl rounded-tr-none object-cover lg:top-55 lg:left-12.5 lg:w-34.5",
+          "absolute top-[45.24%] left-[9.52%] h-auto w-[25%] rounded-3xl rounded-tr-none object-cover",
           fade
         )}
       />
@@ -50,7 +50,7 @@ const ImageSection = () => {
         src={SheHubPinkImage}
         alt=""
         className={cn(
-          "absolute bottom-4 left-10 h-auto w-[110px] lg:bottom-6 lg:left-6 lg:w-[140px]",
+          "absolute bottom-[3.81%] left-[9.52%] h-auto w-[26.19%]",
           fade
         )}
       />
@@ -58,7 +58,7 @@ const ImageSection = () => {
         src={ArrowIcon}
         alt=""
         className={cn(
-          "absolute top-8.5 left-55.5 h-auto w-17.5 lg:top-8 lg:left-63 lg:w-21.5",
+          "absolute top-[8.1%] left-[52.86%] h-auto w-[16.67%]",
           fade
         )}
       />
@@ -66,7 +66,7 @@ const ImageSection = () => {
         src={LaptopImage}
         alt={t('about.hero.laptopAlt')}
         className={cn(
-          "absolute right-0 bottom-0 h-auto w-[190px] rounded-[35px] rounded-tl-none object-cover shadow-lg lg:w-60 lg:rounded-[44px] lg:rounded-tl-none",
+          "absolute right-0 bottom-0 h-auto w-[45.24%] rounded-[35px] rounded-tl-none object-cover shadow-lg lg:rounded-[44px] lg:rounded-tl-none",
           fade
         )}
       />
@@ -74,7 +74,7 @@ const ImageSection = () => {
         src={AsteriskIcon}
         alt=""
         className={cn(
-          "absolute top-[190px] left-47.5 h-auto w-11.25 lg:top-55 lg:left-56.25 lg:w-14",
+          "absolute top-[45.24%] left-[45.24%] h-auto w-[10.71%]",
           fade
         )}
       />
