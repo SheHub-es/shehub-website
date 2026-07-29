@@ -18,13 +18,28 @@ export const aboutTranslations: TranslationObject = {
   },
   'about.hero.paragraph': {
     es: 'SheHub es una comunidad liderada por mujeres para mujeres que empiezan su carrera en tecnología, donde la colaboración real y la construcción de productos son lo primero. Creamos oportunidades prácticas para crecer, conectar y destacar, para que más talento femenino sea contratado, reconocido y empoderado.',
-    en: 'SheHub is a women led community for early career women in tech, where real collaboration and product building come first. We create hands on opportunities to grow, connect, and stand out, so more female talent gets hired, recognized, and empowered.',
+    en: 'SheHub is a women-led community for early career women in tech, where real collaboration and product building come first. We create hands-on opportunities to grow, connect, and stand out, so more female talent gets hired, recognized, and empowered.',
     ca: 'SheHub és una comunitat liderada per dones per a dones que comencen la seva carrera en tecnologia, on la col·laboració real i la creació de productes són el primer. Creem oportunitats pràctiques per créixer, connectar i destacar, perquè més talent femení sigui contractat, reconegut i empoderat.',
   },
   'about.hero.alt': {
     es: 'Mujeres colaborando e innovando en tecnología, representando a la comunidad SheHub',
     en: 'Women collaborating and innovating in tech, representing the SheHub community',
     ca: 'Dones col·laborant i innovant en tecnologia, representant la comunitat SheHub',
+  },
+  'about.hero.collabWomenAlt': {
+    es: 'Mujeres riendo mientras trabajan juntas en un portátil',
+    en: 'Women laughing while working together on a laptop',
+    ca: 'Dones riure mentre treballen juntes en un portàtil',
+  },
+  'about.hero.robotAlt': {
+    es: 'Robot social con un diseño similar al de los humanos',
+    en: 'Social robot with a human-like design',
+    ca: 'Robot social amb un disseny similar al dels human',
+  },
+  'about.hero.laptopAlt': {
+    es: 'Mujer frente a un portátil, interactuando con una persona a su lado',
+    en: 'Woman in front of a laptop, interacting with a person next to her',
+    ca: 'Dona davant d’un portàtil, interactuant amb una persona al seu costat',
   },
   'about.hero.joinButton': {
     es: 'Únete a un proyecto real',

@@ -56,6 +56,22 @@
   .delay-600 {
     animation-delay: 600ms;
   }
+
+  .stagger-a {
+    transition-delay: 0ms;
+  }
+
+  .stagger-b {
+    transition-delay: 200ms;
+  }
+
+  .stagger-c {
+    transition-delay: 400ms;
+  }
+
+  .stagger-d {
+    transition-delay: 600ms;
+  }
 }
 
 @theme {
