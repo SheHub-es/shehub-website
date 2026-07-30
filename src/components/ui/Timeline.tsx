@@ -98,15 +98,17 @@ export const Timeline: React.FC<TimelineProps> = ({
             : [];
 
     return (
-        <div 
+        <div
             className={cn(timelineVariants({ variant }), "p-5", className)}
-            role="list"
-            aria-label={ariaLabel || "Timeline de eventos"}
-            aria-labelledby={ariaLabelledBy}
             style={{ minHeight: '1px' }}
         >
             {variant === "opposite" ? (
-                <ol className="relative flex flex-col" role="list">
+                <ol
+                    className="relative flex flex-col"
+                    role="list"
+                    aria-label={ariaLabel || "Timeline de eventos"}
+                    aria-labelledby={ariaLabelledBy}
+                >
                     {groupedItems.map((pair, pairIndex) => {
                         const isLast = pairIndex === groupedItems.length - 1;
                         return (
@@ -194,7 +196,12 @@ export const Timeline: React.FC<TimelineProps> = ({
                     })}
                 </ol>
             ) : (
-                <ol className="relative flex flex-col" role="list">
+                <ol
+                    className="relative flex flex-col"
+                    role="list"
+                    aria-label={ariaLabel || "Timeline de eventos"}
+                    aria-labelledby={ariaLabelledBy}
+                >
                     {items.map((item, index) => {
                         const side = resolveSideFromVariant(variant, index);
                         const isLeft = side === "left";
