@@ -87,7 +87,7 @@ const NavigationMenu = ({ placement = 'header' }: NavigationMenuProps) => {
             <li key={key}>
               <a
                 href={href}
-                className={mainNavLinkClassName(isActive, 'header')}
+                className={mainNavLinkClassName(isActive)}
                 tabIndex={0}
                 aria-label={t(key)}
                 title={t(hintKey)}
