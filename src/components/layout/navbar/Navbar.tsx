@@ -35,9 +35,9 @@ export const Navbar = () => {
           }}
         >
           <div className="h-[75px] flex items-center justify-between md:hidden">
-            <div aria-label="Shehub" className={`flex items-center justify-start transition-all duration-300 ${open ? 'w-[145px]' : 'w-[135px]'}`}>
+            <div className={`flex items-center justify-start transition-all duration-300 ${open ? 'w-[145px]' : 'w-[135px]'}`}>
               <div className="w-full">
-                <SheHubLogo />
+                <SheHubLogo aria-label={t('menu.home')} title={t('menu.homeHint')} />
               </div>
             </div>
             <div id="mobile-menu-toggle">
@@ -55,8 +55,8 @@ export const Navbar = () => {
             </div>
 
           <div className="hidden md:flex w-full items-center justify-between">
-            <div aria-label="SheHub" className="flex items-center">
-              <SheHubLogo />
+            <div className="flex items-center">
+              <SheHubLogo aria-label={t('menu.home')} title={t('menu.homeHint')} />
             </div>
             <div id="nav-menu-desktop" className="hidden md:flex md:flex-1 md:justify-center">
               <NavigationMenu />
