@@ -43,10 +43,12 @@ export default function HeroLayout({
   imageComponent,
 }: HeroLayoutProps) {
   const [heroImageRef, isHeroVisible] = useIntersectionObserver();
+  const headingId = id ? `${id}-heading` : undefined;
 
   return (
     <SectionWrapper
       id={id}
+      aria-labelledby={headingId}
       innerClassName={clsx(
         "flex flex-col lg:flex-row items-center justify-center mx-auto md:mb-20",
 
@@ -65,12 +67,15 @@ export default function HeroLayout({
       <div className="flex flex-col justify-center text-left lg:w-[592px] w-full h-auto">
 
         {eyebrow && (
-          <span className="block text-accent text-base md:text-lg font-semibold tracking-wide py-8 md:py-12">
+          <span className="block text-purple-700 text-base md:text-lg font-semibold tracking-wide py-8 md:py-12">
             {eyebrow}
           </span>
         )}
 
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-black mb-4 md:mb-12">
+        <h1
+          id={headingId}
+          className="text-4xl md:text-6xl font-bold tracking-tight text-black mb-4 md:mb-12"
+        >
           {title}
         </h1>
 

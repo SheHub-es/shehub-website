@@ -7,14 +7,17 @@ import IconMail from '@/components/icons/IconMail';
 import { Icon } from '@/components/ui/Icon';
 import NavigationMenu from '@/components/ui/NavigationMenu';
 import { CopyEmailTrigger } from '@/components/ui/CopyEmailTrigger';
+import { useTranslation } from '@/hooks/useTranslation';
 import Link from 'next/link';
 
 const legalLinks = [
-  { href: '/privacy-policy', label: 'Privacy Policy' },
-  { href: '/terms-of-service', label: 'Terms of Service' },
-];
+  { href: '/privacy-policy', key: 'footer.privacyPolicy' },
+  { href: '/terms-of-service', key: 'footer.termsOfService' },
+] as const;
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className=" bg-background-footer text-foreground">
       {/* Final version with increased vertical padding (py-20) for more height. */}
@@ -23,7 +26,7 @@ const Footer = () => {
           
           <Link
             href="/"
-            aria-label="SheHub homepage"
+            aria-label={t('footer.logoAria')}
             className="block shrink-0 transition-opacity hover:opacity-90 px-6 lg:px-0"
           >
             {/* Smaller logo on mobile, full size on md+ */}
@@ -45,7 +48,7 @@ const Footer = () => {
             <div className="flex gap-2 pb-4 lg:pb-0">
               <a
                 href="https://www.instagram.com/shehub.es/"
-                aria-label="SheHub on Instagram"
+                aria-label={t('footer.instagramAria')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block transition-opacity hover:opacity-90"
@@ -55,7 +58,7 @@ const Footer = () => {
 
               <a
                 href="https://www.linkedin.com/company/shehub-es/"
-                aria-label="SheHub on LinkedIn"
+                aria-label={t('footer.linkedinAria')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block transition-opacity hover:opacity-90"
@@ -70,7 +73,7 @@ const Footer = () => {
 
         <div className="flex flex-col lg:flex-row lg:items-center pt-2 text-base lg:justify-center lg:gap-x-8 lg:gap-y-4 px-6 lg:px-0">
           <p className="text-left lg:text-center text-size-200 lg:text-size-300 pt-4.5 md:pt-0 pb-10 lg:pb-0">
-            &copy; {new Date().getFullYear()} SheHub. All rights reserved.
+            &copy; {new Date().getFullYear()} {t('footer.copyright')}
           </p>
           <div className="flex flex-col items-start lg:items-center justify-center gap-7 lg:flex-row lg:gap-6">
             {legalLinks.map((link) => (
@@ -79,16 +82,25 @@ const Footer = () => {
                 href={link.href}
                 className="text-purple-700 underline hover:text-purple-600 visited:text-textlink-visited text-size-200 lg:text-size-300"
               >
-                {link.label}
+                {t(link.key)}
               </Link>
             ))}
             <Link
               href="/cookie-settings"
               className="text-purple-700 underline hover:text-purple-600 visited:text-textlink-visited text-size-200 lg:text-size-300 pb-4 lg:pb-0 cursor-pointer"
             >
-              Cookie settings
+              {t('footer.cookieSettings')}
             </Link>
           </div>
+        </div>
+
+        <div className="px-6 lg:px-0 pt-4 pb-2">
+          <p className="text-left text-size-100 lg:text-size-200 leading-relaxed text-foreground/70">
+            SheHub Association<br />
+            G22985352<br />
+            {t('footer.address')}<br />
+            Registre d&apos;Associacions de la Generalitat de Catalunya, no. 78150
+          </p>
         </div>
       </div>
     </footer>

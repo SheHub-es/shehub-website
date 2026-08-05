@@ -11,6 +11,11 @@ export const navigationMenuTranslations: TranslationObject = {
     en: 'Home',
     ca: 'Inici',
   },
+  'menu.homeHint': {
+    es: 'Acceso a la página de inicio',
+    en: 'Access to home page',
+    ca: 'Accés a la pàgina d\'inici',
+  },
   /** Collaborators, mentors, and partners (header dropdown) */
   'menu.joinMenu': {
     es: 'Únete',
@@ -27,25 +32,50 @@ export const navigationMenuTranslations: TranslationObject = {
     en: 'Collaborators',
     ca: 'Col·laboradores',
   },
+  'menu.item-1-hint': {
+    es: 'Acceso a la página de colaboradoras',
+    en: 'Access to collaborator page',
+    ca: 'Accés a la pàgina de col·laboradores',
+  },
   'menu.item-2': {
     es: 'Mentoras',
     en: 'Mentors',
     ca: 'Mentores',
+  },
+  'menu.item-2-hint': {
+    es: 'Acceso a la página de mentoras',
+    en: 'Access to mentors page',
+    ca: 'Accés a la pàgina de mentores',
   },
   'menu.item-3': {
     es: 'Sobre nosotras',
     en: 'About',
     ca: 'Sobre nosaltres',
   },
+  'menu.item-3-hint': {
+    es: 'Acceso a la página sobre nosotras',
+    en: 'Access to about page',
+    ca: 'Accés a la pàgina sobre nosaltres',
+  },
   'menu.item-4': {
     es: 'Alianzas',
     en: 'Partners',
     ca: 'Aliances',
   },
+  'menu.item-4-hint': {
+    es: 'Acceso a la página de alianzas',
+    en: 'Access to partners page',
+    ca: 'Accés a la pàgina d\'aliances',
+  },
   'menu.item-5': {
     es: 'Contacto',
     en: 'Contact',
     ca: 'Contacte',
+  },
+  'menu.item-5-hint': {
+    es: 'Acceso a la página de contacto',
+    en: 'Access to contact page',
+    ca: 'Accés a la pàgina de contacte',
   },
   /** Login V1 and V2 */
     'menu.loginV1': {
