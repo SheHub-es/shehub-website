@@ -35,12 +35,11 @@ const Switch: React.FC<SwitchProps> = ({
   id,
 }) => {
   const { t } = useTranslation();
-  const [checked, setChecked] = useState(checkedProp);
   const generatedId = useId();
   const switchId = id || generatedId;
   const helperId = helperText ? `${switchId}-helper` : undefined;
 
-  const isOn = disabled ? true : checked;
+  const isOn = disabled ? true : checkedProp;
   const [displayOn, setDisplayOn] = useState(isOn);
 
   useEffect(() => {
@@ -53,16 +52,11 @@ const Switch: React.FC<SwitchProps> = ({
 
   const toggle = () => {
     if (disabled) return;
-    setChecked((prev) => {
-      const next = !prev;
-      onChange?.(next);
-      return next;
-    });
+    onChange?.(!checkedProp);
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (disabled) return;
-    setChecked(e.target.checked);
     onChange?.(e.target.checked);
   };
 
