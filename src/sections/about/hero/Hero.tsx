@@ -1,8 +1,8 @@
 'use client';
 
-import HeroImage from '@/assets/images/photos/photo_heroAbout.webp';
 import { useTranslation } from '@/hooks/useTranslation';
 import HeroLayout from '@/sections/shared/heroLayout/HeroLayout';
+import ImageSection from '@/sections/about/hero/components/ImageSection';
 
 export default function AboutHero() {
   const { t } = useTranslation();
@@ -24,8 +24,7 @@ export default function AboutHero() {
         </>
       }
       paragraph={t('about.hero.paragraph')}
-      mainImage={HeroImage.src}
-      alt={t('about.hero.alt')}
+      imageComponent={<ImageSection />}
       buttons={[
         {
           text: t('about.hero.joinButton'),

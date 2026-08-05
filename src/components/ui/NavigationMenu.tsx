@@ -12,11 +12,11 @@ const JOIN_SUBITEMS = [
 
 /** Header and footer desktop — same flat list as `main`. */
 const MAIN_NAV_ITEMS = [
-  { key: 'menu.item-1', href: '/collaborators' },
-  { key: 'menu.item-2', href: '/mentors' },
-  { key: 'menu.item-3', href: '/about' },
-  { key: 'menu.item-4', href: '/partners' },
-  { key: 'menu.item-5', href: '/contact' },
+  { key: 'menu.item-1', href: '/collaborators', hintKey: 'menu.item-1-hint' },
+  { key: 'menu.item-2', href: '/mentors', hintKey: 'menu.item-2-hint' },
+  { key: 'menu.item-3', href: '/about', hintKey: 'menu.item-3-hint' },
+  { key: 'menu.item-4', href: '/partners', hintKey: 'menu.item-4-hint' },
+  { key: 'menu.item-5', href: '/contact', hintKey: 'menu.item-5-hint' },
 ] as const
 
 /** Footer mobile only: join links + about/contact + recorrido (no inicio). */
@@ -35,7 +35,7 @@ function isActiveHref(pathname: string, href: string) {
 function mainNavLinkClassName(isActive: boolean) {
   return cn(
     'flex-1 whitespace-nowrap cursor-pointer nav-item hover:text-navigationmenu-hover',
-    isActive ? 'text-[var(--color-primary)]' : 'text-black',
+    isActive ? 'text-purple-700' : 'text-black',
   )
 }
 
@@ -81,11 +81,17 @@ const NavigationMenu = ({ placement = 'header' }: NavigationMenuProps) => {
   return (
     <nav aria-label={t('menu.navAria')}>
       <ul className="list-none flex flex-col gap-6 md:flex-row md:gap-8 md:items-center">
-        {MAIN_NAV_ITEMS.map(({ key, href }) => {
+        {MAIN_NAV_ITEMS.map(({ key, href, hintKey }) => {
           const isActive = pathname === href
           return (
             <li key={key}>
-              <a href={href} className={mainNavLinkClassName(isActive)} tabIndex={0}>
+              <a
+                href={href}
+                className={mainNavLinkClassName(isActive)}
+                tabIndex={0}
+                aria-label={t(key)}
+                title={t(hintKey)}
+              >
                 {t(key)}
               </a>
             </li>

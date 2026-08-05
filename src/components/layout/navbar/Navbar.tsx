@@ -35,28 +35,30 @@ export const Navbar = () => {
           }}
         >
           <div className="h-[75px] flex items-center justify-between md:hidden">
-            <div aria-label="Shehub" className={`flex items-center justify-start transition-all duration-300 ${open ? 'w-[145px]' : 'w-[135px]'}`}>
+            <div className={`flex items-center justify-start transition-all duration-300 ${open ? 'w-[145px]' : 'w-[135px]'}`}>
               <div className="w-full">
-                <SheHubLogo />
+                <SheHubLogo aria-label={t('menu.home')} title={t('menu.homeHint')} />
               </div>
             </div>
-            <Icon
-              icon={open ? IconClose : IconMenu}
-              interactive
-              size="md"
-              aria-label={open ? (t('close') ?? 'Close menu') : (t('open') ?? 'Open menu')}
-              aria-expanded={open}
-              aria-controls="mobile-menu"
-              onClick={() => setOpen(prev => !prev)}
-              className="md:hidden"
-            />
+            <div id="mobile-menu-toggle">
+              <Icon
+                icon={open ? IconClose : IconMenu}
+                interactive
+                size="md"
+                aria-label={open ? (t('close') ?? 'Close menu') : (t('open') ?? 'Open menu')}
+                aria-expanded={open}
+                aria-controls="mobile-menu"
+                onClick={() => setOpen(prev => !prev)}
+                className="md:hidden"
+              />
+            </div>
             </div>
 
           <div className="hidden md:flex w-full items-center justify-between">
-            <div aria-label="SheHub" className="flex items-center">
-              <SheHubLogo />
+            <div className="flex items-center">
+              <SheHubLogo aria-label={t('menu.home')} title={t('menu.homeHint')} />
             </div>
-            <div className="hidden md:flex md:flex-1 md:justify-center">
+            <div id="nav-menu-desktop" className="hidden md:flex md:flex-1 md:justify-center">
               <NavigationMenu />
             </div>
             <div className="hidden md:flex items-center md:gap-6">
@@ -65,15 +67,17 @@ export const Navbar = () => {
                 selected={language}
                 onChange={(value: string) => setLanguage(value as Language)}
               />
-              <Button
-                asChild
-                variant="gradient"
-                size="sm"
-                shape="rounded"
-                className="rounded-full min-w-[180px]"
-              >
-                <Link href="/join">{t("menu_button.button")}</Link>
-              </Button>
+              <div id="nav-join-desktop">
+                <Button
+                  asChild
+                  variant="gradient"
+                  size="sm"
+                  shape="rounded"
+                  className="rounded-full min-w-[180px]"
+                >
+                  <Link href="/join">{t("menu_button.button")}</Link>
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -81,6 +85,7 @@ export const Navbar = () => {
           {open && (
             <div className="md:hidden flex flex-1 flex-col gap-[31px]" id="mobile-menu">
               <nav
+                id="mobile-nav-drawer"
                 onClick={(e) => {
                   const el = e.target as HTMLElement
                   if (el.closest('a[href]')) setOpen(false)
@@ -95,11 +100,13 @@ export const Navbar = () => {
                   onChange={(value: string) => setLanguage(value as Language)}
                 />
               </div>
-              <Button asChild variant="gradient" size="lg" shape="rounded">
-                <Link href="/join" onClick={() => setOpen(false)}>
-                  {t('menu_button.button')}
-                </Link>
-              </Button>
+              <div id="mobile-join-drawer">
+                <Button asChild variant="gradient" size="lg" shape="rounded">
+                  <Link href="/join" onClick={() => setOpen(false)}>
+                    {t('menu_button.button')}
+                  </Link>
+                </Button>
+              </div>
             </div>
           )}
         </div>

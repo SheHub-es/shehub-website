@@ -1,5 +1,7 @@
 "use client";
 
+import { useCookieConsentContext } from '@/providers/CookieConsentProvider';
+import { deleteCookie, setCookie } from '@/lib/cookies';
 import { translations, type Language } from '@/translations';
 import {
   createContext,
@@ -31,25 +33,19 @@ export const LanguageProvider = ({
 }) => {
   const [language, setLanguageState] = useState<Language>(initialLanguage ?? 'es')
   const scrollRestoreRef = useRef<{ x: number; y: number } | null>(null)
+  const { consent, hasDecided } = useCookieConsentContext()
 
-  // On first mount: if language is in localStorage but server sent 'es' (no cookie), sync cookie and state to avoid flash on next load
   useEffect(() => {
     if (typeof window === 'undefined') return
     document.documentElement.lang = language
     const stored = localStorage.getItem('language')
     const storedLang = (['es', 'en', 'ca'].includes(stored || '') ? stored : 'es') as Language
-    if (storedLang !== language) {
-      localStorage.setItem('language', language)
-    }
     if (initialLanguage === 'es' && storedLang !== 'es') {
-      document.cookie = `language=${storedLang}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`
       document.documentElement.lang = storedLang
       setLanguageState(storedLang)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- run only on mount, initialLanguage is stable
   }, [])
 
-  // Restore scroll after user-triggered language change (avoids jump)
   useEffect(() => {
     if (scrollRestoreRef.current) {
       const { x, y } = scrollRestoreRef.current
@@ -58,11 +54,20 @@ export const LanguageProvider = ({
     }
   }, [language])
 
+  useEffect(() => {
+    if (typeof window === 'undefined' || !hasDecided) return
+    if (consent.functional) {
+      localStorage.setItem('language', language)
+      setCookie('language', language, COOKIE_MAX_AGE)
+    } else {
+      localStorage.removeItem('language')
+      deleteCookie('language')
+    }
+  }, [language, consent.functional, hasDecided])
+
   const setLanguage = useCallback((lang: Language) => {
     if (typeof window !== 'undefined') {
       scrollRestoreRef.current = { x: window.scrollX, y: window.scrollY }
-      localStorage.setItem('language', lang)
-      document.cookie = `language=${lang}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`
     }
     document.documentElement.lang = lang
     startTransition(() => {

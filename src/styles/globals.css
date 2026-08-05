@@ -25,7 +25,8 @@
   .fade-on-scroll {
     opacity: 0;
     transform: translateY(15px);
-    transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    transition:
+      opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
       transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -35,7 +36,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-
     .fade-in,
     .fade-on-scroll {
       animation: none;
@@ -56,6 +56,7 @@
   .delay-600 {
     animation-delay: 600ms;
   }
+
 }
 
 @theme {
@@ -148,7 +149,12 @@
   --color-white: #ffffff;
   --color-black: #0e0e0e;
 
-  --color-gradient-brand: linear-gradient(90deg, #f76702 0%, #f83c85 50%, #7858ff 100%);
+  --color-gradient-brand: linear-gradient(
+    90deg,
+    #f76702 0%,
+    #f83c85 50%,
+    #7858ff 100%
+  );
 
   /* Semantic Tokens */
 
@@ -175,7 +181,6 @@
   --color-muted: var(--color-neutral-500);
   --color-disabled: var(--color-neutral-200);
   --color-border: var(--color-neutral-50);
-
 
   /* Components Tokens */
 
@@ -567,7 +572,7 @@ html.scrollbar-visible *::-webkit-scrollbar-thumb,
 
 @layer base {
   body {
-    @apply font-primary;
+    font-family: var(--font-primary);
     background-color: var(--color-background-light);
   }
 }
@@ -591,7 +596,9 @@ html.user-is-tabbing *:focus {
  * box-shadow follows the element shape. Skip icon hit targets (they use Tailwind ring).
  */
 html.user-is-tabbing
-  button:focus-visible:not(.shehub-icon-hit-target):not(.nav-join-trigger-label) {
+  button:focus-visible:not(.shehub-icon-hit-target):not(
+    .nav-join-trigger-label
+  ) {
   outline: none !important;
   box-shadow:
     0 0 0 2px var(--color-background-light),
@@ -738,10 +745,10 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
 .focus-square:focus-visible::after {
   content: "";
   position: absolute;
-  top: -0.60rem;
+  top: -0.6rem;
   left: -0.25rem;
   right: -0.25rem;
-  bottom: -0.60rem;
+  bottom: -0.6rem;
   border: 0.25rem solid var(--color-purple-600);
   border-radius: 0;
   pointer-events: none;
@@ -755,14 +762,16 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
   /* Base Input */
   .input-base {
     width: 100%;
-    padding: var(--input-padding-vertical) var(--input-padding-horizontal-right) 
-             var(--input-padding-vertical) var(--input-padding-horizontal-left);
+    padding: var(--input-padding-vertical) var(--input-padding-horizontal-right)
+      var(--input-padding-vertical) var(--input-padding-horizontal-left);
     font-size: var(--input-font-size);
     color: var(--input-text-default);
     background-color: var(--input-bg-field-figma);
     border: 2px solid var(--input-border-field-figma);
     border-radius: var(--input-border-radius);
-    transition: border-color 150ms ease-in-out, background-color 150ms ease-in-out,
+    transition:
+      border-color 150ms ease-in-out,
+      background-color 150ms ease-in-out,
       box-shadow 150ms ease-in-out;
   }
 
@@ -790,7 +799,9 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
 
   /* Figma focus: purple ring + white gap (box-shadow); inner 2px gray border (not for select: .shehub-dropdown-trigger) */
   html.user-is-tabbing
-    .input-base:focus:not(.input-error):not(.input-success):not(.shehub-dropdown-trigger) {
+    .input-base:focus:not(.input-error):not(.input-success):not(
+      .shehub-dropdown-trigger
+    ) {
     outline: none !important;
     border-width: 2px;
     border-color: var(--input-border-field-figma);
@@ -835,7 +846,10 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
     background-color: var(--input-bg-field-figma);
     box-shadow:
       0 0 0 var(--dropdown-focus-gap-width) var(--input-focus-gap-figma),
-      0 0 0 calc(var(--dropdown-focus-gap-width) + var(--dropdown-focus-stroke-width))
+      0 0 0
+        calc(
+          var(--dropdown-focus-gap-width) + var(--dropdown-focus-stroke-width)
+        )
         var(--input-focus-stroke-figma);
   }
 
@@ -847,7 +861,10 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
     background-color: var(--input-bg-field-figma);
     box-shadow:
       0 0 0 var(--dropdown-focus-gap-width) var(--input-focus-gap-figma),
-      0 0 0 calc(var(--dropdown-focus-gap-width) + var(--dropdown-focus-stroke-width))
+      0 0 0
+        calc(
+          var(--dropdown-focus-gap-width) + var(--dropdown-focus-stroke-width)
+        )
         var(--input-border-error);
   }
 
@@ -918,7 +935,9 @@ html.user-is-tabbing .checkbox-label:has(input:focus) .checkbox-box {
   }
 
   /* Input.tsx: Figma hover (border #6230F7, background #FEFEFE) — skip when focused or disabled */
-  .sh-input-wrap--default:hover:not(:has(input:focus)):not(:has(input:disabled)) {
+  .sh-input-wrap--default:hover:not(:has(input:focus)):not(
+      :has(input:disabled)
+    ) {
     border-color: var(--input-border-hover-figma);
     background-color: var(--input-bg-hover-figma);
   }
