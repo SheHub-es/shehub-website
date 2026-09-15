@@ -242,7 +242,13 @@ const CookieBanner = () => {
               {t('cookieBanner.managePreferences')}
             </Button>
           )}
-          <Button variant="primary-primary" size="sm" shape="rounded" onClick={handleDeclineAll}>
+          <Button
+            variant="primary-primary"
+            size="sm"
+            shape="rounded"
+            onClick={handleDeclineAll}
+            data-testid="cookie-banner-decline-all"
+          >
             {t('cookieBanner.declineAll')}
           </Button>
           <Button variant="primary-primary" size="sm" shape="rounded" onClick={handleAcceptAll}>

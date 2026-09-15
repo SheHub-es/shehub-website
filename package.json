@@ -10,7 +10,10 @@
     "start": "next start",
     "lint": "next lint",
     "generate:icons": "node scripts/generate-icons.cjs",
-    "export:accessibility-pdfs": "tsx scripts/export-reports-pdf.ts"
+    "export:accessibility-pdfs": "tsx scripts/export-reports-pdf.ts",
+    "test:a11y:dev": "playwright test tests/accessibility/dev.spec.ts",
+    "test:a11y:prod": "playwright test tests/accessibility/prod.spec.ts",
+    "test:a11y:all": "A11Y_ALL=true playwright test tests/accessibility"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
